@@ -48,8 +48,8 @@ module Bmc::Sdk
   # @see https://developers.phoenixnap.com/docs/bmc/1/types/ServerCreate
 
   class ProvisionedServer
-    attr_accessor :id, :status, :hostname, :description, :os, :type, :location, :sshKeys, :sshKeyIds, :installDefaultSshKeys, :reservationId, :pricingModel, :networkType
-    def initialize(id, status, hostname, description, os, type, location, sshKeys, sshKeyIds, installDefaultSshKeys, reservationId, pricingModel, networkType)
+    attr_accessor :id, :status, :hostname, :description, :os, :type, :location, :sshKeys, :sshKeyIds, :installDefaultSshKeys, :reservationId, :pricingModel, :networkType, :osConfiguration
+    def initialize(id, status, hostname, description, os, type, location, sshKeys, sshKeyIds, installDefaultSshKeys, reservationId, pricingModel, networkType, osConfiguration)
       @id = id
       @status = status
       @hostname = hostname
@@ -59,8 +59,8 @@ module Bmc::Sdk
       @location = location
       @sshKeys = sshKeys
       @sshKeyIds = sshKeyIds
-      @installDefaultSshKeys = installDefaultSshKeys,
-      @reservationId = reservationId,
+      @installDefaultSshKeys = installDefaultSshKeys
+      @reservationId = reservationId
       @pricingModel = pricingModel
       @networkType = networkType
       @osConfiguration = osConfiguration
