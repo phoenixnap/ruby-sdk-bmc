@@ -102,7 +102,7 @@ Become part of the Bare Metal Cloud community to get updates on new features, he
 
 ### Documentation
 
-- [API documentation](https://developers.phoenixnap.com/docs/bmc/1/overview)
+- [API documentation](https://developers.phoenixnap.com/apis)
 
 ### Contact phoenixNAP
 
