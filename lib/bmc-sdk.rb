@@ -30,7 +30,11 @@ module Bmc::Sdk
 
   ##
   # The computed configuration file location based on the current system
-  ConfigPath = OS.windows? ? Dir.home + WindowsPath : Dir.home + POSIXPath
+  begin
+    ConfigPath = OS.windows? ? Dir.home + WindowsPath : Dir.home + POSIXPath
+  rescue ArgumentError, NoMethodError
+    ConfigPath = nil
+  end
 
   require 'commands.rb'
   require 'dtos.rb'
@@ -66,6 +70,7 @@ module Bmc::Sdk
   # load_config loads a YAML file from the expected file path.
 
   def load_config
+    raise FileNotFound, 'Config file path not found.' if ConfigPath.nil?
     return YAML.load_file(ConfigPath)
   end
   module_function :load_config

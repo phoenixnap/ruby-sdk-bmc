@@ -42,18 +42,18 @@ gem install bmc-sdk
 ```
 ## Authentication
 
-You need to create a configuration file called `config.yaml` and save it in the user home directory. This file is used to authenticate access to your Bare Metal Cloud resources.
+You need to create a configuration file called `config` and save it in the user home directory. This file is used to authenticate access to your Bare Metal Cloud resources.
 
-In your home directory, create a directory `.pnap` and a `config.yaml` file inside it.
+In your home directory, create a directory `.pnap` and a `config` file inside it.
 
 This file needs to contain only two lines of code:
 
 ```yaml
-clientId: <enter your client id>
-clientSecret: <enter your client secret>
+client_id: <enter your client id>
+client_secret: <enter your client secret>
 ```
 
-To get the values for the clientId and clientSecret, follow these steps:
+To get the values for the client_id and client_secret, follow these steps:
 
 1. [Log in to the Bare Metal Cloud portal](https://bmc.phoenixnap.com).
 2. On the left side menu, click on API Credentials.

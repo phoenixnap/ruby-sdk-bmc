@@ -48,8 +48,8 @@ module Bmc::Sdk
   # @see https://developers.phoenixnap.com/docs/bmc/1/types/ServerCreate
 
   class ProvisionedServer
-    attr_accessor :id, :status, :hostname, :description, :os, :type, :location, :sshKeys, :sshKeyIds
-    def initialize(id, status, hostname, description, os, type, location, sshKeys, sshKeyIds)
+    attr_accessor :id, :status, :hostname, :description, :os, :type, :location, :sshKeys, :sshKeyIds, :installDefaultSshKeys, :reservationId, :pricingModel, :networkType, :osConfiguration
+    def initialize(id, status, hostname, description, os, type, location, sshKeys, sshKeyIds, installDefaultSshKeys, reservationId, pricingModel, networkType, osConfiguration)
       @id = id
       @status = status
       @hostname = hostname
@@ -59,9 +59,14 @@ module Bmc::Sdk
       @location = location
       @sshKeys = sshKeys
       @sshKeyIds = sshKeyIds
+      @installDefaultSshKeys = installDefaultSshKeys
+      @reservationId = reservationId
+      @pricingModel = pricingModel
+      @networkType = networkType
+      @osConfiguration = osConfiguration
     end
     def to_json(*a)
-      {id: @id, status: @status, hostname: @hostname, description: @description, os: @os, type: @type, location: @location, sshKeys: @sshKeys, sshKeyIds: @sshKeyIds}.to_json(*a)
+      {id: @id, status: @status, hostname: @hostname, description: @description, os: @os, type: @type, location: @location, sshKeys: @sshKeys, sshKeyIds: @sshKeyIds, installDefaultSshKeys: @installDefaultSshKeys, reservationId: @reservationId, pricingModel: @pricingModel, networkType: @networkType, osConfiguration: @osConfiguration}.to_json(*a)
     end
   end
 
@@ -101,6 +106,21 @@ module Bmc::Sdk
     end
     def to_json(*a)
       {id: @id, default: @default, name: @name, key: @key, fingerprint: @fingerprint, createdOn: @createdOn, lastUpdatedOn: @lastUpdatedOn}.to_json(*a)
+    end
+  end
+
+  ##
+  # OsConfiguration is used for OS specific configuration properties
+  #
+  # @see https://developers.phoenixnap.com/docs/bmc/1/types/OsConfiguration
+  class OsConfiguration
+    attr_accessor :windows, :rdpAllowedIps
+    def initialize(windows, rdpAllowedIps)
+      @windows = windows
+      @rdpAllowedIps = rdpAllowedIps
+    end
+    def to_json(*a)
+      {windows: @windows, rdpAllowedIps: @rdpAllowedIps}
     end
   end
 end
