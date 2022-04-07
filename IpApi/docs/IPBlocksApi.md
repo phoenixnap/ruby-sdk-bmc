@@ -1,0 +1,360 @@
+# IpApi::IPBlocksApi
+
+All URIs are relative to *https://api.phoenixnap.com/ips/v1*
+
+| Method | HTTP request | Description |
+| ------ | ------------ | ----------- |
+| [**ip_blocks_get**](IPBlocksApi.md#ip_blocks_get) | **GET** /ip-blocks | List IP Blocks. |
+| [**ip_blocks_ip_block_id_delete**](IPBlocksApi.md#ip_blocks_ip_block_id_delete) | **DELETE** /ip-blocks/{ipBlockId} | Delete IP Block. |
+| [**ip_blocks_ip_block_id_get**](IPBlocksApi.md#ip_blocks_ip_block_id_get) | **GET** /ip-blocks/{ipBlockId} | Get IP Block. |
+| [**ip_blocks_ip_block_id_patch**](IPBlocksApi.md#ip_blocks_ip_block_id_patch) | **PATCH** /ip-blocks/{ipBlockId} | Update IP block. |
+| [**ip_blocks_post**](IPBlocksApi.md#ip_blocks_post) | **POST** /ip-blocks | Create an IP Block. |
+
+
+## ip_blocks_get
+
+> <Array<IpBlock>> ip_blocks_get
+
+List IP Blocks.
+
+List all IP Blocks.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+
+begin
+  # List IP Blocks.
+  result = api_instance.ip_blocks_get
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_get: #{e}"
+end
+```
+
+#### Using the ip_blocks_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<IpBlock>>, Integer, Hash)> ip_blocks_get_with_http_info
+
+```ruby
+begin
+  # List IP Blocks.
+  data, status_code, headers = api_instance.ip_blocks_get_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<IpBlock>>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;IpBlock&gt;**](IpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## ip_blocks_ip_block_id_delete
+
+> <DeleteIpBlockResult> ip_blocks_ip_block_id_delete(ip_block_id)
+
+Delete IP Block.
+
+Delete an IP Block. An IP Block can only be deleted if not assigned to any resource.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
+
+begin
+  # Delete IP Block.
+  result = api_instance.ip_blocks_ip_block_id_delete(ip_block_id)
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_delete: #{e}"
+end
+```
+
+#### Using the ip_blocks_ip_block_id_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DeleteIpBlockResult>, Integer, Hash)> ip_blocks_ip_block_id_delete_with_http_info(ip_block_id)
+
+```ruby
+begin
+  # Delete IP Block.
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_delete_with_http_info(ip_block_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DeleteIpBlockResult>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ip_block_id** | **String** | The IP Block identifier. |  |
+
+### Return type
+
+[**DeleteIpBlockResult**](DeleteIpBlockResult.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## ip_blocks_ip_block_id_get
+
+> <IpBlock> ip_blocks_ip_block_id_get(ip_block_id)
+
+Get IP Block.
+
+Get IP Block.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
+
+begin
+  # Get IP Block.
+  result = api_instance.ip_blocks_ip_block_id_get(ip_block_id)
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_get: #{e}"
+end
+```
+
+#### Using the ip_blocks_ip_block_id_get_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_get_with_http_info(ip_block_id)
+
+```ruby
+begin
+  # Get IP Block.
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_get_with_http_info(ip_block_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IpBlock>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_get_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ip_block_id** | **String** | The IP Block identifier. |  |
+
+### Return type
+
+[**IpBlock**](IpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## ip_blocks_ip_block_id_patch
+
+> <IpBlock> ip_blocks_ip_block_id_patch(ip_block_id, opts)
+
+Update IP block.
+
+Update IP Block's details.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
+opts = {
+  ip_block_patch: IpApi::IpBlockPatch.new # IpBlockPatch | 
+}
+
+begin
+  # Update IP block.
+  result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, opts)
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_patch: #{e}"
+end
+```
+
+#### Using the ip_blocks_ip_block_id_patch_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, opts)
+
+```ruby
+begin
+  # Update IP block.
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IpBlock>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_patch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ip_block_id** | **String** | The IP Block identifier. |  |
+| **ip_block_patch** | [**IpBlockPatch**](IpBlockPatch.md) |  | [optional] |
+
+### Return type
+
+[**IpBlock**](IpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## ip_blocks_post
+
+> <IpBlock> ip_blocks_post(opts)
+
+Create an IP Block.
+
+Request an IP Block. An IP Block is a set of contiguous IPs that can be assigned to other resources such as servers.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+opts = {
+  ip_block_create: IpApi::IpBlockCreate.new({location: 'PHX', cidr_block_size: '/30'}) # IpBlockCreate | 
+}
+
+begin
+  # Create an IP Block.
+  result = api_instance.ip_blocks_post(opts)
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_post: #{e}"
+end
+```
+
+#### Using the ip_blocks_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_post_with_http_info(opts)
+
+```ruby
+begin
+  # Create an IP Block.
+  data, status_code, headers = api_instance.ip_blocks_post_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IpBlock>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ip_block_create** | [**IpBlockCreate**](IpBlockCreate.md) |  | [optional] |
+
+### Return type
+
+[**IpBlock**](IpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
