@@ -25,14 +25,6 @@ lib/pnap_audit_api/models/response.rb
 lib/pnap_audit_api/models/user_info.rb
 lib/pnap_audit_api/version.rb
 pnap_audit_api.gemspec
-spec/api/events_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/api_action_all_of_spec.rb
-spec/models/api_action_spec.rb
-spec/models/event_spec.rb
-spec/models/headers_spec.rb
-spec/models/request_spec.rb
-spec/models/response_spec.rb
-spec/models/user_info_spec.rb
 spec/spec_helper.rb

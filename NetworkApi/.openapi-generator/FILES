@@ -21,12 +21,6 @@ lib/pnap_network_api/models/private_network_modify.rb
 lib/pnap_network_api/models/private_network_server.rb
 lib/pnap_network_api/version.rb
 pnap_network_api.gemspec
-spec/api/private_networks_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/error_spec.rb
-spec/models/private_network_create_spec.rb
-spec/models/private_network_modify_spec.rb
-spec/models/private_network_server_spec.rb
-spec/models/private_network_spec.rb
 spec/spec_helper.rb

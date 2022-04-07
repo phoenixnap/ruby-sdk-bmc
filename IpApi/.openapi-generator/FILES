@@ -21,12 +21,6 @@ lib/pnap_ip_api/models/ip_block_create.rb
 lib/pnap_ip_api/models/ip_block_patch.rb
 lib/pnap_ip_api/version.rb
 pnap_ip_api.gemspec
-spec/api/ip_blocks_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/delete_ip_block_result_spec.rb
-spec/models/error_spec.rb
-spec/models/ip_block_create_spec.rb
-spec/models/ip_block_patch_spec.rb
-spec/models/ip_block_spec.rb
 spec/spec_helper.rb
