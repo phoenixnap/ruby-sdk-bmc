@@ -20,6 +20,9 @@ runs:
     - name: Generate BMC API
       shell: bash
       run: openapi-generator-cli generate -i ${{ inputs.spec-link }} -c openapi-generator-config.yaml -o ${{ inputs.module-name }} --additional-properties moduleName=${{ inputs.module-name }} --additional-properties gemName=${{ inputs.gem-name }}
+    - name: Initialize VERSION file
+      shell: bash
+      run: touch ${{ inputs.module-name }}/VERSION
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
