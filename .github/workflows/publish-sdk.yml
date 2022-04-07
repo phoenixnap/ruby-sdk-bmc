@@ -1,0 +1,59 @@
+name: publish-sdk
+
+on:
+  release:
+    types: [published]
+
+env:
+  GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+
+jobs:
+  process-tag-info:
+    name: Process information in Tag name
+    runs-on: ubuntu-latest
+    outputs:
+      module: ${{ steps.step1.outputs.module }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Determining release type
+        id: step1
+        run: |
+          TAG=${{ github.ref }}
+          IFS='/' read -r -a array <<< "${TAG#refs/*/}"
+
+          if [ "${#array[@]}" -eq "2" ]; then
+              MODULE=${array[0]}
+              VERSION=${array[1]}
+
+              echo Verifying version is actually v$VERSION...
+              if [ "$VERSION" != "$(cat ./$MODULE/VERSION)" ]; then
+                  echo Version "in" tag \($VERSION\) does not match module version \($(cat ./$MODULE/VERSION)\)
+                  exit 1
+              fi 
+
+              echo Is submodule release. Publishing $MODULE v$VERSION to registry.
+              echo "::set-output name=module::$MODULE"
+          else
+              echo Is main release. Skipping.
+          fi
+  
+  publish-ruby-gems:
+    name: Publish to RubyGems
+    if: needs.update-version.outputs.module != 0
+    runs-on: ubuntu-latest
+    needs: update-version
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - run: |
+          echo Entering ${{ needs.update-version.outputs.module }}...
+          cd ./${{ needs.update-version.outputs.module }}
+
+          echo Building...
+          gem build *.gemspec
+
+          echo Publishing...
+          gem push *.gem

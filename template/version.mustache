@@ -1,0 +1,11 @@
+=begin
+{{> api_info}}
+=end
+
+def get_version()
+    return File.read(File.expand_path('../../../VERSION', __FILE__)).strip
+end
+
+module {{moduleName}}
+  VERSION = get_version()
+end

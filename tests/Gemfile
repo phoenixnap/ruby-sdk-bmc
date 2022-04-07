@@ -1,0 +1,13 @@
+source "https://rubygems.org"
+
+gem 'pnap_audit_api', path: '../AuditApi'
+gem 'pnap_bmc_api', path: '../BmcApi'
+gem 'pnap_ip_api', path: '../IpApi'
+gem 'pnap_network_api', path: '../NetworkApi'
+gem 'pnap_rancher_api', path: '../RancherApi'
+gem 'pnap_tag_api', path: '../TagApi'
+
+gem 'oauth2', "1.4.9"
+gem 'test-unit', "3.5.3"
+gem 'json', "2.6.1"
+gem 'test-unit-runner-junitxml', "0.3.0"
