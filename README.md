@@ -35,54 +35,76 @@ Official Bare Metal Cloud SDK for Ruby. Use it to manage your Bare Metal Cloud r
 
 ## Installing the Ruby SDK
 
-The Bare Metal Cloud SDK for Ruby is available as a gem `bmc-sdk`. Install it with this command:
+The Bare Metal Cloud SDK for Ruby is split into 6 main gems. The following are all of the gems available:
+
+- `pnap_audit_api`
+- `pnap_bmc_api`
+- `pnap_ip_api`
+- `pnap_network_api`
+- `pnap_rancher_api`
+- `pnap_tag_api`
+
+Each gem can be installed with the following command:
 
 ```sh
-gem install bmc-sdk
+gem install <GEM_NAME>
 ```
 ## Authentication
 
-You need to create a configuration file called `config` and save it in the user home directory. This file is used to authenticate access to your Bare Metal Cloud resources.
+Each gem can be authenticated by configuring the SDK with an OAuth2 access token. The following is an example using the Audit API SDK:
 
-In your home directory, create a directory `.pnap` and a `config` file inside it.
+```ruby
+require 'pnap_audit_api'
 
-This file needs to contain only two lines of code:
-
-```yaml
-client_id: <enter your client id>
-client_secret: <enter your client secret>
+AuditApi.configure do |config|
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 ```
 
-To get the values for the client_id and client_secret, follow these steps:
+The [`oauth2`](https://github.com/oauth-xx/oauth2) library can also be used in order to generate a token using your **Client ID** and **Client Secret**.
+
+```ruby
+# Load the gem
+require 'pnap_audit_api'
+require 'oauth2'
+
+# Setup variables for getting a token.
+client_id = 'YOUR_CLIENT_ID'
+client_secret = 'YOUR_CLIENT_SECRET'
+auth_url = 'https://auth.phoenixnap.com/auth/realms/BMC/protocol/openid-connect/token'
+
+
+# Setup authorization
+AuditApi.configure do |config|
+  # Retrieve the token using OAuth2.
+  client = OAuth2::Client.new(client_id, client_secret, token_url: auth_url)
+  token = client.client_credentials.get_token
+
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = token.token
+end
+```
+
+To get a Client ID and Client Secret, follow these steps:
 
 1. [Log in to the Bare Metal Cloud portal](https://bmc.phoenixnap.com).
 2. On the left side menu, click on API Credentials.
 3. Click the Create Credentials button.
 4. Fill in the Name and Description fields, select the permissions scope and click Create.
 5. In the table, click on Actions and select View Credentials from the dropdown.
-6. Copy the values from the Client ID and Client Secret fields into your `config.yaml` file.
+6. The values can be found in the Client ID and Client Secret fields.
 
 ## Executing a Ruby script
 
-Once you've installed the `bmc-sdk` Ruby gem and created API credentials, you can execute a Ruby script like so:
+Information on using each SDK can be found using its respective README:
 
-```ruby
-#!/usr/bin/env ruby
+- [`pnap_audit_api`](./AuditApi/README.md)
+- [`pnap_bmc_api`](./BmcApi/README.md)
+- [`pnap_ip_api`](./IpApi/README.md)
+- [`pnap_network_api`](./NetworkApi/README.md)
+- [`pnap_rancher_api`](./RancherApi/README.md)
+- [`pnap_tag_api`](./TagApi/README.md)
 
-require 'bmc-sdk'
-
-# parse the configuration file at ~/.pnap/config (contains your OAuth client credentials)
-# and setup a preconfigured client
-client = Bmc::Sdk::load_client
-
-# Create a new GetServers command object
-listCmd = Bmc::Sdk::GetServers.new(client)
-
-# Execute the command and display the results. 
-# The client uses the OAuth2 client and Faraday under the covers.
-result = listCmd.execute
-puts result.body
-```
 ## Bare Metal Cloud community
 
 Become part of the Bare Metal Cloud community to get updates on new features, help us improve the platform, and engage with developers and other users.
