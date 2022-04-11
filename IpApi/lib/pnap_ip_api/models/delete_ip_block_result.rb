@@ -234,5 +234,7 @@ module IpApi
         value
       end
     end
+
   end
+
 end

@@ -216,5 +216,7 @@ module BmcApi
         value
       end
     end
+
   end
+
 end
