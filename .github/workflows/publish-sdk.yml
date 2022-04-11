@@ -297,4 +297,4 @@ jobs:
           gem build *.gemspec
 
           echo Publishing...
-          # gem push *.gem
+          gem push *.gem
