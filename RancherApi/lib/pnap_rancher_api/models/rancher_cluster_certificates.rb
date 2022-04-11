@@ -234,5 +234,7 @@ module RancherApi
         value
       end
     end
+
   end
+
 end

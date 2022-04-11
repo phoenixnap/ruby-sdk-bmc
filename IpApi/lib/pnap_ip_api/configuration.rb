@@ -273,5 +273,6 @@ module IpApi
 
       url
     end
+
   end
 end
