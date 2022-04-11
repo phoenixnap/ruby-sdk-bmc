@@ -269,7 +269,7 @@ jobs:
               VERSION=${array[1]}
 
               echo Verifying version is actually v$VERSION...
-              if [ "$VERSION" != "$(cat ./$MODULE/VERSION)" ]; then
+              if [ "$VERSION" != "v$(cat ./$MODULE/VERSION)" ]; then
                   echo Version "in" tag \($VERSION\) does not match module version \($(cat ./$MODULE/VERSION)\)
                   exit 1
               fi 
