@@ -8,9 +8,176 @@ env:
   GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
 
 jobs:
+  # Build stage
+  build-bmcapi:
+    name: Build BMC API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: BmcApi
+  build-rancherapi:
+    name: Build Rancher API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: RancherApi
+  build-networkapi:
+    name: Build Network API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: NetworkApi
+  build-ipapi:
+    name: Build IP API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: IpApi
+  build-auditapi:
+    name: Build Audit API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: AuditApi
+  build-tagapi:
+    name: Build Tag API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: TagApi
+
+  # Test stage
+  test-bmcapi:
+    name: Test Bmc API
+    runs-on: ubuntu-latest
+    needs:
+      - build-bmcapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_bmc_api.rb
+          test-report-dir: tests
+  test-rancherapi:
+    name: Test Rancher API
+    runs-on: ubuntu-latest
+    needs:
+      - build-rancherapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_rancher_api.rb
+          test-report-dir: tests
+  test-networkapi:
+    name: Test Network API
+    runs-on: ubuntu-latest
+    needs:
+      - build-networkapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_network_api.rb   
+          test-report-dir: tests   
+  test-ipapi:
+    name: Test Ip API
+    runs-on: ubuntu-latest
+    needs:
+      - build-ipapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_ip_api.rb
+          test-report-dir: tests
+  test-auditapi:
+    name: Test Audit API
+    runs-on: ubuntu-latest
+    needs:
+      - build-auditapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_audit_api.rb
+          test-report-dir: tests
+  test-tagapi:
+    name: Test Tag API
+    runs-on: ubuntu-latest
+    needs:
+      - build-tagapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_tag_api.rb
+          test-report-dir: tests
+
   process-tag-info:
     name: Process information in Tag name
     runs-on: ubuntu-latest
+    needs:
+      - test-bmcapi
+      - test-rancherapi
+      - test-networkapi
+      - test-ipapi
+      - test-auditapi
+      - test-tagapi
     outputs:
       module: ${{ steps.step1.outputs.module }}
     steps:
@@ -41,16 +208,16 @@ jobs:
   
   publish-ruby-gems:
     name: Publish to RubyGems
-    if: needs.update-version.outputs.module != 0
+    if: needs.process-tag-info.outputs.module != 0
     runs-on: ubuntu-latest
-    needs: update-version
+    needs: process-tag-info
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
       - run: |
-          echo Entering ${{ needs.update-version.outputs.module }}...
-          cd ./${{ needs.update-version.outputs.module }}
+          echo Entering ${{ needs.process-tag-info.outputs.module }}...
+          cd ./${{ needs.process-tag-info.outputs.module }}
 
           echo Building...
           gem build *.gemspec
