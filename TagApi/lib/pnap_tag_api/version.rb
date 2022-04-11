@@ -10,8 +10,8 @@ OpenAPI Generator version: 5.4.0
 
 =end
 
-def get_version
-  File.read(File.expand_path('../../../VERSION', __FILE__)).strip
+def get_version()
+    return File.read(File.expand_path('../../../VERSION', __FILE__)).strip
 end
 
 module TagApi

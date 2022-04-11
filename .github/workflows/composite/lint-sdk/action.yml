@@ -15,7 +15,7 @@ runs:
       run: sudo gem install rubocop --version 1.11
     - name: Lint module
       shell: bash
-      run: cd ${{ inputs.module-name }} && rubocop -A
+      run: cd ${{ inputs.module-name }} && rubocop --fail-level=error
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:

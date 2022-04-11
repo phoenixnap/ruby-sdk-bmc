@@ -21,12 +21,12 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["PhoenixNAP"]
   s.email       = ["support@phoenixnap.com"]
-  s.homepage    = "https://phoenixnap.com/"
+  s.homepage    = "https://phoenixnap.com/bare-metal-cloud"
   s.summary     = "IP Addresses API Ruby Gem"
   s.description = "IP Addresses API Ruby Gem"
   s.license     = "MPL-2.0"
   s.required_ruby_version = ">= 2.4"
-  s.metadata = { "source_code_uri" => "https://github.com/phoenixnap/ruby-sdk-bmc-poc" }
+  s.metadata    = { "source_code_uri" => "https://github.com/phoenixnap/ruby-sdk-bmc-poc" }
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
 
