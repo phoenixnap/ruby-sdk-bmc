@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["PhoenixNAP"]
   s.email       = ["support@phoenixnap.com"]
-  s.homepage    = "https://phoenixnap.com/"
+  s.homepage    = "https://phoenixnap.com/bare-metal-cloud"
   s.summary     = "Networks API Ruby Gem"
   s.description = "Networks API Ruby Gem"
   s.license     = "MPL-2.0"
