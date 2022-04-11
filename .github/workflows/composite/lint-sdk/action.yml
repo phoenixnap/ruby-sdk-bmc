@@ -1,0 +1,23 @@
+name: 'Lint SDK'
+description: 'Lint SDK from a given directory'
+inputs:
+  module-name: 
+    description: 'Name of the module to lint.'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install ruby
+      shell: bash
+      run: sudo apt-get install ruby-full
+    - name: Install rubocop (1.11)
+      shell: bash
+      run: sudo gem install rubocop --version 1.11
+    - name: Lint module
+      shell: bash
+      run: cd ${{ inputs.module-name }} && rubocop --fail-level=error
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ inputs.module-name }}
+        path: ${{ inputs.module-name }}
