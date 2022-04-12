@@ -42,6 +42,9 @@ module NetworkApi
 
     attr_accessor :servers
 
+    # Date and time when this private network was created.
+    attr_accessor :created_on
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +56,8 @@ module NetworkApi
         :'location' => :'location',
         :'location_default' => :'locationDefault',
         :'cidr' => :'cidr',
-        :'servers' => :'servers'
+        :'servers' => :'servers',
+        :'created_on' => :'createdOn'
       }
     end
 
@@ -73,7 +77,8 @@ module NetworkApi
         :'location' => :'String',
         :'location_default' => :'Boolean',
         :'cidr' => :'String',
-        :'servers' => :'Array<PrivateNetworkServer>'
+        :'servers' => :'Array<PrivateNetworkServer>',
+        :'created_on' => :'Time'
       }
     end
 
@@ -135,6 +140,10 @@ module NetworkApi
           self.servers = value
         end
       end
+
+      if attributes.key?(:'created_on')
+        self.created_on = attributes[:'created_on']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -173,6 +182,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "servers", servers cannot be nil.')
       end
 
+      if @created_on.nil?
+        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -187,6 +200,7 @@ module NetworkApi
       return false if @location_default.nil?
       return false if @cidr.nil?
       return false if @servers.nil?
+      return false if @created_on.nil?
       true
     end
 
@@ -203,7 +217,8 @@ module NetworkApi
           location == o.location &&
           location_default == o.location_default &&
           cidr == o.cidr &&
-          servers == o.servers
+          servers == o.servers &&
+          created_on == o.created_on
     end
 
     # @see the `==` method
@@ -215,7 +230,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, vlan_id, type, location, location_default, cidr, servers].hash
+      [id, name, description, vlan_id, type, location, location_default, cidr, servers, created_on].hash
     end
 
     # Builds the object from hash
