@@ -78,6 +78,11 @@ jobs:
     if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master'
     needs:
       - generate-bmcapi
+      - generate-rancherapi
+      - generate-networkapi
+      - generate-ipapi
+      - generate-auditapi
+      - generate-tagapi
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
