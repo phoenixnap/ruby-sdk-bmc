@@ -70,6 +70,40 @@ jobs:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/tags/download_spec
           module-name: TagApi
           gem-name: pnap_tag_api
+
+  # Push generated code
+  push-changes:
+    name: Push Changes
+    runs-on: ubuntu-latest
+    if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master'
+    needs:
+      - generate-bmcapi
+      - generate-rancherapi
+      - generate-networkapi
+      - generate-ipapi
+      - generate-auditapi
+      - generate-tagapi
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'schedule' && 'develop' || github.head_ref }}
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - name: Add and Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+
+          if test "$(git status --porcelain=v1 2>/dev/null | wc -l)" -gt "0" ; then git commit -m "Add changes"; else echo No changes found; fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.event_name == 'schedule' && 'develop' || github.head_ref }}
   
   # Build stage
   build-bmcapi:
@@ -350,36 +384,3 @@ jobs:
         with:
           files: test-reports/**/*.xml
           check_name: "Test Results"
-
-  push-changes:
-    name: Push Changes
-    runs-on: ubuntu-latest
-    if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master'
-    needs:
-      - test-bmcapi
-      - test-rancherapi
-      - test-networkapi
-      - test-ipapi
-      - test-auditapi
-      - test-tagapi
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-          ref: ${{ github.event_name == 'schedule' && 'develop' || github.head_ref }}
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-      - name: Add and Commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add -A
-
-          if test "$(git status --porcelain=v1 2>/dev/null | wc -l)" -gt "0" ; then git commit -m "Add changes"; else echo No changes found; fi
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.event_name == 'schedule' && 'develop' || github.head_ref }}
