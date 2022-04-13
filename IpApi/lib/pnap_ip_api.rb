@@ -22,6 +22,7 @@ require 'pnap_ip_api/models/error'
 require 'pnap_ip_api/models/ip_block'
 require 'pnap_ip_api/models/ip_block_create'
 require 'pnap_ip_api/models/ip_block_patch'
+require 'pnap_ip_api/models/tag_assignment'
 
 # APIs
 require 'pnap_ip_api/api/ip_blocks_api'

@@ -14,47 +14,53 @@ require 'date'
 require 'time'
 
 module IpApi
-  # IP Block Details.
-  class IpBlock
-    # IP Block identifier.
+  # Tag assigned to resource.
+  class TagAssignment
+    # The unique id of the tag.
     attr_accessor :id
 
-    # IP Block location ID. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
-    attr_accessor :location
+    # The name of the tag.
+    attr_accessor :name
 
-    # CIDR IP Block Size. Currently this field should be set to either `/31`, `/30`, `/29`, `/28`, `/27`, `/26`, `/25`, `/24`, `/23` or `/22`.
-    attr_accessor :cidr_block_size
+    # The value of the tag assigned to the resource.
+    attr_accessor :value
 
-    # The IP Block in CIDR notation.
-    attr_accessor :cidr
+    # Whether or not to show the tag as part of billing and invoices
+    attr_accessor :is_billing_tag
 
-    # The status of the IP Block.
-    attr_accessor :status
+    # Who the tag was created by.
+    attr_accessor :created_by
 
-    # ID of the resource assigned to the IP Block.
-    attr_accessor :assigned_resource_id
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    # Type of the resource assigned to the IP Block.
-    attr_accessor :assigned_resource_type
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
 
-    # The description of the IP Block.
-    attr_accessor :description
-
-    # The tags assigned if any.
-    attr_accessor :tags
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'location' => :'location',
-        :'cidr_block_size' => :'cidrBlockSize',
-        :'cidr' => :'cidr',
-        :'status' => :'status',
-        :'assigned_resource_id' => :'assignedResourceId',
-        :'assigned_resource_type' => :'assignedResourceType',
-        :'description' => :'description',
-        :'tags' => :'tags'
+        :'name' => :'name',
+        :'value' => :'value',
+        :'is_billing_tag' => :'isBillingTag',
+        :'created_by' => :'createdBy'
       }
     end
 
@@ -67,14 +73,10 @@ module IpApi
     def self.openapi_types
       {
         :'id' => :'String',
-        :'location' => :'String',
-        :'cidr_block_size' => :'String',
-        :'cidr' => :'String',
-        :'status' => :'String',
-        :'assigned_resource_id' => :'String',
-        :'assigned_resource_type' => :'String',
-        :'description' => :'String',
-        :'tags' => :'Array<TagAssignment>'
+        :'name' => :'String',
+        :'value' => :'String',
+        :'is_billing_tag' => :'Boolean',
+        :'created_by' => :'String'
       }
     end
 
@@ -88,13 +90,13 @@ module IpApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `IpApi::IpBlock` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `IpApi::TagAssignment` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `IpApi::IpBlock`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `IpApi::TagAssignment`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -103,38 +105,20 @@ module IpApi
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'cidr_block_size')
-        self.cidr_block_size = attributes[:'cidr_block_size']
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
       end
 
-      if attributes.key?(:'cidr')
-        self.cidr = attributes[:'cidr']
+      if attributes.key?(:'is_billing_tag')
+        self.is_billing_tag = attributes[:'is_billing_tag']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'assigned_resource_id')
-        self.assigned_resource_id = attributes[:'assigned_resource_id']
-      end
-
-      if attributes.key?(:'assigned_resource_type')
-        self.assigned_resource_type = attributes[:'assigned_resource_type']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'tags')
-        if (value = attributes[:'tags']).is_a?(Array)
-          self.tags = value
-        end
+      if attributes.key?(:'created_by')
+        self.created_by = attributes[:'created_by']
       end
     end
 
@@ -146,24 +130,12 @@ module IpApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @location.nil?
-        invalid_properties.push('invalid value for "location", location cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @cidr_block_size.nil?
-        invalid_properties.push('invalid value for "cidr_block_size", cidr_block_size cannot be nil.')
-      end
-
-      if @cidr.nil?
-        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
-      end
-
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
-      end
-
-      if !@description.nil? && @description.to_s.length > 250
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
+      if @is_billing_tag.nil?
+        invalid_properties.push('invalid value for "is_billing_tag", is_billing_tag cannot be nil.')
       end
 
       invalid_properties
@@ -173,22 +145,21 @@ module IpApi
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @location.nil?
-      return false if @cidr_block_size.nil?
-      return false if @cidr.nil?
-      return false if @status.nil?
-      return false if !@description.nil? && @description.to_s.length > 250
+      return false if @name.nil?
+      return false if @is_billing_tag.nil?
+      created_by_validator = EnumAttributeValidator.new('String', ["USER", "SYSTEM"])
+      return false unless created_by_validator.valid?(@created_by)
       true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 250
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] created_by Object to be assigned
+    def created_by=(created_by)
+      validator = EnumAttributeValidator.new('String', ["USER", "SYSTEM"])
+      unless validator.valid?(created_by)
+        fail ArgumentError, "invalid value for \"created_by\", must be one of #{validator.allowable_values}."
       end
-
-      @description = description
+      @created_by = created_by
     end
 
     # Checks equality by comparing each attribute.
@@ -197,14 +168,10 @@ module IpApi
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          location == o.location &&
-          cidr_block_size == o.cidr_block_size &&
-          cidr == o.cidr &&
-          status == o.status &&
-          assigned_resource_id == o.assigned_resource_id &&
-          assigned_resource_type == o.assigned_resource_type &&
-          description == o.description &&
-          tags == o.tags
+          name == o.name &&
+          value == o.value &&
+          is_billing_tag == o.is_billing_tag &&
+          created_by == o.created_by
     end
 
     # @see the `==` method
@@ -216,7 +183,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, location, cidr_block_size, cidr, status, assigned_resource_id, assigned_resource_type, description, tags].hash
+      [id, name, value, is_billing_tag, created_by].hash
     end
 
     # Builds the object from hash

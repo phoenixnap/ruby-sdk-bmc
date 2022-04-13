@@ -12,6 +12,7 @@
 | **assigned_resource_id** | **String** | ID of the resource assigned to the IP Block. | [optional] |
 | **assigned_resource_type** | **String** | Type of the resource assigned to the IP Block. | [optional] |
 | **description** | **String** | The description of the IP Block. | [optional] |
+| **tags** | [**Array&lt;TagAssignment&gt;**](TagAssignment.md) | The tags assigned if any. | [optional] |
 
 ## Example
 
@@ -26,7 +27,8 @@ instance = IpApi::IpBlock.new(
   status: unassigned,
   assigned_resource_id: 6047127fed34ecc3ba8402d2,
   assigned_resource_type: server,
-  description: IP Block #1 used for publicly accessing server #1.
+  description: IP Block #1 used for publicly accessing server #1.,
+  tags: null
 )
 ```
 
