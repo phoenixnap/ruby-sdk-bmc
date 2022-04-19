@@ -158,6 +158,18 @@ module NetworkApi
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
+      if @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 250
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
+      end
+
       if @vlan_id.nil?
         invalid_properties.push('invalid value for "vlan_id", vlan_id cannot be nil.')
       end
@@ -194,6 +206,9 @@ module NetworkApi
     def valid?
       return false if @id.nil?
       return false if @name.nil?
+      return false if @name.to_s.length > 100
+      return false if @name.to_s.length < 1
+      return false if !@description.nil? && @description.to_s.length > 250
       return false if @vlan_id.nil?
       return false if @type.nil?
       return false if @location.nil?
@@ -202,6 +217,34 @@ module NetworkApi
       return false if @servers.nil?
       return false if @created_on.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 250
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
