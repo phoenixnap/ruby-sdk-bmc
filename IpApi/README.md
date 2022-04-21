@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
  - [IpApi::IpBlockCreate](docs/IpBlockCreate.md)
  - [IpApi::IpBlockPatch](docs/IpBlockPatch.md)
  - [IpApi::TagAssignment](docs/TagAssignment.md)
+ - [IpApi::TagAssignmentRequest](docs/TagAssignmentRequest.md)
 
 
 ## Documentation for Authorization

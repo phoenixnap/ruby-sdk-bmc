@@ -10,6 +10,7 @@ docs/IpBlock.md
 docs/IpBlockCreate.md
 docs/IpBlockPatch.md
 docs/TagAssignment.md
+docs/TagAssignmentRequest.md
 lib/pnap_ip_api.rb
 lib/pnap_ip_api/api/ip_blocks_api.rb
 lib/pnap_ip_api/api_client.rb
@@ -21,8 +22,10 @@ lib/pnap_ip_api/models/ip_block.rb
 lib/pnap_ip_api/models/ip_block_create.rb
 lib/pnap_ip_api/models/ip_block_patch.rb
 lib/pnap_ip_api/models/tag_assignment.rb
+lib/pnap_ip_api/models/tag_assignment_request.rb
 lib/pnap_ip_api/version.rb
 pnap_ip_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/tag_assignment_request_spec.rb
 spec/spec_helper.rb
