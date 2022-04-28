@@ -77,10 +77,13 @@ IpApi.configure do |config|
 end
 
 api_instance = IpApi::IPBlocksApi.new
+opts = {
+  tag: ['inner_example'] # Array<String> | List of tags, in the form tagName.tagValue, to filter by.
+}
 
 begin
   #List IP Blocks.
-  result = api_instance.ip_blocks_get
+  result = api_instance.ip_blocks_get(opts)
   p result
 rescue IpApi::ApiError => e
   puts "Exception when calling IPBlocksApi->ip_blocks_get: #{e}"
@@ -123,6 +126,7 @@ Class | Method | HTTP request | Description
 *IpApi::IPBlocksApi* | [**ip_blocks_ip_block_id_delete**](docs/IPBlocksApi.md#ip_blocks_ip_block_id_delete) | **DELETE** /ip-blocks/{ipBlockId} | Delete IP Block.
 *IpApi::IPBlocksApi* | [**ip_blocks_ip_block_id_get**](docs/IPBlocksApi.md#ip_blocks_ip_block_id_get) | **GET** /ip-blocks/{ipBlockId} | Get IP Block.
 *IpApi::IPBlocksApi* | [**ip_blocks_ip_block_id_patch**](docs/IPBlocksApi.md#ip_blocks_ip_block_id_patch) | **PATCH** /ip-blocks/{ipBlockId} | Update IP block.
+*IpApi::IPBlocksApi* | [**ip_blocks_ip_block_id_tags_put**](docs/IPBlocksApi.md#ip_blocks_ip_block_id_tags_put) | **PUT** /ip-blocks/{ipBlockId}/tags | Overwrite tags assigned for IP Block.
 *IpApi::IPBlocksApi* | [**ip_blocks_post**](docs/IPBlocksApi.md#ip_blocks_post) | **POST** /ip-blocks | Create an IP Block.
 
 

@@ -28,7 +28,7 @@ instance = IpApi::IpBlock.new(
   assigned_resource_id: 6047127fed34ecc3ba8402d2,
   assigned_resource_type: server,
   description: IP Block #1 used for publicly accessing server #1.,
-  tags: null
+  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}]
 )
 ```
 

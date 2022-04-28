@@ -20,7 +20,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_ip_blocks_post**](ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server. |
 | [**servers_server_id_patch**](ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server. |
 | [**servers_server_id_private_networks_post**](ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network. |
-| [**servers_server_id_tags_put**](ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Set server tags. |
+| [**servers_server_id_tags_put**](ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server. |
 
 
 ## delete_private_network
@@ -1167,9 +1167,9 @@ end
 
 > <Server> servers_server_id_tags_put(server_id, opts)
 
-Set server tags.
+Overwrite tags assigned for Server.
 
-Set tags for server.
+Overwrites tags assigned for Server and unassigns any tags not part of the request.
 
 ### Examples
 
@@ -1189,7 +1189,7 @@ opts = {
 }
 
 begin
-  # Set server tags.
+  # Overwrite tags assigned for Server.
   result = api_instance.servers_server_id_tags_put(server_id, opts)
   p result
 rescue BmcApi::ApiError => e
@@ -1205,7 +1205,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Set server tags.
+  # Overwrite tags assigned for Server.
   data, status_code, headers = api_instance.servers_server_id_tags_put_with_http_info(server_id, opts)
   p status_code # => 2xx
   p headers # => { ... }

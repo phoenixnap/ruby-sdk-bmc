@@ -144,7 +144,7 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_post**](docs/ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server.
 *BmcApi::ServersApi* | [**servers_server_id_patch**](docs/ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server.
 *BmcApi::ServersApi* | [**servers_server_id_private_networks_post**](docs/ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network.
-*BmcApi::ServersApi* | [**servers_server_id_tags_put**](docs/ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Set server tags.
+*BmcApi::ServersApi* | [**servers_server_id_tags_put**](docs/ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server.
 
 
 ## Documentation for Models

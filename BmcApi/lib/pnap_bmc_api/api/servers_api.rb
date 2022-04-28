@@ -1086,8 +1086,8 @@ module BmcApi
       return data, status_code, headers
     end
 
-    # Set server tags.
-    # Set tags for server.
+    # Overwrite tags assigned for Server.
+    # Overwrites tags assigned for Server and unassigns any tags not part of the request.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<TagAssignmentRequest>] :tag_assignment_request 
@@ -1097,8 +1097,8 @@ module BmcApi
       data
     end
 
-    # Set server tags.
-    # Set tags for server.
+    # Overwrite tags assigned for Server.
+    # Overwrites tags assigned for Server and unassigns any tags not part of the request.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<TagAssignmentRequest>] :tag_assignment_request 

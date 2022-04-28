@@ -8,12 +8,13 @@ All URIs are relative to *https://api.phoenixnap.com/ips/v1*
 | [**ip_blocks_ip_block_id_delete**](IPBlocksApi.md#ip_blocks_ip_block_id_delete) | **DELETE** /ip-blocks/{ipBlockId} | Delete IP Block. |
 | [**ip_blocks_ip_block_id_get**](IPBlocksApi.md#ip_blocks_ip_block_id_get) | **GET** /ip-blocks/{ipBlockId} | Get IP Block. |
 | [**ip_blocks_ip_block_id_patch**](IPBlocksApi.md#ip_blocks_ip_block_id_patch) | **PATCH** /ip-blocks/{ipBlockId} | Update IP block. |
+| [**ip_blocks_ip_block_id_tags_put**](IPBlocksApi.md#ip_blocks_ip_block_id_tags_put) | **PUT** /ip-blocks/{ipBlockId}/tags | Overwrite tags assigned for IP Block. |
 | [**ip_blocks_post**](IPBlocksApi.md#ip_blocks_post) | **POST** /ip-blocks | Create an IP Block. |
 
 
 ## ip_blocks_get
 
-> <Array<IpBlock>> ip_blocks_get
+> <Array<IpBlock>> ip_blocks_get(opts)
 
 List IP Blocks.
 
@@ -31,10 +32,13 @@ IpApi.configure do |config|
 end
 
 api_instance = IpApi::IPBlocksApi.new
+opts = {
+  tag: ['inner_example'] # Array<String> | List of tags, in the form tagName.tagValue, to filter by.
+}
 
 begin
   # List IP Blocks.
-  result = api_instance.ip_blocks_get
+  result = api_instance.ip_blocks_get(opts)
   p result
 rescue IpApi::ApiError => e
   puts "Error when calling IPBlocksApi->ip_blocks_get: #{e}"
@@ -45,12 +49,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<IpBlock>>, Integer, Hash)> ip_blocks_get_with_http_info
+> <Array(<Array<IpBlock>>, Integer, Hash)> ip_blocks_get_with_http_info(opts)
 
 ```ruby
 begin
   # List IP Blocks.
-  data, status_code, headers = api_instance.ip_blocks_get_with_http_info
+  data, status_code, headers = api_instance.ip_blocks_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<IpBlock>>
@@ -61,7 +65,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tag** | [**Array&lt;String&gt;**](String.md) | List of tags, in the form tagName.tagValue, to filter by. | [optional] |
 
 ### Return type
 
@@ -273,6 +279,79 @@ end
 | ---- | ---- | ----------- | ----- |
 | **ip_block_id** | **String** | The IP Block identifier. |  |
 | **ip_block_patch** | [**IpBlockPatch**](IpBlockPatch.md) |  | [optional] |
+
+### Return type
+
+[**IpBlock**](IpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## ip_blocks_ip_block_id_tags_put
+
+> <IpBlock> ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+
+Overwrite tags assigned for IP Block.
+
+Overwrites tags assigned for IP Block and unassigns any tags not part of the request.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_ip_api'
+# setup authorization
+IpApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = IpApi::IPBlocksApi.new
+ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
+opts = {
+  tag_assignment_request: [IpApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
+}
+
+begin
+  # Overwrite tags assigned for IP Block.
+  result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+  p result
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_tags_put: #{e}"
+end
+```
+
+#### Using the ip_blocks_ip_block_id_tags_put_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, opts)
+
+```ruby
+begin
+  # Overwrite tags assigned for IP Block.
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <IpBlock>
+rescue IpApi::ApiError => e
+  puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_tags_put_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ip_block_id** | **String** | The IP Block identifier. |  |
+| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) |  | [optional] |
 
 ### Return type
 
