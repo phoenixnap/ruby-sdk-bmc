@@ -144,6 +144,8 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_post**](docs/ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server.
 *BmcApi::ServersApi* | [**servers_server_id_patch**](docs/ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server.
 *BmcApi::ServersApi* | [**servers_server_id_private_networks_post**](docs/ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network.
+*BmcApi::ServersApi* | [**servers_server_id_public_networks_delete**](docs/ServersApi.md#servers_server_id_public_networks_delete) | **DELETE** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Removes the server from the Public Network
+*BmcApi::ServersApi* | [**servers_server_id_public_networks_post**](docs/ServersApi.md#servers_server_id_public_networks_post) | **POST** /servers/{serverId}/network-configuration/public-network-configuration/public-networks | Adds the server to a Public Network.
 *BmcApi::ServersApi* | [**servers_server_id_tags_put**](docs/ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server.
 
 
@@ -161,6 +163,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::OsConfigurationMapProxmox](docs/OsConfigurationMapProxmox.md)
  - [BmcApi::OsConfigurationWindows](docs/OsConfigurationWindows.md)
  - [BmcApi::PrivateNetworkConfiguration](docs/PrivateNetworkConfiguration.md)
+ - [BmcApi::PublicNetworkConfiguration](docs/PublicNetworkConfiguration.md)
  - [BmcApi::Quota](docs/Quota.md)
  - [BmcApi::QuotaEditLimitRequest](docs/QuotaEditLimitRequest.md)
  - [BmcApi::QuotaEditLimitRequestDetails](docs/QuotaEditLimitRequestDetails.md)
@@ -172,6 +175,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::ServerIpBlock](docs/ServerIpBlock.md)
  - [BmcApi::ServerPatch](docs/ServerPatch.md)
  - [BmcApi::ServerPrivateNetwork](docs/ServerPrivateNetwork.md)
+ - [BmcApi::ServerPublicNetwork](docs/ServerPublicNetwork.md)
  - [BmcApi::ServerReserve](docs/ServerReserve.md)
  - [BmcApi::ServerReset](docs/ServerReset.md)
  - [BmcApi::SshKey](docs/SshKey.md)

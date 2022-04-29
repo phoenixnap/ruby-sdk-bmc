@@ -14,19 +14,43 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # Server details linked to the Private Network.
-  class PrivateNetworkServer
-    # The server identifier.
+  # Public Network details.
+  class PublicNetwork
+    # The public network identifier.
     attr_accessor :id
 
-    # List of private IPs associated to the server.
-    attr_accessor :ips
+    # The VLAN of this public network.
+    attr_accessor :vlan_id
+
+    # A list of resources that are members in this public network.
+    attr_accessor :memberships
+
+    # The friendly name of this public network.
+    attr_accessor :name
+
+    # The location of this public network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
+    attr_accessor :location
+
+    # The description of this public network.
+    attr_accessor :description
+
+    # Date and time when this public network was created.
+    attr_accessor :created_on
+
+    # A list of IP Blocks that are associated with this public network.
+    attr_accessor :ip_blocks
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'ips' => :'ips'
+        :'vlan_id' => :'vlanId',
+        :'memberships' => :'memberships',
+        :'name' => :'name',
+        :'location' => :'location',
+        :'description' => :'description',
+        :'created_on' => :'createdOn',
+        :'ip_blocks' => :'ipBlocks'
       }
     end
 
@@ -39,7 +63,13 @@ module NetworkApi
     def self.openapi_types
       {
         :'id' => :'String',
-        :'ips' => :'Array<String>'
+        :'vlan_id' => :'Integer',
+        :'memberships' => :'Array<PublicNetworkMembership>',
+        :'name' => :'String',
+        :'location' => :'String',
+        :'description' => :'String',
+        :'created_on' => :'Time',
+        :'ip_blocks' => :'Array<PublicNetworkIpBlock>'
       }
     end
 
@@ -53,13 +83,13 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PrivateNetworkServer` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetwork` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PrivateNetworkServer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetwork`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -68,9 +98,35 @@ module NetworkApi
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Array)
-          self.ips = value
+      if attributes.key?(:'vlan_id')
+        self.vlan_id = attributes[:'vlan_id']
+      end
+
+      if attributes.key?(:'memberships')
+        if (value = attributes[:'memberships']).is_a?(Array)
+          self.memberships = value
+        end
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'location')
+        self.location = attributes[:'location']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'created_on')
+        self.created_on = attributes[:'created_on']
+      end
+
+      if attributes.key?(:'ip_blocks')
+        if (value = attributes[:'ip_blocks']).is_a?(Array)
+          self.ip_blocks = value
         end
       end
     end
@@ -83,8 +139,40 @@ module NetworkApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @ips.nil?
-        invalid_properties.push('invalid value for "ips", ips cannot be nil.')
+      if @vlan_id.nil?
+        invalid_properties.push('invalid value for "vlan_id", vlan_id cannot be nil.')
+      end
+
+      if @memberships.nil?
+        invalid_properties.push('invalid value for "memberships", memberships cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if @location.nil?
+        invalid_properties.push('invalid value for "location", location cannot be nil.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 250
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
+      end
+
+      if @created_on.nil?
+        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
+      end
+
+      if @ip_blocks.nil?
+        invalid_properties.push('invalid value for "ip_blocks", ip_blocks cannot be nil.')
       end
 
       invalid_properties
@@ -94,8 +182,44 @@ module NetworkApi
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @ips.nil?
+      return false if @vlan_id.nil?
+      return false if @memberships.nil?
+      return false if @name.nil?
+      return false if @name.to_s.length > 100
+      return false if @name.to_s.length < 1
+      return false if @location.nil?
+      return false if !@description.nil? && @description.to_s.length > 250
+      return false if @created_on.nil?
+      return false if @ip_blocks.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 250
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
@@ -104,7 +228,13 @@ module NetworkApi
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          ips == o.ips
+          vlan_id == o.vlan_id &&
+          memberships == o.memberships &&
+          name == o.name &&
+          location == o.location &&
+          description == o.description &&
+          created_on == o.created_on &&
+          ip_blocks == o.ip_blocks
     end
 
     # @see the `==` method
@@ -116,7 +246,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips].hash
+      [id, vlan_id, memberships, name, location, description, created_on, ip_blocks].hash
     end
 
     # Builds the object from hash

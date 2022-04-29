@@ -14,19 +14,15 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # Server details linked to the Private Network.
-  class PrivateNetworkServer
-    # The server identifier.
+  # The assigned IP block to the Public Network.
+  class PublicNetworkIpBlock
+    # The IP Block identifier.
     attr_accessor :id
-
-    # List of private IPs associated to the server.
-    attr_accessor :ips
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'ips' => :'ips'
+        :'id' => :'id'
       }
     end
 
@@ -38,8 +34,7 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'ips' => :'Array<String>'
+        :'id' => :'String'
       }
     end
 
@@ -53,25 +48,19 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PrivateNetworkServer` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkIpBlock` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PrivateNetworkServer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkIpBlock`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Array)
-          self.ips = value
-        end
       end
     end
 
@@ -83,10 +72,6 @@ module NetworkApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @ips.nil?
-        invalid_properties.push('invalid value for "ips", ips cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -94,7 +79,6 @@ module NetworkApi
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @ips.nil?
       true
     end
 
@@ -103,8 +87,7 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          ips == o.ips
+          id == o.id
     end
 
     # @see the `==` method
@@ -116,7 +99,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips].hash
+      [id].hash
     end
 
     # Builds the object from hash

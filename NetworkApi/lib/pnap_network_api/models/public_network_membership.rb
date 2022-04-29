@@ -14,18 +14,22 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # Server details linked to the Private Network.
-  class PrivateNetworkServer
-    # The server identifier.
-    attr_accessor :id
+  # Resource details linked to the Public Network.
+  class PublicNetworkMembership
+    # The resource identifier.
+    attr_accessor :resource_id
 
-    # List of private IPs associated to the server.
+    # The resource's type.
+    attr_accessor :resource_type
+
+    # List of public IPs associated to the resource.
     attr_accessor :ips
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
+        :'resource_id' => :'resourceId',
+        :'resource_type' => :'resourceType',
         :'ips' => :'ips'
       }
     end
@@ -38,7 +42,8 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
+        :'resource_id' => :'String',
+        :'resource_type' => :'String',
         :'ips' => :'Array<String>'
       }
     end
@@ -53,19 +58,23 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PrivateNetworkServer` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkMembership` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PrivateNetworkServer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkMembership`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'resource_id')
+        self.resource_id = attributes[:'resource_id']
+      end
+
+      if attributes.key?(:'resource_type')
+        self.resource_type = attributes[:'resource_type']
       end
 
       if attributes.key?(:'ips')
@@ -79,8 +88,12 @@ module NetworkApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @resource_id.nil?
+        invalid_properties.push('invalid value for "resource_id", resource_id cannot be nil.')
+      end
+
+      if @resource_type.nil?
+        invalid_properties.push('invalid value for "resource_type", resource_type cannot be nil.')
       end
 
       if @ips.nil?
@@ -93,7 +106,8 @@ module NetworkApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
+      return false if @resource_id.nil?
+      return false if @resource_type.nil?
       return false if @ips.nil?
       true
     end
@@ -103,7 +117,8 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
+          resource_id == o.resource_id &&
+          resource_type == o.resource_type &&
           ips == o.ips
     end
 
@@ -116,7 +131,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips].hash
+      [resource_id, resource_type, ips].hash
     end
 
     # Builds the object from hash

@@ -16,7 +16,7 @@ require 'time'
 module BmcApi
   # Private network details of bare metal server.
   class PrivateNetworkConfiguration
-    # The address of the gateway assigned / to assign to the server. It'll be null and won't be displayed as part of response body if server is a member of both public and private networks. When used as part of request body, it has to match one of the IP addresses used in the existing assigned private networks for the relevant location. Also, this field can be submitted only when provisioning a server without being a member of any public network.
+    # The address of the gateway assigned / to assign to the server. When used as part of request body, it has to match one of the IP addresses used in the existing assigned private networks for the relevant location. Deprecated in favour of a common gateway address across all networks available under NetworkConfiguration.
     attr_accessor :gateway_address
 
     # Determines the approach for configuring private network(s) for the server being provisioned. Currently this field should be set to `USE_OR_CREATE_DEFAULT` or `USER_DEFINED`.

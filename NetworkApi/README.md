@@ -2,9 +2,9 @@
 
 NetworkApi - the Ruby gem for the Networks API
 
-Use the Networks API to create, list, edit, and delete private networks to best fit your business needs.
-Private networks allow your servers to communicate without connecting to the public internet, avoiding unnecessary
-egress data charges.<br>
+Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple 
+servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private 
+networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br>
 <br>
 <span class='pnap-api-knowledge-base-link'>
 Knowledge base articles to help you can be found
@@ -128,6 +128,13 @@ Class | Method | HTTP request | Description
 *NetworkApi::PrivateNetworksApi* | [**private_networks_network_id_get**](docs/PrivateNetworksApi.md#private_networks_network_id_get) | **GET** /private-networks/{privateNetworkId} | Get a Private Network.
 *NetworkApi::PrivateNetworksApi* | [**private_networks_network_id_put**](docs/PrivateNetworksApi.md#private_networks_network_id_put) | **PUT** /private-networks/{privateNetworkId} | Update a Private Network.
 *NetworkApi::PrivateNetworksApi* | [**private_networks_post**](docs/PrivateNetworksApi.md#private_networks_post) | **POST** /private-networks | Create a Private Network.
+*NetworkApi::PublicNetworksApi* | [**public_networks_get**](docs/PublicNetworksApi.md#public_networks_get) | **GET** /public-networks | List Public Networks.
+*NetworkApi::PublicNetworksApi* | [**public_networks_network_id_delete**](docs/PublicNetworksApi.md#public_networks_network_id_delete) | **DELETE** /public-networks/{publicNetworkId} | Delete a Public Network.
+*NetworkApi::PublicNetworksApi* | [**public_networks_network_id_get**](docs/PublicNetworksApi.md#public_networks_network_id_get) | **GET** /public-networks/{publicNetworkId} | Get a Public Network.
+*NetworkApi::PublicNetworksApi* | [**public_networks_network_id_ip_blocks_ip_block_id_delete**](docs/PublicNetworksApi.md#public_networks_network_id_ip_blocks_ip_block_id_delete) | **DELETE** /public-networks/{publicNetworkId}/ip-blocks/{ipBlockId} | Removes the IP Block from the Public Network.
+*NetworkApi::PublicNetworksApi* | [**public_networks_network_id_ip_blocks_post**](docs/PublicNetworksApi.md#public_networks_network_id_ip_blocks_post) | **POST** /public-networks/{publicNetworkId}/ip-blocks | Adds an IP block to this public network.
+*NetworkApi::PublicNetworksApi* | [**public_networks_network_id_patch**](docs/PublicNetworksApi.md#public_networks_network_id_patch) | **PATCH** /public-networks/{publicNetworkId} | Update Public Network's Details.
+*NetworkApi::PublicNetworksApi* | [**public_networks_post**](docs/PublicNetworksApi.md#public_networks_post) | **POST** /public-networks | Create a public network.
 
 
 ## Documentation for Models
@@ -137,6 +144,11 @@ Class | Method | HTTP request | Description
  - [NetworkApi::PrivateNetworkCreate](docs/PrivateNetworkCreate.md)
  - [NetworkApi::PrivateNetworkModify](docs/PrivateNetworkModify.md)
  - [NetworkApi::PrivateNetworkServer](docs/PrivateNetworkServer.md)
+ - [NetworkApi::PublicNetwork](docs/PublicNetwork.md)
+ - [NetworkApi::PublicNetworkCreate](docs/PublicNetworkCreate.md)
+ - [NetworkApi::PublicNetworkIpBlock](docs/PublicNetworkIpBlock.md)
+ - [NetworkApi::PublicNetworkMembership](docs/PublicNetworkMembership.md)
+ - [NetworkApi::PublicNetworkModify](docs/PublicNetworkModify.md)
 
 
 ## Documentation for Authorization

@@ -14,19 +14,19 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # Server details linked to the Private Network.
-  class PrivateNetworkServer
-    # The server identifier.
-    attr_accessor :id
+  # Public Network Modifiable Details.
+  class PublicNetworkModify
+    # A friendly name given to the network. This name should be unique.
+    attr_accessor :name
 
-    # List of private IPs associated to the server.
-    attr_accessor :ips
+    # The description of this public network
+    attr_accessor :description
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'ips' => :'ips'
+        :'name' => :'name',
+        :'description' => :'description'
       }
     end
 
@@ -38,8 +38,8 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'ips' => :'Array<String>'
+        :'name' => :'String',
+        :'description' => :'String'
       }
     end
 
@@ -53,25 +53,23 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PrivateNetworkServer` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkModify` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PrivateNetworkServer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkModify`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Array)
-          self.ips = value
-        end
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
     end
 
@@ -79,12 +77,16 @@ module NetworkApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if !@name.nil? && @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
       end
 
-      if @ips.nil?
-        invalid_properties.push('invalid value for "ips", ips cannot be nil.')
+      if !@name.nil? && @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 250
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
       end
 
       invalid_properties
@@ -93,9 +95,34 @@ module NetworkApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
-      return false if @ips.nil?
+      return false if !@name.nil? && @name.to_s.length > 100
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@description.nil? && @description.to_s.length > 250
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if !name.nil? && name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 250
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
@@ -103,8 +130,8 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          ips == o.ips
+          name == o.name &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -116,7 +143,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips].hash
+      [name, description].hash
     end
 
     # Builds the object from hash

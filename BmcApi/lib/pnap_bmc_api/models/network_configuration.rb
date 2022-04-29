@@ -16,15 +16,22 @@ require 'time'
 module BmcApi
   # Entire network details of bare metal server.
   class NetworkConfiguration
+    # The address of the gateway assigned / to assign to the server. When used as part of request body, IP address has to be part of private/public network assigned to this server.
+    attr_accessor :gateway_address
+
     attr_accessor :private_network_configuration
 
     attr_accessor :ip_blocks_configuration
 
+    attr_accessor :public_network_configuration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'gateway_address' => :'gatewayAddress',
         :'private_network_configuration' => :'privateNetworkConfiguration',
-        :'ip_blocks_configuration' => :'ipBlocksConfiguration'
+        :'ip_blocks_configuration' => :'ipBlocksConfiguration',
+        :'public_network_configuration' => :'publicNetworkConfiguration'
       }
     end
 
@@ -36,8 +43,10 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'gateway_address' => :'String',
         :'private_network_configuration' => :'PrivateNetworkConfiguration',
-        :'ip_blocks_configuration' => :'IpBlocksConfiguration'
+        :'ip_blocks_configuration' => :'IpBlocksConfiguration',
+        :'public_network_configuration' => :'PublicNetworkConfiguration'
       }
     end
 
@@ -62,12 +71,20 @@ module BmcApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'gateway_address')
+        self.gateway_address = attributes[:'gateway_address']
+      end
+
       if attributes.key?(:'private_network_configuration')
         self.private_network_configuration = attributes[:'private_network_configuration']
       end
 
       if attributes.key?(:'ip_blocks_configuration')
         self.ip_blocks_configuration = attributes[:'ip_blocks_configuration']
+      end
+
+      if attributes.key?(:'public_network_configuration')
+        self.public_network_configuration = attributes[:'public_network_configuration']
       end
     end
 
@@ -89,8 +106,10 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          gateway_address == o.gateway_address &&
           private_network_configuration == o.private_network_configuration &&
-          ip_blocks_configuration == o.ip_blocks_configuration
+          ip_blocks_configuration == o.ip_blocks_configuration &&
+          public_network_configuration == o.public_network_configuration
     end
 
     # @see the `==` method
@@ -102,7 +121,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [private_network_configuration, ip_blocks_configuration].hash
+      [gateway_address, private_network_configuration, ip_blocks_configuration, public_network_configuration].hash
     end
 
     # Builds the object from hash

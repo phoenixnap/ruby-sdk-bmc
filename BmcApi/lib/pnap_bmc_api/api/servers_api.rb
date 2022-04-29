@@ -20,7 +20,7 @@ module BmcApi
       @api_client = api_client
     end
     # Removes the server from private network.
-    # Removes the server from private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.</b>
+    # Removes the server from private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
     # @param server_id [String] The server&#39;s ID.
     # @param private_network_id [String] The private network identifier.
     # @param [Hash] opts the optional parameters
@@ -31,7 +31,7 @@ module BmcApi
     end
 
     # Removes the server from private network.
-    # Removes the server from private network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. &lt;b&gt;This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.&lt;/b&gt;
+    # Removes the server from private network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. &lt;b&gt;This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.&lt;/b&gt;
     # @param server_id [String] The server&#39;s ID.
     # @param private_network_id [String] The private network identifier.
     # @param [Hash] opts the optional parameters
@@ -542,7 +542,7 @@ module BmcApi
     end
 
     # Reset server.
-    # Reset specific server.
+    # Deprecated: Reset specific server. Reset only supports network configurations of type 'private network' or 'IP blocks'. As an alternative, the suggested action is to deprovision the server and provision a new one with the same configuration.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerReset] :server_reset 
@@ -553,7 +553,7 @@ module BmcApi
     end
 
     # Reset server.
-    # Reset specific server.
+    # Deprecated: Reset specific server. Reset only supports network configurations of type &#39;private network&#39; or &#39;IP blocks&#39;. As an alternative, the suggested action is to deprovision the server and provision a new one with the same configuration.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerReset] :server_reset 
@@ -801,7 +801,7 @@ module BmcApi
     end
 
     # Unassign IP Block from Server.
-    # Removes the IP block from the server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.</b>
+    # Removes the IP block from the server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
     # @param server_id [String] The server&#39;s ID.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters
@@ -813,7 +813,7 @@ module BmcApi
     end
 
     # Unassign IP Block from Server.
-    # Removes the IP block from the server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. &lt;b&gt;This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.&lt;/b&gt;
+    # Removes the IP block from the server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. &lt;b&gt;This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.&lt;/b&gt;
     # @param server_id [String] The server&#39;s ID.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters
@@ -877,7 +877,7 @@ module BmcApi
     end
 
     # Assign IP Block to Server.
-    # Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server.
+    # Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerIpBlock] :server_ip_block 
@@ -888,7 +888,7 @@ module BmcApi
     end
 
     # Assign IP Block to Server.
-    # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server.
+    # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerIpBlock] :server_ip_block 
@@ -1082,6 +1082,145 @@ module BmcApi
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ServersApi#servers_server_id_private_networks_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Removes the server from the Public Network
+    # Removes the server from the Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
+    # @param server_id [String] The server&#39;s ID.
+    # @param public_network_id [String] The Public Network identifier.
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def servers_server_id_public_networks_delete(server_id, public_network_id, opts = {})
+      data, _status_code, _headers = servers_server_id_public_networks_delete_with_http_info(server_id, public_network_id, opts)
+      data
+    end
+
+    # Removes the server from the Public Network
+    # Removes the server from the Public Network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. &lt;b&gt;This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.&lt;/b&gt;
+    # @param server_id [String] The server&#39;s ID.
+    # @param public_network_id [String] The Public Network identifier.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def servers_server_id_public_networks_delete_with_http_info(server_id, public_network_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_public_networks_delete ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_public_networks_delete"
+      end
+      # verify the required parameter 'public_network_id' is set
+      if @api_client.config.client_side_validation && public_network_id.nil?
+        fail ArgumentError, "Missing the required parameter 'public_network_id' when calling ServersApi.servers_server_id_public_networks_delete"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId}'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s)).sub('{' + 'publicNetworkId' + '}', CGI.escape(public_network_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'String'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_public_networks_delete",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_public_networks_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Adds the server to a Public Network.
+    # Adds the server to a Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # @param server_id [String] The server&#39;s ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [ServerPublicNetwork] :server_public_network 
+    # @return [ServerPublicNetwork]
+    def servers_server_id_public_networks_post(server_id, opts = {})
+      data, _status_code, _headers = servers_server_id_public_networks_post_with_http_info(server_id, opts)
+      data
+    end
+
+    # Adds the server to a Public Network.
+    # Adds the server to a Public Network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # @param server_id [String] The server&#39;s ID.
+    # @param [Hash] opts the optional parameters
+    # @option opts [ServerPublicNetwork] :server_public_network 
+    # @return [Array<(ServerPublicNetwork, Integer, Hash)>] ServerPublicNetwork data, response status code and response headers
+    def servers_server_id_public_networks_post_with_http_info(server_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_public_networks_post ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_public_networks_post"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/network-configuration/public-network-configuration/public-networks'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'server_public_network'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ServerPublicNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_public_networks_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_public_networks_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
