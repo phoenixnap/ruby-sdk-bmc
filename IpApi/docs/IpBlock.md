@@ -13,6 +13,8 @@
 | **assigned_resource_type** | **String** | Type of the resource assigned to the IP Block. | [optional] |
 | **description** | **String** | The description of the IP Block. | [optional] |
 | **tags** | [**Array&lt;TagAssignment&gt;**](TagAssignment.md) | The tags assigned if any. | [optional] |
+| **is_bring_your_own** | **Boolean** | True if the IP block is a &#x60;bring your own&#x60; block. |  |
+| **created_on** | **Time** | Date and time when the IP block was created. |  |
 
 ## Example
 
@@ -28,7 +30,9 @@ instance = IpApi::IpBlock.new(
   assigned_resource_id: 6047127fed34ecc3ba8402d2,
   assigned_resource_type: server,
   description: IP Block #1 used for publicly accessing server #1.,
-  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}]
+  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}],
+  is_bring_your_own: false,
+  created_on: 2021-03-13T20:24:32.491Z
 )
 ```
 

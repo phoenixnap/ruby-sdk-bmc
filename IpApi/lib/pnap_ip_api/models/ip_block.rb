@@ -43,6 +43,12 @@ module IpApi
     # The tags assigned if any.
     attr_accessor :tags
 
+    # True if the IP block is a `bring your own` block.
+    attr_accessor :is_bring_your_own
+
+    # Date and time when the IP block was created.
+    attr_accessor :created_on
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +60,9 @@ module IpApi
         :'assigned_resource_id' => :'assignedResourceId',
         :'assigned_resource_type' => :'assignedResourceType',
         :'description' => :'description',
-        :'tags' => :'tags'
+        :'tags' => :'tags',
+        :'is_bring_your_own' => :'isBringYourOwn',
+        :'created_on' => :'createdOn'
       }
     end
 
@@ -74,7 +82,9 @@ module IpApi
         :'assigned_resource_id' => :'String',
         :'assigned_resource_type' => :'String',
         :'description' => :'String',
-        :'tags' => :'Array<TagAssignment>'
+        :'tags' => :'Array<TagAssignment>',
+        :'is_bring_your_own' => :'Boolean',
+        :'created_on' => :'Time'
       }
     end
 
@@ -136,6 +146,14 @@ module IpApi
           self.tags = value
         end
       end
+
+      if attributes.key?(:'is_bring_your_own')
+        self.is_bring_your_own = attributes[:'is_bring_your_own']
+      end
+
+      if attributes.key?(:'created_on')
+        self.created_on = attributes[:'created_on']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -166,6 +184,14 @@ module IpApi
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
       end
 
+      if @is_bring_your_own.nil?
+        invalid_properties.push('invalid value for "is_bring_your_own", is_bring_your_own cannot be nil.')
+      end
+
+      if @created_on.nil?
+        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -178,6 +204,8 @@ module IpApi
       return false if @cidr.nil?
       return false if @status.nil?
       return false if !@description.nil? && @description.to_s.length > 250
+      return false if @is_bring_your_own.nil?
+      return false if @created_on.nil?
       true
     end
 
@@ -204,7 +232,9 @@ module IpApi
           assigned_resource_id == o.assigned_resource_id &&
           assigned_resource_type == o.assigned_resource_type &&
           description == o.description &&
-          tags == o.tags
+          tags == o.tags &&
+          is_bring_your_own == o.is_bring_your_own &&
+          created_on == o.created_on
     end
 
     # @see the `==` method
@@ -216,7 +246,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, location, cidr_block_size, cidr, status, assigned_resource_id, assigned_resource_type, description, tags].hash
+      [id, location, cidr_block_size, cidr, status, assigned_resource_id, assigned_resource_type, description, tags, is_bring_your_own, created_on].hash
     end
 
     # Builds the object from hash
