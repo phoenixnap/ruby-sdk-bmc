@@ -2,9 +2,9 @@
 
 BmcApi - the Ruby gem for the Bare Metal Cloud API
 
-Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API.
-Deprovision servers, get or edit SSH key details, and a lot more. Manage your infrastructure more efficiently
-using just a few simple api calls.<br>
+Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API. 
+Deprovision servers, get or edit SSH key details, assign public IPs, assign servers to networks and a lot more. 
+Manage your infrastructure more efficiently using just a few simple API calls.<br>
 <br>
 <span class='pnap-api-knowledge-base-link'>
 Knowledge base articles to help you can be found
