@@ -75,7 +75,7 @@ jobs:
   push-changes:
     name: Push Changes
     runs-on: ubuntu-latest
-    if: (startsWith(github.head_ref, 'release') == false && github.head_ref != 'master') && ${{ github.event.pull_request.head.repo.full_name == 'phoenixnap/ruby-sdk-bmc' }}
+    if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' && github.event.pull_request.head.repo.full_name == 'phoenixnap/ruby-sdk-bmc'
     needs:
       - generate-bmcapi
       - generate-rancherapi
