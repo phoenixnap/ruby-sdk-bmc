@@ -42,6 +42,9 @@ module NetworkApi
 
     attr_accessor :servers
 
+    # A list of resources that are members of this private network.
+    attr_accessor :memberships
+
     # Date and time when this private network was created.
     attr_accessor :created_on
 
@@ -57,6 +60,7 @@ module NetworkApi
         :'location_default' => :'locationDefault',
         :'cidr' => :'cidr',
         :'servers' => :'servers',
+        :'memberships' => :'memberships',
         :'created_on' => :'createdOn'
       }
     end
@@ -78,6 +82,7 @@ module NetworkApi
         :'location_default' => :'Boolean',
         :'cidr' => :'String',
         :'servers' => :'Array<PrivateNetworkServer>',
+        :'memberships' => :'Array<NetworkMembership>',
         :'created_on' => :'Time'
       }
     end
@@ -141,6 +146,12 @@ module NetworkApi
         end
       end
 
+      if attributes.key?(:'memberships')
+        if (value = attributes[:'memberships']).is_a?(Array)
+          self.memberships = value
+        end
+      end
+
       if attributes.key?(:'created_on')
         self.created_on = attributes[:'created_on']
       end
@@ -194,6 +205,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "servers", servers cannot be nil.')
       end
 
+      if @memberships.nil?
+        invalid_properties.push('invalid value for "memberships", memberships cannot be nil.')
+      end
+
       if @created_on.nil?
         invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
       end
@@ -215,6 +230,7 @@ module NetworkApi
       return false if @location_default.nil?
       return false if @cidr.nil?
       return false if @servers.nil?
+      return false if @memberships.nil?
       return false if @created_on.nil?
       true
     end
@@ -261,6 +277,7 @@ module NetworkApi
           location_default == o.location_default &&
           cidr == o.cidr &&
           servers == o.servers &&
+          memberships == o.memberships &&
           created_on == o.created_on
     end
 
@@ -273,7 +290,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, vlan_id, type, location, location_default, cidr, servers, created_on].hash
+      [id, name, description, vlan_id, type, location, location_default, cidr, servers, memberships, created_on].hash
     end
 
     # Builds the object from hash

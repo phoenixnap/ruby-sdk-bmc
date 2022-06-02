@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [NetworkApi::Error](docs/Error.md)
+ - [NetworkApi::NetworkMembership](docs/NetworkMembership.md)
  - [NetworkApi::PrivateNetwork](docs/PrivateNetwork.md)
  - [NetworkApi::PrivateNetworkCreate](docs/PrivateNetworkCreate.md)
  - [NetworkApi::PrivateNetworkModify](docs/PrivateNetworkModify.md)
@@ -148,7 +149,6 @@ Class | Method | HTTP request | Description
  - [NetworkApi::PublicNetwork](docs/PublicNetwork.md)
  - [NetworkApi::PublicNetworkCreate](docs/PublicNetworkCreate.md)
  - [NetworkApi::PublicNetworkIpBlock](docs/PublicNetworkIpBlock.md)
- - [NetworkApi::PublicNetworkMembership](docs/PublicNetworkMembership.md)
  - [NetworkApi::PublicNetworkModify](docs/PublicNetworkModify.md)
 
 

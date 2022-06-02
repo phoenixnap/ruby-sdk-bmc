@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **result** | **String** | Solution cluster has been deleted. |  |
-| **cluster_id** | **String** | The unique identifier of the solution cluster. | [optional] |
+| **cluster_id** | **String** | The unique identifier of the solution cluster. |  |
 
 ## Example
 
