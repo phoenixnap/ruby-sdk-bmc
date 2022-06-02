@@ -22,7 +22,7 @@ module NetworkApi
     # The VLAN of this public network.
     attr_accessor :vlan_id
 
-    # A list of resources that are members in this public network.
+    # A list of resources that are members of this public network.
     attr_accessor :memberships
 
     # The friendly name of this public network.
@@ -64,7 +64,7 @@ module NetworkApi
       {
         :'id' => :'String',
         :'vlan_id' => :'Integer',
-        :'memberships' => :'Array<PublicNetworkMembership>',
+        :'memberships' => :'Array<NetworkMembership>',
         :'name' => :'String',
         :'location' => :'String',
         :'description' => :'String',

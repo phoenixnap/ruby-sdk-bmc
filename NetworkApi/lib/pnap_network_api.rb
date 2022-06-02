@@ -18,6 +18,7 @@ require 'pnap_network_api/configuration'
 
 # Models
 require 'pnap_network_api/models/error'
+require 'pnap_network_api/models/network_membership'
 require 'pnap_network_api/models/private_network'
 require 'pnap_network_api/models/private_network_create'
 require 'pnap_network_api/models/private_network_modify'
@@ -25,7 +26,6 @@ require 'pnap_network_api/models/private_network_server'
 require 'pnap_network_api/models/public_network'
 require 'pnap_network_api/models/public_network_create'
 require 'pnap_network_api/models/public_network_ip_block'
-require 'pnap_network_api/models/public_network_membership'
 require 'pnap_network_api/models/public_network_modify'
 
 # APIs
