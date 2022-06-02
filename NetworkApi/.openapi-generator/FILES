@@ -35,5 +35,4 @@ lib/pnap_network_api/version.rb
 pnap_network_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/network_membership_spec.rb
 spec/spec_helper.rb
