@@ -34,6 +34,9 @@ module NetworkApi
     # The description of this public network.
     attr_accessor :description
 
+    # The status of the public network. Can have one of the following values: `BUSY` or `READY`.
+    attr_accessor :status
+
     # Date and time when this public network was created.
     attr_accessor :created_on
 
@@ -49,6 +52,7 @@ module NetworkApi
         :'name' => :'name',
         :'location' => :'location',
         :'description' => :'description',
+        :'status' => :'status',
         :'created_on' => :'createdOn',
         :'ip_blocks' => :'ipBlocks'
       }
@@ -68,6 +72,7 @@ module NetworkApi
         :'name' => :'String',
         :'location' => :'String',
         :'description' => :'String',
+        :'status' => :'String',
         :'created_on' => :'Time',
         :'ip_blocks' => :'Array<PublicNetworkIpBlock>'
       }
@@ -120,6 +125,10 @@ module NetworkApi
         self.description = attributes[:'description']
       end
 
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
       if attributes.key?(:'created_on')
         self.created_on = attributes[:'created_on']
       end
@@ -167,6 +176,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
       end
 
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
       if @created_on.nil?
         invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
       end
@@ -189,6 +202,7 @@ module NetworkApi
       return false if @name.to_s.length < 1
       return false if @location.nil?
       return false if !@description.nil? && @description.to_s.length > 250
+      return false if @status.nil?
       return false if @created_on.nil?
       return false if @ip_blocks.nil?
       true
@@ -233,6 +247,7 @@ module NetworkApi
           name == o.name &&
           location == o.location &&
           description == o.description &&
+          status == o.status &&
           created_on == o.created_on &&
           ip_blocks == o.ip_blocks
     end
@@ -246,7 +261,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, vlan_id, memberships, name, location, description, created_on, ip_blocks].hash
+      [id, vlan_id, memberships, name, location, description, status, created_on, ip_blocks].hash
     end
 
     # Builds the object from hash
