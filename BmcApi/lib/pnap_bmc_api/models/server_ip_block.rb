@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # IP block ID assigned to server
+  # IP block assigned to server
   class ServerIpBlock
     # The IP block's ID.
     attr_accessor :id
