@@ -203,7 +203,7 @@ module RancherApi
     end
 
     # Create a Rancher Server Deployment.
-    # Create a Rancher Server Deployment as described in <a href='https://rancher.com/docs/rancher/v2.5/en/overview/architecture/#rancher-server-architecture' target='_blank'>Rancher Docs Architecture</a>. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. <b>This is not a Downstream User Cluster</b>. 
+    # Create a Rancher Server Deployment as described in <a href='https://rancher.com/docs/rancher/v2.5/en/overview/architecture/#rancher-server-architecture' target='_blank'>Rancher Docs Architecture</a>. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. <b>This is not a Downstream User Cluster</b>. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-rancher-workload-cluster#ftoc-heading-5' target='_blank'>here</a>. 
     # @param [Hash] opts the optional parameters
     # @option opts [Cluster] :cluster 
     # @return [Cluster]
@@ -213,7 +213,7 @@ module RancherApi
     end
 
     # Create a Rancher Server Deployment.
-    # Create a Rancher Server Deployment as described in &lt;a href&#x3D;&#39;https://rancher.com/docs/rancher/v2.5/en/overview/architecture/#rancher-server-architecture&#39; target&#x3D;&#39;_blank&#39;&gt;Rancher Docs Architecture&lt;/a&gt;. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. &lt;b&gt;This is not a Downstream User Cluster&lt;/b&gt;. 
+    # Create a Rancher Server Deployment as described in &lt;a href&#x3D;&#39;https://rancher.com/docs/rancher/v2.5/en/overview/architecture/#rancher-server-architecture&#39; target&#x3D;&#39;_blank&#39;&gt;Rancher Docs Architecture&lt;/a&gt;. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. &lt;b&gt;This is not a Downstream User Cluster&lt;/b&gt;. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-rancher-workload-cluster#ftoc-heading-5&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;. 
     # @param [Hash] opts the optional parameters
     # @option opts [Cluster] :cluster 
     # @return [Array<(Cluster, Integer, Hash)>] Cluster data, response status code and response headers

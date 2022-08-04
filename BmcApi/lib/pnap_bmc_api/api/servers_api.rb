@@ -877,7 +877,7 @@ module BmcApi
     end
 
     # Assign IP Block to Server.
-    # Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-server-with-public-ip-block#ftoc-heading-2' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerIpBlock] :server_ip_block 
@@ -888,7 +888,7 @@ module BmcApi
     end
 
     # Assign IP Block to Server.
-    # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-server-with-public-ip-block#ftoc-heading-2&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerIpBlock] :server_ip_block 
@@ -1017,7 +1017,7 @@ module BmcApi
     end
 
     # Adds the server to a private network.
-    # Adds the server to a private network.
+    # Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPrivateNetwork] :server_private_network 
@@ -1028,7 +1028,7 @@ module BmcApi
     end
 
     # Adds the server to a private network.
-    # Adds the server to a private network.
+    # Adds the server to a private network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPrivateNetwork] :server_private_network 
@@ -1156,7 +1156,7 @@ module BmcApi
     end
 
     # Adds the server to a Public Network.
-    # Adds the server to a Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # Adds the server to a Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPublicNetwork] :server_public_network 
@@ -1167,7 +1167,7 @@ module BmcApi
     end
 
     # Adds the server to a Public Network.
-    # Adds the server to a Public Network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.
+    # Adds the server to a Public Network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPublicNetwork] :server_public_network 
