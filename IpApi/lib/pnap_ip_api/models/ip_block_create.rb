@@ -25,7 +25,7 @@ module IpApi
     # The description of the IP Block.
     attr_accessor :description
 
-    # Tags to set to ip-block, if any.
+    # Tags to set to the ip-block. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview).
     attr_accessor :tags
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -51,7 +51,7 @@ module BmcApi
 
     attr_accessor :os_configuration
 
-    # Tags to set to server, if any.
+    # Tags to set to the server. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview).
     attr_accessor :tags
 
     attr_accessor :network_configuration
