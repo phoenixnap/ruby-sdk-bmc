@@ -9,7 +9,7 @@
 | **description** | **String** | The Quota description. |  |
 | **status** | **String** | The status of the quota resource usage. |  |
 | **limit** | **Integer** | The limit set for the quota. |  |
-| **unit** | **String** | An enum field describing what the limit is measured in. |  |
+| **unit** | **String** | Unit of the quota type. Supported values are &#39;COUNT&#39; and &#39;GB&#39;. |  |
 | **used** | **Integer** | The quota used expressed as a number. |  |
 | **quota_edit_limit_request_details** | [**Array&lt;QuotaEditLimitRequestDetails&gt;**](QuotaEditLimitRequestDetails.md) |  | [readonly] |
 
@@ -24,7 +24,7 @@ instance = BmcApi::Quota.new(
   description: Maximum number of BMC servers,
   status: OVER_LIMIT,
   limit: 2,
-  unit: null,
+  unit: COUNT,
   used: 2,
   quota_edit_limit_request_details: null
 )

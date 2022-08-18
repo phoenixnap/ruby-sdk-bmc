@@ -31,7 +31,7 @@ module BmcApi
     # The limit set for the quota.
     attr_accessor :limit
 
-    # An enum field describing what the limit is measured in.
+    # Unit of the quota type. Supported values are 'COUNT' and 'GB'.
     attr_accessor :unit
 
     # The quota used expressed as a number.
@@ -209,8 +209,6 @@ module BmcApi
       return false if @limit.nil?
       return false if @limit < 0
       return false if @unit.nil?
-      unit_validator = EnumAttributeValidator.new('String', ["COUNT"])
-      return false unless unit_validator.valid?(@unit)
       return false if @used.nil?
       return false if @used < 0
       return false if @quota_edit_limit_request_details.nil?
@@ -239,16 +237,6 @@ module BmcApi
       end
 
       @limit = limit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] unit Object to be assigned
-    def unit=(unit)
-      validator = EnumAttributeValidator.new('String', ["COUNT"])
-      unless validator.valid?(unit)
-        fail ArgumentError, "invalid value for \"unit\", must be one of #{validator.allowable_values}."
-      end
-      @unit = unit
     end
 
     # Custom attribute writer method with validation
