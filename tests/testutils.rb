@@ -1,3 +1,5 @@
+$executed = false
+
 class TestUtils
     def self.setup_expectation(requestToMock, responseToGet, times)
         uri = URI('http://localhost:1080/expectation')
@@ -52,8 +54,20 @@ class TestUtils
         return res
     end
 
+    def self.reset_mockserver
+        if !$executed then
+            uri = URI('http://localhost:1080/reset')
+            req = Net::HTTP::Put.new(uri)
+    
+            Net::HTTP.start(uri.hostname, uri.port) do |http|
+                http.request(req)
+            end
+            $executed = true
+        end
+    end 
+
     def self.reset_expectations
-        uri = URI('http://localhost:1080/reset')
+        uri = URI('http://localhost:1080/clear')
         req = Net::HTTP::Put.new(uri)
 
         Net::HTTP.start(uri.hostname, uri.port) do |http|

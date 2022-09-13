@@ -4,9 +4,18 @@
 
 To run tests you'll need to run an instance of `mockserver` running at port 1080. This can be done using Docker:
 - Install docker
-- Prepare and start `mockserver` by running the following: `docker run --name mockserver -d --rm -p 1080:1080 mockserver/mockserver:5.13.0`
+- Prepare and start `mockserver` by running the following: 
+  
+  ```sh
+  docker run --rm -d \
+    --name mockserver \
+    -p 1080:1080 \
+    mockserver/mockserver:5.13.0 \
+  ```
 
 You can then get logs from the mock server by running `docker logs -f mockserver`. The container id can be found using `docker ps`.
+
+The Mockserver UI can also be used by going to [`http://<host>:<port>/mockserver/dashboard`](http://localhost:1080/mockserver/dashboard). In our case, `<host>:<port>` is `localhost:1080`.
 
 Once you're done, you can stop the mock server by running `docker container stop -f mockserver`.
 
