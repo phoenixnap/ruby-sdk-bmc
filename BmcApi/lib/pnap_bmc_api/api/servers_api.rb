@@ -1017,7 +1017,7 @@ module BmcApi
     end
 
     # Adds the server to a private network.
-    # Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
+    # Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. If the network contains a membership of type 'storage', the first twelve IPs are already reserved by BMC and not usable. These will return a Bad Request (400) if selected. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPrivateNetwork] :server_private_network 
@@ -1028,7 +1028,7 @@ module BmcApi
     end
 
     # Adds the server to a private network.
-    # Adds the server to a private network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
+    # Adds the server to a private network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. If the network contains a membership of type &#39;storage&#39;, the first twelve IPs are already reserved by BMC and not usable. These will return a Bad Request (400) if selected. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @option opts [ServerPrivateNetwork] :server_private_network 
