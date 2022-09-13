@@ -29,16 +29,6 @@ lib/pnap_network_storage_api/models/volume.rb
 lib/pnap_network_storage_api/models/volume_create.rb
 lib/pnap_network_storage_api/version.rb
 pnap_network_storage_api.gemspec
-spec/api/storage_networks_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/error_spec.rb
-spec/models/nfs_permissions_spec.rb
-spec/models/permissions_spec.rb
-spec/models/status_spec.rb
-spec/models/storage_network_create_spec.rb
-spec/models/storage_network_spec.rb
-spec/models/storage_network_update_spec.rb
-spec/models/volume_create_spec.rb
-spec/models/volume_spec.rb
 spec/spec_helper.rb
