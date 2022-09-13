@@ -54,6 +54,7 @@
                 },
                 "rootPassword": "MyP@ssw0rd_01",
                 "managementUiUrl": "https://172.217.22.14",
+                "installOsToRam": false,
                 "managementAccessAllowedIps": [
                   "172.217.22.14",
                   "10.111.14.40/29",
