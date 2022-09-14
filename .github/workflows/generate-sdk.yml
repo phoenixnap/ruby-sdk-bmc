@@ -71,6 +71,16 @@ jobs:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/tags/download_spec
           module-name: TagApi
           gem-name: pnap_tag_api
+  generate-networkstorageapi:
+    name: Generate Network Storage API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/generate-sdk
+        with:
+          spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/network-storage/download_spec
+          module-name: NetworkStorageApi
+          gem-name: pnap_network_storage_api
 
   # Push generated code
   push-changes:
@@ -90,6 +100,7 @@ jobs:
       - generate-ipapi
       - generate-auditapi
       - generate-tagapi
+      - generate-networkstorageapi
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -185,6 +196,18 @@ jobs:
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: TagApi
+  build-networkstorageapi:
+    name: Build Network Storage API
+    runs-on: ubuntu-latest
+    needs:
+      - generate-networkstorageapi
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: NetworkStorageApi
   
   # Lint stage
   lint-bmcapi:
@@ -259,6 +282,18 @@ jobs:
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: TagApi
+  lint-networkstorageapi:
+    name: Lint Network Storage API
+    runs-on: ubuntu-latest
+    needs:
+      - build-networkstorageapi
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/lint-sdk
+        with:
+          module-name: NetworkStorageApi
   
   # Test stage
   test-bmcapi:
@@ -369,6 +404,24 @@ jobs:
         with:
           test-file: tc_tag_api.rb
           test-report-dir: tests
+  # test-networkstorageapi:
+  #   name: Test Network Storage API
+  #   runs-on: ubuntu-latest
+  #   needs:
+  #     - lint-networkstorageapi
+  #   services:
+  #     mockserver:
+  #       image: mockserver/mockserver:5.13.0
+  #       ports:
+  #         - 1080:1080
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Download Artifacts
+  #       uses: actions/download-artifact@v2
+  #     - uses: ./.github/workflows/composite/test-sdk
+  #       with:
+  #         test-file: tc_network_storage_api.rb
+  #         test-report-dir: tests
 
   publish-test-results:
     name: Publish Test Results
@@ -379,6 +432,7 @@ jobs:
       - test-ipapi
       - test-auditapi
       - test-tagapi
+      # - test-networkstorageapi
     runs-on: ubuntu-latest
     if: always()
     steps:
