@@ -1,22 +1,35 @@
 {
-    "request": {
-        "method": "GET",
-        "path": "/ips/v1/ip-blocks/{id}",
-        "pathParameters": {
-            "id": ["e6afba51-7de8-4080-83ab-0f915570659c"]
-        }
-    },
-    "response": {
-        "statusCode": 200,
-        "body": {
-            "id" : "fakeId",
-            "location" : "PHX",
-            "cidrBlockSize" : "/31",
-            "cidr" : "cidr",
-            "status" : "ASSIGNED",
-            "assignedResourceId" : "fakeId",
-            "assignedResourceType" : "fakeType",
-            "description" : "fakeDescription"
-        }
+  "request": {
+    "method": "GET",
+    "path": "/ips/v1/ip-blocks/{id}",
+    "pathParameters": {
+      "id": [
+        "e6afba51-7de8-4080-83ab-0f915570659c"
+      ]
     }
+  },
+  "response": {
+    "statusCode": 200,
+    "body": {
+      "id": "fakeId",
+      "location": "PHX",
+      "cidrBlockSize": "/31",
+      "cidr": "1.1.1.0/28",
+      "status": "ASSIGNED",
+      "assignedResourceId": "fakeId",
+      "assignedResourceType": "fakeType",
+      "description": "fakeDescription",
+      "tags": [
+        {
+          "id": "fakeTagId",
+          "name": "tagName",
+          "value": "tagValue",
+          "isBillingTag": true,
+          "createdBy": "SYSTEM"
+        }
+      ],
+      "isBringYourOwn": false,
+      "createdOn": "2021-04-27T16:24:57Z"
+    }
+  }
 }
