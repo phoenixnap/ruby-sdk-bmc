@@ -38,9 +38,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     TestUtils.reset_expectations
   end
 
-  def test_get_networks
+  def test_get_private_networks
     # Setting up expectation
-    request, response = TestUtils.generate_payloads_from('networkapi/networks_get')
+    request, response = TestUtils.generate_payloads_from('networkapi/private_networks_get')
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = NetworkApi::PrivateNetworksApi.new
@@ -48,14 +48,17 @@ class TC_NetworkApi < Test::Unit::TestCase
 
     result = api_instance.private_networks_get(opts)
 
+    # Parsing time for comparison
+    response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
+
     assert_equal response[:body], [result[0].to_hash.compact]
 
     self.verify_called_once expectation
   end
 
-  def test_create_network
+  def test_create_private_network
     # Setting up expectation
-    request, response = TestUtils.generate_payloads_from('networkapi/networks_post')
+    request, response = TestUtils.generate_payloads_from('networkapi/private_networks_post')
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = NetworkApi::PrivateNetworksApi.new
@@ -65,14 +68,17 @@ class TC_NetworkApi < Test::Unit::TestCase
 
     result = api_instance.private_networks_post(opts)
 
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
     assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
   end
 
-  def test_get_network_by_id
+  def test_get_private_network_by_id
     # Setting up expectation
-    request, response = TestUtils.generate_payloads_from('networkapi/networks_get_by_id')
+    request, response = TestUtils.generate_payloads_from('networkapi/private_networks_get_by_id')
     expectation = TestUtils.setup_expectation(request, response, 1)
 
     api_instance = NetworkApi::PrivateNetworksApi.new
@@ -80,14 +86,17 @@ class TC_NetworkApi < Test::Unit::TestCase
 
     result = api_instance.private_networks_network_id_get(network_id)
 
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
     assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
   end
 
-  def test_put_network_by_id
+  def test_put_private_network_by_id
     # Setting up expectation
-    request, response = TestUtils.generate_payloads_from('networkapi/networks_put_by_id')
+    request, response = TestUtils.generate_payloads_from('networkapi/private_networks_put_by_id')
     expectation = TestUtils.setup_expectation(request, response, 1)
 
     api_instance = NetworkApi::PrivateNetworksApi.new
@@ -98,20 +107,151 @@ class TC_NetworkApi < Test::Unit::TestCase
 
     result = api_instance.private_networks_network_id_put(network_id, opts)
 
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
     assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
   end
 
-  def test_delete_network_by_id
+  def test_delete_private_network_by_id
     # Setting up expectation
-    request, response = TestUtils.generate_payloads_from('networkapi/networks_delete_by_id')
+    request, response = TestUtils.generate_payloads_from('networkapi/private_networks_delete_by_id')
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = NetworkApi::PrivateNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
 
-    api_instance.private_networks_network_id_delete(network_id)
+    result = api_instance.private_networks_network_id_delete(network_id)
+    
+    assert_nil result
+
+    self.verify_called_once expectation
+  end
+
+  def test_get_public_networks
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_get')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    opts = TestUtils.generate_query_params(request)
+
+    result = api_instance.public_networks_get(opts)
+
+    # Parsing time for comparison
+    response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
+
+    assert_equal response[:body], [result[0].to_hash.compact]
+
+    self.verify_called_once expectation
+  end
+
+  def test_delete_public_network_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_delete_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    network_id = TestUtils.extract_id_from(request)
+
+    result = api_instance.public_networks_network_id_delete(network_id)
+    
+    assert_nil result
+
+    self.verify_called_once expectation
+  end
+
+  def test_get_public_network_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_get_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    network_id = TestUtils.extract_id_from(request)
+
+    result = api_instance.public_networks_network_id_get(network_id)
+
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_public_networks_delete_ip_block_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_delete_ip_block_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    network_id = TestUtils.extract_id_from(request)
+    ip_id = TestUtils.extract_id_from(request, :ipId)
+
+    result = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete(network_id, ip_id)
+
+    assert_equal response[:body], result.to_s
+
+    self.verify_called_once expectation
+  end
+
+  def test_public_networks_create_ip_block
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_post_ip_block')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    network_id = TestUtils.extract_id_from(request)
+    opts = {
+      public_network_ip_block: NetworkApi::PublicNetworkIpBlock.build_from_hash(TestUtils.extract_request_body(request))
+    }
+
+    result = api_instance.public_networks_network_id_ip_blocks_post(network_id, opts)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_patch_public_network_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_patch_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    network_id = TestUtils.extract_id_from(request)
+    opts = {
+      public_network_modify: NetworkApi::PublicNetworkModify.build_from_hash(TestUtils.extract_request_body(request))
+    }
+
+    result = api_instance.public_networks_network_id_patch(network_id, opts)
+
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_post_public_network
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/public_networks_post')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::PublicNetworksApi.new
+    opts = {
+      public_network_create: NetworkApi::PublicNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
+    }
+
+    result = api_instance.public_networks_post(opts)
+
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
+    assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
   end
