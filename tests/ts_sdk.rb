@@ -10,7 +10,7 @@ require_relative 'tc_ip_api'
 require_relative 'tc_network_api'
 require_relative 'tc_rancher_api'
 require_relative 'tc_tag_api'
-require_relative 'pnap_network_storage_api'
+require_relative 'tc_networkstorage_api'
 
 class TS_HelloWorld
     def self.suite()
