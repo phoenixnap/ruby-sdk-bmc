@@ -1,37 +1,43 @@
 PATH
   remote: ../AuditApi
   specs:
-    pnap_audit_api (1.0.1.pre.SNAPSHOT)
+    pnap_audit_api (1.0.1)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../BmcApi
   specs:
-    pnap_bmc_api (1.0.1.pre.SNAPSHOT)
+    pnap_bmc_api (1.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../IpApi
   specs:
-    pnap_ip_api (1.0.1.pre.SNAPSHOT)
+    pnap_ip_api (1.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../NetworkApi
   specs:
-    pnap_network_api (1.0.1.pre.SNAPSHOT)
+    pnap_network_api (1.1.0)
+      typhoeus (~> 1.0, >= 1.0.1)
+
+PATH
+  remote: ../NetworkStorageApi
+  specs:
+    pnap_network_storage_api (1.0.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../RancherApi
   specs:
-    pnap_rancher_api (1.0.1.pre.SNAPSHOT)
+    pnap_rancher_api (1.0.1)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../TagApi
   specs:
-    pnap_tag_api (1.0.1.pre.SNAPSHOT)
+    pnap_tag_api (1.0.1)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -74,10 +80,12 @@ DEPENDENCIES
   pnap_bmc_api!
   pnap_ip_api!
   pnap_network_api!
+  pnap_network_storage_api!
   pnap_rancher_api!
   pnap_tag_api!
   test-unit (= 3.5.3)
   test-unit-runner-junitxml (= 0.3.0)
+  typhoeus (~> 1.4)
 
 BUNDLED WITH
    2.1.4

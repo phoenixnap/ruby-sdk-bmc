@@ -6,8 +6,10 @@ gem 'pnap_ip_api', path: '../IpApi'
 gem 'pnap_network_api', path: '../NetworkApi'
 gem 'pnap_rancher_api', path: '../RancherApi'
 gem 'pnap_tag_api', path: '../TagApi'
+gem 'pnap_network_storage_api', path: '../NetworkStorageApi'
 
 gem 'oauth2', "1.4.9"
 gem 'test-unit', "3.5.3"
 gem 'json', "2.6.1"
 gem 'test-unit-runner-junitxml', "0.3.0"
+gem "typhoeus", "~> 1.4"
