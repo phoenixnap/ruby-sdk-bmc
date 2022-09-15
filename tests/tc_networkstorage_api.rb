@@ -134,7 +134,7 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
     end
 
     def test_get_volumes_by_storageNetwork_id
-        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_get_volumes_by_storagenetwork_id')
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_get_volumes')
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
@@ -151,7 +151,7 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
     end
 
     def test_get_volume_by_storageNetwork_id_and_volume_id
-        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_get_volume_by_storagenetwork_id_and_volume_id')
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_get_volume_by_id')
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
