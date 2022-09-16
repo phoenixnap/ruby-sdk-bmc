@@ -279,7 +279,7 @@ jobs:
         uses: actions/download-artifact@v2
       - uses: ./.github/workflows/composite/test-sdk
         with:
-          test-file: tc_network_storage_api.rb
+          test-file: tc_networkstorage_api.rb
           test-report-dir: tests
 
   process-tag-info:
