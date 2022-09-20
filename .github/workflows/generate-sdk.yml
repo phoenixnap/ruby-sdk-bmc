@@ -98,7 +98,7 @@ jobs:
       - generate-rancherapi
       - generate-networkapi
       - generate-ipapi
-      - generate-auditapi
+      # - generate-auditapi
       - generate-tagapi
       - generate-networkstorageapi
     steps:
