@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.metadata    = { "source_code_uri" => "https://github.com/phoenixnap/ruby-sdk-bmc" }
 
   {{#isFaraday}}
-  s.add_runtime_dependency 'faraday', '~> 1.0', '>= 1.0.1'
+  s.add_runtime_dependency 'faraday', '>= 1.0.1', '< 3.0'
+  s.add_runtime_dependency 'faraday-multipart'
   {{/isFaraday}}
   {{^isFaraday}}
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
