@@ -14,22 +14,18 @@ require 'date'
 require 'time'
 
 module AuditApi
-  # The event log.
-  class Event
-    # The name of the event.
-    attr_accessor :name
+  class Error
+    # The description detailing the cause of the error code.
+    attr_accessor :message
 
-    # The UTC time the event initiated.
-    attr_accessor :timestamp
-
-    attr_accessor :user_info
+    # Validation errors, if any.
+    attr_accessor :validation_errors
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'timestamp' => :'timestamp',
-        :'user_info' => :'userInfo'
+        :'message' => :'message',
+        :'validation_errors' => :'validationErrors'
       }
     end
 
@@ -41,9 +37,8 @@ module AuditApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'timestamp' => :'Time',
-        :'user_info' => :'UserInfo'
+        :'message' => :'String',
+        :'validation_errors' => :'Array<String>'
       }
     end
 
@@ -57,27 +52,25 @@ module AuditApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `AuditApi::Event` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `AuditApi::Error` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `AuditApi::Event`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `AuditApi::Error`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
       end
 
-      if attributes.key?(:'timestamp')
-        self.timestamp = attributes[:'timestamp']
-      end
-
-      if attributes.key?(:'user_info')
-        self.user_info = attributes[:'user_info']
+      if attributes.key?(:'validation_errors')
+        if (value = attributes[:'validation_errors']).is_a?(Array)
+          self.validation_errors = value
+        end
       end
     end
 
@@ -85,12 +78,8 @@ module AuditApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @timestamp.nil?
-        invalid_properties.push('invalid value for "timestamp", timestamp cannot be nil.')
-      end
-
-      if @user_info.nil?
-        invalid_properties.push('invalid value for "user_info", user_info cannot be nil.')
+      if @message.nil?
+        invalid_properties.push('invalid value for "message", message cannot be nil.')
       end
 
       invalid_properties
@@ -99,8 +88,7 @@ module AuditApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @timestamp.nil?
-      return false if @user_info.nil?
+      return false if @message.nil?
       true
     end
 
@@ -109,9 +97,8 @@ module AuditApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          timestamp == o.timestamp &&
-          user_info == o.user_info
+          message == o.message &&
+          validation_errors == o.validation_errors
     end
 
     # @see the `==` method
@@ -123,7 +110,7 @@ module AuditApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, timestamp, user_info].hash
+      [message, validation_errors].hash
     end
 
     # Builds the object from hash
