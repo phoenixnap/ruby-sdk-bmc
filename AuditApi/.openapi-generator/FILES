@@ -20,5 +20,4 @@ lib/pnap_audit_api/version.rb
 pnap_audit_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/error_spec.rb
 spec/spec_helper.rb
