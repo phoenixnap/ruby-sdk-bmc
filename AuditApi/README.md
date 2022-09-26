@@ -132,12 +132,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [AuditApi::ApiAction](docs/ApiAction.md)
- - [AuditApi::ApiActionAllOf](docs/ApiActionAllOf.md)
+ - [AuditApi::Error](docs/Error.md)
  - [AuditApi::Event](docs/Event.md)
- - [AuditApi::Headers](docs/Headers.md)
- - [AuditApi::Request](docs/Request.md)
- - [AuditApi::Response](docs/Response.md)
  - [AuditApi::UserInfo](docs/UserInfo.md)
 
 

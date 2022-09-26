@@ -17,12 +17,8 @@ require 'pnap_audit_api/version'
 require 'pnap_audit_api/configuration'
 
 # Models
-require 'pnap_audit_api/models/api_action'
-require 'pnap_audit_api/models/api_action_all_of'
+require 'pnap_audit_api/models/error'
 require 'pnap_audit_api/models/event'
-require 'pnap_audit_api/models/headers'
-require 'pnap_audit_api/models/request'
-require 'pnap_audit_api/models/response'
 require 'pnap_audit_api/models/user_info'
 
 # APIs

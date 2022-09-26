@@ -368,12 +368,8 @@ module BmcApi
         invalid_properties.push('invalid value for "private_ip_addresses", number of items must be greater than or equal to 1.')
       end
 
-      if @public_ip_addresses.nil?
-        invalid_properties.push('invalid value for "public_ip_addresses", public_ip_addresses cannot be nil.')
-      end
-
-      if @public_ip_addresses.length < 1
-        invalid_properties.push('invalid value for "public_ip_addresses", number of items must be greater than or equal to 1.')
+      if !@public_ip_addresses.nil? && @public_ip_addresses.length < 0
+        invalid_properties.push('invalid value for "public_ip_addresses", number of items must be greater than or equal to 0.')
       end
 
       if @pricing_model.nil?
@@ -411,8 +407,7 @@ module BmcApi
       return false if @storage.nil?
       return false if @private_ip_addresses.nil?
       return false if @private_ip_addresses.length < 1
-      return false if @public_ip_addresses.nil?
-      return false if @public_ip_addresses.length < 1
+      return false if !@public_ip_addresses.nil? && @public_ip_addresses.length < 0
       return false if @pricing_model.nil?
       return false if @network_configuration.nil?
       true
@@ -510,12 +505,8 @@ module BmcApi
     # Custom attribute writer method with validation
     # @param [Object] public_ip_addresses Value to be assigned
     def public_ip_addresses=(public_ip_addresses)
-      if public_ip_addresses.nil?
-        fail ArgumentError, 'public_ip_addresses cannot be nil'
-      end
-
-      if public_ip_addresses.length < 1
-        fail ArgumentError, 'invalid value for "public_ip_addresses", number of items must be greater than or equal to 1.'
+      if !public_ip_addresses.nil? && public_ip_addresses.length < 0
+        fail ArgumentError, 'invalid value for "public_ip_addresses", number of items must be greater than or equal to 0.'
       end
 
       @public_ip_addresses = public_ip_addresses
