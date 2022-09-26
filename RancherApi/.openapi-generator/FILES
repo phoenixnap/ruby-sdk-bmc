@@ -42,8 +42,4 @@ lib/pnap_rancher_api/version.rb
 pnap_rancher_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/cluster_configuration_spec.rb
-spec/models/cluster_workload_configuration_spec.rb
-spec/models/node_pool_ssh_config_spec.rb
-spec/models/rancher_cluster_config_certificates_spec.rb
 spec/spec_helper.rb
