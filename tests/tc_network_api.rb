@@ -166,7 +166,7 @@ class TC_NetworkApi < Test::Unit::TestCase
   def test_get_public_network_by_id
     # Setting up expectation
     request, response = TestUtils.generate_payloads_from('networkapi/public_networks_get_by_id')
-    expectation = TestUtils.setup_expectation(request, response, 1)
+    expectation = TestUtils.setup_expectation(request, response, 1 )
     
     api_instance = NetworkApi::PublicNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
