@@ -33,7 +33,7 @@ runs:
     - name: Download spec files
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
       shell: bash
-      run: wget ${{ inputs.spec-link }} -O ./${{ inputs.package-name }}/${{ inputs.package-name }}.spec.yaml
+      run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
     - name: Upload Artifacts
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
       uses: actions/upload-artifact@v2
