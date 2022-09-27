@@ -1,7 +1,7 @@
 {
   "request": {
-    "method": "PATCH",
-    "path": "/ips/v1/ip-blocks/{id}",
+    "method": "PUT",
+    "path": "/ips/v1/ip-blocks/{id}/tags",
     "pathParameters": {
       "id": [
         "e6afba51-7de8-4080-83ab-0f915570659c"
@@ -9,9 +9,12 @@
     },
     "body": {
       "type": "JSON",
-      "json": {
-        "description": "Ip Block description"
-      },
+      "json": [
+        {
+          "name": "tagname",
+          "value": "tagvalue"
+        }
+      ],
       "matchType": "STRICT"
     }
   },
