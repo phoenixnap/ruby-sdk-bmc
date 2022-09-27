@@ -1,7 +1,7 @@
 =begin
 #Bare Metal Cloud API
 
-#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API. Deprovision servers, get or edit SSH key details, and a lot more. Manage your infrastructure more efficiently using just a few simple api calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
+#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API.  Deprovision servers, get or edit SSH key details, assign public IPs, assign servers to networks and a lot more.  Manage your infrastructure more efficiently using just a few simple API calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
 
 The version of the OpenAPI document: 0.1
 Contact: support@phoenixnap.com
@@ -27,13 +27,17 @@ module BmcApi
     # List of IPs allowed to access the Management UI. Supported in single IP, CIDR and range format. When undefined, Management UI is disabled. This will only be returned in response to provisioning a server.
     attr_accessor :management_access_allowed_ips
 
+    # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Only supported for ubuntu/focal.
+    attr_accessor :install_os_to_ram
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'windows' => :'windows',
         :'root_password' => :'rootPassword',
         :'management_ui_url' => :'managementUiUrl',
-        :'management_access_allowed_ips' => :'managementAccessAllowedIps'
+        :'management_access_allowed_ips' => :'managementAccessAllowedIps',
+        :'install_os_to_ram' => :'installOsToRam'
       }
     end
 
@@ -48,7 +52,8 @@ module BmcApi
         :'windows' => :'OsConfigurationWindows',
         :'root_password' => :'String',
         :'management_ui_url' => :'String',
-        :'management_access_allowed_ips' => :'Array<String>'
+        :'management_access_allowed_ips' => :'Array<String>',
+        :'install_os_to_ram' => :'Boolean'
       }
     end
 
@@ -90,6 +95,12 @@ module BmcApi
           self.management_access_allowed_ips = value
         end
       end
+
+      if attributes.key?(:'install_os_to_ram')
+        self.install_os_to_ram = attributes[:'install_os_to_ram']
+      else
+        self.install_os_to_ram = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -128,7 +139,8 @@ module BmcApi
           windows == o.windows &&
           root_password == o.root_password &&
           management_ui_url == o.management_ui_url &&
-          management_access_allowed_ips == o.management_access_allowed_ips
+          management_access_allowed_ips == o.management_access_allowed_ips &&
+          install_os_to_ram == o.install_os_to_ram
     end
 
     # @see the `==` method
@@ -140,7 +152,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [windows, root_password, management_ui_url, management_access_allowed_ips].hash
+      [windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram].hash
     end
 
     # Builds the object from hash

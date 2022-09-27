@@ -13,6 +13,9 @@
 | **location_default** | **Boolean** | Identifies network as the default private network for the specified location. |  |
 | **cidr** | **String** | IP range associated with this private network in CIDR notation. |  |
 | **servers** | [**Array&lt;PrivateNetworkServer&gt;**](PrivateNetworkServer.md) |  |  |
+| **memberships** | [**Array&lt;NetworkMembership&gt;**](NetworkMembership.md) | A list of resources that are members of this private network. |  |
+| **status** | **String** | The status of the private network. Can have one of the following values: &#x60;BUSY&#x60; or &#x60;READY&#x60;. |  |
+| **created_on** | **Time** | Date and time when this private network was created. |  |
 
 ## Example
 
@@ -28,7 +31,10 @@ instance = NetworkApi::PrivateNetwork.new(
   location: PHX,
   location_default: true,
   cidr: 10.0.0.0/24,
-  servers: null
+  servers: null,
+  memberships: null,
+  status: READY,
+  created_on: 2022-04-07T13:30:30.491Z
 )
 ```
 

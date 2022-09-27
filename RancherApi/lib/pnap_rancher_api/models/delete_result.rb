@@ -81,6 +81,10 @@ module RancherApi
         invalid_properties.push('invalid value for "result", result cannot be nil.')
       end
 
+      if @cluster_id.nil?
+        invalid_properties.push('invalid value for "cluster_id", cluster_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -88,6 +92,7 @@ module RancherApi
     # @return true if the model is valid
     def valid?
       return false if @result.nil?
+      return false if @cluster_id.nil?
       true
     end
 

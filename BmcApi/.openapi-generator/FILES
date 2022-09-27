@@ -15,6 +15,7 @@ docs/OsConfigurationMapEsxi.md
 docs/OsConfigurationMapProxmox.md
 docs/OsConfigurationWindows.md
 docs/PrivateNetworkConfiguration.md
+docs/PublicNetworkConfiguration.md
 docs/Quota.md
 docs/QuotaEditLimitRequest.md
 docs/QuotaEditLimitRequestDetails.md
@@ -28,6 +29,7 @@ docs/ServerCreate.md
 docs/ServerIpBlock.md
 docs/ServerPatch.md
 docs/ServerPrivateNetwork.md
+docs/ServerPublicNetwork.md
 docs/ServerReserve.md
 docs/ServerReset.md
 docs/ServersApi.md
@@ -55,6 +57,7 @@ lib/pnap_bmc_api/models/os_configuration_map_esxi.rb
 lib/pnap_bmc_api/models/os_configuration_map_proxmox.rb
 lib/pnap_bmc_api/models/os_configuration_windows.rb
 lib/pnap_bmc_api/models/private_network_configuration.rb
+lib/pnap_bmc_api/models/public_network_configuration.rb
 lib/pnap_bmc_api/models/quota.rb
 lib/pnap_bmc_api/models/quota_edit_limit_request.rb
 lib/pnap_bmc_api/models/quota_edit_limit_request_details.rb
@@ -66,6 +69,7 @@ lib/pnap_bmc_api/models/server_create.rb
 lib/pnap_bmc_api/models/server_ip_block.rb
 lib/pnap_bmc_api/models/server_patch.rb
 lib/pnap_bmc_api/models/server_private_network.rb
+lib/pnap_bmc_api/models/server_public_network.rb
 lib/pnap_bmc_api/models/server_reserve.rb
 lib/pnap_bmc_api/models/server_reset.rb
 lib/pnap_bmc_api/models/ssh_key.rb

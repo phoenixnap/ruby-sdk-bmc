@@ -1,7 +1,7 @@
 =begin
 #Networks API
 
-#Use the Networks API to create, list, edit, and delete private networks to best fit your business needs. Private networks allow your servers to communicate without connecting to the public internet, avoiding unnecessary egress data charges.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
+#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a> and <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
 
 The version of the OpenAPI document: 1.0
 Contact: support@phoenixnap.com
@@ -42,6 +42,15 @@ module NetworkApi
 
     attr_accessor :servers
 
+    # A list of resources that are members of this private network.
+    attr_accessor :memberships
+
+    # The status of the private network. Can have one of the following values: `BUSY` or `READY`.
+    attr_accessor :status
+
+    # Date and time when this private network was created.
+    attr_accessor :created_on
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,7 +62,10 @@ module NetworkApi
         :'location' => :'location',
         :'location_default' => :'locationDefault',
         :'cidr' => :'cidr',
-        :'servers' => :'servers'
+        :'servers' => :'servers',
+        :'memberships' => :'memberships',
+        :'status' => :'status',
+        :'created_on' => :'createdOn'
       }
     end
 
@@ -73,7 +85,10 @@ module NetworkApi
         :'location' => :'String',
         :'location_default' => :'Boolean',
         :'cidr' => :'String',
-        :'servers' => :'Array<PrivateNetworkServer>'
+        :'servers' => :'Array<PrivateNetworkServer>',
+        :'memberships' => :'Array<NetworkMembership>',
+        :'status' => :'String',
+        :'created_on' => :'Time'
       }
     end
 
@@ -135,6 +150,20 @@ module NetworkApi
           self.servers = value
         end
       end
+
+      if attributes.key?(:'memberships')
+        if (value = attributes[:'memberships']).is_a?(Array)
+          self.memberships = value
+        end
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'created_on')
+        self.created_on = attributes[:'created_on']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -147,6 +176,18 @@ module NetworkApi
 
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 250
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
       end
 
       if @vlan_id.nil?
@@ -173,6 +214,18 @@ module NetworkApi
         invalid_properties.push('invalid value for "servers", servers cannot be nil.')
       end
 
+      if @memberships.nil?
+        invalid_properties.push('invalid value for "memberships", memberships cannot be nil.')
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @created_on.nil?
+        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -181,13 +234,47 @@ module NetworkApi
     def valid?
       return false if @id.nil?
       return false if @name.nil?
+      return false if @name.to_s.length > 100
+      return false if @name.to_s.length < 1
+      return false if !@description.nil? && @description.to_s.length > 250
       return false if @vlan_id.nil?
       return false if @type.nil?
       return false if @location.nil?
       return false if @location_default.nil?
       return false if @cidr.nil?
       return false if @servers.nil?
+      return false if @memberships.nil?
+      return false if @status.nil?
+      return false if @created_on.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 250
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+      end
+
+      @description = description
     end
 
     # Checks equality by comparing each attribute.
@@ -203,7 +290,10 @@ module NetworkApi
           location == o.location &&
           location_default == o.location_default &&
           cidr == o.cidr &&
-          servers == o.servers
+          servers == o.servers &&
+          memberships == o.memberships &&
+          status == o.status &&
+          created_on == o.created_on
     end
 
     # @see the `==` method
@@ -215,7 +305,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, vlan_id, type, location, location_default, cidr, servers].hash
+      [id, name, description, vlan_id, type, location, location_default, cidr, servers, memberships, status, created_on].hash
     end
 
     # Builds the object from hash

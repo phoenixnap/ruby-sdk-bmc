@@ -31,6 +31,10 @@ class TC_AuditApi < Test::Unit::TestCase
     assert_equal '202', "#{verifyResult.code}", "API should have been hit exactly once. MockServer returned #{verifyResult.code}.\n #{verifyResult.body}"
   end
 
+  def setup
+    TestUtils.reset_mockserver
+  end
+
   def teardown
     TestUtils.reset_expectations
   end

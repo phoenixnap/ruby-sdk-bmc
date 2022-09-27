@@ -30,6 +30,10 @@ class TC_IpApi < Test::Unit::TestCase
     assert_equal '202', "#{verifyResult.code}", "API should have been hit exactly once. MockServer returned #{verifyResult.code}.\n #{verifyResult.body}"
   end
 
+  def setup
+    TestUtils.reset_mockserver
+  end
+
   def teardown
     TestUtils.reset_expectations
   end
@@ -40,8 +44,12 @@ class TC_IpApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = IpApi::IPBlocksApi.new
+    opts = TestUtils.generate_query_params(request)
 
-    result = api_instance.ip_blocks_get()
+    result = api_instance.ip_blocks_get(opts)
+
+    # Parsing time for comparison
+    response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
 
     assert_equal response[:body], [result[0].to_hash.compact]
 
@@ -60,6 +68,9 @@ class TC_IpApi < Test::Unit::TestCase
 
     result = api_instance.ip_blocks_post(opts)
 
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
     assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
@@ -74,6 +85,9 @@ class TC_IpApi < Test::Unit::TestCase
     ip_block_id = TestUtils.extract_id_from(request)
 
     result = api_instance.ip_blocks_ip_block_id_get(ip_block_id)
+
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -93,6 +107,9 @@ class TC_IpApi < Test::Unit::TestCase
 
     result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, opts)
 
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+
     assert_equal response[:body], result.to_hash.compact
 
     self.verify_called_once expectation
@@ -107,6 +124,27 @@ class TC_IpApi < Test::Unit::TestCase
     ip_block_id = TestUtils.extract_id_from(request)
 
     result = api_instance.ip_blocks_ip_block_id_delete(ip_block_id)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_server_put_tags_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('ipapi/ip_blocks_put_tags_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = IpApi::IPBlocksApi.new
+    ip_block_id = TestUtils.extract_id_from(request)
+    opts = {
+      tag_assignment_request: [IpApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
+    }
+
+    result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+
+    # Parsing time for comparison
+    response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
 
     assert_equal response[:body], result.to_hash.compact
 

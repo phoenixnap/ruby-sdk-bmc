@@ -20,7 +20,9 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_ip_blocks_post**](ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server. |
 | [**servers_server_id_patch**](ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server. |
 | [**servers_server_id_private_networks_post**](ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network. |
-| [**servers_server_id_tags_put**](ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Set server tags. |
+| [**servers_server_id_public_networks_delete**](ServersApi.md#servers_server_id_public_networks_delete) | **DELETE** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Removes the server from the Public Network |
+| [**servers_server_id_public_networks_post**](ServersApi.md#servers_server_id_public_networks_post) | **POST** /servers/{serverId}/network-configuration/public-network-configuration/public-networks | Adds the server to a Public Network. |
+| [**servers_server_id_tags_put**](ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server. |
 
 
 ## delete_private_network
@@ -29,7 +31,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 
 Removes the server from private network.
 
-Removes the server from private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.</b>
+Removes the server from private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
 
 ### Examples
 
@@ -595,7 +597,7 @@ end
 
 Reset server.
 
-Reset specific server.
+Deprecated: Reset specific server. Reset only supports network configurations of type 'private network' or 'IP blocks'. As an alternative, the suggested action is to deprovision the server and provision a new one with the same configuration.
 
 ### Examples
 
@@ -875,7 +877,7 @@ end
 
 Unassign IP Block from Server.
 
-Removes the IP block from the server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure you are able to access this server over remote console in case of misconfiguration.</b>
+Removes the IP block from the server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
 
 ### Examples
 
@@ -950,7 +952,7 @@ end
 
 Assign IP Block to Server.
 
-Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. You are expected to perform network configuration changes in the operating system of this server.
+Adds an IP block to this server. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-server-with-public-ip-block#ftoc-heading-2' target='_blank'>here</a>.
 
 ### Examples
 
@@ -1096,7 +1098,7 @@ end
 
 Adds the server to a private network.
 
-Adds the server to a private network.
+Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. If the network contains a membership of type 'storage', the first twelve IPs are already reserved by BMC and not usable. These will return a Bad Request (400) if selected. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
 
 ### Examples
 
@@ -1163,13 +1165,157 @@ end
 - **Accept**: application/json
 
 
+## servers_server_id_public_networks_delete
+
+> String servers_server_id_public_networks_delete(server_id, public_network_id)
+
+Removes the server from the Public Network
+
+Removes the server from the Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. <b>This is an advanced network action that can make your server completely unavailable over any network. Make sure this server is reachable over remote console for guaranteed access in case of misconfiguration.</b>
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
+
+begin
+  # Removes the server from the Public Network
+  result = api_instance.servers_server_id_public_networks_delete(server_id, public_network_id)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_delete: #{e}"
+end
+```
+
+#### Using the servers_server_id_public_networks_delete_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(String, Integer, Hash)> servers_server_id_public_networks_delete_with_http_info(server_id, public_network_id)
+
+```ruby
+begin
+  # Removes the server from the Public Network
+  data, status_code, headers = api_instance.servers_server_id_public_networks_delete_with_http_info(server_id, public_network_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => String
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **public_network_id** | **String** | The Public Network identifier. |  |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## servers_server_id_public_networks_post
+
+> <ServerPublicNetwork> servers_server_id_public_networks_post(server_id, opts)
+
+Adds the server to a Public Network.
+
+Adds the server to a Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+opts = {
+  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29', ips: ["182.16.0.146", "182.16.0.147"]}) # ServerPublicNetwork | 
+}
+
+begin
+  # Adds the server to a Public Network.
+  result = api_instance.servers_server_id_public_networks_post(server_id, opts)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_post: #{e}"
+end
+```
+
+#### Using the servers_server_id_public_networks_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_post_with_http_info(server_id, opts)
+
+```ruby
+begin
+  # Adds the server to a Public Network.
+  data, status_code, headers = api_instance.servers_server_id_public_networks_post_with_http_info(server_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ServerPublicNetwork>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **server_public_network** | [**ServerPublicNetwork**](ServerPublicNetwork.md) |  | [optional] |
+
+### Return type
+
+[**ServerPublicNetwork**](ServerPublicNetwork.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## servers_server_id_tags_put
 
 > <Server> servers_server_id_tags_put(server_id, opts)
 
-Set server tags.
+Overwrite tags assigned for Server.
 
-Set tags for server.
+Overwrites tags assigned for Server and unassigns any tags not part of the request.
 
 ### Examples
 
@@ -1189,7 +1335,7 @@ opts = {
 }
 
 begin
-  # Set server tags.
+  # Overwrite tags assigned for Server.
   result = api_instance.servers_server_id_tags_put(server_id, opts)
   p result
 rescue BmcApi::ApiError => e
@@ -1205,7 +1351,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Set server tags.
+  # Overwrite tags assigned for Server.
   data, status_code, headers = api_instance.servers_server_id_tags_put_with_http_info(server_id, opts)
   p status_code # => 2xx
   p headers # => { ... }

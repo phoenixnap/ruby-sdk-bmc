@@ -30,6 +30,10 @@ class TC_BmcApi < Test::Unit::TestCase
     assert_equal '202', "#{verifyResult.code}", "API should have been hit exactly once. MockServer returned #{verifyResult.code}.\n #{verifyResult.body}"
   end
 
+  def setup
+    TestUtils.reset_mockserver
+  end
+
   def teardown
     TestUtils.reset_expectations
   end
@@ -483,6 +487,40 @@ class TC_BmcApi < Test::Unit::TestCase
     response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
 
     assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_servers_post_public_networks
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_post_public_networks')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+    opts = {
+      server_public_network: BmcApi::ServerPublicNetwork.build_from_hash(TestUtils.extract_request_body(request))
+    }
+
+    result = api_instance.servers_server_id_public_networks_post(server_id, opts)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_servers_delete_public_networks_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_delete_public_network_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+    network_id = TestUtils.extract_id_from(request, :networkId)
+
+    result = api_instance.servers_server_id_public_networks_delete(server_id, network_id)
+
+    assert_equal response[:body], result.to_s
 
     self.verify_called_once expectation
   end

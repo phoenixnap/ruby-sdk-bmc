@@ -57,6 +57,16 @@ jobs:
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: TagApi
+  build-networkstorageapi:
+    name: Build Network Storage API
+    runs-on: ubuntu-latest
+    needs:
+      - generate-networkstorageapi
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/composite/build-sdk
+        with:
+          module-name: NetworkStorageApi
 
   # Lint stage
   lint-bmcapi:
@@ -131,6 +141,18 @@ jobs:
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: TagApi
+  lint-networkstorageapi:
+    name: Lint Network Storage API
+    runs-on: ubuntu-latest
+    needs:
+      - build-networkstorageapi
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/lint-sdk
+        with:
+          module-name: NetworkStorageApi
 
   # Test stage
   test-bmcapi:
@@ -241,6 +263,24 @@ jobs:
         with:
           test-file: tc_tag_api.rb
           test-report-dir: tests
+  test-networkstorageapi:
+    name: Test Network Storage API
+    runs-on: ubuntu-latest
+    needs:
+      - lint-networkstorageapi
+    services:
+      mockserver:
+        image: mockserver/mockserver:5.13.0
+        ports:
+          - 1080:1080
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - uses: ./.github/workflows/composite/test-sdk
+        with:
+          test-file: tc_networkstorage_api.rb
+          test-report-dir: tests
 
   process-tag-info:
     name: Process information in Tag name
@@ -252,6 +292,7 @@ jobs:
       - test-ipapi
       - test-auditapi
       - test-tagapi
+      - test-networkstorageapi
     outputs:
       module: ${{ steps.step1.outputs.module }}
     steps:

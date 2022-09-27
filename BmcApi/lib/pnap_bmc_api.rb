@@ -1,7 +1,7 @@
 =begin
 #Bare Metal Cloud API
 
-#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API. Deprovision servers, get or edit SSH key details, and a lot more. Manage your infrastructure more efficiently using just a few simple api calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
+#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API.  Deprovision servers, get or edit SSH key details, assign public IPs, assign servers to networks and a lot more.  Manage your infrastructure more efficiently using just a few simple API calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
 
 The version of the OpenAPI document: 0.1
 Contact: support@phoenixnap.com
@@ -29,6 +29,7 @@ require 'pnap_bmc_api/models/os_configuration_map_esxi'
 require 'pnap_bmc_api/models/os_configuration_map_proxmox'
 require 'pnap_bmc_api/models/os_configuration_windows'
 require 'pnap_bmc_api/models/private_network_configuration'
+require 'pnap_bmc_api/models/public_network_configuration'
 require 'pnap_bmc_api/models/quota'
 require 'pnap_bmc_api/models/quota_edit_limit_request'
 require 'pnap_bmc_api/models/quota_edit_limit_request_details'
@@ -40,6 +41,7 @@ require 'pnap_bmc_api/models/server_create'
 require 'pnap_bmc_api/models/server_ip_block'
 require 'pnap_bmc_api/models/server_patch'
 require 'pnap_bmc_api/models/server_private_network'
+require 'pnap_bmc_api/models/server_public_network'
 require 'pnap_bmc_api/models/server_reserve'
 require 'pnap_bmc_api/models/server_reset'
 require 'pnap_bmc_api/models/ssh_key'

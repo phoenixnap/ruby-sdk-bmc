@@ -1,7 +1,7 @@
 =begin
 #Bare Metal Cloud API
 
-#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API. Deprovision servers, get or edit SSH key details, and a lot more. Manage your infrastructure more efficiently using just a few simple api calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
+#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API.  Deprovision servers, get or edit SSH key details, assign public IPs, assign servers to networks and a lot more.  Manage your infrastructure more efficiently using just a few simple API calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
 
 The version of the OpenAPI document: 0.1
 Contact: support@phoenixnap.com
@@ -16,15 +16,22 @@ require 'time'
 module BmcApi
   # Entire network details of bare metal server.
   class NetworkConfiguration
+    # The address of the gateway assigned / to assign to the server. When used as part of request body, IP address has to be part of private/public network assigned to this server.
+    attr_accessor :gateway_address
+
     attr_accessor :private_network_configuration
 
     attr_accessor :ip_blocks_configuration
 
+    attr_accessor :public_network_configuration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'gateway_address' => :'gatewayAddress',
         :'private_network_configuration' => :'privateNetworkConfiguration',
-        :'ip_blocks_configuration' => :'ipBlocksConfiguration'
+        :'ip_blocks_configuration' => :'ipBlocksConfiguration',
+        :'public_network_configuration' => :'publicNetworkConfiguration'
       }
     end
 
@@ -36,8 +43,10 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'gateway_address' => :'String',
         :'private_network_configuration' => :'PrivateNetworkConfiguration',
-        :'ip_blocks_configuration' => :'IpBlocksConfiguration'
+        :'ip_blocks_configuration' => :'IpBlocksConfiguration',
+        :'public_network_configuration' => :'PublicNetworkConfiguration'
       }
     end
 
@@ -62,12 +71,20 @@ module BmcApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'gateway_address')
+        self.gateway_address = attributes[:'gateway_address']
+      end
+
       if attributes.key?(:'private_network_configuration')
         self.private_network_configuration = attributes[:'private_network_configuration']
       end
 
       if attributes.key?(:'ip_blocks_configuration')
         self.ip_blocks_configuration = attributes[:'ip_blocks_configuration']
+      end
+
+      if attributes.key?(:'public_network_configuration')
+        self.public_network_configuration = attributes[:'public_network_configuration']
       end
     end
 
@@ -89,8 +106,10 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          gateway_address == o.gateway_address &&
           private_network_configuration == o.private_network_configuration &&
-          ip_blocks_configuration == o.ip_blocks_configuration
+          ip_blocks_configuration == o.ip_blocks_configuration &&
+          public_network_configuration == o.public_network_configuration
     end
 
     # @see the `==` method
@@ -102,7 +121,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [private_network_configuration, ip_blocks_configuration].hash
+      [gateway_address, private_network_configuration, ip_blocks_configuration, public_network_configuration].hash
     end
 
     # Builds the object from hash

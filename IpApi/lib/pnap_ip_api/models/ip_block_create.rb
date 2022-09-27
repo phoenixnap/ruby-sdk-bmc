@@ -25,12 +25,16 @@ module IpApi
     # The description of the IP Block.
     attr_accessor :description
 
+    # Tags to set to the ip-block. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview).
+    attr_accessor :tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'location' => :'location',
         :'cidr_block_size' => :'cidrBlockSize',
-        :'description' => :'description'
+        :'description' => :'description',
+        :'tags' => :'tags'
       }
     end
 
@@ -44,7 +48,8 @@ module IpApi
       {
         :'location' => :'String',
         :'cidr_block_size' => :'String',
-        :'description' => :'String'
+        :'description' => :'String',
+        :'tags' => :'Array<TagAssignmentRequest>'
       }
     end
 
@@ -79,6 +84,12 @@ module IpApi
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
     end
 
@@ -127,7 +138,8 @@ module IpApi
       self.class == o.class &&
           location == o.location &&
           cidr_block_size == o.cidr_block_size &&
-          description == o.description
+          description == o.description &&
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -139,7 +151,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [location, cidr_block_size, description].hash
+      [location, cidr_block_size, description, tags].hash
     end
 
     # Builds the object from hash
