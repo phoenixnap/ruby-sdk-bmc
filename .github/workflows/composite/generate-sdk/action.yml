@@ -26,10 +26,14 @@ runs:
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
       shell: bash
       run: npm install -g @openapitools/openapi-generator-cli
-    - name: Generate BMC API
+    - name: Generate SDK
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
       shell: bash
       run: openapi-generator-cli generate -i ${{ inputs.spec-link }} -c openapi-generator-config.yaml -o ${{ inputs.module-name }} --additional-properties moduleName=${{ inputs.module-name }} --additional-properties gemName=${{ inputs.gem-name }}
+    - name: Download spec files
+      if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
+      shell: bash
+      run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
     - name: Upload Artifacts
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
       uses: actions/upload-artifact@v2
