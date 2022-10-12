@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::IpBlocksConfiguration](docs/IpBlocksConfiguration.md)
  - [BmcApi::NetworkConfiguration](docs/NetworkConfiguration.md)
  - [BmcApi::OsConfiguration](docs/OsConfiguration.md)
+ - [BmcApi::OsConfigurationCloudInit](docs/OsConfigurationCloudInit.md)
  - [BmcApi::OsConfigurationMap](docs/OsConfigurationMap.md)
  - [BmcApi::OsConfigurationMapEsxi](docs/OsConfigurationMapEsxi.md)
  - [BmcApi::OsConfigurationMapProxmox](docs/OsConfigurationMapProxmox.md)
