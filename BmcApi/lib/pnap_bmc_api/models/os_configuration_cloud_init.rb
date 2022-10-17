@@ -14,9 +14,9 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # Details for cloud-init configuration.
+  # Cloud-init configuration details.
   class OsConfigurationCloudInit
-    # User data for cloud init configuration in base64 encoding. NoCloud format is supported.
+    # User data for the cloud-init configuration in base64 encoding. NoCloud format is supported.
     attr_accessor :user_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
