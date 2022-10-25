@@ -26,6 +26,7 @@ require 'pnap_network_storage_api/models/storage_network_create'
 require 'pnap_network_storage_api/models/storage_network_update'
 require 'pnap_network_storage_api/models/volume'
 require 'pnap_network_storage_api/models/volume_create'
+require 'pnap_network_storage_api/models/volume_update'
 
 # APIs
 require 'pnap_network_storage_api/api/storage_networks_api'

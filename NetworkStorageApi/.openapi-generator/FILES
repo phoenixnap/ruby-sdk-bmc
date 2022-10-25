@@ -14,6 +14,7 @@ docs/StorageNetworkUpdate.md
 docs/StorageNetworksApi.md
 docs/Volume.md
 docs/VolumeCreate.md
+docs/VolumeUpdate.md
 lib/pnap_network_storage_api.rb
 lib/pnap_network_storage_api/api/storage_networks_api.rb
 lib/pnap_network_storage_api/api_client.rb
@@ -28,8 +29,10 @@ lib/pnap_network_storage_api/models/storage_network_create.rb
 lib/pnap_network_storage_api/models/storage_network_update.rb
 lib/pnap_network_storage_api/models/volume.rb
 lib/pnap_network_storage_api/models/volume_create.rb
+lib/pnap_network_storage_api/models/volume_update.rb
 lib/pnap_network_storage_api/version.rb
 pnap_network_storage_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/volume_update_spec.rb
 spec/spec_helper.rb
