@@ -16,7 +16,7 @@ require 'time'
 module BmcApi
   # Cloud-init configuration details.
   class OsConfigurationCloudInit
-    # User data for the <a href='https://cloudinit.readthedocs.io/en/latest/' target='_blank'>cloud-init</a> configuration in base64 encoding. NoCloud format is supported. Follow the <a href='https://phoenixnap.com/kb/bmc-cloud-init' target='_blank'>instructions</a> on how to provision a server using cloud-init. Only ubuntu/bionic and ubuntu/focal are supported.
+    # User data for the <a href='https://cloudinit.readthedocs.io/en/latest/' target='_blank'>cloud-init</a> configuration in base64 encoding. NoCloud format is supported. Follow the <a href='https://phoenixnap.com/kb/bmc-cloud-init' target='_blank'>instructions</a> on how to provision a server using cloud-init. Only ubuntu/bionic and ubuntu/focal are supported. User data will not be stored and cannot be retrieved once you deploy the server. Copy and save it for future reference.
     attr_accessor :user_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
