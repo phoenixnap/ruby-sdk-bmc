@@ -10,7 +10,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
     - uses: ./.github/workflows/composite/setup-ruby
     - name: Install Bundler
       shell: bash
