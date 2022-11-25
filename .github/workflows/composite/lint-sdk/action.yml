@@ -15,4 +15,4 @@ runs:
       run: sudo gem install rubocop --version 1.11
     - name: Lint module
       shell: bash
-      run: cd ${{ inputs.module-name }} && rubocop --fail-level=error
+      run: cd ${{ inputs.module-name }} && ruby -v && rubocop --fail-level=error

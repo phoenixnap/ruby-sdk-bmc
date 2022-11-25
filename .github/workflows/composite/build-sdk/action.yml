@@ -9,4 +9,4 @@ runs:
   steps:
     - name: Build gemspec
       shell: bash
-      run: cd ${{ inputs.module-name }} && gem build *.gemspec
+      run: cd ${{ inputs.module-name }} && ruby -v && gem build *.gemspec

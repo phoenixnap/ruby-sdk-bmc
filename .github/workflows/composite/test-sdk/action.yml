@@ -15,7 +15,7 @@ runs:
       run: sudo apt-get install ruby-full
     - name: Install Bundler
       shell: bash
-      run: sudo gem install bundler
+      run: sudo gem install bundler && ruby -v
     - name: Run tests
       shell: bash
       run: |
