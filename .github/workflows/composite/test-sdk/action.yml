@@ -10,12 +10,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Install ruby
-      shell: bash
-      run: sudo apt-get install ruby-full
+    - uses: ./.github/workflows/composite/setup-ruby
     - name: Install Bundler
       shell: bash
-      run: sudo gem install bundler && ruby -v
+      run: gem install bundler
     - name: Run tests
       shell: bash
       run: |

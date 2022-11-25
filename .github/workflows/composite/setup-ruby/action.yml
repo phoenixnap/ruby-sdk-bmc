@@ -1,0 +1,9 @@
+name: 'Setup Ruby'
+description: 'Sets up Ruby and generic configuration'
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Ruby with Version
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.1

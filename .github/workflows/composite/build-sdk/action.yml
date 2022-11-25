@@ -7,6 +7,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/download-artifact@v2
+    - uses: ./.github/workflows/composite/setup-ruby
     - name: Build gemspec
       shell: bash
-      run: cd ${{ inputs.module-name }} && ruby -v && gem build *.gemspec
+      run: cd ${{ inputs.module-name }} && gem build *.gemspec
