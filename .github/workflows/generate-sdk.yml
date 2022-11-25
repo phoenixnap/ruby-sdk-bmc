@@ -15,7 +15,7 @@ jobs:
     name: Generate BMC API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc/download_spec
@@ -25,7 +25,7 @@ jobs:
     name: Generate Rancher API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/rancher/download_spec
@@ -35,7 +35,7 @@ jobs:
     name: Generate Network API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/networks/download_spec
@@ -45,7 +45,7 @@ jobs:
     name: Generate IP API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/ips/download_spec
@@ -55,7 +55,7 @@ jobs:
     name: Generate Audit API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-audit/download_spec
@@ -65,7 +65,7 @@ jobs:
     name: Generate Tag API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/tags/download_spec
@@ -75,7 +75,7 @@ jobs:
     name: Generate Network Storage API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/generate-sdk
         with:
           spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/network-storage/download_spec
@@ -103,7 +103,7 @@ jobs:
       - generate-networkstorageapi
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -133,7 +133,7 @@ jobs:
     needs:
       - generate-bmcapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: BmcApi
@@ -143,7 +143,7 @@ jobs:
     needs:
       - generate-rancherapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: RancherApi
@@ -153,7 +153,7 @@ jobs:
     needs:
       - generate-networkapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: NetworkApi
@@ -163,7 +163,7 @@ jobs:
     needs:
       - generate-ipapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: IpApi
@@ -173,7 +173,7 @@ jobs:
     needs:
       - generate-auditapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: AuditApi
@@ -183,7 +183,7 @@ jobs:
     needs:
       - generate-tagapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: TagApi
@@ -193,7 +193,7 @@ jobs:
     needs:
       - generate-networkstorageapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: NetworkStorageApi
@@ -205,7 +205,7 @@ jobs:
     needs:
       - build-bmcapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: BmcApi
@@ -215,7 +215,7 @@ jobs:
     needs:
       - build-rancherapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: RancherApi
@@ -225,7 +225,7 @@ jobs:
     needs:
       - build-networkapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: NetworkApi
@@ -235,7 +235,7 @@ jobs:
     needs:
       - build-ipapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: IpApi
@@ -245,7 +245,7 @@ jobs:
     needs:
       - build-auditapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: AuditApi
@@ -255,7 +255,7 @@ jobs:
     needs:
       - build-tagapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: TagApi
@@ -265,7 +265,7 @@ jobs:
     needs:
       - build-networkstorageapi
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: NetworkStorageApi
@@ -282,7 +282,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_bmc_api.rb
@@ -298,7 +298,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_rancher_api.rb
@@ -314,7 +314,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_network_api.rb   
@@ -330,7 +330,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_ip_api.rb
@@ -346,7 +346,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_audit_api.rb
@@ -362,7 +362,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_tag_api.rb
@@ -378,7 +378,7 @@ jobs:
         ports:
           - 1080:1080
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_networkstorage_api.rb
