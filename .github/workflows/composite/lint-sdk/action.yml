@@ -11,7 +11,7 @@ runs:
     - uses: ./.github/workflows/composite/setup-ruby
     - name: Install rubocop (1.11)
       shell: bash
-      run: sudo gem install rubocop --version 1.11
+      run: gem install rubocop --version 1.11
     - name: Lint module
       shell: bash
       run: cd ${{ inputs.module-name }} && rubocop --fail-level=error
