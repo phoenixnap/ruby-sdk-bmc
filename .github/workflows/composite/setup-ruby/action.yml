@@ -11,4 +11,4 @@ runs:
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        go-version: ${{ inputs.ruby-version }}
+        ruby-version: ${{ inputs.ruby-version }}
