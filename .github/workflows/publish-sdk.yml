@@ -149,12 +149,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_bmc_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-rancherapi:
     name: Test Rancher API
     runs-on: ubuntu-latest
@@ -165,12 +169,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_rancher_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-networkapi:
     name: Test Network API
     runs-on: ubuntu-latest
@@ -181,12 +189,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_network_api.rb   
           test-report-dir: tests   
+          ruby-version: ${{ matrix.ruby-version }}
   test-ipapi:
     name: Test Ip API
     runs-on: ubuntu-latest
@@ -197,12 +209,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_ip_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-auditapi:
     name: Test Audit API
     runs-on: ubuntu-latest
@@ -213,12 +229,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_audit_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-tagapi:
     name: Test Tag API
     runs-on: ubuntu-latest
@@ -229,12 +249,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_tag_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-networkstorageapi:
     name: Test Network Storage API
     runs-on: ubuntu-latest
@@ -245,12 +269,16 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      matrix:
+        ruby-version: [ '2.4', '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_networkstorage_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
 
   process-tag-info:
     name: Process information in Tag name

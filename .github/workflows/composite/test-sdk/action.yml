@@ -7,11 +7,17 @@ inputs:
   test-report-dir:
     description: 'Location of the test reports.'
     required: true
+  ruby-version: 
+    description: 'Version of Ruby to run tests on.'
+    required: true
 runs:
   using: "composite"
   steps:
     - uses: actions/download-artifact@v3
-    - uses: ./.github/workflows/composite/setup-ruby
+    - name: Setup Ruby
+      uses: ./.github/workflows/composite/setup-ruby
+      with:
+        ruby-version: ${{ inputs.ruby-version }}
     - name: Install Bundler
       shell: bash
       run: gem install bundler
