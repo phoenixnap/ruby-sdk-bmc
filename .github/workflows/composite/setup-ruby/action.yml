@@ -4,7 +4,7 @@ inputs:
   ruby-version: 
     description: 'Version of Ruby to setup.'
     required: false
-    default: '3.1'
+    default: '2.4'
 runs:
   using: "composite"
   steps:
