@@ -9,9 +9,9 @@ runs:
   steps:
     - uses: actions/download-artifact@v3
     - uses: ./.github/workflows/composite/setup-ruby
-    - name: Install rubocop (1.11)
+    - name: Install rubocop (1.12)
       shell: bash
-      run: gem install rubocop --version 1.11
+      run: gem update --system && gem install rubocop --version 1.12 && ruby -v
     - name: Lint module
       shell: bash
       run: cd ${{ inputs.module-name }} && rubocop --fail-level=error
