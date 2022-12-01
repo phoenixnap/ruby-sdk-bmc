@@ -152,7 +152,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -173,7 +173,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -194,7 +194,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -215,7 +215,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -236,7 +236,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -257,7 +257,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
@@ -278,7 +278,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.4', '3.1' ]
+        ruby-version: [ '3.1' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
