@@ -10,6 +10,7 @@ All URIs are relative to *https://api.phoenixnap.com/network-storage/v1*
 | [**storage_networks_id_patch**](StorageNetworksApi.md#storage_networks_id_patch) | **PATCH** /storage-networks/{storageNetworkId} | Update storage network details. |
 | [**storage_networks_post**](StorageNetworksApi.md#storage_networks_post) | **POST** /storage-networks | Create a storage network and volume. |
 | [**storage_networks_storage_network_id_volumes_get**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_get) | **GET** /storage-networks/{storageNetworkId}/volumes | Display one or more volumes belonging to a storage network. |
+| [**storage_networks_storage_network_id_volumes_volume_id_delete**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_delete) | **DELETE** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Delete a Storage Network&#39;s Volume |
 | [**storage_networks_storage_network_id_volumes_volume_id_get**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_get) | **GET** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Get a storage network&#39;s volume details. |
 | [**storage_networks_storage_network_id_volumes_volume_id_patch**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_patch) | **PATCH** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Update a storage network&#39;s volume details. |
 
@@ -424,6 +425,76 @@ end
 ### Return type
 
 [**Array&lt;Volume&gt;**](Volume.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## storage_networks_storage_network_id_volumes_volume_id_delete
+
+> storage_networks_storage_network_id_volumes_volume_id_delete(storage_network_id, volume_id)
+
+Delete a Storage Network's Volume
+
+Delete a Storage Network's Volume
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_network_storage_api'
+# setup authorization
+NetworkStorageApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = NetworkStorageApi::StorageNetworksApi.new
+storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
+volume_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of volume.
+
+begin
+  # Delete a Storage Network's Volume
+  api_instance.storage_networks_storage_network_id_volumes_volume_id_delete(storage_network_id, volume_id)
+rescue NetworkStorageApi::ApiError => e
+  puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_delete: #{e}"
+end
+```
+
+#### Using the storage_networks_storage_network_id_volumes_volume_id_delete_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_delete_with_http_info(storage_network_id, volume_id)
+
+```ruby
+begin
+  # Delete a Storage Network's Volume
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_delete_with_http_info(storage_network_id, volume_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue NetworkStorageApi::ApiError => e
+  puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_delete_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storage_network_id** | **String** | ID of storage network. |  |
+| **volume_id** | **String** | ID of volume. |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
