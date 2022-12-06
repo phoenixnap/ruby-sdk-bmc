@@ -119,7 +119,7 @@ module NetworkStorageApi
         invalid_properties.push('invalid value for "path_suffix", the character length must be great than or equal to 1.')
       end
 
-      pattern = Regexp.new(/^(\\/[\w-]+)+$/)
+      pattern = Regexp.new(/^(\/[\w-]+)+$/)
       if !@path_suffix.nil? && @path_suffix !~ pattern
         invalid_properties.push("invalid value for \"path_suffix\", must conform to the pattern #{pattern}.")
       end
@@ -144,7 +144,7 @@ module NetworkStorageApi
       return false if !@description.nil? && @description.to_s.length > 250
       return false if !@path_suffix.nil? && @path_suffix.to_s.length > 100
       return false if !@path_suffix.nil? && @path_suffix.to_s.length < 1
-      return false if !@path_suffix.nil? && @path_suffix !~ Regexp.new(/^(\/[\w-]+)+$/) 
+      return false if !@path_suffix.nil? && @path_suffix !~ Regexp.new(/^(\/[\w-]+)+$/)
       return false if @capacity_in_gb.nil?
       return false if @capacity_in_gb < 1000
       true
@@ -189,7 +189,7 @@ module NetworkStorageApi
         fail ArgumentError, 'invalid value for "path_suffix", the character length must be great than or equal to 1.'
       end
 
-      pattern = Regexp.new(/^(\/[\w-]+)+$/) 
+      pattern = Regexp.new(/^(\/[\w-]+)+$/)
       if !path_suffix.nil? && path_suffix !~ pattern
         fail ArgumentError, "invalid value for \"path_suffix\", must conform to the pattern #{pattern}."
       end
