@@ -14,7 +14,7 @@ runs:
   steps:
     - name: Check if Release Branch
       shell: bash
-      if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master'
+      if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' && startsWith(github.head_ref, 'hotfix') == false
       id: checkReleaseBranch
       run: |
         echo "Release or master source branch. Skipping generation"
