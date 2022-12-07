@@ -20,9 +20,7 @@ runs:
     - name: Check if Release Branch
       shell: bash
       if: |
-        # For PRs
         startsWith(github.head_ref, 'hotfix') == false && startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' &&
-        # For Branches
         startsWith(github.ref_name, 'hotfix') == false && startsWith(github.ref_name, 'release') == false && github.ref_name != 'master'
       id: checkReleaseBranch
       run: |
