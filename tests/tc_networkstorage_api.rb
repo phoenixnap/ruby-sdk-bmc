@@ -167,4 +167,43 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
     
         self.verify_called_once expectation        
     end
+
+    def test_patch_volume_by_storageNetwork_id_and_volume_id
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_patch_volume_by_id')
+        expectation = TestUtils.setup_expectation(request, response, 1)
+        
+        api_instance = NetworkStorageApi::StorageNetworksApi.new
+        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        volume_id = TestUtils.extract_id_from(request, :volumeId)
+        volume_update = NetworkStorageApi::VolumeUpdate.build_from_hash(TestUtils.extract_request_body(request))
+
+        opts = {
+            volume_update: volume_update
+        }
+
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storagenetwork_id, volume_id, opts)
+
+        # Parsing time for comparison
+        response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+    
+        assert_equal response[:body], result.to_hash.compact
+    
+        self.verify_called_once expectation        
+    end
+
+    def test_delete_volume_by_storageNetwork_id_and_volume_id
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_delete_volume_by_id')
+        expectation = TestUtils.setup_expectation(request, response, 1)
+        
+        api_instance = NetworkStorageApi::StorageNetworksApi.new
+        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        volume_id = TestUtils.extract_id_from(request, :volumeId)
+    
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_delete(storagenetwork_id, volume_id)
+    
+        assert_nil result
+    
+        self.verify_called_once expectation
+    end
+
 end

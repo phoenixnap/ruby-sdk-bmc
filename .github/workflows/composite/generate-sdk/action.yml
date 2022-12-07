@@ -12,12 +12,19 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Logging head_ref and ref_name
+      shell: bash
+      run: |
+        echo "head_ref = ${{github.head_ref}}"
+        echo "ref_name = ${{github.ref_name}}"
     - name: Check if Release Branch
       shell: bash
-      if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master'
+      if: |
+        startsWith(github.head_ref, 'hotfix') == false && startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' &&
+        startsWith(github.ref_name, 'hotfix') == false && startsWith(github.ref_name, 'release') == false && github.ref_name != 'master'
       id: checkReleaseBranch
       run: |
-        echo "Release or master source branch. Skipping generation"
+        echo "Ref isn't a PR from (master / release... / hotfix...) or a branch with name (master / release... / hotfix...) - Continuing with generation."
         echo "::set-output name=IS_FEATURE_BRANCH::true"
     - name: Install node
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
