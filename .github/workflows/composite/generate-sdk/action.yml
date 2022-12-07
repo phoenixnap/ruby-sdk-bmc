@@ -14,10 +14,10 @@ runs:
   steps:
     - name: Check if Release Branch
       shell: bash
-      if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' && startsWith(github.head_ref, 'hotfix') == false
+      if: startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' && startsWith(github.ref_name, 'hotfix')
       id: checkReleaseBranch
       run: |
-        echo "Is feature branch (${{ github.head_ref }}) - proceeding with generation."
+        echo "Is feature branch (${{ github.ref_name }}) or merging into a non-static branch (${{ github.head_ref }}) - proceeding with generation."
         echo "::set-output name=IS_FEATURE_BRANCH::true"
     - name: Install node
       if: ${{ steps.checkReleaseBranch.outputs.IS_FEATURE_BRANCH }}
