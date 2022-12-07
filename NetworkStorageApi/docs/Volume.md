@@ -10,6 +10,7 @@
 | **path** | **String** | Volume&#39;s full path. It is in form of &#x60;/{volumeId}/pathSuffix&#x60;&#39;. | [optional] |
 | **path_suffix** | **String** | Last part of volume&#39;s path. | [optional] |
 | **capacity_in_gb** | **Integer** | Maximum capacity in GB. | [optional] |
+| **used_capacity_in_gb** | **Integer** | Used capacity in GB, updated periodically. | [optional] |
 | **protocol** | **String** | File system protocol. Currently this field should be set to &#x60;NFS&#x60;. | [optional] |
 | **status** | [**Status**](Status.md) |  | [optional] |
 | **created_on** | **Time** |  | [optional] |
@@ -27,6 +28,7 @@ instance = NetworkStorageApi::Volume.new(
   path: /qjul77ahf5fplr2ba484/shared-docs,
   path_suffix: /shared-docs,
   capacity_in_gb: 2000,
+  used_capacity_in_gb: 1000,
   protocol: NFS,
   status: null,
   created_on: 2021-03-13T20:24:32.491Z,

@@ -1,0 +1,14 @@
+name: 'Setup Ruby'
+description: 'Sets up Ruby'
+inputs:
+  ruby-version: 
+    description: 'Version of Ruby to setup.'
+    required: false
+    default: '2.6'
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ inputs.ruby-version }}

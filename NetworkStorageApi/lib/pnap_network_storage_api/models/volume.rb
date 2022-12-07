@@ -34,6 +34,9 @@ module NetworkStorageApi
     # Maximum capacity in GB.
     attr_accessor :capacity_in_gb
 
+    # Used capacity in GB, updated periodically.
+    attr_accessor :used_capacity_in_gb
+
     # File system protocol. Currently this field should be set to `NFS`.
     attr_accessor :protocol
 
@@ -52,6 +55,7 @@ module NetworkStorageApi
         :'path' => :'path',
         :'path_suffix' => :'pathSuffix',
         :'capacity_in_gb' => :'capacityInGb',
+        :'used_capacity_in_gb' => :'usedCapacityInGb',
         :'protocol' => :'protocol',
         :'status' => :'status',
         :'created_on' => :'createdOn',
@@ -73,6 +77,7 @@ module NetworkStorageApi
         :'path' => :'String',
         :'path_suffix' => :'String',
         :'capacity_in_gb' => :'Integer',
+        :'used_capacity_in_gb' => :'Integer',
         :'protocol' => :'String',
         :'status' => :'Status',
         :'created_on' => :'Time',
@@ -125,6 +130,10 @@ module NetworkStorageApi
         self.capacity_in_gb = attributes[:'capacity_in_gb']
       end
 
+      if attributes.key?(:'used_capacity_in_gb')
+        self.used_capacity_in_gb = attributes[:'used_capacity_in_gb']
+      end
+
       if attributes.key?(:'protocol')
         self.protocol = attributes[:'protocol']
       end
@@ -166,6 +175,7 @@ module NetworkStorageApi
           path == o.path &&
           path_suffix == o.path_suffix &&
           capacity_in_gb == o.capacity_in_gb &&
+          used_capacity_in_gb == o.used_capacity_in_gb &&
           protocol == o.protocol &&
           status == o.status &&
           created_on == o.created_on &&
@@ -181,7 +191,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, path, path_suffix, capacity_in_gb, protocol, status, created_on, permissions].hash
+      [id, name, description, path, path_suffix, capacity_in_gb, used_capacity_in_gb, protocol, status, created_on, permissions].hash
     end
 
     # Builds the object from hash

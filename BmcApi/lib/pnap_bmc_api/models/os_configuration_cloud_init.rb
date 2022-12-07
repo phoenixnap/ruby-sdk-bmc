@@ -14,33 +14,15 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # OS specific configuration properties.
-  class OsConfiguration
-    attr_accessor :windows
-
-    # Password set for user root on an ESXi server which will only be returned in response to provisioning a server.
-    attr_accessor :root_password
-
-    # The URL of the management UI which will only be returned in response to provisioning a server.
-    attr_accessor :management_ui_url
-
-    # List of IPs allowed to access the Management UI. Supported in single IP, CIDR and range format. When undefined, Management UI is disabled. This will only be returned in response to provisioning a server.
-    attr_accessor :management_access_allowed_ips
-
-    # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Only supported for ubuntu/focal.
-    attr_accessor :install_os_to_ram
-
-    attr_accessor :cloud_init
+  # Cloud-init configuration details.
+  class OsConfigurationCloudInit
+    # User data for the <a href='https://cloudinit.readthedocs.io/en/latest/' target='_blank'>cloud-init</a> configuration in base64 encoding. NoCloud format is supported. Follow the <a href='https://phoenixnap.com/kb/bmc-cloud-init' target='_blank'>instructions</a> on how to provision a server using cloud-init. Only ubuntu/bionic and ubuntu/focal are supported. User data will not be stored and cannot be retrieved once you deploy the server. Copy and save it for future reference.
+    attr_accessor :user_data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'windows' => :'windows',
-        :'root_password' => :'rootPassword',
-        :'management_ui_url' => :'managementUiUrl',
-        :'management_access_allowed_ips' => :'managementAccessAllowedIps',
-        :'install_os_to_ram' => :'installOsToRam',
-        :'cloud_init' => :'cloudInit'
+        :'user_data' => :'userData'
       }
     end
 
@@ -52,12 +34,7 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'windows' => :'OsConfigurationWindows',
-        :'root_password' => :'String',
-        :'management_ui_url' => :'String',
-        :'management_access_allowed_ips' => :'Array<String>',
-        :'install_os_to_ram' => :'Boolean',
-        :'cloud_init' => :'OsConfigurationCloudInit'
+        :'user_data' => :'String'
       }
     end
 
@@ -71,43 +48,19 @@ module BmcApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::OsConfiguration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::OsConfigurationCloudInit` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::OsConfiguration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::OsConfigurationCloudInit`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'windows')
-        self.windows = attributes[:'windows']
-      end
-
-      if attributes.key?(:'root_password')
-        self.root_password = attributes[:'root_password']
-      end
-
-      if attributes.key?(:'management_ui_url')
-        self.management_ui_url = attributes[:'management_ui_url']
-      end
-
-      if attributes.key?(:'management_access_allowed_ips')
-        if (value = attributes[:'management_access_allowed_ips']).is_a?(Array)
-          self.management_access_allowed_ips = value
-        end
-      end
-
-      if attributes.key?(:'install_os_to_ram')
-        self.install_os_to_ram = attributes[:'install_os_to_ram']
-      else
-        self.install_os_to_ram = false
-      end
-
-      if attributes.key?(:'cloud_init')
-        self.cloud_init = attributes[:'cloud_init']
+      if attributes.key?(:'user_data')
+        self.user_data = attributes[:'user_data']
       end
     end
 
@@ -115,28 +68,13 @@ module BmcApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@management_access_allowed_ips.nil? && @management_access_allowed_ips.length < 1
-        invalid_properties.push('invalid value for "management_access_allowed_ips", number of items must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@management_access_allowed_ips.nil? && @management_access_allowed_ips.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] management_access_allowed_ips Value to be assigned
-    def management_access_allowed_ips=(management_access_allowed_ips)
-      if !management_access_allowed_ips.nil? && management_access_allowed_ips.length < 1
-        fail ArgumentError, 'invalid value for "management_access_allowed_ips", number of items must be greater than or equal to 1.'
-      end
-
-      @management_access_allowed_ips = management_access_allowed_ips
     end
 
     # Checks equality by comparing each attribute.
@@ -144,12 +82,7 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          windows == o.windows &&
-          root_password == o.root_password &&
-          management_ui_url == o.management_ui_url &&
-          management_access_allowed_ips == o.management_access_allowed_ips &&
-          install_os_to_ram == o.install_os_to_ram &&
-          cloud_init == o.cloud_init
+          user_data == o.user_data
     end
 
     # @see the `==` method
@@ -161,7 +94,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, cloud_init].hash
+      [user_data].hash
     end
 
     # Builds the object from hash

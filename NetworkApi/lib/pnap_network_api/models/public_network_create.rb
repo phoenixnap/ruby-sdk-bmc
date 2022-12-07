@@ -25,6 +25,9 @@ module NetworkApi
     # The location of this public network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
     attr_accessor :location
 
+    # The VLAN that will be assigned to this network.
+    attr_accessor :vlan_id
+
     # A list of IP Blocks that will be associated with this public network.
     attr_accessor :ip_blocks
 
@@ -34,6 +37,7 @@ module NetworkApi
         :'name' => :'name',
         :'description' => :'description',
         :'location' => :'location',
+        :'vlan_id' => :'vlanId',
         :'ip_blocks' => :'ipBlocks'
       }
     end
@@ -49,6 +53,7 @@ module NetworkApi
         :'name' => :'String',
         :'description' => :'String',
         :'location' => :'String',
+        :'vlan_id' => :'Integer',
         :'ip_blocks' => :'Array<PublicNetworkIpBlock>'
       }
     end
@@ -86,6 +91,10 @@ module NetworkApi
         self.location = attributes[:'location']
       end
 
+      if attributes.key?(:'vlan_id')
+        self.vlan_id = attributes[:'vlan_id']
+      end
+
       if attributes.key?(:'ip_blocks')
         if (value = attributes[:'ip_blocks']).is_a?(Array)
           self.ip_blocks = value
@@ -117,6 +126,14 @@ module NetworkApi
         invalid_properties.push('invalid value for "location", location cannot be nil.')
       end
 
+      if !@vlan_id.nil? && @vlan_id > 4094
+        invalid_properties.push('invalid value for "vlan_id", must be smaller than or equal to 4094.')
+      end
+
+      if !@vlan_id.nil? && @vlan_id < 2
+        invalid_properties.push('invalid value for "vlan_id", must be greater than or equal to 2.')
+      end
+
       if !@ip_blocks.nil? && @ip_blocks.length > 10
         invalid_properties.push('invalid value for "ip_blocks", number of items must be less than or equal to 10.')
       end
@@ -132,6 +149,8 @@ module NetworkApi
       return false if @name.to_s.length < 1
       return false if !@description.nil? && @description.to_s.length > 250
       return false if @location.nil?
+      return false if !@vlan_id.nil? && @vlan_id > 4094
+      return false if !@vlan_id.nil? && @vlan_id < 2
       return false if !@ip_blocks.nil? && @ip_blocks.length > 10
       true
     end
@@ -165,6 +184,20 @@ module NetworkApi
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] vlan_id Value to be assigned
+    def vlan_id=(vlan_id)
+      if !vlan_id.nil? && vlan_id > 4094
+        fail ArgumentError, 'invalid value for "vlan_id", must be smaller than or equal to 4094.'
+      end
+
+      if !vlan_id.nil? && vlan_id < 2
+        fail ArgumentError, 'invalid value for "vlan_id", must be greater than or equal to 2.'
+      end
+
+      @vlan_id = vlan_id
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] ip_blocks Value to be assigned
     def ip_blocks=(ip_blocks)
       if !ip_blocks.nil? && ip_blocks.length > 10
@@ -182,6 +215,7 @@ module NetworkApi
           name == o.name &&
           description == o.description &&
           location == o.location &&
+          vlan_id == o.vlan_id &&
           ip_blocks == o.ip_blocks
     end
 
@@ -194,7 +228,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, location, ip_blocks].hash
+      [name, description, location, vlan_id, ip_blocks].hash
     end
 
     # Builds the object from hash

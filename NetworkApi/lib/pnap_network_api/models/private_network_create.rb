@@ -28,6 +28,9 @@ module NetworkApi
     # Identifies network as the default private network for the specified location.
     attr_accessor :location_default
 
+    # The VLAN that will be assigned to this network.
+    attr_accessor :vlan_id
+
     # IP range associated with this private network in CIDR notation.
     attr_accessor :cidr
 
@@ -38,6 +41,7 @@ module NetworkApi
         :'description' => :'description',
         :'location' => :'location',
         :'location_default' => :'locationDefault',
+        :'vlan_id' => :'vlanId',
         :'cidr' => :'cidr'
       }
     end
@@ -54,6 +58,7 @@ module NetworkApi
         :'description' => :'String',
         :'location' => :'String',
         :'location_default' => :'Boolean',
+        :'vlan_id' => :'Integer',
         :'cidr' => :'String'
       }
     end
@@ -97,6 +102,10 @@ module NetworkApi
         self.location_default = false
       end
 
+      if attributes.key?(:'vlan_id')
+        self.vlan_id = attributes[:'vlan_id']
+      end
+
       if attributes.key?(:'cidr')
         self.cidr = attributes[:'cidr']
       end
@@ -126,6 +135,14 @@ module NetworkApi
         invalid_properties.push('invalid value for "location", location cannot be nil.')
       end
 
+      if !@vlan_id.nil? && @vlan_id > 4094
+        invalid_properties.push('invalid value for "vlan_id", must be smaller than or equal to 4094.')
+      end
+
+      if !@vlan_id.nil? && @vlan_id < 2
+        invalid_properties.push('invalid value for "vlan_id", must be greater than or equal to 2.')
+      end
+
       if @cidr.nil?
         invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
       end
@@ -141,6 +158,8 @@ module NetworkApi
       return false if @name.to_s.length < 1
       return false if !@description.nil? && @description.to_s.length > 250
       return false if @location.nil?
+      return false if !@vlan_id.nil? && @vlan_id > 4094
+      return false if !@vlan_id.nil? && @vlan_id < 2
       return false if @cidr.nil?
       true
     end
@@ -173,6 +192,20 @@ module NetworkApi
       @description = description
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] vlan_id Value to be assigned
+    def vlan_id=(vlan_id)
+      if !vlan_id.nil? && vlan_id > 4094
+        fail ArgumentError, 'invalid value for "vlan_id", must be smaller than or equal to 4094.'
+      end
+
+      if !vlan_id.nil? && vlan_id < 2
+        fail ArgumentError, 'invalid value for "vlan_id", must be greater than or equal to 2.'
+      end
+
+      @vlan_id = vlan_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -182,6 +215,7 @@ module NetworkApi
           description == o.description &&
           location == o.location &&
           location_default == o.location_default &&
+          vlan_id == o.vlan_id &&
           cidr == o.cidr
     end
 
@@ -194,7 +228,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, location, location_default, cidr].hash
+      [name, description, location, location_default, vlan_id, cidr].hash
     end
 
     # Builds the object from hash

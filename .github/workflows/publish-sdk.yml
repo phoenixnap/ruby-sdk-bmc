@@ -13,7 +13,7 @@ jobs:
     name: Build BMC API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: BmcApi
@@ -21,7 +21,7 @@ jobs:
     name: Build Rancher API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: RancherApi
@@ -29,7 +29,7 @@ jobs:
     name: Build Network API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: NetworkApi
@@ -37,7 +37,7 @@ jobs:
     name: Build IP API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: IpApi
@@ -45,7 +45,7 @@ jobs:
     name: Build Audit API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: AuditApi
@@ -53,7 +53,7 @@ jobs:
     name: Build Tag API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: TagApi
@@ -61,7 +61,7 @@ jobs:
     name: Build Network Storage API
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/build-sdk
         with:
           module-name: NetworkStorageApi
@@ -73,9 +73,7 @@ jobs:
     needs:
       - build-bmcapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: BmcApi
@@ -85,9 +83,7 @@ jobs:
     needs:
       - build-rancherapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: RancherApi
@@ -97,9 +93,7 @@ jobs:
     needs:
       - build-networkapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: NetworkApi
@@ -109,9 +103,7 @@ jobs:
     needs:
       - build-ipapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: IpApi
@@ -121,9 +113,7 @@ jobs:
     needs:
       - build-auditapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: AuditApi
@@ -133,9 +123,7 @@ jobs:
     needs:
       - build-tagapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: TagApi
@@ -145,9 +133,7 @@ jobs:
     needs:
       - build-networkstorageapi
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/lint-sdk
         with:
           module-name: NetworkStorageApi
@@ -163,14 +149,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_bmc_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-rancherapi:
     name: Test Rancher API
     runs-on: ubuntu-latest
@@ -181,14 +170,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_rancher_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-networkapi:
     name: Test Network API
     runs-on: ubuntu-latest
@@ -199,14 +191,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_network_api.rb   
           test-report-dir: tests   
+          ruby-version: ${{ matrix.ruby-version }}
   test-ipapi:
     name: Test Ip API
     runs-on: ubuntu-latest
@@ -217,14 +212,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_ip_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-auditapi:
     name: Test Audit API
     runs-on: ubuntu-latest
@@ -235,14 +233,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_audit_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-tagapi:
     name: Test Tag API
     runs-on: ubuntu-latest
@@ -253,14 +254,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_tag_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
   test-networkstorageapi:
     name: Test Network Storage API
     runs-on: ubuntu-latest
@@ -271,14 +275,17 @@ jobs:
         image: mockserver/mockserver:5.13.0
         ports:
           - 1080:1080
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby-version: [ '2.6', '3.1' ]
     steps:
-      - uses: actions/checkout@v2
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
         with:
           test-file: tc_networkstorage_api.rb
           test-report-dir: tests
+          ruby-version: ${{ matrix.ruby-version }}
 
   process-tag-info:
     name: Process information in Tag name
@@ -294,7 +301,7 @@ jobs:
     outputs:
       module: ${{ steps.step1.outputs.module }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
       - name: Determining release type
@@ -325,7 +332,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: process-tag-info
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
       - run: |
