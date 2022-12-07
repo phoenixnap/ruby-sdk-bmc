@@ -19,9 +19,11 @@ runs:
         echo "ref_name = ${{github.ref_name}}"
     - name: Check if Release Branch
       shell: bash
-      if: 
+      if: |
         # For PRs
-        startsWith(github.head_ref, 'hotfix') == false && startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' && startsWith(github.ref_name, 'hotfix') == false && startsWith(github.ref_name, 'release') == false && github.ref_name != 'master'
+        startsWith(github.head_ref, 'hotfix') == false && startsWith(github.head_ref, 'release') == false && github.head_ref != 'master' &&
+        # For Branches
+        startsWith(github.ref_name, 'hotfix') == false && startsWith(github.ref_name, 'release') == false && github.ref_name != 'master'
       id: checkReleaseBranch
       run: |
         echo "Ref isn't a PR from (master / release... / hotfix...) or a branch with name (master / release... / hotfix...) - Continuing with generation."
