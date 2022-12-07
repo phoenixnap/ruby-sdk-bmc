@@ -192,7 +192,7 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
     end
 
     def test_delete_volume_by_storageNetwork_id_and_volume_id
-        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_delete_by_id')
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_delete_volume_by_id')
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
