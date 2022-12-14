@@ -22,7 +22,7 @@ module NetworkStorageApi
     # Storage network description.
     attr_accessor :description
 
-    # Location of storage network. Currently this field should be set to `PHX`.
+    # Location of storage network. Currently this field should be set to `PHX` or `ASH`.
     attr_accessor :location
 
     # Volume to be created alongside storage. Currently only 1 volume is supported.
