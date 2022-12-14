@@ -16,12 +16,20 @@ require 'time'
 module NetworkStorageApi
   # Update storage network volume.
   class VolumeUpdate
+    # Volume friendly name.
+    attr_accessor :name
+
+    # Volume description.
+    attr_accessor :description
+
     # Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported.
     attr_accessor :capacity_in_gb
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'name' => :'name',
+        :'description' => :'description',
         :'capacity_in_gb' => :'capacityInGb'
       }
     end
@@ -34,6 +42,8 @@ module NetworkStorageApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'name' => :'String',
+        :'description' => :'String',
         :'capacity_in_gb' => :'Integer'
       }
     end
@@ -59,6 +69,14 @@ module NetworkStorageApi
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
       if attributes.key?(:'capacity_in_gb')
         self.capacity_in_gb = attributes[:'capacity_in_gb']
       end
@@ -68,6 +86,18 @@ module NetworkStorageApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@name.nil? && @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@name.nil? && @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 250
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
+      end
+
       if !@capacity_in_gb.nil? && @capacity_in_gb < 2000
         invalid_properties.push('invalid value for "capacity_in_gb", must be greater than or equal to 2000.')
       end
@@ -78,8 +108,35 @@ module NetworkStorageApi
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@name.nil? && @name.to_s.length > 100
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@description.nil? && @description.to_s.length > 250
       return false if !@capacity_in_gb.nil? && @capacity_in_gb < 2000
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if !name.nil? && name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 250
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
+      end
+
+      @description = description
     end
 
     # Custom attribute writer method with validation
@@ -97,6 +154,8 @@ module NetworkStorageApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          name == o.name &&
+          description == o.description &&
           capacity_in_gb == o.capacity_in_gb
     end
 
@@ -109,7 +168,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [capacity_in_gb].hash
+      [name, description, capacity_in_gb].hash
     end
 
     # Builds the object from hash
