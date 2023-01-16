@@ -33,7 +33,7 @@ jobs:
               fi 
 
               echo Is submodule release. Publishing $MODULE v$VERSION to registry.
-              echo "::set-output name=module::$MODULE"
+              echo "module=$MODULE" >> $GITHUB_OUTPUT
           else
               echo Is main release. Skipping.
           fi
