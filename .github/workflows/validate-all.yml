@@ -1,13 +1,11 @@
-name: publish-sdk
+name: validate-all
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+  push:
 
-env:
-  GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-
-jobs:
+jobs:  
+  # Build stage
   build-and-test-bmcapi:
     uses: ./.github/workflows/_common.yml
     with:
@@ -44,9 +42,8 @@ jobs:
       module-name: NetworkStorageApi
       test-file: tc_networkstorage_api.rb
 
-  publish:
-    name: Publish SDK
-    runs-on: ubuntu-latest
+  publish-test-results:
+    name: Publish Test Results
     needs:
       - build-and-test-bmcapi
       - build-and-test-rancherapi
@@ -55,4 +52,15 @@ jobs:
       - build-and-test-auditapi
       - build-and-test-tagapi
       - build-and-test-networkstorageapi
-    uses: ./.github/workflows/_publish.yml
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: test-reports
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        with:
+          files: test-reports/**/*.xml
+          check_name: "Test Results"
