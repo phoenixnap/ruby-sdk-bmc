@@ -188,6 +188,7 @@ end
 
 api_instance = BmcApi::ServersApi.new
 opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_create: BmcApi::ServerCreate.new({hostname: 'my-server-1', os: 'ubuntu/bionic', type: 's1.c1.small', location: 'PHX'}) # ServerCreate | 
 }
 
@@ -222,6 +223,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_create** | [**ServerCreate**](ServerCreate.md) |  | [optional] |
 
 ### Return type
@@ -1114,6 +1116,7 @@ end
 api_instance = BmcApi::ServersApi.new
 server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
 opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_private_network: BmcApi::ServerPrivateNetwork.new({id: '603f3b2cfcaf050643b89a4b'}) # ServerPrivateNetwork | 
 }
 
@@ -1149,6 +1152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_private_network** | [**ServerPrivateNetwork**](ServerPrivateNetwork.md) |  | [optional] |
 
 ### Return type
