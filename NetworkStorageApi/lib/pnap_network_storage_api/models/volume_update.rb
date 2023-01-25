@@ -25,12 +25,16 @@ module NetworkStorageApi
     # Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported.
     attr_accessor :capacity_in_gb
 
+    # Last part of volume's path.
+    attr_accessor :path_suffix
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'description' => :'description',
-        :'capacity_in_gb' => :'capacityInGb'
+        :'capacity_in_gb' => :'capacityInGb',
+        :'path_suffix' => :'pathSuffix'
       }
     end
 
@@ -44,7 +48,8 @@ module NetworkStorageApi
       {
         :'name' => :'String',
         :'description' => :'String',
-        :'capacity_in_gb' => :'Integer'
+        :'capacity_in_gb' => :'Integer',
+        :'path_suffix' => :'String'
       }
     end
 
@@ -80,6 +85,10 @@ module NetworkStorageApi
       if attributes.key?(:'capacity_in_gb')
         self.capacity_in_gb = attributes[:'capacity_in_gb']
       end
+
+      if attributes.key?(:'path_suffix')
+        self.path_suffix = attributes[:'path_suffix']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -102,6 +111,19 @@ module NetworkStorageApi
         invalid_properties.push('invalid value for "capacity_in_gb", must be greater than or equal to 2000.')
       end
 
+      if !@path_suffix.nil? && @path_suffix.to_s.length > 27
+        invalid_properties.push('invalid value for "path_suffix", the character length must be smaller than or equal to 27.')
+      end
+
+      if !@path_suffix.nil? && @path_suffix.to_s.length < 1
+        invalid_properties.push('invalid value for "path_suffix", the character length must be great than or equal to 1.')
+      end
+
+      pattern = Regexp.new(/^(\\/[\w-]+)+$/)
+      if !@path_suffix.nil? && @path_suffix !~ pattern
+        invalid_properties.push("invalid value for \"path_suffix\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -112,6 +134,9 @@ module NetworkStorageApi
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@description.nil? && @description.to_s.length > 250
       return false if !@capacity_in_gb.nil? && @capacity_in_gb < 2000
+      return false if !@path_suffix.nil? && @path_suffix.to_s.length > 27
+      return false if !@path_suffix.nil? && @path_suffix.to_s.length < 1
+      return false if !@path_suffix.nil? && @path_suffix !~ Regexp.new(/^(\\/[\w-]+)+$/)
       true
     end
 
@@ -149,6 +174,25 @@ module NetworkStorageApi
       @capacity_in_gb = capacity_in_gb
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] path_suffix Value to be assigned
+    def path_suffix=(path_suffix)
+      if !path_suffix.nil? && path_suffix.to_s.length > 27
+        fail ArgumentError, 'invalid value for "path_suffix", the character length must be smaller than or equal to 27.'
+      end
+
+      if !path_suffix.nil? && path_suffix.to_s.length < 1
+        fail ArgumentError, 'invalid value for "path_suffix", the character length must be great than or equal to 1.'
+      end
+
+      pattern = Regexp.new(/^(\\/[\w-]+)+$/)
+      if !path_suffix.nil? && path_suffix !~ pattern
+        fail ArgumentError, "invalid value for \"path_suffix\", must conform to the pattern #{pattern}."
+      end
+
+      @path_suffix = path_suffix
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -156,7 +200,8 @@ module NetworkStorageApi
       self.class == o.class &&
           name == o.name &&
           description == o.description &&
-          capacity_in_gb == o.capacity_in_gb
+          capacity_in_gb == o.capacity_in_gb &&
+          path_suffix == o.path_suffix
     end
 
     # @see the `==` method
@@ -168,7 +213,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, capacity_in_gb].hash
+      [name, description, capacity_in_gb, path_suffix].hash
     end
 
     # Builds the object from hash
