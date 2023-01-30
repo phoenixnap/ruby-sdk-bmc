@@ -19,7 +19,7 @@ module BmcApi
     # The network identifier.
     attr_accessor :id
 
-    # IPs to configure/configured on the server. IPs must be within the network's range.
+    # IPs to configure/configured on the server. IPs must be within the network's range.<br> Note that at least one IP is required for the gateway to be selected from this network.
     attr_accessor :ips
 
     # The status of the assignment to the network.
