@@ -119,7 +119,7 @@ module NetworkStorageApi
         invalid_properties.push('invalid value for "path_suffix", the character length must be great than or equal to 1.')
       end
 
-      pattern = Regexp.new(/^(\\/[\w-]+)+$/)
+      pattern = Regexp.new(/^(\/[\w-]+)+$/)
       if !@path_suffix.nil? && @path_suffix !~ pattern
         invalid_properties.push("invalid value for \"path_suffix\", must conform to the pattern #{pattern}.")
       end
