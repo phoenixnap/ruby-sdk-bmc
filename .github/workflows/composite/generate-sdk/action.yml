@@ -28,6 +28,9 @@ runs:
     - name: Download spec files
       shell: bash
       run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
+    - name: Fix regex in generated code
+      shell: bash
+      run: ./fix-regex.sh ${{ inputs.module-name }}
     - name: Upload Artifacts
       uses: actions/upload-artifact@v2
       with:
