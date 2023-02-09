@@ -19,7 +19,7 @@ module BmcApi
     # The network identifier.
     attr_accessor :id
 
-    # IPs to configure/configured on the server. IPs must be within the network's range.<br> Note that at least one IP is required for the gateway to be selected from this network.
+    # Configurable/configured IPs on the server.<br> At least 1 IP address is required. All IPs must be within the network's range.<br> Setting the `force` query parameter to `true` allows you to assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network.
     attr_accessor :ips
 
     # The status of the assignment to the network.
@@ -92,14 +92,6 @@ module BmcApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @ips.nil?
-        invalid_properties.push('invalid value for "ips", ips cannot be nil.')
-      end
-
-      if @ips.length < 1
-        invalid_properties.push('invalid value for "ips", number of items must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -107,23 +99,7 @@ module BmcApi
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if @ips.nil?
-      return false if @ips.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] ips Value to be assigned
-    def ips=(ips)
-      if ips.nil?
-        fail ArgumentError, 'ips cannot be nil'
-      end
-
-      if ips.length < 1
-        fail ArgumentError, 'invalid value for "ips", number of items must be greater than or equal to 1.'
-      end
-
-      @ips = ips
     end
 
     # Checks equality by comparing each attribute.

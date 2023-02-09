@@ -1262,7 +1262,8 @@ end
 api_instance = BmcApi::ServersApi.new
 server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
 opts = {
-  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29', ips: ["182.16.0.146", "182.16.0.147"]}) # ServerPublicNetwork | 
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
 }
 
 begin
@@ -1297,6 +1298,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_public_network** | [**ServerPublicNetwork**](ServerPublicNetwork.md) |  | [optional] |
 
 ### Return type

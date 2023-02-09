@@ -1165,6 +1165,7 @@ module BmcApi
     # Adds the server to a Public Network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @option opts [ServerPublicNetwork] :server_public_network 
     # @return [ServerPublicNetwork]
     def servers_server_id_public_networks_post(server_id, opts = {})
@@ -1176,6 +1177,7 @@ module BmcApi
     # Adds the server to a Public Network. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
     # @param server_id [String] The server&#39;s ID.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @option opts [ServerPublicNetwork] :server_public_network 
     # @return [Array<(ServerPublicNetwork, Integer, Hash)>] ServerPublicNetwork data, response status code and response headers
     def servers_server_id_public_networks_post_with_http_info(server_id, opts = {})
@@ -1191,6 +1193,7 @@ module BmcApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
