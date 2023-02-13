@@ -223,11 +223,11 @@ end
 
 ## public_networks_network_id_ip_blocks_ip_block_id_delete
 
-> String public_networks_network_id_ip_blocks_ip_block_id_delete(public_network_id, ip_block_id)
+> String public_networks_network_id_ip_blocks_ip_block_id_delete(public_network_id, ip_block_id, opts)
 
 Removes the IP Block from the Public Network.
 
-Removes the IP Block from the Public Network. The result of this is that any traffic addressed to any IP within the block will not be routed to this network anymore. Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.
+Removes the IP Block from the Public Network.<br> Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.<br> Defining `force` query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
 
 ### Examples
 
@@ -243,10 +243,13 @@ end
 api_instance = NetworkApi::PublicNetworksApi.new
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
 ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
+opts = {
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+}
 
 begin
   # Removes the IP Block from the Public Network.
-  result = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete(public_network_id, ip_block_id)
+  result = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete(public_network_id, ip_block_id, opts)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PublicNetworksApi->public_networks_network_id_ip_blocks_ip_block_id_delete: #{e}"
@@ -257,12 +260,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(String, Integer, Hash)> public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id)
+> <Array(String, Integer, Hash)> public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id, opts)
 
 ```ruby
 begin
   # Removes the IP Block from the Public Network.
-  data, status_code, headers = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id)
+  data, status_code, headers = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => String
@@ -277,6 +280,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **public_network_id** | **String** | The Public Network identifier. |  |
 | **ip_block_id** | **String** | The IP Block identifier. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 
 ### Return type
 

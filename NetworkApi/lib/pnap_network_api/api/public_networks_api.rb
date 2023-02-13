@@ -206,10 +206,11 @@ module NetworkApi
     end
 
     # Removes the IP Block from the Public Network.
-    # Removes the IP Block from the Public Network. The result of this is that any traffic addressed to any IP within the block will not be routed to this network anymore. Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.
+    # Removes the IP Block from the Public Network.<br> Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.<br> Defining `force` query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
     # @param public_network_id [String] The Public Network identifier.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @return [String]
     def public_networks_network_id_ip_blocks_ip_block_id_delete(public_network_id, ip_block_id, opts = {})
       data, _status_code, _headers = public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id, opts)
@@ -217,10 +218,11 @@ module NetworkApi
     end
 
     # Removes the IP Block from the Public Network.
-    # Removes the IP Block from the Public Network. The result of this is that any traffic addressed to any IP within the block will not be routed to this network anymore. Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.
+    # Removes the IP Block from the Public Network.&lt;br&gt; Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.&lt;br&gt; Defining &#x60;force&#x60; query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
     # @param public_network_id [String] The Public Network identifier.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def public_networks_network_id_ip_blocks_ip_block_id_delete_with_http_info(public_network_id, ip_block_id, opts = {})
       if @api_client.config.debugging
@@ -239,6 +241,7 @@ module NetworkApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
