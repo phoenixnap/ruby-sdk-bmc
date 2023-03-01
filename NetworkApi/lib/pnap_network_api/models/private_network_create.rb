@@ -31,7 +31,7 @@ module NetworkApi
     # The VLAN that will be assigned to this network.
     attr_accessor :vlan_id
 
-    # IP range associated with this private network in CIDR notation.
+    # IP range associated with this private network in CIDR notation.<br> Setting the `force` query parameter to `true` allows you to skip assigning a specific IP range to network.
     attr_accessor :cidr
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -143,10 +143,6 @@ module NetworkApi
         invalid_properties.push('invalid value for "vlan_id", must be greater than or equal to 2.')
       end
 
-      if @cidr.nil?
-        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -160,7 +156,6 @@ module NetworkApi
       return false if @location.nil?
       return false if !@vlan_id.nil? && @vlan_id > 4094
       return false if !@vlan_id.nil? && @vlan_id < 2
-      return false if @cidr.nil?
       true
     end
 
