@@ -206,10 +206,6 @@ module NetworkApi
         invalid_properties.push('invalid value for "location_default", location_default cannot be nil.')
       end
 
-      if @cidr.nil?
-        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
-      end
-
       if @servers.nil?
         invalid_properties.push('invalid value for "servers", servers cannot be nil.')
       end
@@ -241,7 +237,6 @@ module NetworkApi
       return false if @type.nil?
       return false if @location.nil?
       return false if @location_default.nil?
-      return false if @cidr.nil?
       return false if @servers.nil?
       return false if @memberships.nil?
       return false if @status.nil?
