@@ -49,7 +49,7 @@ jobs:
           ref: ${{ github.ref }}
       - run: |
           echo Entering ${{ needs.process-tag-info.outputs.module }}...
-          # cd ./${{ needs.process-tag-info.outputs.module }}
+          cd ./${{ needs.process-tag-info.outputs.module }}
 
           echo Building...
           gem build *.gemspec
