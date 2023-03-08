@@ -278,6 +278,7 @@ module NetworkApi
     # Create a Private Network.
     # Create a Private Network.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @option opts [PrivateNetworkCreate] :private_network_create 
     # @return [PrivateNetwork]
     def private_networks_post(opts = {})
@@ -288,6 +289,7 @@ module NetworkApi
     # Create a Private Network.
     # Create a Private Network.
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
     # @option opts [PrivateNetworkCreate] :private_network_create 
     # @return [Array<(PrivateNetwork, Integer, Hash)>] PrivateNetwork data, response status code and response headers
     def private_networks_post_with_http_info(opts = {})
@@ -299,6 +301,7 @@ module NetworkApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

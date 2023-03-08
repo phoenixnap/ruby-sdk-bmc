@@ -188,6 +188,7 @@ end
 
 api_instance = BmcApi::ServersApi.new
 opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_create: BmcApi::ServerCreate.new({hostname: 'my-server-1', os: 'ubuntu/bionic', type: 's1.c1.small', location: 'PHX'}) # ServerCreate | 
 }
 
@@ -222,6 +223,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_create** | [**ServerCreate**](ServerCreate.md) |  | [optional] |
 
 ### Return type
@@ -1098,7 +1100,7 @@ end
 
 Adds the server to a private network.
 
-Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. If the network contains a membership of type 'storage', the first twelve IPs are already reserved by BMC and not usable. These will return a Bad Request (400) if selected. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
+Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
 
 ### Examples
 
@@ -1114,6 +1116,7 @@ end
 api_instance = BmcApi::ServersApi.new
 server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
 opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_private_network: BmcApi::ServerPrivateNetwork.new({id: '603f3b2cfcaf050643b89a4b'}) # ServerPrivateNetwork | 
 }
 
@@ -1149,6 +1152,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_private_network** | [**ServerPrivateNetwork**](ServerPrivateNetwork.md) |  | [optional] |
 
 ### Return type
@@ -1258,7 +1262,8 @@ end
 api_instance = BmcApi::ServersApi.new
 server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
 opts = {
-  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29', ips: ["182.16.0.146", "182.16.0.147"]}) # ServerPublicNetwork | 
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
 }
 
 begin
@@ -1293,6 +1298,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **server_public_network** | [**ServerPublicNetwork**](ServerPublicNetwork.md) |  | [optional] |
 
 ### Return type

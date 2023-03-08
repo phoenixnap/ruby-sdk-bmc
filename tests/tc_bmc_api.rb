@@ -233,7 +233,8 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     opts = {
-      server_create: BmcApi::ServerCreate.build_from_hash(TestUtils.extract_request_body(request))
+      server_create: BmcApi::ServerCreate.build_from_hash(TestUtils.extract_request_body(request)),
+      force: TestUtils.generate_query_params(request)[:force]
     }
 
     result = api_instance.servers_post(opts)
@@ -444,7 +445,8 @@ class TC_BmcApi < Test::Unit::TestCase
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
     opts = {
-      server_private_network: BmcApi::ServerPrivateNetwork.build_from_hash(TestUtils.extract_request_body(request))
+      server_private_network: BmcApi::ServerPrivateNetwork.build_from_hash(TestUtils.extract_request_body(request)),
+      force: TestUtils.generate_query_params(request)[:force]
     }
 
     result = api_instance.servers_server_id_private_networks_post(server_id, opts)
@@ -499,7 +501,8 @@ class TC_BmcApi < Test::Unit::TestCase
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
     opts = {
-      server_public_network: BmcApi::ServerPublicNetwork.build_from_hash(TestUtils.extract_request_body(request))
+      server_public_network: BmcApi::ServerPublicNetwork.build_from_hash(TestUtils.extract_request_body(request)),
+      force: TestUtils.generate_query_params(request)[:force]
     }
 
     result = api_instance.servers_server_id_public_networks_post(server_id, opts)

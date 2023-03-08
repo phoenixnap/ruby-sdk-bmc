@@ -313,7 +313,8 @@ end
 
 api_instance = NetworkApi::PrivateNetworksApi.new
 opts = {
-  private_network_create: NetworkApi::PrivateNetworkCreate.new({name: 'Sample Network', location: 'PHX', cidr: '10.0.0.0/24'}) # PrivateNetworkCreate | 
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+  private_network_create: NetworkApi::PrivateNetworkCreate.new({name: 'Sample Network', location: 'PHX'}) # PrivateNetworkCreate | 
 }
 
 begin
@@ -347,6 +348,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
 | **private_network_create** | [**PrivateNetworkCreate**](PrivateNetworkCreate.md) |  | [optional] |
 
 ### Return type

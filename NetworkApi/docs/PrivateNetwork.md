@@ -11,7 +11,7 @@
 | **type** | **String** | The type of the private network. |  |
 | **location** | **String** | The location of this private network. |  |
 | **location_default** | **Boolean** | Identifies network as the default private network for the specified location. |  |
-| **cidr** | **String** | IP range associated with this private network in CIDR notation. |  |
+| **cidr** | **String** | IP range associated with this private network in CIDR notation. | [optional] |
 | **servers** | [**Array&lt;PrivateNetworkServer&gt;**](PrivateNetworkServer.md) |  |  |
 | **memberships** | [**Array&lt;NetworkMembership&gt;**](NetworkMembership.md) | A list of resources that are members of this private network. |  |
 | **status** | **String** | The status of the private network. Can have one of the following values: &#x60;BUSY&#x60; or &#x60;READY&#x60;. |  |

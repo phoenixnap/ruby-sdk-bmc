@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | Storage network friendly name. |  |
 | **description** | **String** | Storage network description. | [optional] |
-| **location** | **String** | Location of storage network. Currently this field should be set to &#x60;PHX&#x60;. |  |
+| **location** | **String** | Location of storage network. Currently this field should be set to &#x60;PHX&#x60; or &#x60;ASH&#x60;. |  |
 | **volumes** | [**Array&lt;VolumeCreate&gt;**](VolumeCreate.md) | Volume to be created alongside storage. Currently only 1 volume is supported. |  |
 
 ## Example
