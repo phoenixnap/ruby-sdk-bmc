@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-env:
-  GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
-
 jobs:
   build-and-test-bmcapi:
     uses: ./.github/workflows/_common.yml
@@ -55,3 +52,5 @@ jobs:
       - build-and-test-tagapi
       - build-and-test-networkstorageapi
     uses: ./.github/workflows/_publish.yml
+    with: 
+      ruby-api-key: ${{ secrets.RUBYGEMS_API_KEY }}
