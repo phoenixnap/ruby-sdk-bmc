@@ -1,7 +1,7 @@
 PATH
   remote: ../AuditApi
   specs:
-    pnap_audit_api (1.0.4.pre.SNAPSHOT)
+    pnap_audit_api (1.0.4)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
@@ -13,7 +13,7 @@ PATH
 PATH
   remote: ../IpApi
   specs:
-    pnap_ip_api (1.1.3.pre.SNAPSHOT)
+    pnap_ip_api (1.1.3)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
@@ -31,13 +31,13 @@ PATH
 PATH
   remote: ../RancherApi
   specs:
-    pnap_rancher_api (1.0.4.pre.SNAPSHOT)
+    pnap_rancher_api (1.0.4)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../TagApi
   specs:
-    pnap_tag_api (1.0.4.pre.SNAPSHOT)
+    pnap_tag_api (1.0.4)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
