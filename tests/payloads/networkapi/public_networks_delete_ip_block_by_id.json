@@ -9,7 +9,15 @@
       "ipId": [
         "f7238ba8-7de8-4080-83ab-0f915570650d"
       ]
-    }
+    },
+    "queryStringParameters": [
+      {
+        "name": "force",
+        "values": [
+          "true"
+        ]
+      }
+    ]
   },
   "response": {
     "statusCode": 202,

@@ -2,6 +2,9 @@ name: (internal) - Publish
 
 on:
   workflow_call:
+    secrets:
+      RUBYGEMS_API_KEY:
+        required: true
 
 env:
   GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
@@ -49,10 +52,10 @@ jobs:
           ref: ${{ github.ref }}
       - run: |
           echo Entering ${{ needs.process-tag-info.outputs.module }}...
-          # cd ./${{ needs.process-tag-info.outputs.module }}
+          cd ./${{ needs.process-tag-info.outputs.module }}
 
-          echo Building (SKIPPED)...
-          #gem build *.gemspec
+          echo Building...
+          gem build *.gemspec
 
-          echo Publishing (SKIPPED)...
-          # gem push *.gem
+          echo Publishing...
+          gem push *.gem

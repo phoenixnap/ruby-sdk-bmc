@@ -189,8 +189,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     api_instance = NetworkApi::PublicNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
     ip_id = TestUtils.extract_id_from(request, :ipId)
+    opts = TestUtils.generate_query_params(request)
 
-    result = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete(network_id, ip_id)
+    result = api_instance.public_networks_network_id_ip_blocks_ip_block_id_delete(network_id, ip_id, opts)
 
     assert_equal response[:body], result.to_s
 
