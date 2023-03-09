@@ -143,8 +143,10 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_ip_block_id_delete**](docs/ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server.
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_post**](docs/ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server.
 *BmcApi::ServersApi* | [**servers_server_id_patch**](docs/ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server.
+*BmcApi::ServersApi* | [**servers_server_id_private_networks_patch**](docs/ServersApi.md#servers_server_id_private_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/private-network-configuration/private-networks/{privateNetworkId} | Updates the server's private network's IP addresses
 *BmcApi::ServersApi* | [**servers_server_id_private_networks_post**](docs/ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network.
 *BmcApi::ServersApi* | [**servers_server_id_public_networks_delete**](docs/ServersApi.md#servers_server_id_public_networks_delete) | **DELETE** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Removes the server from the Public Network
+*BmcApi::ServersApi* | [**servers_server_id_public_networks_patch**](docs/ServersApi.md#servers_server_id_public_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Updates the server's public network's IP addresses.
 *BmcApi::ServersApi* | [**servers_server_id_public_networks_post**](docs/ServersApi.md#servers_server_id_public_networks_post) | **POST** /servers/{serverId}/network-configuration/public-network-configuration/public-networks | Adds the server to a Public Network.
 *BmcApi::ServersApi* | [**servers_server_id_tags_put**](docs/ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server.
 
@@ -174,6 +176,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::Server](docs/Server.md)
  - [BmcApi::ServerCreate](docs/ServerCreate.md)
  - [BmcApi::ServerIpBlock](docs/ServerIpBlock.md)
+ - [BmcApi::ServerNetworkUpdate](docs/ServerNetworkUpdate.md)
  - [BmcApi::ServerPatch](docs/ServerPatch.md)
  - [BmcApi::ServerPrivateNetwork](docs/ServerPrivateNetwork.md)
  - [BmcApi::ServerPublicNetwork](docs/ServerPublicNetwork.md)
