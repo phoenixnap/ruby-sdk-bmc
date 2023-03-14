@@ -14,30 +14,14 @@ require 'date'
 require 'time'
 
 module NetworkStorageApi
-  # Update storage network volume.
-  class VolumeUpdate
-    # Volume friendly name.
-    attr_accessor :name
-
-    # Volume description.
-    attr_accessor :description
-
-    # Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported.
-    attr_accessor :capacity_in_gb
-
-    # Last part of volume's path.
-    attr_accessor :path_suffix
-
-    attr_accessor :permissions
+  # Update permissions for a volume.
+  class PermissionsUpdate
+    attr_accessor :nfs
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'description' => :'description',
-        :'capacity_in_gb' => :'capacityInGb',
-        :'path_suffix' => :'pathSuffix',
-        :'permissions' => :'permissions'
+        :'nfs' => :'nfs'
       }
     end
 
@@ -49,11 +33,7 @@ module NetworkStorageApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'description' => :'String',
-        :'capacity_in_gb' => :'Integer',
-        :'path_suffix' => :'String',
-        :'permissions' => :'PermissionsUpdate'
+        :'nfs' => :'NfsPermissionsUpdate'
       }
     end
 
@@ -67,35 +47,19 @@ module NetworkStorageApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkStorageApi::VolumeUpdate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkStorageApi::PermissionsUpdate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkStorageApi::VolumeUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkStorageApi::PermissionsUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'capacity_in_gb')
-        self.capacity_in_gb = attributes[:'capacity_in_gb']
-      end
-
-      if attributes.key?(:'path_suffix')
-        self.path_suffix = attributes[:'path_suffix']
-      end
-
-      if attributes.key?(:'permissions')
-        self.permissions = attributes[:'permissions']
+      if attributes.key?(:'nfs')
+        self.nfs = attributes[:'nfs']
       end
     end
 
@@ -103,102 +67,13 @@ module NetworkStorageApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@name.nil? && @name.to_s.length > 100
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
-      end
-
-      if !@name.nil? && @name.to_s.length < 1
-        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
-      end
-
-      if !@description.nil? && @description.to_s.length > 250
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
-      end
-
-      if !@capacity_in_gb.nil? && @capacity_in_gb < 2000
-        invalid_properties.push('invalid value for "capacity_in_gb", must be greater than or equal to 2000.')
-      end
-
-      if !@path_suffix.nil? && @path_suffix.to_s.length > 27
-        invalid_properties.push('invalid value for "path_suffix", the character length must be smaller than or equal to 27.')
-      end
-
-      if !@path_suffix.nil? && @path_suffix.to_s.length < 0
-        invalid_properties.push('invalid value for "path_suffix", the character length must be great than or equal to 0.')
-      end
-
-      pattern = Regexp.new(/^(\/[\w-]+)+$|^$/)
-      if !@path_suffix.nil? && @path_suffix !~ pattern
-        invalid_properties.push("invalid value for \"path_suffix\", must conform to the pattern #{pattern}.")
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@name.nil? && @name.to_s.length > 100
-      return false if !@name.nil? && @name.to_s.length < 1
-      return false if !@description.nil? && @description.to_s.length > 250
-      return false if !@capacity_in_gb.nil? && @capacity_in_gb < 2000
-      return false if !@path_suffix.nil? && @path_suffix.to_s.length > 27
-      return false if !@path_suffix.nil? && @path_suffix.to_s.length < 0
-      return false if !@path_suffix.nil? && @path_suffix !~ Regexp.new(/^(\/[\w-]+)+$|^$/)
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if !name.nil? && name.to_s.length > 100
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
-      end
-
-      if !name.nil? && name.to_s.length < 1
-        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 250
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] capacity_in_gb Value to be assigned
-    def capacity_in_gb=(capacity_in_gb)
-      if !capacity_in_gb.nil? && capacity_in_gb < 2000
-        fail ArgumentError, 'invalid value for "capacity_in_gb", must be greater than or equal to 2000.'
-      end
-
-      @capacity_in_gb = capacity_in_gb
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] path_suffix Value to be assigned
-    def path_suffix=(path_suffix)
-      if !path_suffix.nil? && path_suffix.to_s.length > 27
-        fail ArgumentError, 'invalid value for "path_suffix", the character length must be smaller than or equal to 27.'
-      end
-
-      if !path_suffix.nil? && path_suffix.to_s.length < 0
-        fail ArgumentError, 'invalid value for "path_suffix", the character length must be great than or equal to 0.'
-      end
-
-      pattern = Regexp.new(/^(\/[\w-]+)+$|^$/)
-      if !path_suffix.nil? && path_suffix !~ pattern
-        fail ArgumentError, "invalid value for \"path_suffix\", must conform to the pattern #{pattern}."
-      end
-
-      @path_suffix = path_suffix
     end
 
     # Checks equality by comparing each attribute.
@@ -206,11 +81,7 @@ module NetworkStorageApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          description == o.description &&
-          capacity_in_gb == o.capacity_in_gb &&
-          path_suffix == o.path_suffix &&
-          permissions == o.permissions
+          nfs == o.nfs
     end
 
     # @see the `==` method
@@ -222,7 +93,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, capacity_in_gb, path_suffix, permissions].hash
+      [nfs].hash
     end
 
     # Builds the object from hash

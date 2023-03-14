@@ -8,6 +8,7 @@
 | **description** | **String** | Volume description. | [optional] |
 | **capacity_in_gb** | **Integer** | Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported. | [optional] |
 | **path_suffix** | **String** | Last part of volume&#39;s path. | [optional] |
+| **permissions** | [**PermissionsUpdate**](PermissionsUpdate.md) |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = NetworkStorageApi::VolumeUpdate.new(
   name: New Volume name,
   description: New Volume description,
   capacity_in_gb: 2000,
-  path_suffix: null
+  path_suffix: null,
+  permissions: null
 )
 ```
 

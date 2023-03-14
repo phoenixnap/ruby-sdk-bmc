@@ -137,7 +137,9 @@ Class | Method | HTTP request | Description
 
  - [NetworkStorageApi::Error](docs/Error.md)
  - [NetworkStorageApi::NfsPermissions](docs/NfsPermissions.md)
+ - [NetworkStorageApi::NfsPermissionsUpdate](docs/NfsPermissionsUpdate.md)
  - [NetworkStorageApi::Permissions](docs/Permissions.md)
+ - [NetworkStorageApi::PermissionsUpdate](docs/PermissionsUpdate.md)
  - [NetworkStorageApi::Status](docs/Status.md)
  - [NetworkStorageApi::StorageNetwork](docs/StorageNetwork.md)
  - [NetworkStorageApi::StorageNetworkCreate](docs/StorageNetworkCreate.md)
