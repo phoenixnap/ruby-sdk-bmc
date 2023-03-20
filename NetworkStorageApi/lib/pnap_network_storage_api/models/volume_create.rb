@@ -28,13 +28,16 @@ module NetworkStorageApi
     # Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported.
     attr_accessor :capacity_in_gb
 
+    attr_accessor :permissions
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'description' => :'description',
         :'path_suffix' => :'pathSuffix',
-        :'capacity_in_gb' => :'capacityInGb'
+        :'capacity_in_gb' => :'capacityInGb',
+        :'permissions' => :'permissions'
       }
     end
 
@@ -49,7 +52,8 @@ module NetworkStorageApi
         :'name' => :'String',
         :'description' => :'String',
         :'path_suffix' => :'String',
-        :'capacity_in_gb' => :'Integer'
+        :'capacity_in_gb' => :'Integer',
+        :'permissions' => :'PermissionsCreate'
       }
     end
 
@@ -88,6 +92,10 @@ module NetworkStorageApi
 
       if attributes.key?(:'capacity_in_gb')
         self.capacity_in_gb = attributes[:'capacity_in_gb']
+      end
+
+      if attributes.key?(:'permissions')
+        self.permissions = attributes[:'permissions']
       end
     end
 
@@ -219,7 +227,8 @@ module NetworkStorageApi
           name == o.name &&
           description == o.description &&
           path_suffix == o.path_suffix &&
-          capacity_in_gb == o.capacity_in_gb
+          capacity_in_gb == o.capacity_in_gb &&
+          permissions == o.permissions
     end
 
     # @see the `==` method
@@ -231,7 +240,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, path_suffix, capacity_in_gb].hash
+      [name, description, path_suffix, capacity_in_gb, permissions].hash
     end
 
     # Builds the object from hash

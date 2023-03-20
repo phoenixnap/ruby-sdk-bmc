@@ -14,27 +14,31 @@ require 'date'
 require 'time'
 
 module NetworkStorageApi
-  # Create Storage Network.
-  class StorageNetworkCreate
-    # Storage network friendly name.
-    attr_accessor :name
+  # NFS specific permissions on a volume.
+  class NfsPermissionsCreate
+    # Read/Write access.
+    attr_accessor :read_write
 
-    # Storage network description.
-    attr_accessor :description
+    # Read only access.
+    attr_accessor :read_only
 
-    # Location of storage network. Currently this field should be set to `PHX` or `ASH`.
-    attr_accessor :location
+    # Root squash permission.
+    attr_accessor :root_squash
 
-    # Volume to be created alongside storage. Currently only 1 volume is supported.
-    attr_accessor :volumes
+    # No squash permission.
+    attr_accessor :no_squash
+
+    # All squash permission.
+    attr_accessor :all_squash
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'description' => :'description',
-        :'location' => :'location',
-        :'volumes' => :'volumes'
+        :'read_write' => :'readWrite',
+        :'read_only' => :'readOnly',
+        :'root_squash' => :'rootSquash',
+        :'no_squash' => :'noSquash',
+        :'all_squash' => :'allSquash'
       }
     end
 
@@ -46,10 +50,11 @@ module NetworkStorageApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'description' => :'String',
-        :'location' => :'String',
-        :'volumes' => :'Array<StorageNetworkVolumeCreate>'
+        :'read_write' => :'Array<String>',
+        :'read_only' => :'Array<String>',
+        :'root_squash' => :'Array<String>',
+        :'no_squash' => :'Array<String>',
+        :'all_squash' => :'Array<String>'
       }
     end
 
@@ -63,32 +68,44 @@ module NetworkStorageApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkStorageApi::StorageNetworkCreate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkStorageApi::NfsPermissionsCreate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkStorageApi::StorageNetworkCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkStorageApi::NfsPermissionsCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'read_write')
+        if (value = attributes[:'read_write']).is_a?(Array)
+          self.read_write = value
+        end
       end
 
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
+      if attributes.key?(:'read_only')
+        if (value = attributes[:'read_only']).is_a?(Array)
+          self.read_only = value
+        end
       end
 
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
+      if attributes.key?(:'root_squash')
+        if (value = attributes[:'root_squash']).is_a?(Array)
+          self.root_squash = value
+        end
       end
 
-      if attributes.key?(:'volumes')
-        if (value = attributes[:'volumes']).is_a?(Array)
-          self.volumes = value
+      if attributes.key?(:'no_squash')
+        if (value = attributes[:'no_squash']).is_a?(Array)
+          self.no_squash = value
+        end
+      end
+
+      if attributes.key?(:'all_squash')
+        if (value = attributes[:'all_squash']).is_a?(Array)
+          self.all_squash = value
         end
       end
     end
@@ -97,99 +114,13 @@ module NetworkStorageApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @name.to_s.length > 100
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
-      end
-
-      if @name.to_s.length < 1
-        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
-      end
-
-      if !@description.nil? && @description.to_s.length > 250
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
-      end
-
-      if @location.nil?
-        invalid_properties.push('invalid value for "location", location cannot be nil.')
-      end
-
-      if @volumes.nil?
-        invalid_properties.push('invalid value for "volumes", volumes cannot be nil.')
-      end
-
-      if @volumes.length > 1
-        invalid_properties.push('invalid value for "volumes", number of items must be less than or equal to 1.')
-      end
-
-      if @volumes.length < 1
-        invalid_properties.push('invalid value for "volumes", number of items must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if @name.to_s.length > 100
-      return false if @name.to_s.length < 1
-      return false if !@description.nil? && @description.to_s.length > 250
-      return false if @location.nil?
-      return false if @volumes.nil?
-      return false if @volumes.length > 1
-      return false if @volumes.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
-      end
-
-      if name.to_s.length > 100
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
-      end
-
-      if name.to_s.length < 1
-        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 250
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 250.'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] volumes Value to be assigned
-    def volumes=(volumes)
-      if volumes.nil?
-        fail ArgumentError, 'volumes cannot be nil'
-      end
-
-      if volumes.length > 1
-        fail ArgumentError, 'invalid value for "volumes", number of items must be less than or equal to 1.'
-      end
-
-      if volumes.length < 1
-        fail ArgumentError, 'invalid value for "volumes", number of items must be greater than or equal to 1.'
-      end
-
-      @volumes = volumes
     end
 
     # Checks equality by comparing each attribute.
@@ -197,10 +128,11 @@ module NetworkStorageApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          description == o.description &&
-          location == o.location &&
-          volumes == o.volumes
+          read_write == o.read_write &&
+          read_only == o.read_only &&
+          root_squash == o.root_squash &&
+          no_squash == o.no_squash &&
+          all_squash == o.all_squash
     end
 
     # @see the `==` method
@@ -212,7 +144,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, location, volumes].hash
+      [read_write, read_only, root_squash, no_squash, all_squash].hash
     end
 
     # Builds the object from hash
