@@ -1020,7 +1020,7 @@ module BmcApi
     end
 
     # Updates the server's private network's IP addresses
-    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host.
+    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
     # @param server_id [String] The server&#39;s ID.
     # @param private_network_id [String] The private network identifier.
     # @param [Hash] opts the optional parameters
@@ -1033,7 +1033,7 @@ module BmcApi
     end
 
     # Updates the server&#39;s private network&#39;s IP addresses
-    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host.
+    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;
     # @param server_id [String] The server&#39;s ID.
     # @param private_network_id [String] The private network identifier.
     # @param [Hash] opts the optional parameters
@@ -1241,7 +1241,7 @@ module BmcApi
     end
 
     # Updates the server's public network's IP addresses.
-    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host.
+    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
     # @param server_id [String] The server&#39;s ID.
     # @param public_network_id [String] The Public Network identifier.
     # @param [Hash] opts the optional parameters
@@ -1254,7 +1254,7 @@ module BmcApi
     end
 
     # Updates the server&#39;s public network&#39;s IP addresses.
-    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host.
+    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;
     # @param server_id [String] The server&#39;s ID.
     # @param public_network_id [String] The Public Network identifier.
     # @param [Hash] opts the optional parameters
