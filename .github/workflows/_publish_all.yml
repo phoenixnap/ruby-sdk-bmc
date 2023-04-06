@@ -1,0 +1,93 @@
+name: (internal) - Publish All
+
+on:
+  workflow_call:
+    inputs:
+      dry_run:
+        required: false
+        type: boolean
+    secrets:
+      RUBYGEMS_API_KEY:
+        required: true
+
+jobs:
+  validate-all:
+    name: Validate all modules
+    uses: ./.github/workflows/validate-all.yml
+
+  publish-audit-api:
+    name: Publish Audit API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_audit_api
+
+  publish-bmc-api:
+    name: Publish BMC API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_bmc_api
+
+  publish-ip-api:
+    name: Publish IP API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_ip_api
+
+  publish-network-api:
+    name: Publish Network API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_network_api
+
+  publish-network-storage-api:
+    name: Publish Network Storage API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_network_storage_api
+
+  publish-rancher-solution-api:
+    name: Publish Rancher Solution API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_rancher_solution_api
+
+  publish-tag-api:
+    name: Publish Tag API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: pnap_tag_api
