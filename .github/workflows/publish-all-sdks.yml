@@ -1,0 +1,17 @@
+name: publish-sdk
+
+on:
+  release:
+    types: [published]
+
+env:
+  GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+
+jobs:
+  publish:
+    name: Publish SDK
+    uses: ./.github/workflows/_publish_all.yml
+    secrets: 
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
