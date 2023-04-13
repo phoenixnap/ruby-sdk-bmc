@@ -14,27 +14,23 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # Private network details of bare metal server.
-  class ServerPrivateNetwork
-    # The network identifier.
-    attr_accessor :id
+  # Netris Controller configuration properties.
+  class OsConfigurationNetrisController
+    # (Read-only) Host OS on which the Netris Controller is installed.
+    attr_accessor :host_os
 
-    # IPs to configure/configured on the server.<br> Should be null or empty list if DHCP is true. IPs must be within the network's range.<br> If field is undefined and DHCP is false, next available IP in network will be automatically allocated.<br> If the network contains a membership of type 'storage', the first twelve IPs are already reserved by BMC and not usable.<br> Setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
-    attr_accessor :ips
+    # (Read-only) The URL for the Netris Controller web console. Will only be returned in response to provisioning a server.
+    attr_accessor :netris_web_console_url
 
-    # Determines whether DHCP is enabled for this server. Should be false if any IPs are provided. Not supported for Proxmox OS and ESXi OS.
-    attr_accessor :dhcp
-
-    # (Read-only) The status of the network.
-    attr_accessor :status_description
+    # (Read-only) Auto-generated password set for user 'netris' in the web console.<br>  The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
+    attr_accessor :netris_user_password
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'ips' => :'ips',
-        :'dhcp' => :'dhcp',
-        :'status_description' => :'statusDescription'
+        :'host_os' => :'hostOs',
+        :'netris_web_console_url' => :'netrisWebConsoleUrl',
+        :'netris_user_password' => :'netrisUserPassword'
       }
     end
 
@@ -46,10 +42,9 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'ips' => :'Array<String>',
-        :'dhcp' => :'Boolean',
-        :'status_description' => :'String'
+        :'host_os' => :'String',
+        :'netris_web_console_url' => :'String',
+        :'netris_user_password' => :'String'
       }
     end
 
@@ -63,35 +58,27 @@ module BmcApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::ServerPrivateNetwork` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::OsConfigurationNetrisController` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::ServerPrivateNetwork`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::OsConfigurationNetrisController`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'host_os')
+        self.host_os = attributes[:'host_os']
       end
 
-      if attributes.key?(:'ips')
-        if (value = attributes[:'ips']).is_a?(Array)
-          self.ips = value
-        end
+      if attributes.key?(:'netris_web_console_url')
+        self.netris_web_console_url = attributes[:'netris_web_console_url']
       end
 
-      if attributes.key?(:'dhcp')
-        self.dhcp = attributes[:'dhcp']
-      else
-        self.dhcp = false
-      end
-
-      if attributes.key?(:'status_description')
-        self.status_description = attributes[:'status_description']
+      if attributes.key?(:'netris_user_password')
+        self.netris_user_password = attributes[:'netris_user_password']
       end
     end
 
@@ -99,33 +86,13 @@ module BmcApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if !@ips.nil? && @ips.length > 10
-        invalid_properties.push('invalid value for "ips", number of items must be less than or equal to 10.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
-      return false if !@ips.nil? && @ips.length > 10
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] ips Value to be assigned
-    def ips=(ips)
-      if !ips.nil? && ips.length > 10
-        fail ArgumentError, 'invalid value for "ips", number of items must be less than or equal to 10.'
-      end
-
-      @ips = ips
     end
 
     # Checks equality by comparing each attribute.
@@ -133,10 +100,9 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          ips == o.ips &&
-          dhcp == o.dhcp &&
-          status_description == o.status_description
+          host_os == o.host_os &&
+          netris_web_console_url == o.netris_web_console_url &&
+          netris_user_password == o.netris_user_password
     end
 
     # @see the `==` method
@@ -148,7 +114,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips, dhcp, status_description].hash
+      [host_os, netris_web_console_url, netris_user_password].hash
     end
 
     # Builds the object from hash

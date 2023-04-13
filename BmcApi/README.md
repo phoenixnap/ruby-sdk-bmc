@@ -164,6 +164,8 @@ Class | Method | HTTP request | Description
  - [BmcApi::OsConfigurationMap](docs/OsConfigurationMap.md)
  - [BmcApi::OsConfigurationMapEsxi](docs/OsConfigurationMapEsxi.md)
  - [BmcApi::OsConfigurationMapProxmox](docs/OsConfigurationMapProxmox.md)
+ - [BmcApi::OsConfigurationNetrisController](docs/OsConfigurationNetrisController.md)
+ - [BmcApi::OsConfigurationNetrisSoftgate](docs/OsConfigurationNetrisSoftgate.md)
  - [BmcApi::OsConfigurationWindows](docs/OsConfigurationWindows.md)
  - [BmcApi::PrivateNetworkConfiguration](docs/PrivateNetworkConfiguration.md)
  - [BmcApi::PublicNetworkConfiguration](docs/PublicNetworkConfiguration.md)

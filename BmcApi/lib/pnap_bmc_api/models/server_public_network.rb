@@ -22,7 +22,7 @@ module BmcApi
     # Configurable/configured IPs on the server.<br> At least 1 IP address is required. All IPs must be within the network's range.<br> Setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
     attr_accessor :ips
 
-    # The status of the assignment to the network.
+    # (Read-only) The status of the assignment to the network.
     attr_accessor :status_description
 
     # Attribute mapping from ruby-style variable name to JSON key.

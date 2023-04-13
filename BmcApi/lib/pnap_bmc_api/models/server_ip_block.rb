@@ -19,7 +19,7 @@ module BmcApi
     # The IP block's ID.
     attr_accessor :id
 
-    # The VLAN on which this IP block has been configured within the network switch.
+    # (Read-only) The VLAN on which this IP block has been configured within the network switch.
     attr_accessor :vlan_id
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The IP block&#39;s ID. |  |
-| **vlan_id** | **Integer** | The VLAN on which this IP block has been configured within the network switch. | [optional][readonly] |
+| **vlan_id** | **Integer** | (Read-only) The VLAN on which this IP block has been configured within the network switch. | [optional][readonly] |
 
 ## Example
 
