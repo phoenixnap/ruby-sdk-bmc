@@ -7,7 +7,12 @@
             "networkid": [ "e6afba51-7de8-4080-83ab-0f915570659d" ]
         },
         "queryStringParameters": [
-
+            {
+                "name": "force",
+                "values": [
+                    "true"
+                ]
+            }
         ],
         "body": {
             "type": "JSON",
@@ -22,11 +27,10 @@
     "response": {
         "statusCode": 200,
         "body": {
-            "id": "603f3b2cfcaf050643b89a4b",
+            "id": "603f3b2cfcaf050643b89a4bPUBL",
             "ips": [
                 "10.1.1.1"
             ],
-            "dhcp": false,
             "statusDescription": "assigned"
         }
     }
