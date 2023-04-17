@@ -44,7 +44,7 @@
                 "osConfiguration": {
                     "netrisController": {
                       "hostOs": "ubuntu/jammy",
-                      "netrisWebConsoleUri": "https://172.217.22.14",
+                      "netrisWebConsoleUrl": "https://172.217.22.14",
                       "netrisUserPassword": "cNC1jPFXG2h7f"
                     },
                     "netrisSoftgate": {
