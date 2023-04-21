@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # Netris Softgate configuration properties.
+  # Netris Softgate configuration properties. Follow <a href='https://phoenixnap.com/kb/netris-bare-metal-cloud#deploy-netris-softgate' target='_blank'>instructions</a> for retrieving the required details.
   class OsConfigurationNetrisSoftgate
     # (Read-only) Host OS on which the Netris Softgate is installed.
     attr_accessor :host_os
