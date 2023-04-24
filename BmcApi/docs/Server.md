@@ -22,7 +22,7 @@
 | **reservation_id** | **String** | The reservation reference id if any. | [optional] |
 | **pricing_model** | **String** | The pricing model this server is being billed. Currently this field should be set to &#x60;HOURLY&#x60;, &#x60;ONE_MONTH_RESERVATION&#x60;, &#x60;TWELVE_MONTHS_RESERVATION&#x60;, &#x60;TWENTY_FOUR_MONTHS_RESERVATION&#x60; or &#x60;THIRTY_SIX_MONTHS_RESERVATION&#x60;. | [default to &#39;HOURLY&#39;] |
 | **password** | **String** | Auto-generated password set for user &#x60;Admin&#x60; on Windows server, user &#x60;root&#x60; on ESXi servers, user &#x60;root&#x60; on Proxmox server and user &#x60;netris&#x60; on Netris servers.&lt;br&gt; The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference. | [optional] |
-| **network_type** | **String** | The type of network configuration for this server. Currently this field should be set to &#x60;PUBLIC_AND_PRIVATE&#x60; or &#x60;PRIVATE_ONLY&#x60;. | [optional][default to &#39;PUBLIC_AND_PRIVATE&#39;] |
+| **network_type** | **String** | The type of network configuration for this server. Currently this field should be set to &#x60;PUBLIC_AND_PRIVATE&#x60;, &#x60;PRIVATE_ONLY&#x60;, &#x60;PUBLIC_ONLY&#x60; or &#x60;NONE&#x60;. | [optional][default to &#39;PUBLIC_AND_PRIVATE&#39;] |
 | **cluster_id** | **String** | The cluster reference id if any. | [optional] |
 | **tags** | [**Array&lt;TagAssignment&gt;**](TagAssignment.md) | The tags assigned if any. | [optional] |
 | **provisioned_on** | **Time** | Date and time when server was provisioned. | [optional] |
