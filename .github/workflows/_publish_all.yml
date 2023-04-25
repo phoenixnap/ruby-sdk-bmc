@@ -24,7 +24,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_audit_api
+      gem_to_publish: AuditApi
 
   publish-bmc-api:
     name: Publish BMC API
@@ -35,7 +35,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_bmc_api
+      gem_to_publish: BmcApi
 
   publish-ip-api:
     name: Publish IP API
@@ -46,7 +46,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_ip_api
+      gem_to_publish: IpApi
 
   publish-network-api:
     name: Publish Network API
@@ -57,7 +57,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_network_api
+      gem_to_publish: NetworkApi
 
   publish-network-storage-api:
     name: Publish Network Storage API
@@ -68,7 +68,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_network_storage_api
+      gem_to_publish: NetworkStorageApi
 
   publish-rancher-solution-api:
     name: Publish Rancher Solution API
@@ -79,7 +79,7 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_rancher_solution_api
+      gem_to_publish: RancherApi
 
   publish-tag-api:
     name: Publish Tag API
@@ -90,4 +90,4 @@ jobs:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: ${{ inputs.dry_run }}
-      gem_to_publish: pnap_tag_api
+      gem_to_publish: TagApi
