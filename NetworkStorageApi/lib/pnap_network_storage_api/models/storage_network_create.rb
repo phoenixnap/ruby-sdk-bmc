@@ -28,13 +28,17 @@ module NetworkStorageApi
     # Volume to be created alongside storage. Currently only 1 volume is supported.
     attr_accessor :volumes
 
+    # Custom Client VLAN that the Storage Network will be set to.
+    attr_accessor :client_vlan
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'description' => :'description',
         :'location' => :'location',
-        :'volumes' => :'volumes'
+        :'volumes' => :'volumes',
+        :'client_vlan' => :'clientVlan'
       }
     end
 
@@ -49,7 +53,8 @@ module NetworkStorageApi
         :'name' => :'String',
         :'description' => :'String',
         :'location' => :'String',
-        :'volumes' => :'Array<StorageNetworkVolumeCreate>'
+        :'volumes' => :'Array<StorageNetworkVolumeCreate>',
+        :'client_vlan' => :'Integer'
       }
     end
 
@@ -91,6 +96,10 @@ module NetworkStorageApi
           self.volumes = value
         end
       end
+
+      if attributes.key?(:'client_vlan')
+        self.client_vlan = attributes[:'client_vlan']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -129,6 +138,14 @@ module NetworkStorageApi
         invalid_properties.push('invalid value for "volumes", number of items must be greater than or equal to 1.')
       end
 
+      if !@client_vlan.nil? && @client_vlan > 4094
+        invalid_properties.push('invalid value for "client_vlan", must be smaller than or equal to 4094.')
+      end
+
+      if !@client_vlan.nil? && @client_vlan < 2
+        invalid_properties.push('invalid value for "client_vlan", must be greater than or equal to 2.')
+      end
+
       invalid_properties
     end
 
@@ -143,6 +160,8 @@ module NetworkStorageApi
       return false if @volumes.nil?
       return false if @volumes.length > 1
       return false if @volumes.length < 1
+      return false if !@client_vlan.nil? && @client_vlan > 4094
+      return false if !@client_vlan.nil? && @client_vlan < 2
       true
     end
 
@@ -192,6 +211,20 @@ module NetworkStorageApi
       @volumes = volumes
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] client_vlan Value to be assigned
+    def client_vlan=(client_vlan)
+      if !client_vlan.nil? && client_vlan > 4094
+        fail ArgumentError, 'invalid value for "client_vlan", must be smaller than or equal to 4094.'
+      end
+
+      if !client_vlan.nil? && client_vlan < 2
+        fail ArgumentError, 'invalid value for "client_vlan", must be greater than or equal to 2.'
+      end
+
+      @client_vlan = client_vlan
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -200,7 +233,8 @@ module NetworkStorageApi
           name == o.name &&
           description == o.description &&
           location == o.location &&
-          volumes == o.volumes
+          volumes == o.volumes &&
+          client_vlan == o.client_vlan
     end
 
     # @see the `==` method
@@ -212,7 +246,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, location, volumes].hash
+      [name, description, location, volumes, client_vlan].hash
     end
 
     # Builds the object from hash
