@@ -27,7 +27,7 @@ jobs:
       - if: ${{ !inputs.dry_run }}
         run: |
           echo Entering ${{ inputs.gem_to_publish }}...
-          cd ./${{ needs.process-tag-info.outputs.module }}
+          cd ./${{ inputs.gem_to_publish }}
 
           echo Building...
           gem build *.gemspec
