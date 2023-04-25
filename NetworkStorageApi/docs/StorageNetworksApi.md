@@ -318,7 +318,7 @@ end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 opts = {
-  storage_network_create: NetworkStorageApi::StorageNetworkCreate.new({name: 'My storage network', location: 'PHX', volumes: [NetworkStorageApi::VolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000})]}) # StorageNetworkCreate | 
+  storage_network_create: NetworkStorageApi::StorageNetworkCreate.new({name: 'My storage network', location: 'PHX', volumes: [NetworkStorageApi::StorageNetworkVolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000})]}) # StorageNetworkCreate | 
 }
 
 begin

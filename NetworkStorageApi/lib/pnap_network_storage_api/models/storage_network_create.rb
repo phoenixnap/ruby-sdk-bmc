@@ -49,7 +49,7 @@ module NetworkStorageApi
         :'name' => :'String',
         :'description' => :'String',
         :'location' => :'String',
-        :'volumes' => :'Array<VolumeCreate>'
+        :'volumes' => :'Array<StorageNetworkVolumeCreate>'
       }
     end
 

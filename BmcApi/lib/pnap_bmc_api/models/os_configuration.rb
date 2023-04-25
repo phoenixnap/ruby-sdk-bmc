@@ -16,18 +16,22 @@ require 'time'
 module BmcApi
   # OS specific configuration properties.
   class OsConfiguration
+    attr_accessor :netris_controller
+
+    attr_accessor :netris_softgate
+
     attr_accessor :windows
 
-    # Password set for user root on an ESXi server which will only be returned in response to provisioning a server.
+    # (Read-only) Auto-generated password set for user 'root' on an ESXi or Proxmox server.<br>  The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
     attr_accessor :root_password
 
-    # The URL of the management UI which will only be returned in response to provisioning a server.
+    # (Read-only) The URL of the management UI which will only be returned in response to provisioning a server.
     attr_accessor :management_ui_url
 
     # List of IPs allowed to access the Management UI. Supported in single IP, CIDR and range format. When undefined, Management UI is disabled. This will only be returned in response to provisioning a server.
     attr_accessor :management_access_allowed_ips
 
-    # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Only supported for ubuntu/focal and ubuntu/jammy.
+    # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Follow the <a href='https://phoenixnap.com/kb/bmc-custom-os' target='_blank'>instructions</a> on how to install custom OS on BMC. Only supported for ubuntu/focal and ubuntu/jammy.
     attr_accessor :install_os_to_ram
 
     attr_accessor :cloud_init
@@ -35,6 +39,8 @@ module BmcApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'netris_controller' => :'netrisController',
+        :'netris_softgate' => :'netrisSoftgate',
         :'windows' => :'windows',
         :'root_password' => :'rootPassword',
         :'management_ui_url' => :'managementUiUrl',
@@ -52,6 +58,8 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'netris_controller' => :'OsConfigurationNetrisController',
+        :'netris_softgate' => :'OsConfigurationNetrisSoftgate',
         :'windows' => :'OsConfigurationWindows',
         :'root_password' => :'String',
         :'management_ui_url' => :'String',
@@ -81,6 +89,14 @@ module BmcApi
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'netris_controller')
+        self.netris_controller = attributes[:'netris_controller']
+      end
+
+      if attributes.key?(:'netris_softgate')
+        self.netris_softgate = attributes[:'netris_softgate']
+      end
 
       if attributes.key?(:'windows')
         self.windows = attributes[:'windows']
@@ -144,6 +160,8 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          netris_controller == o.netris_controller &&
+          netris_softgate == o.netris_softgate &&
           windows == o.windows &&
           root_password == o.root_password &&
           management_ui_url == o.management_ui_url &&
@@ -161,7 +179,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, cloud_init].hash
+      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, cloud_init].hash
     end
 
     # Builds the object from hash

@@ -15,6 +15,8 @@ docs/OsConfigurationCloudInit.md
 docs/OsConfigurationMap.md
 docs/OsConfigurationMapEsxi.md
 docs/OsConfigurationMapProxmox.md
+docs/OsConfigurationNetrisController.md
+docs/OsConfigurationNetrisSoftgate.md
 docs/OsConfigurationWindows.md
 docs/PrivateNetworkConfiguration.md
 docs/PublicNetworkConfiguration.md
@@ -29,6 +31,7 @@ docs/SSHKeysApi.md
 docs/Server.md
 docs/ServerCreate.md
 docs/ServerIpBlock.md
+docs/ServerNetworkUpdate.md
 docs/ServerPatch.md
 docs/ServerPrivateNetwork.md
 docs/ServerPublicNetwork.md
@@ -58,6 +61,8 @@ lib/pnap_bmc_api/models/os_configuration_cloud_init.rb
 lib/pnap_bmc_api/models/os_configuration_map.rb
 lib/pnap_bmc_api/models/os_configuration_map_esxi.rb
 lib/pnap_bmc_api/models/os_configuration_map_proxmox.rb
+lib/pnap_bmc_api/models/os_configuration_netris_controller.rb
+lib/pnap_bmc_api/models/os_configuration_netris_softgate.rb
 lib/pnap_bmc_api/models/os_configuration_windows.rb
 lib/pnap_bmc_api/models/private_network_configuration.rb
 lib/pnap_bmc_api/models/public_network_configuration.rb
@@ -70,6 +75,7 @@ lib/pnap_bmc_api/models/reset_result.rb
 lib/pnap_bmc_api/models/server.rb
 lib/pnap_bmc_api/models/server_create.rb
 lib/pnap_bmc_api/models/server_ip_block.rb
+lib/pnap_bmc_api/models/server_network_update.rb
 lib/pnap_bmc_api/models/server_patch.rb
 lib/pnap_bmc_api/models/server_private_network.rb
 lib/pnap_bmc_api/models/server_public_network.rb

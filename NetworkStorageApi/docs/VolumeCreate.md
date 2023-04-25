@@ -8,6 +8,7 @@
 | **description** | **String** | Volume description. | [optional] |
 | **path_suffix** | **String** | Last part of volume&#39;s path. | [optional] |
 | **capacity_in_gb** | **Integer** | Capacity of Volume in GB. Currently only whole numbers and multiples of 1000GB are supported. |  |
+| **permissions** | [**PermissionsCreate**](PermissionsCreate.md) |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = NetworkStorageApi::VolumeCreate.new(
   name: My volume name,
   description: My volume description,
   path_suffix: /shared-docs,
-  capacity_in_gb: 2000
+  capacity_in_gb: 2000,
+  permissions: null
 )
 ```
 

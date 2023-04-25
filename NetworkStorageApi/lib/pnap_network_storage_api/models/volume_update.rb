@@ -28,13 +28,16 @@ module NetworkStorageApi
     # Last part of volume's path.
     attr_accessor :path_suffix
 
+    attr_accessor :permissions
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'description' => :'description',
         :'capacity_in_gb' => :'capacityInGb',
-        :'path_suffix' => :'pathSuffix'
+        :'path_suffix' => :'pathSuffix',
+        :'permissions' => :'permissions'
       }
     end
 
@@ -49,7 +52,8 @@ module NetworkStorageApi
         :'name' => :'String',
         :'description' => :'String',
         :'capacity_in_gb' => :'Integer',
-        :'path_suffix' => :'String'
+        :'path_suffix' => :'String',
+        :'permissions' => :'PermissionsUpdate'
       }
     end
 
@@ -88,6 +92,10 @@ module NetworkStorageApi
 
       if attributes.key?(:'path_suffix')
         self.path_suffix = attributes[:'path_suffix']
+      end
+
+      if attributes.key?(:'permissions')
+        self.permissions = attributes[:'permissions']
       end
     end
 
@@ -201,7 +209,8 @@ module NetworkStorageApi
           name == o.name &&
           description == o.description &&
           capacity_in_gb == o.capacity_in_gb &&
-          path_suffix == o.path_suffix
+          path_suffix == o.path_suffix &&
+          permissions == o.permissions
     end
 
     # @see the `==` method
@@ -213,7 +222,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, capacity_in_gb, path_suffix].hash
+      [name, description, capacity_in_gb, path_suffix, permissions].hash
     end
 
     # Builds the object from hash

@@ -19,8 +19,10 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_ip_blocks_ip_block_id_delete**](ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server. |
 | [**servers_server_id_ip_blocks_post**](ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server. |
 | [**servers_server_id_patch**](ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server. |
+| [**servers_server_id_private_networks_patch**](ServersApi.md#servers_server_id_private_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/private-network-configuration/private-networks/{privateNetworkId} | Updates the server&#39;s private network&#39;s IP addresses |
 | [**servers_server_id_private_networks_post**](ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network. |
 | [**servers_server_id_public_networks_delete**](ServersApi.md#servers_server_id_public_networks_delete) | **DELETE** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Removes the server from the Public Network |
+| [**servers_server_id_public_networks_patch**](ServersApi.md#servers_server_id_public_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId} | Updates the server&#39;s public network&#39;s IP addresses. |
 | [**servers_server_id_public_networks_post**](ServersApi.md#servers_server_id_public_networks_post) | **POST** /servers/{serverId}/network-configuration/public-network-configuration/public-networks | Adds the server to a Public Network. |
 | [**servers_server_id_tags_put**](ServersApi.md#servers_server_id_tags_put) | **PUT** /servers/{serverId}/tags | Overwrite tags assigned for Server. |
 
@@ -1094,6 +1096,83 @@ end
 - **Accept**: application/json
 
 
+## servers_server_id_private_networks_patch
+
+> <ServerPrivateNetwork> servers_server_id_private_networks_patch(server_id, private_network_id, opts)
+
+Updates the server's private network's IP addresses
+
+IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
+opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+  server_network_update: BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
+}
+
+begin
+  # Updates the server's private network's IP addresses
+  result = api_instance.servers_server_id_private_networks_patch(server_id, private_network_id, opts)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_private_networks_patch: #{e}"
+end
+```
+
+#### Using the servers_server_id_private_networks_patch_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ServerPrivateNetwork>, Integer, Hash)> servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts)
+
+```ruby
+begin
+  # Updates the server's private network's IP addresses
+  data, status_code, headers = api_instance.servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ServerPrivateNetwork>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_private_networks_patch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **private_network_id** | **String** | The private network identifier. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
+| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  | [optional] |
+
+### Return type
+
+[**ServerPrivateNetwork**](ServerPrivateNetwork.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## servers_server_id_private_networks_post
 
 > <ServerPrivateNetwork> servers_server_id_private_networks_post(server_id, opts)
@@ -1237,6 +1316,83 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## servers_server_id_public_networks_patch
+
+> <ServerPublicNetwork> servers_server_id_public_networks_patch(server_id, public_network_id, opts)
+
+Updates the server's public network's IP addresses.
+
+IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
+opts = {
+  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+  server_network_update: BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
+}
+
+begin
+  # Updates the server's public network's IP addresses.
+  result = api_instance.servers_server_id_public_networks_patch(server_id, public_network_id, opts)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_patch: #{e}"
+end
+```
+
+#### Using the servers_server_id_public_networks_patch_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts)
+
+```ruby
+begin
+  # Updates the server's public network's IP addresses.
+  data, status_code, headers = api_instance.servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ServerPublicNetwork>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_public_networks_patch_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **public_network_id** | **String** | The Public Network identifier. |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
+| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  | [optional] |
+
+### Return type
+
+[**ServerPublicNetwork**](ServerPublicNetwork.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

@@ -1019,6 +1019,85 @@ module BmcApi
       return data, status_code, headers
     end
 
+    # Updates the server's private network's IP addresses
+    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
+    # @param server_id [String] The server&#39;s ID.
+    # @param private_network_id [String] The private network identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @option opts [ServerNetworkUpdate] :server_network_update 
+    # @return [ServerPrivateNetwork]
+    def servers_server_id_private_networks_patch(server_id, private_network_id, opts = {})
+      data, _status_code, _headers = servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts)
+      data
+    end
+
+    # Updates the server&#39;s private network&#39;s IP addresses
+    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;
+    # @param server_id [String] The server&#39;s ID.
+    # @param private_network_id [String] The private network identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @option opts [ServerNetworkUpdate] :server_network_update 
+    # @return [Array<(ServerPrivateNetwork, Integer, Hash)>] ServerPrivateNetwork data, response status code and response headers
+    def servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_private_networks_patch ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_private_networks_patch"
+      end
+      # verify the required parameter 'private_network_id' is set
+      if @api_client.config.client_side_validation && private_network_id.nil?
+        fail ArgumentError, "Missing the required parameter 'private_network_id' when calling ServersApi.servers_server_id_private_networks_patch"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/network-configuration/private-network-configuration/private-networks/{privateNetworkId}'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s)).sub('{' + 'privateNetworkId' + '}', CGI.escape(private_network_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'server_network_update'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ServerPrivateNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_private_networks_patch",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_private_networks_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Adds the server to a private network.
     # Adds the server to a private network. <b>No actual configuration is performed on the operating system.</b> BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/configure-bmc-server-after-adding-to-network#ftoc-heading-3' target='_blank'>here</a>.
     # @param server_id [String] The server&#39;s ID.
@@ -1157,6 +1236,85 @@ module BmcApi
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ServersApi#servers_server_id_public_networks_delete\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Updates the server's public network's IP addresses.
+    # IP address changes intended to keep the BMC data up to date with server's operating system. We do not have access to the server's operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6' target='_blank'>here</a>
+    # @param server_id [String] The server&#39;s ID.
+    # @param public_network_id [String] The Public Network identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @option opts [ServerNetworkUpdate] :server_network_update 
+    # @return [ServerPublicNetwork]
+    def servers_server_id_public_networks_patch(server_id, public_network_id, opts = {})
+      data, _status_code, _headers = servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts)
+      data
+    end
+
+    # Updates the server&#39;s public network&#39;s IP addresses.
+    # IP address changes intended to keep the BMC data up to date with server&#39;s operating system. We do not have access to the server&#39;s operating system and therefore manual configuration is required to apply the changes on the host. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-6&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;
+    # @param server_id [String] The server&#39;s ID.
+    # @param public_network_id [String] The Public Network identifier.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @option opts [ServerNetworkUpdate] :server_network_update 
+    # @return [Array<(ServerPublicNetwork, Integer, Hash)>] ServerPublicNetwork data, response status code and response headers
+    def servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_public_networks_patch ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_public_networks_patch"
+      end
+      # verify the required parameter 'public_network_id' is set
+      if @api_client.config.client_side_validation && public_network_id.nil?
+        fail ArgumentError, "Missing the required parameter 'public_network_id' when calling ServersApi.servers_server_id_public_networks_patch"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/network-configuration/public-network-configuration/public-networks/{publicNetworkId}'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s)).sub('{' + 'publicNetworkId' + '}', CGI.escape(public_network_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'server_network_update'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ServerPublicNetwork'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_public_networks_patch",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_public_networks_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

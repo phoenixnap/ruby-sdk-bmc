@@ -25,7 +25,7 @@ module BmcApi
     # Determines whether DHCP is enabled for this server. Should be false if any IPs are provided. Not supported for Proxmox OS and ESXi OS.
     attr_accessor :dhcp
 
-    # The status of the network.
+    # (Read-only) The status of the network.
     attr_accessor :status_description
 
     # Attribute mapping from ruby-style variable name to JSON key.

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **root_password** | **String** | Password set for user root on a Proxmox server which will only be returned in response to provisioning a server. | [optional][readonly] |
-| **management_ui_url** | **String** | The URL of the management UI which will only be returned in response to provisioning a server. | [optional][readonly] |
+| **root_password** | **String** | (Read-only) Password set for user root on a Proxmox server which will only be returned in response to provisioning a server. | [optional][readonly] |
+| **management_ui_url** | **String** | (Read-only) The URL of the management UI which will only be returned in response to provisioning a server. | [optional][readonly] |
 | **management_access_allowed_ips** | **Array&lt;String&gt;** | List of IPs allowed to access the Management UI. Supported in single IP, CIDR and range format. When undefined, Management UI is disabled. This will only be returned in response to provisioning a server. | [optional] |
 
 ## Example
