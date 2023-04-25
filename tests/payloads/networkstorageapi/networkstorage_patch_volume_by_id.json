@@ -16,7 +16,14 @@
         "capacityInGb": 3000,
         "name" : "volumeName",
         "description" : "volumeDescription",
-        "pathSuffix" : "/pathSuffix"
+        "pathSuffix" : "/pathSuffix",
+        "permissions": {
+          "nfs": {
+            "readWrite": [
+              "10.0.0.0"
+            ]
+          }
+        }
       },
       "matchType": "STRICT"
     }

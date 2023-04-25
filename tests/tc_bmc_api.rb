@@ -528,4 +528,46 @@ class TC_BmcApi < Test::Unit::TestCase
     self.verify_called_once expectation
   end
 
+  def test_patch_private_network
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_patch_private_network_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+    network_id = TestUtils.extract_id_from(request, :networkid)
+
+    opts = {
+      server_network_update: BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request)),
+      force: TestUtils.generate_query_params(request)[:force]
+    }
+
+    result = api_instance.servers_server_id_private_networks_patch(server_id, network_id, opts)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_patch_public_network
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_patch_public_network_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+    network_id = TestUtils.extract_id_from(request, :networkid)
+
+    opts = {
+      server_network_update: BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request)),
+      force: TestUtils.generate_query_params(request)[:force]
+    }
+
+    result = api_instance.servers_server_id_public_networks_patch(server_id, network_id, opts)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
 end
