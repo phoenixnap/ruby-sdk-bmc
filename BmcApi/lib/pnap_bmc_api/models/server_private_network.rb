@@ -103,8 +103,8 @@ module BmcApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if !@ips.nil? && @ips.length > 10
-        invalid_properties.push('invalid value for "ips", number of items must be less than or equal to 10.')
+      if !@ips.nil? && @ips.length > 256
+        invalid_properties.push('invalid value for "ips", number of items must be less than or equal to 256.')
       end
 
       invalid_properties
@@ -114,15 +114,15 @@ module BmcApi
     # @return true if the model is valid
     def valid?
       return false if @id.nil?
-      return false if !@ips.nil? && @ips.length > 10
+      return false if !@ips.nil? && @ips.length > 256
       true
     end
 
     # Custom attribute writer method with validation
     # @param [Object] ips Value to be assigned
     def ips=(ips)
-      if !ips.nil? && ips.length > 10
-        fail ArgumentError, 'invalid value for "ips", number of items must be less than or equal to 10.'
+      if !ips.nil? && ips.length > 256
+        fail ArgumentError, 'invalid value for "ips", number of items must be less than or equal to 256.'
       end
 
       @ips = ips
