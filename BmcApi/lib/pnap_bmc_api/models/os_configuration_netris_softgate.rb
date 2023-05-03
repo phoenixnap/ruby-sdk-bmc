@@ -95,13 +95,56 @@ module BmcApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@controller_address.nil? && @controller_address.to_s.length > 253
+        invalid_properties.push('invalid value for "controller_address", the character length must be smaller than or equal to 253.')
+      end
+
+      pattern = Regexp.new(/^(?!-)[\w\-]{1,63}(?<!-)(\.(?!-)[\w\-]{1,63}(?<!-))*$/)
+      if !@controller_address.nil? && @controller_address !~ pattern
+        invalid_properties.push("invalid value for \"controller_address\", must conform to the pattern #{pattern}.")
+      end
+
+      pattern = Regexp.new(/^\S+$/)
+      if !@controller_auth_key.nil? && @controller_auth_key !~ pattern
+        invalid_properties.push("invalid value for \"controller_auth_key\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@controller_address.nil? && @controller_address.to_s.length > 253
+      return false if !@controller_address.nil? && @controller_address !~ Regexp.new(/^(?!-)[\w\-]{1,63}(?<!-)(\.(?!-)[\w\-]{1,63}(?<!-))*$/)
+      return false if !@controller_auth_key.nil? && @controller_auth_key !~ Regexp.new(/^\S+$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] controller_address Value to be assigned
+    def controller_address=(controller_address)
+      if !controller_address.nil? && controller_address.to_s.length > 253
+        fail ArgumentError, 'invalid value for "controller_address", the character length must be smaller than or equal to 253.'
+      end
+
+      pattern = Regexp.new(/^(?!-)[\w\-]{1,63}(?<!-)(\.(?!-)[\w\-]{1,63}(?<!-))*$/)
+      if !controller_address.nil? && controller_address !~ pattern
+        fail ArgumentError, "invalid value for \"controller_address\", must conform to the pattern #{pattern}."
+      end
+
+      @controller_address = controller_address
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] controller_auth_key Value to be assigned
+    def controller_auth_key=(controller_auth_key)
+      pattern = Regexp.new(/^\S+$/)
+      if !controller_auth_key.nil? && controller_auth_key !~ pattern
+        fail ArgumentError, "invalid value for \"controller_auth_key\", must conform to the pattern #{pattern}."
+      end
+
+      @controller_auth_key = controller_auth_key
     end
 
     # Checks equality by comparing each attribute.
