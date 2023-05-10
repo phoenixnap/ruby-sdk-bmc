@@ -46,7 +46,7 @@ module BmcApi
     # Server pricing model. Currently this field should be set to `HOURLY`, `ONE_MONTH_RESERVATION`, `TWELVE_MONTHS_RESERVATION`, `TWENTY_FOUR_MONTHS_RESERVATION` or `THIRTY_SIX_MONTHS_RESERVATION`.
     attr_accessor :pricing_model
 
-    # The type of network configuration for this server.<br> Currently this field should be set to `PUBLIC_AND_PRIVATE`, `PRIVATE_ONLY` or `PUBLIC_ONLY`.<br> Setting the `force` query parameter to `true` allows you to configure network configuration type as `NONE`.
+    # The type of network configuration for this server.<br> Currently this field should be set to `PUBLIC_AND_PRIVATE`, `PRIVATE_ONLY`, `PUBLIC_ONLY` or `USER_DEFINED`.<br> Setting the `force` query parameter to `true` allows you to configure network configuration type as `NONE`.
     attr_accessor :network_type
 
     attr_accessor :os_configuration
