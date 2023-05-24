@@ -18,6 +18,7 @@
 | **os_configuration** | [**OsConfiguration**](OsConfiguration.md) |  | [optional] |
 | **tags** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) | Tags to set to the server. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview). | [optional] |
 | **network_configuration** | [**NetworkConfiguration**](NetworkConfiguration.md) |  | [optional] |
+| **storage_configuration** | [**StorageConfiguration**](StorageConfiguration.md) |  | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = BmcApi::ServerCreate.new(
   network_type: PUBLIC_AND_PRIVATE,
   os_configuration: null,
   tags: null,
-  network_configuration: null
+  network_configuration: null,
+  storage_configuration: null
 )
 ```
 

@@ -56,6 +56,8 @@ module BmcApi
 
     attr_accessor :network_configuration
 
+    attr_accessor :storage_configuration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -72,7 +74,8 @@ module BmcApi
         :'network_type' => :'networkType',
         :'os_configuration' => :'osConfiguration',
         :'tags' => :'tags',
-        :'network_configuration' => :'networkConfiguration'
+        :'network_configuration' => :'networkConfiguration',
+        :'storage_configuration' => :'storageConfiguration'
       }
     end
 
@@ -97,7 +100,8 @@ module BmcApi
         :'network_type' => :'String',
         :'os_configuration' => :'OsConfiguration',
         :'tags' => :'Array<TagAssignmentRequest>',
-        :'network_configuration' => :'NetworkConfiguration'
+        :'network_configuration' => :'NetworkConfiguration',
+        :'storage_configuration' => :'StorageConfiguration'
       }
     end
 
@@ -188,6 +192,10 @@ module BmcApi
 
       if attributes.key?(:'network_configuration')
         self.network_configuration = attributes[:'network_configuration']
+      end
+
+      if attributes.key?(:'storage_configuration')
+        self.storage_configuration = attributes[:'storage_configuration']
       end
     end
 
@@ -296,7 +304,8 @@ module BmcApi
           network_type == o.network_type &&
           os_configuration == o.os_configuration &&
           tags == o.tags &&
-          network_configuration == o.network_configuration
+          network_configuration == o.network_configuration &&
+          storage_configuration == o.storage_configuration
     end
 
     # @see the `==` method
@@ -308,7 +317,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hostname, description, os, type, location, install_default_ssh_keys, ssh_keys, ssh_key_ids, reservation_id, pricing_model, network_type, os_configuration, tags, network_configuration].hash
+      [hostname, description, os, type, location, install_default_ssh_keys, ssh_keys, ssh_key_ids, reservation_id, pricing_model, network_type, os_configuration, tags, network_configuration, storage_configuration].hash
     end
 
     # Builds the object from hash

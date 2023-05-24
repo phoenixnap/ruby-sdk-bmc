@@ -86,6 +86,8 @@ module BmcApi
 
     attr_accessor :network_configuration
 
+    attr_accessor :storage_configuration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -112,7 +114,8 @@ module BmcApi
         :'tags' => :'tags',
         :'provisioned_on' => :'provisionedOn',
         :'os_configuration' => :'osConfiguration',
-        :'network_configuration' => :'networkConfiguration'
+        :'network_configuration' => :'networkConfiguration',
+        :'storage_configuration' => :'storageConfiguration'
       }
     end
 
@@ -147,7 +150,8 @@ module BmcApi
         :'tags' => :'Array<TagAssignment>',
         :'provisioned_on' => :'Time',
         :'os_configuration' => :'OsConfiguration',
-        :'network_configuration' => :'NetworkConfiguration'
+        :'network_configuration' => :'NetworkConfiguration',
+        :'storage_configuration' => :'StorageConfiguration'
       }
     end
 
@@ -277,6 +281,10 @@ module BmcApi
       if attributes.key?(:'network_configuration')
         self.network_configuration = attributes[:'network_configuration']
       end
+
+      if attributes.key?(:'storage_configuration')
+        self.storage_configuration = attributes[:'storage_configuration']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -380,6 +388,10 @@ module BmcApi
         invalid_properties.push('invalid value for "network_configuration", network_configuration cannot be nil.')
       end
 
+      if @storage_configuration.nil?
+        invalid_properties.push('invalid value for "storage_configuration", storage_configuration cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -410,6 +422,7 @@ module BmcApi
       return false if !@public_ip_addresses.nil? && @public_ip_addresses.length < 0
       return false if @pricing_model.nil?
       return false if @network_configuration.nil?
+      return false if @storage_configuration.nil?
       true
     end
 
@@ -540,7 +553,8 @@ module BmcApi
           tags == o.tags &&
           provisioned_on == o.provisioned_on &&
           os_configuration == o.os_configuration &&
-          network_configuration == o.network_configuration
+          network_configuration == o.network_configuration &&
+          storage_configuration == o.storage_configuration
     end
 
     # @see the `==` method
@@ -552,7 +566,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration].hash
+      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration].hash
     end
 
     # Builds the object from hash

@@ -28,6 +28,7 @@
 | **provisioned_on** | **Time** | Date and time when server was provisioned. | [optional] |
 | **os_configuration** | [**OsConfiguration**](OsConfiguration.md) |  | [optional] |
 | **network_configuration** | [**NetworkConfiguration**](NetworkConfiguration.md) |  |  |
+| **storage_configuration** | [**StorageConfiguration**](StorageConfiguration.md) |  |  |
 
 ## Example
 
@@ -58,7 +59,8 @@ instance = BmcApi::Server.new(
   tags: null,
   provisioned_on: 2021-03-13T20:24:32.491Z,
   os_configuration: null,
-  network_configuration: null
+  network_configuration: null,
+  storage_configuration: null
 )
 ```
 

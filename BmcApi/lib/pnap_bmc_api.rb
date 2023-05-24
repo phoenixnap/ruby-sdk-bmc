@@ -51,6 +51,8 @@ require 'pnap_bmc_api/models/server_reset'
 require 'pnap_bmc_api/models/ssh_key'
 require 'pnap_bmc_api/models/ssh_key_create'
 require 'pnap_bmc_api/models/ssh_key_update'
+require 'pnap_bmc_api/models/storage_configuration'
+require 'pnap_bmc_api/models/storage_configuration_root_partition'
 require 'pnap_bmc_api/models/tag_assignment'
 require 'pnap_bmc_api/models/tag_assignment_request'
 
