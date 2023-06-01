@@ -13,8 +13,8 @@
 require 'pnap_bmc_api'
 
 instance = BmcApi::StorageConfigurationRootPartition.new(
-  raid: null,
-  size: null
+  raid: NO_RAID,
+  size: -1
 )
 ```
 
