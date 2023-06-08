@@ -15,6 +15,7 @@
 | **status** | [**Status**](Status.md) |  | [optional] |
 | **created_on** | **Time** |  | [optional] |
 | **permissions** | [**Permissions**](Permissions.md) |  | [optional] |
+| **tags** | [**Array&lt;TagAssignment&gt;**](TagAssignment.md) | The tags assigned if any. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = NetworkStorageApi::Volume.new(
   protocol: NFS,
   status: null,
   created_on: 2021-03-13T20:24:32.491Z,
-  permissions: null
+  permissions: null,
+  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}]
 )
 ```
 

@@ -147,6 +147,8 @@ Class | Method | HTTP request | Description
  - [NetworkStorageApi::StorageNetworkCreate](docs/StorageNetworkCreate.md)
  - [NetworkStorageApi::StorageNetworkUpdate](docs/StorageNetworkUpdate.md)
  - [NetworkStorageApi::StorageNetworkVolumeCreate](docs/StorageNetworkVolumeCreate.md)
+ - [NetworkStorageApi::TagAssignment](docs/TagAssignment.md)
+ - [NetworkStorageApi::TagAssignmentRequest](docs/TagAssignmentRequest.md)
  - [NetworkStorageApi::Volume](docs/Volume.md)
  - [NetworkStorageApi::VolumeCreate](docs/VolumeCreate.md)
  - [NetworkStorageApi::VolumeUpdate](docs/VolumeUpdate.md)
