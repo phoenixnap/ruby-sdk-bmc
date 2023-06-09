@@ -14,6 +14,7 @@ All URIs are relative to *https://api.phoenixnap.com/network-storage/v1*
 | [**storage_networks_storage_network_id_volumes_volume_id_delete**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_delete) | **DELETE** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Delete a Storage Network&#39;s Volume |
 | [**storage_networks_storage_network_id_volumes_volume_id_get**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_get) | **GET** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Get a storage network&#39;s volume details. |
 | [**storage_networks_storage_network_id_volumes_volume_id_patch**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_patch) | **PATCH** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Update a storage network&#39;s volume details. |
+| [**storage_networks_storage_network_id_volumes_volume_id_tags_put**](StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_tags_put) | **PUT** /storage-networks/{storageNetworkId}/volumes/{volumeId}/tags | Overwrites tags assigned for the volume. |
 
 
 ## storage_networks_get
@@ -711,6 +712,81 @@ end
 | **storage_network_id** | **String** | ID of storage network. |  |
 | **volume_id** | **String** | ID of volume. |  |
 | **volume_update** | [**VolumeUpdate**](VolumeUpdate.md) | Storage network volume to be updated. | [optional] |
+
+### Return type
+
+[**Volume**](Volume.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## storage_networks_storage_network_id_volumes_volume_id_tags_put
+
+> <Volume> storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, opts)
+
+Overwrites tags assigned for the volume.
+
+Overwrites tags assigned for the volume.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_network_storage_api'
+# setup authorization
+NetworkStorageApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = NetworkStorageApi::StorageNetworksApi.new
+storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
+volume_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of volume.
+opts = {
+  tag_assignment_request: [NetworkStorageApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | Tags to assign to the volume.
+}
+
+begin
+  # Overwrites tags assigned for the volume.
+  result = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, opts)
+  p result
+rescue NetworkStorageApi::ApiError => e
+  puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_tags_put: #{e}"
+end
+```
+
+#### Using the storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts)
+
+```ruby
+begin
+  # Overwrites tags assigned for the volume.
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Volume>
+rescue NetworkStorageApi::ApiError => e
+  puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **storage_network_id** | **String** | ID of storage network. |  |
+| **volume_id** | **String** | ID of volume. |  |
+| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) | Tags to assign to the volume. | [optional] |
 
 ### Return type
 
