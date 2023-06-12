@@ -371,7 +371,7 @@ end
 
 ## storage_networks_storage_network_id_volumes_get
 
-> <Array<Volume>> storage_networks_storage_network_id_volumes_get(storage_network_id)
+> <Array<Volume>> storage_networks_storage_network_id_volumes_get(storage_network_id, opts)
 
 Display one or more volumes belonging to a storage network.
 
@@ -390,10 +390,13 @@ end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
+opts = {
+  tag: ['inner_example'] # Array<String> | A list of query parameters related to tags in the form of tagName.tagValue
+}
 
 begin
   # Display one or more volumes belonging to a storage network.
-  result = api_instance.storage_networks_storage_network_id_volumes_get(storage_network_id)
+  result = api_instance.storage_networks_storage_network_id_volumes_get(storage_network_id, opts)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_get: #{e}"
@@ -404,12 +407,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<Volume>>, Integer, Hash)> storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id)
+> <Array(<Array<Volume>>, Integer, Hash)> storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id, opts)
 
 ```ruby
 begin
   # Display one or more volumes belonging to a storage network.
-  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id)
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<Volume>>
@@ -423,6 +426,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **storage_network_id** | **String** | ID of storage network. |  |
+| **tag** | [**Array&lt;String&gt;**](String.md) | A list of query parameters related to tags in the form of tagName.tagValue | [optional] |
 
 ### Return type
 

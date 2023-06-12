@@ -343,6 +343,7 @@ module NetworkStorageApi
     # Display one or more volumes belonging to a storage network.
     # @param storage_network_id [String] ID of storage network.
     # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
     # @return [Array<Volume>]
     def storage_networks_storage_network_id_volumes_get(storage_network_id, opts = {})
       data, _status_code, _headers = storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id, opts)
@@ -353,6 +354,7 @@ module NetworkStorageApi
     # Display one or more volumes belonging to a storage network.
     # @param storage_network_id [String] ID of storage network.
     # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
     # @return [Array<(Array<Volume>, Integer, Hash)>] Array<Volume> data, response status code and response headers
     def storage_networks_storage_network_id_volumes_get_with_http_info(storage_network_id, opts = {})
       if @api_client.config.debugging
@@ -367,6 +369,7 @@ module NetworkStorageApi
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'tag'] = @api_client.build_collection_param(opts[:'tag'], :multi) if !opts[:'tag'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
