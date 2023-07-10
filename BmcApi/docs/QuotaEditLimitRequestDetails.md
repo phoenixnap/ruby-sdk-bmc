@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **limit** | **Integer** | The new limit that is requested. |  |
+| **limit** | **Integer** | The new limit that is requested. Minimum allowed limit values: - 0 (Server, IPs) - 1000 (Network Storage) |  |
 | **reason** | **String** | The reason for changing the limit. |  |
 | **requested_on** | **Time** | The point in time the request was submitted. |  |
 
