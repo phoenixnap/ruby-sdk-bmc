@@ -37,3 +37,4 @@ class TC_LocationApi < Test::Unit::TestCase
     def teardown
         TestUtils.reset_expectations
     end
+end
