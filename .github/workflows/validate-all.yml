@@ -58,7 +58,7 @@ jobs:
       - build-and-test-auditapi
       - build-and-test-tagapi
       - build-and-test-networkstorageapi
-      - build-and-test-location-api
+      - build-and-test-locationapi
     runs-on: ubuntu-latest
     if: always()
     steps:
