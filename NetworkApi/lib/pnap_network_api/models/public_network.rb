@@ -34,7 +34,7 @@ module NetworkApi
     # The description of this public network.
     attr_accessor :description
 
-    # The status of the public network. Can have one of the following values: `BUSY` or `READY`.
+    # The status of the public network. Can have one of the following values: `BUSY`, `READY`, `DELETING` or `ERROR`.
     attr_accessor :status
 
     # Date and time when this public network was created.
