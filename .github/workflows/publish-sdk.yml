@@ -40,6 +40,11 @@ jobs:
     with:
       module-name: NetworkStorageApi
       test-file: tc_networkstorage_api.rb
+  build-and-test-locationapi:
+    uses: ./.github/workflows/_common.yml
+    with:
+      module-name: LocationApi
+      test-file: tc_location_api.rb
 
   publish:
     name: Publish SDK
@@ -51,6 +56,7 @@ jobs:
       - build-and-test-auditapi
       - build-and-test-tagapi
       - build-and-test-networkstorageapi
+      - build-and-test-locationapi
     uses: ./.github/workflows/_publish.yml
     secrets: 
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
