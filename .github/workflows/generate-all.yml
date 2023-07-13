@@ -71,6 +71,13 @@ jobs:
       spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/network-storage/download_spec
       module-name: NetworkStorageApi
       gem-name: pnap_network_storage_api
+  generate-locationapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-location/download_spec
+      module-name: LocationApi
+      gem-name: pnap_location_api
 
   # Push generated code
   push-changes:
@@ -84,6 +91,7 @@ jobs:
       - generate-auditapi
       - generate-tagapi
       - generate-networkstorageapi
+      - generate-locationapi
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
