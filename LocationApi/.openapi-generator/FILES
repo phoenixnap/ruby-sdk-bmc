@@ -22,12 +22,6 @@ lib/pnap_location_api/models/product_category.rb
 lib/pnap_location_api/models/product_category_enum.rb
 lib/pnap_location_api/version.rb
 pnap_location_api.gemspec
-spec/api/locations_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/error_spec.rb
-spec/models/location_enum_spec.rb
-spec/models/location_spec.rb
-spec/models/product_category_enum_spec.rb
-spec/models/product_category_spec.rb
 spec/spec_helper.rb
