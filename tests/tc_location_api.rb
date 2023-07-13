@@ -37,4 +37,21 @@ class TC_LocationApi < Test::Unit::TestCase
     def teardown
         TestUtils.reset_expectations
     end
+
+    def test_get_locations
+        # setting up expectation
+        request, response = TestUtils.generate_payloads_from('locationapi/locations_get')
+        expectation = TestUtils.setup_expectation(request, response, 1)
+
+        # Creating new instance
+        api_instance = LocationApi::LocationsApi.new
+        opts = TestUtils.generate_query_params(request)
+        opts[:product_category] = opts[:productCategory]
+
+        result = api_instance.get_locations(opts)
+
+        assert_equal response[:body], [result[0].to_hash.compact]
+
+        self.verify_called_once expectation
+    end
 end

@@ -1,43 +1,49 @@
 PATH
   remote: ../AuditApi
   specs:
-    pnap_audit_api (1.0.5)
+    pnap_audit_api (1.0.6.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../BmcApi
   specs:
-    pnap_bmc_api (1.4.0)
+    pnap_bmc_api (1.4.1.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../IpApi
   specs:
-    pnap_ip_api (1.1.4)
+    pnap_ip_api (1.1.5.pre.SNAPSHOT)
+      typhoeus (~> 1.0, >= 1.0.1)
+
+PATH
+  remote: ../LocationApi
+  specs:
+    pnap_location_api (1.0.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../NetworkApi
   specs:
-    pnap_network_api (1.3.1)
+    pnap_network_api (1.3.2.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../NetworkStorageApi
   specs:
-    pnap_network_storage_api (1.3.0)
+    pnap_network_storage_api (1.3.1.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../RancherApi
   specs:
-    pnap_rancher_api (1.0.5)
+    pnap_rancher_api (1.0.6.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../TagApi
   specs:
-    pnap_tag_api (1.0.5)
+    pnap_tag_api (1.0.6.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
@@ -79,6 +85,7 @@ DEPENDENCIES
   pnap_audit_api!
   pnap_bmc_api!
   pnap_ip_api!
+  pnap_location_api!
   pnap_network_api!
   pnap_network_storage_api!
   pnap_rancher_api!
