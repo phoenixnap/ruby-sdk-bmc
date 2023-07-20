@@ -15,7 +15,7 @@ require 'time'
 
 module BmcApi
   class QuotaEditLimitRequestDetails
-    # The new limit that is requested.
+    # The new limit that is requested. Minimum allowed limit values: - 0 (Server, IPs) - 1000 (Network Storage)
     attr_accessor :limit
 
     # The reason for changing the limit.

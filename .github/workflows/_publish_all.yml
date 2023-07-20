@@ -1,4 +1,4 @@
-name: (internal) - Publish All
+name: (abstract) - Publish All
 
 on:
   workflow_call:
@@ -91,3 +91,14 @@ jobs:
     with:
       dry_run: ${{ inputs.dry_run }}
       gem_to_publish: TagApi
+
+  publish-location-api:
+    name: Publish Location API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: LocationApi

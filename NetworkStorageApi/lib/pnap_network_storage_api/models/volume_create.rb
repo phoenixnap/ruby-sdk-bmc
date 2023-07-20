@@ -30,6 +30,9 @@ module NetworkStorageApi
 
     attr_accessor :permissions
 
+    # Tags to set to the resource. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview).
+    attr_accessor :tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +40,8 @@ module NetworkStorageApi
         :'description' => :'description',
         :'path_suffix' => :'pathSuffix',
         :'capacity_in_gb' => :'capacityInGb',
-        :'permissions' => :'permissions'
+        :'permissions' => :'permissions',
+        :'tags' => :'tags'
       }
     end
 
@@ -53,7 +57,8 @@ module NetworkStorageApi
         :'description' => :'String',
         :'path_suffix' => :'String',
         :'capacity_in_gb' => :'Integer',
-        :'permissions' => :'PermissionsCreate'
+        :'permissions' => :'PermissionsCreate',
+        :'tags' => :'Array<TagAssignmentRequest>'
       }
     end
 
@@ -96,6 +101,12 @@ module NetworkStorageApi
 
       if attributes.key?(:'permissions')
         self.permissions = attributes[:'permissions']
+      end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
       end
     end
 
@@ -228,7 +239,8 @@ module NetworkStorageApi
           description == o.description &&
           path_suffix == o.path_suffix &&
           capacity_in_gb == o.capacity_in_gb &&
-          permissions == o.permissions
+          permissions == o.permissions &&
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -240,7 +252,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, path_suffix, capacity_in_gb, permissions].hash
+      [name, description, path_suffix, capacity_in_gb, permissions, tags].hash
     end
 
     # Builds the object from hash

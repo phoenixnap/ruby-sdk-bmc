@@ -28,10 +28,10 @@ module BmcApi
     # Description of server.
     attr_accessor :description
 
-    # The server’s OS ID used when the server was created. Currently this field should be set to either `ubuntu/bionic`, `ubuntu/focal`, `ubuntu/jammy`, `centos/centos7`, `centos/centos8`, `windows/srv2019std`, `windows/srv2019dc`, `esxi/esxi70`, `debian/bullseye`, `proxmox/bullseye`, `netris/controller`, `netris/softgate_1g` or `netris/softgate_10g`.
+    # The server’s OS ID used when the server was created. Currently this field should be set to either `ubuntu/bionic`, `ubuntu/focal`, `ubuntu/jammy`, `centos/centos7`, `centos/centos8`, `windows/srv2019std`, `windows/srv2019dc`, `esxi/esxi70`, `esxi/esxi80`, `debian/bullseye`, `proxmox/bullseye`, `netris/controller`, `netris/softgate_1g` or `netris/softgate_10g`.
     attr_accessor :os
 
-    # Server type ID. Cannot be changed once a server is created. Currently this field should be set to either `s0.d1.small`, `s0.d1.medium`, `s1.c1.small`, `s1.c1.medium`, `s1.c2.medium`, `s1.c2.large`, `s1.e1.small`, `s1.e1.medium`, `s1.e1.large`, `s2.c1.small`, `s2.c1.medium`, `s2.c1.large`, `s2.c2.small`, `s2.c2.medium`, `s2.c2.large`, `d1.c1.small`, `d1.c2.small`, `d1.c3.small`, `d1.c4.small`, `d1.c1.medium`, `d1.c2.medium`, `d1.c3.medium`, `d1.c4.medium`, `d1.c1.large`, `d1.c2.large`, `d1.c3.large`, `d1.c4.large`, `d1.m1.medium`, `d1.m2.medium`, `d1.m3.medium`, `d1.m4.medium`, `d2.c1.medium`, `d2.c2.medium`, `d2.c3.medium`, `d2.c4.medium`, `d2.c5.medium`, `d2.c1.large`, `d2.c2.large`, `d2.c3.large`, `d2.c4.large`, `d2.c5.large`, `d2.m1.medium`, `d2.m1.large`, `d2.m2.medium`, `d2.m2.large`, `d2.m2.xlarge`, `d2.c4.storage.pliops1`, `d3.m4.xlarge`, `d3.m5.xlarge` or `d3.m6.xlarge`.
+    # Server type ID. Cannot be changed once a server is created. Currently this field should be set to either `s0.d1.small`, `s0.d1.medium`, `s1.c1.small`, `s1.c1.medium`, `s1.c2.medium`, `s1.c2.large`, `s1.e1.small`, `s1.e1.medium`, `s1.e1.large`, `s2.c1.small`, `s2.c1.medium`, `s2.c1.large`, `s2.c2.small`, `s2.c2.medium`, `s2.c2.large`, `d1.c1.small`, `d1.c2.small`, `d1.c3.small`, `d1.c4.small`, `d1.c1.medium`, `d1.c2.medium`, `d1.c3.medium`, `d1.c4.medium`, `d1.c1.large`, `d1.c2.large`, `d1.c3.large`, `d1.c4.large`, `d1.m1.medium`, `d1.m2.medium`, `d1.m3.medium`, `d1.m4.medium`, `d2.c1.medium`, `d2.c2.medium`, `d2.c3.medium`, `d2.c4.medium`, `d2.c5.medium`, `d2.c1.large`, `d2.c2.large`, `d2.c3.large`, `d2.c4.large`, `d2.c5.large`, `d2.m1.medium`, `d2.m1.large`, `d2.m2.medium`, `d2.m2.large`, `d2.m2.xlarge`, `d2.c4.db1.pliops1`, `d3.m4.xlarge`, `d3.m5.xlarge`, `d3.m6.xlarge` or `a1.c5.large`.
     attr_accessor :type
 
     # Server location ID. Cannot be changed once a server is created. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
@@ -70,7 +70,7 @@ module BmcApi
     # Auto-generated password set for user `Admin` on Windows server, user `root` on ESXi servers, user `root` on Proxmox server and user `netris` on Netris servers.<br> The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
     attr_accessor :password
 
-    # The type of network configuration for this server. Currently this field should be set to `PUBLIC_AND_PRIVATE` or `PRIVATE_ONLY`.
+    # The type of network configuration for this server. Currently this field should be set to `PUBLIC_AND_PRIVATE`, `PRIVATE_ONLY`, `PUBLIC_ONLY` or `NONE`.
     attr_accessor :network_type
 
     # The cluster reference id if any.
@@ -85,6 +85,8 @@ module BmcApi
     attr_accessor :os_configuration
 
     attr_accessor :network_configuration
+
+    attr_accessor :storage_configuration
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -112,7 +114,8 @@ module BmcApi
         :'tags' => :'tags',
         :'provisioned_on' => :'provisionedOn',
         :'os_configuration' => :'osConfiguration',
-        :'network_configuration' => :'networkConfiguration'
+        :'network_configuration' => :'networkConfiguration',
+        :'storage_configuration' => :'storageConfiguration'
       }
     end
 
@@ -147,7 +150,8 @@ module BmcApi
         :'tags' => :'Array<TagAssignment>',
         :'provisioned_on' => :'Time',
         :'os_configuration' => :'OsConfiguration',
-        :'network_configuration' => :'NetworkConfiguration'
+        :'network_configuration' => :'NetworkConfiguration',
+        :'storage_configuration' => :'StorageConfiguration'
       }
     end
 
@@ -277,6 +281,10 @@ module BmcApi
       if attributes.key?(:'network_configuration')
         self.network_configuration = attributes[:'network_configuration']
       end
+
+      if attributes.key?(:'storage_configuration')
+        self.storage_configuration = attributes[:'storage_configuration']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -380,6 +388,10 @@ module BmcApi
         invalid_properties.push('invalid value for "network_configuration", network_configuration cannot be nil.')
       end
 
+      if @storage_configuration.nil?
+        invalid_properties.push('invalid value for "storage_configuration", storage_configuration cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -410,6 +422,7 @@ module BmcApi
       return false if !@public_ip_addresses.nil? && @public_ip_addresses.length < 0
       return false if @pricing_model.nil?
       return false if @network_configuration.nil?
+      return false if @storage_configuration.nil?
       true
     end
 
@@ -540,7 +553,8 @@ module BmcApi
           tags == o.tags &&
           provisioned_on == o.provisioned_on &&
           os_configuration == o.os_configuration &&
-          network_configuration == o.network_configuration
+          network_configuration == o.network_configuration &&
+          storage_configuration == o.storage_configuration
     end
 
     # @see the `==` method
@@ -552,7 +566,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration].hash
+      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration].hash
     end
 
     # Builds the object from hash

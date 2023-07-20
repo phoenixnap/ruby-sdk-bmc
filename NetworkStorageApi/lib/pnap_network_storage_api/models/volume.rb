@@ -46,6 +46,9 @@ module NetworkStorageApi
 
     attr_accessor :permissions
 
+    # The tags assigned if any.
+    attr_accessor :tags
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -59,7 +62,8 @@ module NetworkStorageApi
         :'protocol' => :'protocol',
         :'status' => :'status',
         :'created_on' => :'createdOn',
-        :'permissions' => :'permissions'
+        :'permissions' => :'permissions',
+        :'tags' => :'tags'
       }
     end
 
@@ -81,7 +85,8 @@ module NetworkStorageApi
         :'protocol' => :'String',
         :'status' => :'Status',
         :'created_on' => :'Time',
-        :'permissions' => :'Permissions'
+        :'permissions' => :'Permissions',
+        :'tags' => :'Array<TagAssignment>'
       }
     end
 
@@ -149,6 +154,12 @@ module NetworkStorageApi
       if attributes.key?(:'permissions')
         self.permissions = attributes[:'permissions']
       end
+
+      if attributes.key?(:'tags')
+        if (value = attributes[:'tags']).is_a?(Array)
+          self.tags = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -179,7 +190,8 @@ module NetworkStorageApi
           protocol == o.protocol &&
           status == o.status &&
           created_on == o.created_on &&
-          permissions == o.permissions
+          permissions == o.permissions &&
+          tags == o.tags
     end
 
     # @see the `==` method
@@ -191,7 +203,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, path, path_suffix, capacity_in_gb, used_capacity_in_gb, protocol, status, created_on, permissions].hash
+      [id, name, description, path, path_suffix, capacity_in_gb, used_capacity_in_gb, protocol, status, created_on, permissions, tags].hash
     end
 
     # Builds the object from hash

@@ -187,6 +187,8 @@ Class | Method | HTTP request | Description
  - [BmcApi::SshKey](docs/SshKey.md)
  - [BmcApi::SshKeyCreate](docs/SshKeyCreate.md)
  - [BmcApi::SshKeyUpdate](docs/SshKeyUpdate.md)
+ - [BmcApi::StorageConfiguration](docs/StorageConfiguration.md)
+ - [BmcApi::StorageConfigurationRootPartition](docs/StorageConfigurationRootPartition.md)
  - [BmcApi::TagAssignment](docs/TagAssignment.md)
  - [BmcApi::TagAssignmentRequest](docs/TagAssignmentRequest.md)
 

@@ -17,6 +17,8 @@ docs/StorageNetworkCreate.md
 docs/StorageNetworkUpdate.md
 docs/StorageNetworkVolumeCreate.md
 docs/StorageNetworksApi.md
+docs/TagAssignment.md
+docs/TagAssignmentRequest.md
 docs/Volume.md
 docs/VolumeCreate.md
 docs/VolumeUpdate.md
@@ -37,6 +39,8 @@ lib/pnap_network_storage_api/models/storage_network.rb
 lib/pnap_network_storage_api/models/storage_network_create.rb
 lib/pnap_network_storage_api/models/storage_network_update.rb
 lib/pnap_network_storage_api/models/storage_network_volume_create.rb
+lib/pnap_network_storage_api/models/tag_assignment.rb
+lib/pnap_network_storage_api/models/tag_assignment_request.rb
 lib/pnap_network_storage_api/models/volume.rb
 lib/pnap_network_storage_api/models/volume_create.rb
 lib/pnap_network_storage_api/models/volume_update.rb

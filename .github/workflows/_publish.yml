@@ -1,4 +1,4 @@
-name: (internal) - Publish
+name: (abstract) - Publish
 
 on:
   workflow_call:

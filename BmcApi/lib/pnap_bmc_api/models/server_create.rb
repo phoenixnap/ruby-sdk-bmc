@@ -22,10 +22,10 @@ module BmcApi
     # Description of server.
     attr_accessor :description
 
-    # The server’s OS ID used when the server was created. Currently this field should be set to either `ubuntu/bionic`, `ubuntu/focal`, `ubuntu/jammy`, `centos/centos7`, `centos/centos8`, `windows/srv2019std`, `windows/srv2019dc`, `esxi/esxi70`, `debian/bullseye`, `proxmox/bullseye`, `netris/controller`, `netris/softgate_1g` or `netris/softgate_10g`.
+    # The server’s OS ID used when the server was created. Currently this field should be set to either `ubuntu/bionic`, `ubuntu/focal`, `ubuntu/jammy`, `centos/centos7`, `centos/centos8`, `windows/srv2019std`, `windows/srv2019dc`, `esxi/esxi70`, `esxi/esxi80`, `debian/bullseye`, `proxmox/bullseye`, `netris/controller`, `netris/softgate_1g` or `netris/softgate_10g`.
     attr_accessor :os
 
-    # Server type ID. Cannot be changed once a server is created. Currently this field should be set to either `s0.d1.small`, `s0.d1.medium`, `s1.c1.small`, `s1.c1.medium`, `s1.c2.medium`, `s1.c2.large`, `s1.e1.small`, `s1.e1.medium`, `s1.e1.large`, `s2.c1.small`, `s2.c1.medium`, `s2.c1.large`, `s2.c2.small`, `s2.c2.medium`, `s2.c2.large`, `d1.c1.small`, `d1.c2.small`, `d1.c3.small`, `d1.c4.small`, `d1.c1.medium`, `d1.c2.medium`, `d1.c3.medium`, `d1.c4.medium`, `d1.c1.large`, `d1.c2.large`, `d1.c3.large`, `d1.c4.large`, `d1.m1.medium`, `d1.m2.medium`, `d1.m3.medium`, `d1.m4.medium`, `d2.c1.medium`, `d2.c2.medium`, `d2.c3.medium`, `d2.c4.medium`, `d2.c5.medium`, `d2.c1.large`, `d2.c2.large`, `d2.c3.large`, `d2.c4.large`, `d2.c5.large`, `d2.m1.medium`, `d2.m1.large`, `d2.m2.medium`, `d2.m2.large`, `d2.m2.xlarge`, `d2.c4.storage.pliops1`, `d3.m4.xlarge`, `d3.m5.xlarge` or `d3.m6.xlarge`.
+    # Server type ID. Cannot be changed once a server is created. Currently this field should be set to either `s0.d1.small`, `s0.d1.medium`, `s1.c1.small`, `s1.c1.medium`, `s1.c2.medium`, `s1.c2.large`, `s1.e1.small`, `s1.e1.medium`, `s1.e1.large`, `s2.c1.small`, `s2.c1.medium`, `s2.c1.large`, `s2.c2.small`, `s2.c2.medium`, `s2.c2.large`, `d1.c1.small`, `d1.c2.small`, `d1.c3.small`, `d1.c4.small`, `d1.c1.medium`, `d1.c2.medium`, `d1.c3.medium`, `d1.c4.medium`, `d1.c1.large`, `d1.c2.large`, `d1.c3.large`, `d1.c4.large`, `d1.m1.medium`, `d1.m2.medium`, `d1.m3.medium`, `d1.m4.medium`, `d2.c1.medium`, `d2.c2.medium`, `d2.c3.medium`, `d2.c4.medium`, `d2.c5.medium`, `d2.c1.large`, `d2.c2.large`, `d2.c3.large`, `d2.c4.large`, `d2.c5.large`, `d2.m1.medium`, `d2.m1.large`, `d2.m2.medium`, `d2.m2.large`, `d2.m2.xlarge`, `d2.c4.db1.pliops1`, `d3.m4.xlarge`, `d3.m5.xlarge`, `d3.m6.xlarge` or `a1.c5.large`.
     attr_accessor :type
 
     # Server location ID. Cannot be changed once a server is created. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
@@ -46,7 +46,7 @@ module BmcApi
     # Server pricing model. Currently this field should be set to `HOURLY`, `ONE_MONTH_RESERVATION`, `TWELVE_MONTHS_RESERVATION`, `TWENTY_FOUR_MONTHS_RESERVATION` or `THIRTY_SIX_MONTHS_RESERVATION`.
     attr_accessor :pricing_model
 
-    # The type of network configuration for this server. Currently this field should be set to `PUBLIC_AND_PRIVATE` or `PRIVATE_ONLY`.
+    # The type of network configuration for this server.<br> Currently this field should be set to `PUBLIC_AND_PRIVATE`, `PRIVATE_ONLY`, `PUBLIC_ONLY` or `USER_DEFINED`.<br> Setting the `force` query parameter to `true` allows you to configure network configuration type as `NONE`.
     attr_accessor :network_type
 
     attr_accessor :os_configuration
@@ -55,6 +55,8 @@ module BmcApi
     attr_accessor :tags
 
     attr_accessor :network_configuration
+
+    attr_accessor :storage_configuration
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -72,7 +74,8 @@ module BmcApi
         :'network_type' => :'networkType',
         :'os_configuration' => :'osConfiguration',
         :'tags' => :'tags',
-        :'network_configuration' => :'networkConfiguration'
+        :'network_configuration' => :'networkConfiguration',
+        :'storage_configuration' => :'storageConfiguration'
       }
     end
 
@@ -97,7 +100,8 @@ module BmcApi
         :'network_type' => :'String',
         :'os_configuration' => :'OsConfiguration',
         :'tags' => :'Array<TagAssignmentRequest>',
-        :'network_configuration' => :'NetworkConfiguration'
+        :'network_configuration' => :'NetworkConfiguration',
+        :'storage_configuration' => :'StorageConfiguration'
       }
     end
 
@@ -188,6 +192,10 @@ module BmcApi
 
       if attributes.key?(:'network_configuration')
         self.network_configuration = attributes[:'network_configuration']
+      end
+
+      if attributes.key?(:'storage_configuration')
+        self.storage_configuration = attributes[:'storage_configuration']
       end
     end
 
@@ -296,7 +304,8 @@ module BmcApi
           network_type == o.network_type &&
           os_configuration == o.os_configuration &&
           tags == o.tags &&
-          network_configuration == o.network_configuration
+          network_configuration == o.network_configuration &&
+          storage_configuration == o.storage_configuration
     end
 
     # @see the `==` method
@@ -308,7 +317,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [hostname, description, os, type, location, install_default_ssh_keys, ssh_keys, ssh_key_ids, reservation_id, pricing_model, network_type, os_configuration, tags, network_configuration].hash
+      [hostname, description, os, type, location, install_default_ssh_keys, ssh_keys, ssh_key_ids, reservation_id, pricing_model, network_type, os_configuration, tags, network_configuration, storage_configuration].hash
     end
 
     # Builds the object from hash

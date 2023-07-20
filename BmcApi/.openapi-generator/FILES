@@ -41,6 +41,8 @@ docs/ServersApi.md
 docs/SshKey.md
 docs/SshKeyCreate.md
 docs/SshKeyUpdate.md
+docs/StorageConfiguration.md
+docs/StorageConfigurationRootPartition.md
 docs/TagAssignment.md
 docs/TagAssignmentRequest.md
 lib/pnap_bmc_api.rb
@@ -84,6 +86,8 @@ lib/pnap_bmc_api/models/server_reset.rb
 lib/pnap_bmc_api/models/ssh_key.rb
 lib/pnap_bmc_api/models/ssh_key_create.rb
 lib/pnap_bmc_api/models/ssh_key_update.rb
+lib/pnap_bmc_api/models/storage_configuration.rb
+lib/pnap_bmc_api/models/storage_configuration_root_partition.rb
 lib/pnap_bmc_api/models/tag_assignment.rb
 lib/pnap_bmc_api/models/tag_assignment_request.rb
 lib/pnap_bmc_api/version.rb
