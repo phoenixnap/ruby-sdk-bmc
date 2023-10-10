@@ -88,6 +88,12 @@ module BmcApi
 
     attr_accessor :storage_configuration
 
+    # Unique identifier of the server to which the reservation has been transferred.
+    attr_accessor :superseded_by
+
+    # Unique identifier of the server from which the reservation has been transferred.
+    attr_accessor :supersedes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -115,7 +121,9 @@ module BmcApi
         :'provisioned_on' => :'provisionedOn',
         :'os_configuration' => :'osConfiguration',
         :'network_configuration' => :'networkConfiguration',
-        :'storage_configuration' => :'storageConfiguration'
+        :'storage_configuration' => :'storageConfiguration',
+        :'superseded_by' => :'supersededBy',
+        :'supersedes' => :'supersedes'
       }
     end
 
@@ -151,7 +159,9 @@ module BmcApi
         :'provisioned_on' => :'Time',
         :'os_configuration' => :'OsConfiguration',
         :'network_configuration' => :'NetworkConfiguration',
-        :'storage_configuration' => :'StorageConfiguration'
+        :'storage_configuration' => :'StorageConfiguration',
+        :'superseded_by' => :'String',
+        :'supersedes' => :'String'
       }
     end
 
@@ -285,6 +295,14 @@ module BmcApi
       if attributes.key?(:'storage_configuration')
         self.storage_configuration = attributes[:'storage_configuration']
       end
+
+      if attributes.key?(:'superseded_by')
+        self.superseded_by = attributes[:'superseded_by']
+      end
+
+      if attributes.key?(:'supersedes')
+        self.supersedes = attributes[:'supersedes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -318,10 +336,6 @@ module BmcApi
 
       if !@description.nil? && @description.to_s.length > 250
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
-      end
-
-      if @os.nil?
-        invalid_properties.push('invalid value for "os", os cannot be nil.')
       end
 
       if @type.nil?
@@ -405,7 +419,6 @@ module BmcApi
       return false if @hostname.to_s.length < 1
       return false if @hostname !~ Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9().-])+$/)
       return false if !@description.nil? && @description.to_s.length > 250
-      return false if @os.nil?
       return false if @type.nil?
       return false if @location.nil?
       return false if @cpu.nil?
@@ -554,7 +567,9 @@ module BmcApi
           provisioned_on == o.provisioned_on &&
           os_configuration == o.os_configuration &&
           network_configuration == o.network_configuration &&
-          storage_configuration == o.storage_configuration
+          storage_configuration == o.storage_configuration &&
+          superseded_by == o.superseded_by &&
+          supersedes == o.supersedes
     end
 
     # @see the `==` method
@@ -566,7 +581,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration].hash
+      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration, superseded_by, supersedes].hash
     end
 
     # Builds the object from hash
