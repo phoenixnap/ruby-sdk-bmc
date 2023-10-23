@@ -284,9 +284,9 @@ components:
           allOf:
             - $ref: '#/components/schemas/WorkloadClusterConfig'
         statusDescription:
-          readOnly: true
-          description: The cluster status
+          description: (Read-Only) The cluster status
           type: string
+          readOnly: true
           example: Creating
       required:
         - location

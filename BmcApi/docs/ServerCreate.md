@@ -34,7 +34,7 @@ instance = BmcApi::ServerCreate.new(
   install_default_ssh_keys: false,
   ssh_keys: [&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip&quot;],
   ssh_key_ids: [&quot;5fa942e71c16abcfbead275f&quot;,&quot;5fa94303cc6dc49346404fca&quot;,&quot;5fa943127bda760ad80c237e&quot;],
-  reservation_id: 5f622c8032b458306b40d824,
+  reservation_id: fc8bd49a-59cc-4538-a806-5e46228408ec,
   pricing_model: ONE_MONTH_RESERVATION,
   network_type: PUBLIC_AND_PRIVATE,
   os_configuration: null,

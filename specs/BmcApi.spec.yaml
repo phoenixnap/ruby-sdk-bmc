@@ -105,7 +105,7 @@ paths:
                     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
                   sshKeyIds:
                     - 5fa54d1e91867c03a0a7b4a4
-                  reservationId: x78sdkjds879sd7cx8
+                  reservationId: fc8bd49a-59cc-4538-a806-5e46228408ec
                   pricingModel: HOURLY
                   networkType: PUBLIC_AND_PRIVATE
                   networkConfiguration:
@@ -133,7 +133,7 @@ paths:
                     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
                   sshKeyIds:
                     - 5fa54d1e91867c03a0a7b4a4
-                  reservationId: x78sdkjds879sd7cx8
+                  reservationId: fc8bd49a-59cc-4538-a806-5e46228408ec
                   pricingModel: HOURLY
                   networkType: PUBLIC_AND_PRIVATE
               UserDefinedIpBlockConfiguration:
@@ -149,7 +149,7 @@ paths:
                     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
                   sshKeyIds:
                     - 5fa54d1e91867c03a0a7b4a4
-                  reservationId: x78sdkjds879sd7cx8
+                  reservationId: fc8bd49a-59cc-4538-a806-5e46228408ec
                   pricingModel: HOURLY
                   networkConfiguration:
                     ipBlocksConfiguration:
@@ -169,7 +169,7 @@ paths:
                     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
                   sshKeyIds:
                     - 5fa54d1e91867c03a0a7b4a4
-                  reservationId: x78sdkjds879sd7cx8
+                  reservationId: fc8bd49a-59cc-4538-a806-5e46228408ec
                   pricingModel: HOURLY
                   networkConfiguration:
                     ipBlocksConfiguration:
@@ -224,7 +224,7 @@ paths:
                     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
                   sshKeyIds:
                     - 5fa54d1e91867c03a0a7b4a4
-                  reservationId: x78sdkjds879sd7cx8
+                  reservationId: fc8bd49a-59cc-4538-a806-5e46228408ec
                   networkType: PUBLIC_AND_PRIVATE
                   networkConfiguration:
                     gatewayAddress: 182.16.0.145
@@ -1379,7 +1379,7 @@ components:
           description: Cloud-init configuration details.
           properties:
             userData:
-              description: User data for the <a href='https://cloudinit.readthedocs.io/en/latest/' target='_blank'>cloud-init</a> configuration in base64 encoding. NoCloud format is supported. Follow the <a href='https://phoenixnap.com/kb/bmc-cloud-init' target='_blank'>instructions</a> on how to provision a server using cloud-init. Only ubuntu/bionic, ubuntu/focal and ubuntu/jammy are supported. User data will not be stored and cannot be retrieved once you deploy the server. Copy and save it for future reference.
+              description: (Write-only) User data for the <a href='https://cloudinit.readthedocs.io/en/latest/' target='_blank'>cloud-init</a> configuration in base64 encoding. NoCloud format is supported. Follow the <a href='https://phoenixnap.com/kb/bmc-cloud-init' target='_blank'>instructions</a> on how to provision a server using cloud-init. Only ubuntu/bionic, ubuntu/focal and ubuntu/jammy are supported. User data will not be stored and cannot be retrieved once you deploy the server. Copy and save it for future reference.
               writeOnly: true
               type: string
               format: byte
@@ -1553,6 +1553,7 @@ components:
     Server:
       type: object
       description: Bare metal server.
+      readOnly: true
       required:
         - id
         - status
@@ -1573,7 +1574,7 @@ components:
         id:
           description: The unique identifier of the server.
           type: string
-          example: x78sdkjds879sd7cx8
+          example: 651bf71fbde0c93e102ab180
         status:
           description: The status of the server.
           type: string
@@ -1653,7 +1654,7 @@ components:
         reservationId:
           description: The reservation reference id if any.
           type: string
-          example: x78sdkjds879sd7cx8
+          example: fc8bd49a-59cc-4538-a806-5e46228408ec
         pricingModel:
           description: The pricing model this server is being billed. Currently this field should be set to `HOURLY`, `ONE_MONTH_RESERVATION`, `TWELVE_MONTHS_RESERVATION`, `TWENTY_FOUR_MONTHS_RESERVATION` or `THIRTY_SIX_MONTHS_RESERVATION`.
           type: string
@@ -1671,7 +1672,7 @@ components:
         clusterId:
           description: The cluster reference id if any.
           type: string
-          example: x78sdkjds879sd7cx8
+          example: 65030122f253707f7d196bed
         tags:
           description: The tags assigned if any.
           type: array
@@ -1784,7 +1785,7 @@ components:
         reservationId:
           description: Server reservation ID.
           type: string
-          example: 5f622c8032b458306b40d824
+          example: fc8bd49a-59cc-4538-a806-5e46228408ec
         pricingModel:
           description: Server pricing model. Currently this field should be set to `HOURLY`, `ONE_MONTH_RESERVATION`, `TWELVE_MONTHS_RESERVATION`, `TWENTY_FOUR_MONTHS_RESERVATION` or `THIRTY_SIX_MONTHS_RESERVATION`.
           type: string
@@ -1820,10 +1821,10 @@ components:
         serverId:
           description: The unique identifier of the server.
           type: string
-          example: x78sdkjds879sd7cx8
+          example: 651bf71fbde0c93e102ab180
     ServerPatch:
       type: object
-      description: Server patch.
+      description: Patch bare metal server.
       properties:
         description:
           description: Description of server.
@@ -1851,7 +1852,7 @@ components:
       description: Update network details of bare metal server.
       properties:
         ips:
-          description: List of IPs to be associated to the server.<br> Setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
+          description: List of IPs to be associated to the server.<br> Setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. <li> Assign one or more IP addresses which are already configured on other resource(s) in network. <li> Assign IP addresses which are considered as reserved in network.</ul>
           type: array
           items:
             type: string
@@ -2236,7 +2237,7 @@ components:
       schema:
         type: string
       description: The server's ID.
-      example: e6afba51-7de8-4080-83ab-0f915570659c
+      example: 60473a6115e34466c9f8f083
     ipBlockIdPathParam:
       in: path
       name: ipBlockId

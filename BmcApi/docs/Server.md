@@ -38,7 +38,7 @@
 require 'pnap_bmc_api'
 
 instance = BmcApi::Server.new(
-  id: x78sdkjds879sd7cx8,
+  id: 651bf71fbde0c93e102ab180,
   status: creating,
   hostname: my-server-1,
   description: Server #1 used for computing.,
@@ -53,11 +53,11 @@ instance = BmcApi::Server.new(
   storage: 1x 960GB NVMe,
   private_ip_addresses: [&quot;172.16.0.1&quot;],
   public_ip_addresses: [&quot;182.16.0.1&quot;,&quot;183.16.0.1&quot;],
-  reservation_id: x78sdkjds879sd7cx8,
+  reservation_id: fc8bd49a-59cc-4538-a806-5e46228408ec,
   pricing_model: HOURLY,
   password: MyP@ssw0rd_01,
   network_type: PUBLIC_AND_PRIVATE,
-  cluster_id: x78sdkjds879sd7cx8,
+  cluster_id: 65030122f253707f7d196bed,
   tags: null,
   provisioned_on: 2021-03-13T20:24:32.491Z,
   os_configuration: null,

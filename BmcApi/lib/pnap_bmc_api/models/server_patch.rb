@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # Server patch.
+  # Patch bare metal server.
   class ServerPatch
     # Description of server.
     attr_accessor :description

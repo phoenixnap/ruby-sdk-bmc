@@ -13,7 +13,7 @@
 | **configuration** | [**ClusterConfiguration**](ClusterConfiguration.md) |  | [optional] |
 | **metadata** | [**RancherServerMetadata**](RancherServerMetadata.md) |  | [optional][readonly] |
 | **workload_configuration** | [**ClusterWorkloadConfiguration**](ClusterWorkloadConfiguration.md) |  | [optional] |
-| **status_description** | **String** | The cluster status | [optional][readonly] |
+| **status_description** | **String** | (Read-Only) The cluster status | [optional][readonly] |
 
 ## Example
 

@@ -40,7 +40,7 @@ module RancherApi
 
     attr_accessor :workload_configuration
 
-    # The cluster status
+    # (Read-Only) The cluster status
     attr_accessor :status_description
 
     # Attribute mapping from ruby-style variable name to JSON key.

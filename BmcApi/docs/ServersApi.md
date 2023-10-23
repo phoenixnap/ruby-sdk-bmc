@@ -47,7 +47,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
 
 begin
@@ -262,7 +262,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   relinquish_ip_block: BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
 }
@@ -335,7 +335,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Power off server.
@@ -404,7 +404,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Power on server.
@@ -473,7 +473,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Reboot server.
@@ -542,7 +542,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   server_reserve: BmcApi::ServerReserve.new({pricing_model: 'ONE_MONTH_RESERVATION'}) # ServerReserve | 
 }
@@ -615,7 +615,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   server_reset: BmcApi::ServerReset.new # ServerReset | 
 }
@@ -688,7 +688,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Shutdown server.
@@ -757,7 +757,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Delete server.
@@ -826,7 +826,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Get server.
@@ -895,7 +895,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
 opts = {
   relinquish_ip_block: BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
@@ -970,7 +970,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   server_ip_block: BmcApi::ServerIpBlock.new({id: '60473a6115e34466c9f8f083'}) # ServerIpBlock | 
 }
@@ -1043,7 +1043,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   server_patch: BmcApi::ServerPatch.new # ServerPatch | 
 }
@@ -1116,7 +1116,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
 opts = {
   force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
@@ -1193,7 +1193,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_private_network: BmcApi::ServerPrivateNetwork.new({id: '603f3b2cfcaf050643b89a4b'}) # ServerPrivateNetwork | 
@@ -1268,7 +1268,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
 
 begin
@@ -1339,7 +1339,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
 opts = {
   force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
@@ -1416,7 +1416,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
   server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
@@ -1491,7 +1491,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 opts = {
   tag_assignment_request: [BmcApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
 }
