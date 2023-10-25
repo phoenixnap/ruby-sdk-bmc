@@ -208,27 +208,31 @@ module NetworkStorageApi
     # Update storage network details.
     # Update storage network details.
     # @param storage_network_id [String] ID of storage network.
+    # @param storage_network_update [StorageNetworkUpdate] Storage network to be updated.
     # @param [Hash] opts the optional parameters
-    # @option opts [StorageNetworkUpdate] :storage_network_update Storage network to be updated.
     # @return [StorageNetwork]
-    def storage_networks_id_patch(storage_network_id, opts = {})
-      data, _status_code, _headers = storage_networks_id_patch_with_http_info(storage_network_id, opts)
+    def storage_networks_id_patch(storage_network_id, storage_network_update, opts = {})
+      data, _status_code, _headers = storage_networks_id_patch_with_http_info(storage_network_id, storage_network_update, opts)
       data
     end
 
     # Update storage network details.
     # Update storage network details.
     # @param storage_network_id [String] ID of storage network.
+    # @param storage_network_update [StorageNetworkUpdate] Storage network to be updated.
     # @param [Hash] opts the optional parameters
-    # @option opts [StorageNetworkUpdate] :storage_network_update Storage network to be updated.
     # @return [Array<(StorageNetwork, Integer, Hash)>] StorageNetwork data, response status code and response headers
-    def storage_networks_id_patch_with_http_info(storage_network_id, opts = {})
+    def storage_networks_id_patch_with_http_info(storage_network_id, storage_network_update, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorageNetworksApi.storage_networks_id_patch ...'
       end
       # verify the required parameter 'storage_network_id' is set
       if @api_client.config.client_side_validation && storage_network_id.nil?
         fail ArgumentError, "Missing the required parameter 'storage_network_id' when calling StorageNetworksApi.storage_networks_id_patch"
+      end
+      # verify the required parameter 'storage_network_update' is set
+      if @api_client.config.client_side_validation && storage_network_update.nil?
+        fail ArgumentError, "Missing the required parameter 'storage_network_update' when calling StorageNetworksApi.storage_networks_id_patch"
       end
       # resource path
       local_var_path = '/storage-networks/{storageNetworkId}'.sub('{' + 'storageNetworkId' + '}', CGI.escape(storage_network_id.to_s))
@@ -250,7 +254,7 @@ module NetworkStorageApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'storage_network_update'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(storage_network_update)
 
       # return_type
       return_type = opts[:debug_return_type] || 'StorageNetwork'
@@ -277,22 +281,26 @@ module NetworkStorageApi
 
     # Create a storage network and volume.
     # Create a storage network and volume.
+    # @param storage_network_create [StorageNetworkCreate] 
     # @param [Hash] opts the optional parameters
-    # @option opts [StorageNetworkCreate] :storage_network_create 
     # @return [StorageNetwork]
-    def storage_networks_post(opts = {})
-      data, _status_code, _headers = storage_networks_post_with_http_info(opts)
+    def storage_networks_post(storage_network_create, opts = {})
+      data, _status_code, _headers = storage_networks_post_with_http_info(storage_network_create, opts)
       data
     end
 
     # Create a storage network and volume.
     # Create a storage network and volume.
+    # @param storage_network_create [StorageNetworkCreate] 
     # @param [Hash] opts the optional parameters
-    # @option opts [StorageNetworkCreate] :storage_network_create 
     # @return [Array<(StorageNetwork, Integer, Hash)>] StorageNetwork data, response status code and response headers
-    def storage_networks_post_with_http_info(opts = {})
+    def storage_networks_post_with_http_info(storage_network_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorageNetworksApi.storage_networks_post ...'
+      end
+      # verify the required parameter 'storage_network_create' is set
+      if @api_client.config.client_side_validation && storage_network_create.nil?
+        fail ArgumentError, "Missing the required parameter 'storage_network_create' when calling StorageNetworksApi.storage_networks_post"
       end
       # resource path
       local_var_path = '/storage-networks'
@@ -314,7 +322,7 @@ module NetworkStorageApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'storage_network_create'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(storage_network_create)
 
       # return_type
       return_type = opts[:debug_return_type] || 'StorageNetwork'
@@ -408,27 +416,31 @@ module NetworkStorageApi
     # Create a volume belonging to a storage network.
     # Create a volume belonging to a storage network.
     # @param storage_network_id [String] ID of storage network.
+    # @param volume_create [VolumeCreate] 
     # @param [Hash] opts the optional parameters
-    # @option opts [VolumeCreate] :volume_create 
     # @return [Volume]
-    def storage_networks_storage_network_id_volumes_post(storage_network_id, opts = {})
-      data, _status_code, _headers = storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, opts)
+    def storage_networks_storage_network_id_volumes_post(storage_network_id, volume_create, opts = {})
+      data, _status_code, _headers = storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, volume_create, opts)
       data
     end
 
     # Create a volume belonging to a storage network.
     # Create a volume belonging to a storage network.
     # @param storage_network_id [String] ID of storage network.
+    # @param volume_create [VolumeCreate] 
     # @param [Hash] opts the optional parameters
-    # @option opts [VolumeCreate] :volume_create 
     # @return [Array<(Volume, Integer, Hash)>] Volume data, response status code and response headers
-    def storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, opts = {})
+    def storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, volume_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorageNetworksApi.storage_networks_storage_network_id_volumes_post ...'
       end
       # verify the required parameter 'storage_network_id' is set
       if @api_client.config.client_side_validation && storage_network_id.nil?
         fail ArgumentError, "Missing the required parameter 'storage_network_id' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_post"
+      end
+      # verify the required parameter 'volume_create' is set
+      if @api_client.config.client_side_validation && volume_create.nil?
+        fail ArgumentError, "Missing the required parameter 'volume_create' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_post"
       end
       # resource path
       local_var_path = '/storage-networks/{storageNetworkId}/volumes'.sub('{' + 'storageNetworkId' + '}', CGI.escape(storage_network_id.to_s))
@@ -450,7 +462,7 @@ module NetworkStorageApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'volume_create'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(volume_create)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Volume'
@@ -617,11 +629,11 @@ module NetworkStorageApi
     # Update a storage network's volume details.
     # @param storage_network_id [String] ID of storage network.
     # @param volume_id [String] ID of volume.
+    # @param volume_update [VolumeUpdate] Storage network volume to be updated.
     # @param [Hash] opts the optional parameters
-    # @option opts [VolumeUpdate] :volume_update Storage network volume to be updated.
     # @return [Volume]
-    def storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, opts = {})
-      data, _status_code, _headers = storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, opts)
+    def storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, volume_update, opts = {})
+      data, _status_code, _headers = storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, volume_update, opts)
       data
     end
 
@@ -629,10 +641,10 @@ module NetworkStorageApi
     # Update a storage network&#39;s volume details.
     # @param storage_network_id [String] ID of storage network.
     # @param volume_id [String] ID of volume.
+    # @param volume_update [VolumeUpdate] Storage network volume to be updated.
     # @param [Hash] opts the optional parameters
-    # @option opts [VolumeUpdate] :volume_update Storage network volume to be updated.
     # @return [Array<(Volume, Integer, Hash)>] Volume data, response status code and response headers
-    def storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, opts = {})
+    def storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, volume_update, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_patch ...'
       end
@@ -643,6 +655,10 @@ module NetworkStorageApi
       # verify the required parameter 'volume_id' is set
       if @api_client.config.client_side_validation && volume_id.nil?
         fail ArgumentError, "Missing the required parameter 'volume_id' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_patch"
+      end
+      # verify the required parameter 'volume_update' is set
+      if @api_client.config.client_side_validation && volume_update.nil?
+        fail ArgumentError, "Missing the required parameter 'volume_update' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_patch"
       end
       # resource path
       local_var_path = '/storage-networks/{storageNetworkId}/volumes/{volumeId}'.sub('{' + 'storageNetworkId' + '}', CGI.escape(storage_network_id.to_s)).sub('{' + 'volumeId' + '}', CGI.escape(volume_id.to_s))
@@ -664,7 +680,7 @@ module NetworkStorageApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'volume_update'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(volume_update)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Volume'
@@ -693,11 +709,11 @@ module NetworkStorageApi
     # Overwrites tags assigned for the volume.
     # @param storage_network_id [String] ID of storage network.
     # @param volume_id [String] ID of volume.
+    # @param tag_assignment_request [Array<TagAssignmentRequest>] Tags to assign to the volume.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<TagAssignmentRequest>] :tag_assignment_request Tags to assign to the volume.
     # @return [Volume]
-    def storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, opts = {})
-      data, _status_code, _headers = storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts)
+    def storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, tag_assignment_request, opts = {})
+      data, _status_code, _headers = storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, tag_assignment_request, opts)
       data
     end
 
@@ -705,10 +721,10 @@ module NetworkStorageApi
     # Overwrites tags assigned for the volume.
     # @param storage_network_id [String] ID of storage network.
     # @param volume_id [String] ID of volume.
+    # @param tag_assignment_request [Array<TagAssignmentRequest>] Tags to assign to the volume.
     # @param [Hash] opts the optional parameters
-    # @option opts [Array<TagAssignmentRequest>] :tag_assignment_request Tags to assign to the volume.
     # @return [Array<(Volume, Integer, Hash)>] Volume data, response status code and response headers
-    def storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts = {})
+    def storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, tag_assignment_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_tags_put ...'
       end
@@ -719,6 +735,10 @@ module NetworkStorageApi
       # verify the required parameter 'volume_id' is set
       if @api_client.config.client_side_validation && volume_id.nil?
         fail ArgumentError, "Missing the required parameter 'volume_id' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_tags_put"
+      end
+      # verify the required parameter 'tag_assignment_request' is set
+      if @api_client.config.client_side_validation && tag_assignment_request.nil?
+        fail ArgumentError, "Missing the required parameter 'tag_assignment_request' when calling StorageNetworksApi.storage_networks_storage_network_id_volumes_volume_id_tags_put"
       end
       # resource path
       local_var_path = '/storage-networks/{storageNetworkId}/volumes/{volumeId}/tags'.sub('{' + 'storageNetworkId' + '}', CGI.escape(storage_network_id.to_s)).sub('{' + 'volumeId' + '}', CGI.escape(volume_id.to_s))
@@ -740,7 +760,7 @@ module NetworkStorageApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'tag_assignment_request'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(tag_assignment_request)
 
       # return_type
       return_type = opts[:debug_return_type] || 'Volume'

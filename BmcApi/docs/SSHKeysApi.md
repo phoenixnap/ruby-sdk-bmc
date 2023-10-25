@@ -79,7 +79,7 @@ This endpoint does not need any parameter.
 
 ## ssh_keys_post
 
-> <SshKey> ssh_keys_post(opts)
+> <SshKey> ssh_keys_post(ssh_key_create)
 
 Create SSH Key.
 
@@ -97,13 +97,11 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::SSHKeysApi.new
-opts = {
-  ssh_key_create: BmcApi::SshKeyCreate.new({default: true, name: 'sshkey-name-01', key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip'}) # SshKeyCreate | 
-}
+ssh_key_create = BmcApi::SshKeyCreate.new({default: true, name: 'sshkey-name-01', key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip'}) # SshKeyCreate | 
 
 begin
   # Create SSH Key.
-  result = api_instance.ssh_keys_post(opts)
+  result = api_instance.ssh_keys_post(ssh_key_create)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling SSHKeysApi->ssh_keys_post: #{e}"
@@ -114,12 +112,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SshKey>, Integer, Hash)> ssh_keys_post_with_http_info(opts)
+> <Array(<SshKey>, Integer, Hash)> ssh_keys_post_with_http_info(ssh_key_create)
 
 ```ruby
 begin
   # Create SSH Key.
-  data, status_code, headers = api_instance.ssh_keys_post_with_http_info(opts)
+  data, status_code, headers = api_instance.ssh_keys_post_with_http_info(ssh_key_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SshKey>
@@ -132,7 +130,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ssh_key_create** | [**SshKeyCreate**](SshKeyCreate.md) |  | [optional] |
+| **ssh_key_create** | [**SshKeyCreate**](SshKeyCreate.md) |  |  |
 
 ### Return type
 
@@ -288,7 +286,7 @@ end
 
 ## ssh_keys_ssh_key_id_put
 
-> <SshKey> ssh_keys_ssh_key_id_put(ssh_key_id, opts)
+> <SshKey> ssh_keys_ssh_key_id_put(ssh_key_id, ssh_key_update)
 
 Edit SSH Key.
 
@@ -307,13 +305,11 @@ end
 
 api_instance = BmcApi::SSHKeysApi.new
 ssh_key_id = '5fa54d1e91867c03a0a7b4a4' # String | The SSH Key's ID.
-opts = {
-  ssh_key_update: BmcApi::SshKeyUpdate.new({default: true, name: 'sshkey-name-01'}) # SshKeyUpdate | 
-}
+ssh_key_update = BmcApi::SshKeyUpdate.new({default: true, name: 'sshkey-name-01'}) # SshKeyUpdate | 
 
 begin
   # Edit SSH Key.
-  result = api_instance.ssh_keys_ssh_key_id_put(ssh_key_id, opts)
+  result = api_instance.ssh_keys_ssh_key_id_put(ssh_key_id, ssh_key_update)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling SSHKeysApi->ssh_keys_ssh_key_id_put: #{e}"
@@ -324,12 +320,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SshKey>, Integer, Hash)> ssh_keys_ssh_key_id_put_with_http_info(ssh_key_id, opts)
+> <Array(<SshKey>, Integer, Hash)> ssh_keys_ssh_key_id_put_with_http_info(ssh_key_id, ssh_key_update)
 
 ```ruby
 begin
   # Edit SSH Key.
-  data, status_code, headers = api_instance.ssh_keys_ssh_key_id_put_with_http_info(ssh_key_id, opts)
+  data, status_code, headers = api_instance.ssh_keys_ssh_key_id_put_with_http_info(ssh_key_id, ssh_key_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <SshKey>
@@ -343,7 +339,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ssh_key_id** | **String** | The SSH Key&#39;s ID. |  |
-| **ssh_key_update** | [**SshKeyUpdate**](SshKeyUpdate.md) |  | [optional] |
+| **ssh_key_update** | [**SshKeyUpdate**](SshKeyUpdate.md) |  |  |
 
 ### Return type
 

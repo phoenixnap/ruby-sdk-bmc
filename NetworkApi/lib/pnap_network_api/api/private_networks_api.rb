@@ -208,27 +208,31 @@ module NetworkApi
     # Update a Private Network.
     # Update Private Network Details.
     # @param private_network_id [String] The private network identifier.
+    # @param private_network_modify [PrivateNetworkModify] 
     # @param [Hash] opts the optional parameters
-    # @option opts [PrivateNetworkModify] :private_network_modify 
     # @return [PrivateNetwork]
-    def private_networks_network_id_put(private_network_id, opts = {})
-      data, _status_code, _headers = private_networks_network_id_put_with_http_info(private_network_id, opts)
+    def private_networks_network_id_put(private_network_id, private_network_modify, opts = {})
+      data, _status_code, _headers = private_networks_network_id_put_with_http_info(private_network_id, private_network_modify, opts)
       data
     end
 
     # Update a Private Network.
     # Update Private Network Details.
     # @param private_network_id [String] The private network identifier.
+    # @param private_network_modify [PrivateNetworkModify] 
     # @param [Hash] opts the optional parameters
-    # @option opts [PrivateNetworkModify] :private_network_modify 
     # @return [Array<(PrivateNetwork, Integer, Hash)>] PrivateNetwork data, response status code and response headers
-    def private_networks_network_id_put_with_http_info(private_network_id, opts = {})
+    def private_networks_network_id_put_with_http_info(private_network_id, private_network_modify, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PrivateNetworksApi.private_networks_network_id_put ...'
       end
       # verify the required parameter 'private_network_id' is set
       if @api_client.config.client_side_validation && private_network_id.nil?
         fail ArgumentError, "Missing the required parameter 'private_network_id' when calling PrivateNetworksApi.private_networks_network_id_put"
+      end
+      # verify the required parameter 'private_network_modify' is set
+      if @api_client.config.client_side_validation && private_network_modify.nil?
+        fail ArgumentError, "Missing the required parameter 'private_network_modify' when calling PrivateNetworksApi.private_networks_network_id_put"
       end
       # resource path
       local_var_path = '/private-networks/{privateNetworkId}'.sub('{' + 'privateNetworkId' + '}', CGI.escape(private_network_id.to_s))
@@ -250,7 +254,7 @@ module NetworkApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'private_network_modify'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(private_network_modify)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PrivateNetwork'
@@ -277,24 +281,28 @@ module NetworkApi
 
     # Create a Private Network.
     # Create a Private Network.
+    # @param private_network_create [PrivateNetworkCreate] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
-    # @option opts [PrivateNetworkCreate] :private_network_create 
     # @return [PrivateNetwork]
-    def private_networks_post(opts = {})
-      data, _status_code, _headers = private_networks_post_with_http_info(opts)
+    def private_networks_post(private_network_create, opts = {})
+      data, _status_code, _headers = private_networks_post_with_http_info(private_network_create, opts)
       data
     end
 
     # Create a Private Network.
     # Create a Private Network.
+    # @param private_network_create [PrivateNetworkCreate] 
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
-    # @option opts [PrivateNetworkCreate] :private_network_create 
     # @return [Array<(PrivateNetwork, Integer, Hash)>] PrivateNetwork data, response status code and response headers
-    def private_networks_post_with_http_info(opts = {})
+    def private_networks_post_with_http_info(private_network_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PrivateNetworksApi.private_networks_post ...'
+      end
+      # verify the required parameter 'private_network_create' is set
+      if @api_client.config.client_side_validation && private_network_create.nil?
+        fail ArgumentError, "Missing the required parameter 'private_network_create' when calling PrivateNetworksApi.private_networks_post"
       end
       # resource path
       local_var_path = '/private-networks'
@@ -317,7 +325,7 @@ module NetworkApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'private_network_create'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(private_network_create)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PrivateNetwork'

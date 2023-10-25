@@ -298,7 +298,7 @@ end
 
 ## public_networks_network_id_ip_blocks_post
 
-> <PublicNetworkIpBlock> public_networks_network_id_ip_blocks_post(public_network_id, opts)
+> <PublicNetworkIpBlock> public_networks_network_id_ip_blocks_post(public_network_id, public_network_ip_block)
 
 Adds an IP block to this public network.
 
@@ -317,13 +317,11 @@ end
 
 api_instance = NetworkApi::PublicNetworksApi.new
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
-opts = {
-  public_network_ip_block: NetworkApi::PublicNetworkIpBlock.new({id: '60473a6115e34466c9f8f083'}) # PublicNetworkIpBlock | 
-}
+public_network_ip_block = NetworkApi::PublicNetworkIpBlock.new({id: '60473a6115e34466c9f8f083'}) # PublicNetworkIpBlock | 
 
 begin
   # Adds an IP block to this public network.
-  result = api_instance.public_networks_network_id_ip_blocks_post(public_network_id, opts)
+  result = api_instance.public_networks_network_id_ip_blocks_post(public_network_id, public_network_ip_block)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PublicNetworksApi->public_networks_network_id_ip_blocks_post: #{e}"
@@ -334,12 +332,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PublicNetworkIpBlock>, Integer, Hash)> public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, opts)
+> <Array(<PublicNetworkIpBlock>, Integer, Hash)> public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block)
 
 ```ruby
 begin
   # Adds an IP block to this public network.
-  data, status_code, headers = api_instance.public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, opts)
+  data, status_code, headers = api_instance.public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PublicNetworkIpBlock>
@@ -353,7 +351,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **public_network_id** | **String** | The Public Network identifier. |  |
-| **public_network_ip_block** | [**PublicNetworkIpBlock**](PublicNetworkIpBlock.md) |  | [optional] |
+| **public_network_ip_block** | [**PublicNetworkIpBlock**](PublicNetworkIpBlock.md) |  |  |
 
 ### Return type
 
@@ -371,7 +369,7 @@ end
 
 ## public_networks_network_id_patch
 
-> <PublicNetwork> public_networks_network_id_patch(public_network_id, opts)
+> <PublicNetwork> public_networks_network_id_patch(public_network_id, public_network_modify)
 
 Update Public Network's Details.
 
@@ -390,13 +388,11 @@ end
 
 api_instance = NetworkApi::PublicNetworksApi.new
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
-opts = {
-  public_network_modify: NetworkApi::PublicNetworkModify.new # PublicNetworkModify | 
-}
+public_network_modify = NetworkApi::PublicNetworkModify.new # PublicNetworkModify | 
 
 begin
   # Update Public Network's Details.
-  result = api_instance.public_networks_network_id_patch(public_network_id, opts)
+  result = api_instance.public_networks_network_id_patch(public_network_id, public_network_modify)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PublicNetworksApi->public_networks_network_id_patch: #{e}"
@@ -407,12 +403,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PublicNetwork>, Integer, Hash)> public_networks_network_id_patch_with_http_info(public_network_id, opts)
+> <Array(<PublicNetwork>, Integer, Hash)> public_networks_network_id_patch_with_http_info(public_network_id, public_network_modify)
 
 ```ruby
 begin
   # Update Public Network's Details.
-  data, status_code, headers = api_instance.public_networks_network_id_patch_with_http_info(public_network_id, opts)
+  data, status_code, headers = api_instance.public_networks_network_id_patch_with_http_info(public_network_id, public_network_modify)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PublicNetwork>
@@ -426,7 +422,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **public_network_id** | **String** | The Public Network identifier. |  |
-| **public_network_modify** | [**PublicNetworkModify**](PublicNetworkModify.md) |  | [optional] |
+| **public_network_modify** | [**PublicNetworkModify**](PublicNetworkModify.md) |  |  |
 
 ### Return type
 
@@ -444,7 +440,7 @@ end
 
 ## public_networks_post
 
-> <PublicNetwork> public_networks_post(opts)
+> <PublicNetwork> public_networks_post(public_network_create)
 
 Create a public network.
 
@@ -462,13 +458,11 @@ NetworkApi.configure do |config|
 end
 
 api_instance = NetworkApi::PublicNetworksApi.new
-opts = {
-  public_network_create: NetworkApi::PublicNetworkCreate.new({name: 'Sample Network', location: 'PHX'}) # PublicNetworkCreate | 
-}
+public_network_create = NetworkApi::PublicNetworkCreate.new({name: 'Sample Network', location: 'PHX'}) # PublicNetworkCreate | 
 
 begin
   # Create a public network.
-  result = api_instance.public_networks_post(opts)
+  result = api_instance.public_networks_post(public_network_create)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PublicNetworksApi->public_networks_post: #{e}"
@@ -479,12 +473,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PublicNetwork>, Integer, Hash)> public_networks_post_with_http_info(opts)
+> <Array(<PublicNetwork>, Integer, Hash)> public_networks_post_with_http_info(public_network_create)
 
 ```ruby
 begin
   # Create a public network.
-  data, status_code, headers = api_instance.public_networks_post_with_http_info(opts)
+  data, status_code, headers = api_instance.public_networks_post_with_http_info(public_network_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PublicNetwork>
@@ -497,7 +491,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **public_network_create** | [**PublicNetworkCreate**](PublicNetworkCreate.md) |  | [optional] |
+| **public_network_create** | [**PublicNetworkCreate**](PublicNetworkCreate.md) |  |  |
 
 ### Return type
 

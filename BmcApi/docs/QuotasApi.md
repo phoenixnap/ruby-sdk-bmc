@@ -77,7 +77,7 @@ This endpoint does not need any parameter.
 
 ## quotas_quota_id_actions_request_edit_post
 
-> quotas_quota_id_actions_request_edit_post(quota_id, opts)
+> quotas_quota_id_actions_request_edit_post(quota_id, quota_edit_limit_request)
 
 Request quota limit change.
 
@@ -96,13 +96,11 @@ end
 
 api_instance = BmcApi::QuotasApi.new
 quota_id = 'bmc.servers.max_count' # String | The ID of the Quota.
-opts = {
-  quota_edit_limit_request: BmcApi::QuotaEditLimitRequest.new({limit: 10, reason: 'I need more servers for my cluster.'}) # QuotaEditLimitRequest | 
-}
+quota_edit_limit_request = BmcApi::QuotaEditLimitRequest.new({limit: 10, reason: 'I need more servers for my cluster.'}) # QuotaEditLimitRequest | 
 
 begin
   # Request quota limit change.
-  api_instance.quotas_quota_id_actions_request_edit_post(quota_id, opts)
+  api_instance.quotas_quota_id_actions_request_edit_post(quota_id, quota_edit_limit_request)
 rescue BmcApi::ApiError => e
   puts "Error when calling QuotasApi->quotas_quota_id_actions_request_edit_post: #{e}"
 end
@@ -112,12 +110,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> quotas_quota_id_actions_request_edit_post_with_http_info(quota_id, opts)
+> <Array(nil, Integer, Hash)> quotas_quota_id_actions_request_edit_post_with_http_info(quota_id, quota_edit_limit_request)
 
 ```ruby
 begin
   # Request quota limit change.
-  data, status_code, headers = api_instance.quotas_quota_id_actions_request_edit_post_with_http_info(quota_id, opts)
+  data, status_code, headers = api_instance.quotas_quota_id_actions_request_edit_post_with_http_info(quota_id, quota_edit_limit_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -131,7 +129,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **quota_id** | **String** | The ID of the Quota. |  |
-| **quota_edit_limit_request** | [**QuotaEditLimitRequest**](QuotaEditLimitRequest.md) |  | [optional] |
+| **quota_edit_limit_request** | [**QuotaEditLimitRequest**](QuotaEditLimitRequest.md) |  |  |
 
 ### Return type
 

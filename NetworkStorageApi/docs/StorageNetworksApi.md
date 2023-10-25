@@ -227,7 +227,7 @@ end
 
 ## storage_networks_id_patch
 
-> <StorageNetwork> storage_networks_id_patch(storage_network_id, opts)
+> <StorageNetwork> storage_networks_id_patch(storage_network_id, storage_network_update)
 
 Update storage network details.
 
@@ -246,13 +246,11 @@ end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
-opts = {
-  storage_network_update: NetworkStorageApi::StorageNetworkUpdate.new # StorageNetworkUpdate | Storage network to be updated.
-}
+storage_network_update = NetworkStorageApi::StorageNetworkUpdate.new # StorageNetworkUpdate | Storage network to be updated.
 
 begin
   # Update storage network details.
-  result = api_instance.storage_networks_id_patch(storage_network_id, opts)
+  result = api_instance.storage_networks_id_patch(storage_network_id, storage_network_update)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_id_patch: #{e}"
@@ -263,12 +261,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<StorageNetwork>, Integer, Hash)> storage_networks_id_patch_with_http_info(storage_network_id, opts)
+> <Array(<StorageNetwork>, Integer, Hash)> storage_networks_id_patch_with_http_info(storage_network_id, storage_network_update)
 
 ```ruby
 begin
   # Update storage network details.
-  data, status_code, headers = api_instance.storage_networks_id_patch_with_http_info(storage_network_id, opts)
+  data, status_code, headers = api_instance.storage_networks_id_patch_with_http_info(storage_network_id, storage_network_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <StorageNetwork>
@@ -282,7 +280,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **storage_network_id** | **String** | ID of storage network. |  |
-| **storage_network_update** | [**StorageNetworkUpdate**](StorageNetworkUpdate.md) | Storage network to be updated. | [optional] |
+| **storage_network_update** | [**StorageNetworkUpdate**](StorageNetworkUpdate.md) | Storage network to be updated. |  |
 
 ### Return type
 
@@ -300,7 +298,7 @@ end
 
 ## storage_networks_post
 
-> <StorageNetwork> storage_networks_post(opts)
+> <StorageNetwork> storage_networks_post(storage_network_create)
 
 Create a storage network and volume.
 
@@ -318,13 +316,11 @@ NetworkStorageApi.configure do |config|
 end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
-opts = {
-  storage_network_create: NetworkStorageApi::StorageNetworkCreate.new({name: 'My storage network', location: 'PHX', volumes: [NetworkStorageApi::StorageNetworkVolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000})]}) # StorageNetworkCreate | 
-}
+storage_network_create = NetworkStorageApi::StorageNetworkCreate.new({name: 'My storage network', location: 'PHX', volumes: [NetworkStorageApi::StorageNetworkVolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000})]}) # StorageNetworkCreate | 
 
 begin
   # Create a storage network and volume.
-  result = api_instance.storage_networks_post(opts)
+  result = api_instance.storage_networks_post(storage_network_create)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_post: #{e}"
@@ -335,12 +331,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<StorageNetwork>, Integer, Hash)> storage_networks_post_with_http_info(opts)
+> <Array(<StorageNetwork>, Integer, Hash)> storage_networks_post_with_http_info(storage_network_create)
 
 ```ruby
 begin
   # Create a storage network and volume.
-  data, status_code, headers = api_instance.storage_networks_post_with_http_info(opts)
+  data, status_code, headers = api_instance.storage_networks_post_with_http_info(storage_network_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <StorageNetwork>
@@ -353,7 +349,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **storage_network_create** | [**StorageNetworkCreate**](StorageNetworkCreate.md) |  | [optional] |
+| **storage_network_create** | [**StorageNetworkCreate**](StorageNetworkCreate.md) |  |  |
 
 ### Return type
 
@@ -444,7 +440,7 @@ end
 
 ## storage_networks_storage_network_id_volumes_post
 
-> <Volume> storage_networks_storage_network_id_volumes_post(storage_network_id, opts)
+> <Volume> storage_networks_storage_network_id_volumes_post(storage_network_id, volume_create)
 
 Create a volume belonging to a storage network.
 
@@ -463,13 +459,11 @@ end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
-opts = {
-  volume_create: NetworkStorageApi::VolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000}) # VolumeCreate | 
-}
+volume_create = NetworkStorageApi::VolumeCreate.new({name: 'My volume name', capacity_in_gb: 2000}) # VolumeCreate | 
 
 begin
   # Create a volume belonging to a storage network.
-  result = api_instance.storage_networks_storage_network_id_volumes_post(storage_network_id, opts)
+  result = api_instance.storage_networks_storage_network_id_volumes_post(storage_network_id, volume_create)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_post: #{e}"
@@ -480,12 +474,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, opts)
+> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, volume_create)
 
 ```ruby
 begin
   # Create a volume belonging to a storage network.
-  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, opts)
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_post_with_http_info(storage_network_id, volume_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Volume>
@@ -499,7 +493,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **storage_network_id** | **String** | ID of storage network. |  |
-| **volume_create** | [**VolumeCreate**](VolumeCreate.md) |  | [optional] |
+| **volume_create** | [**VolumeCreate**](VolumeCreate.md) |  |  |
 
 ### Return type
 
@@ -658,7 +652,7 @@ end
 
 ## storage_networks_storage_network_id_volumes_volume_id_patch
 
-> <Volume> storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, opts)
+> <Volume> storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, volume_update)
 
 Update a storage network's volume details.
 
@@ -678,13 +672,11 @@ end
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
 volume_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of volume.
-opts = {
-  volume_update: NetworkStorageApi::VolumeUpdate.new # VolumeUpdate | Storage network volume to be updated.
-}
+volume_update = NetworkStorageApi::VolumeUpdate.new # VolumeUpdate | Storage network volume to be updated.
 
 begin
   # Update a storage network's volume details.
-  result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, opts)
+  result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storage_network_id, volume_id, volume_update)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_patch: #{e}"
@@ -695,12 +687,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, opts)
+> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, volume_update)
 
 ```ruby
 begin
   # Update a storage network's volume details.
-  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, opts)
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch_with_http_info(storage_network_id, volume_id, volume_update)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Volume>
@@ -715,7 +707,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storage_network_id** | **String** | ID of storage network. |  |
 | **volume_id** | **String** | ID of volume. |  |
-| **volume_update** | [**VolumeUpdate**](VolumeUpdate.md) | Storage network volume to be updated. | [optional] |
+| **volume_update** | [**VolumeUpdate**](VolumeUpdate.md) | Storage network volume to be updated. |  |
 
 ### Return type
 
@@ -733,7 +725,7 @@ end
 
 ## storage_networks_storage_network_id_volumes_volume_id_tags_put
 
-> <Volume> storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, opts)
+> <Volume> storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, tag_assignment_request)
 
 Overwrites tags assigned for the volume.
 
@@ -753,13 +745,11 @@ end
 api_instance = NetworkStorageApi::StorageNetworksApi.new
 storage_network_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of storage network.
 volume_id = '50dc434c-9bba-427b-bcd6-0bdba45c4dd2' # String | ID of volume.
-opts = {
-  tag_assignment_request: [NetworkStorageApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | Tags to assign to the volume.
-}
+tag_assignment_request = [NetworkStorageApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | Tags to assign to the volume.
 
 begin
   # Overwrites tags assigned for the volume.
-  result = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, opts)
+  result = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_network_id, volume_id, tag_assignment_request)
   p result
 rescue NetworkStorageApi::ApiError => e
   puts "Error when calling StorageNetworksApi->storage_networks_storage_network_id_volumes_volume_id_tags_put: #{e}"
@@ -770,12 +760,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts)
+> <Array(<Volume>, Integer, Hash)> storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, tag_assignment_request)
 
 ```ruby
 begin
   # Overwrites tags assigned for the volume.
-  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, opts)
+  data, status_code, headers = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put_with_http_info(storage_network_id, volume_id, tag_assignment_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Volume>
@@ -790,7 +780,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **storage_network_id** | **String** | ID of storage network. |  |
 | **volume_id** | **String** | ID of volume. |  |
-| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) | Tags to assign to the volume. | [optional] |
+| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) | Tags to assign to the volume. |  |
 
 ### Return type
 

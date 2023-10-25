@@ -125,6 +125,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/forceQueryParam'
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -272,6 +273,7 @@ paths:
         - OAuth2:
             - bmc
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -456,6 +458,7 @@ paths:
         - OAuth2:
             - bmc
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -655,6 +658,7 @@ paths:
         - OAuth2:
             - bmc
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -732,6 +736,7 @@ paths:
         - OAuth2:
             - bmc
       requestBody:
+        required: true
         content:
           application/json:
             schema:

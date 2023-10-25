@@ -216,7 +216,7 @@ end
 
 ## clusters_post
 
-> <Cluster> clusters_post(opts)
+> <Cluster> clusters_post(cluster)
 
 Create a Rancher Server Deployment.
 
@@ -234,13 +234,11 @@ RancherApi.configure do |config|
 end
 
 api_instance = RancherApi::ClustersApi.new
-opts = {
-  cluster: RancherApi::Cluster.new({location: 'PHX'}) # Cluster | 
-}
+cluster = RancherApi::Cluster.new({location: 'PHX'}) # Cluster | 
 
 begin
   # Create a Rancher Server Deployment.
-  result = api_instance.clusters_post(opts)
+  result = api_instance.clusters_post(cluster)
   p result
 rescue RancherApi::ApiError => e
   puts "Error when calling ClustersApi->clusters_post: #{e}"
@@ -251,12 +249,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Cluster>, Integer, Hash)> clusters_post_with_http_info(opts)
+> <Array(<Cluster>, Integer, Hash)> clusters_post_with_http_info(cluster)
 
 ```ruby
 begin
   # Create a Rancher Server Deployment.
-  data, status_code, headers = api_instance.clusters_post_with_http_info(opts)
+  data, status_code, headers = api_instance.clusters_post_with_http_info(cluster)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Cluster>
@@ -269,7 +267,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cluster** | [**Cluster**](Cluster.md) |  | [optional] |
+| **cluster** | [**Cluster**](Cluster.md) |  |  |
 
 ### Return type
 

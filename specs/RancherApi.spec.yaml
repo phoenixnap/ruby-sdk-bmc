@@ -43,6 +43,7 @@ paths:
             - bmc
       operationId: clustersPost
       requestBody:
+        required: true
         content:
           application/json:
             schema:
