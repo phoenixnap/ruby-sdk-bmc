@@ -89,6 +89,11 @@ module BmcApi
         invalid_properties.push('invalid value for "reason", reason cannot be nil.')
       end
 
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if @reason !~ pattern
+        invalid_properties.push("invalid value for \"reason\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -98,6 +103,7 @@ module BmcApi
       return false if @limit.nil?
       return false if @limit < 0
       return false if @reason.nil?
+      return false if @reason !~ Regexp.new(/^(?!\s*$).+/)
       true
     end
 
@@ -113,6 +119,21 @@ module BmcApi
       end
 
       @limit = limit
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reason Value to be assigned
+    def reason=(reason)
+      if reason.nil?
+        fail ArgumentError, 'reason cannot be nil'
+      end
+
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if reason !~ pattern
+        fail ArgumentError, "invalid value for \"reason\", must conform to the pattern #{pattern}."
+      end
+
+      @reason = reason
     end
 
     # Checks equality by comparing each attribute.

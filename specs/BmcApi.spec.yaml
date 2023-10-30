@@ -2069,10 +2069,12 @@ components:
           minLength: 1
           maxLength: 100
           example: sshkey-name-01
+          pattern: ^(?!\s*$).+
         key:
           description: SSH key actual key value.
           type: string
           example: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
+          pattern: ^(?!\s*$).+
     SshKeyUpdate:
       type: object
       description: SSH key modification model.
@@ -2090,6 +2092,7 @@ components:
           minLength: 1
           maxLength: 100
           example: sshkey-name-01
+          pattern: ^(?!\s*$).+
     DeleteSshKeyResult:
       type: object
       description: Result of a successful delete action on a SSH key.
@@ -2125,6 +2128,7 @@ components:
           description: The reason for changing the limit.
           type: string
           example: I need more servers for my cluster.
+          pattern: ^(?!\s*$).+
     QuotaEditLimitRequestDetails:
       allOf:
         - $ref: '#/components/schemas/QuotaEditLimitRequest'

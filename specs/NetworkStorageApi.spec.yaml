@@ -441,6 +441,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My storage network
+          pattern: ^(?!\s*$).+
         description:
           description: Storage network description.
           type: string
@@ -476,6 +477,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My volume name
+          pattern: ^(?!\s*$).+
         description:
           description: Volume description.
           type: string
@@ -586,6 +588,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My volume name
+          pattern: ^(?!\s*$).+
         description:
           description: Volume description.
           type: string

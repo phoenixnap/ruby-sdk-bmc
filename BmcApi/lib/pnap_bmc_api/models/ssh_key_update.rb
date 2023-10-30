@@ -93,6 +93,11 @@ module BmcApi
         invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
       end
 
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if @name !~ pattern
+        invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -103,6 +108,7 @@ module BmcApi
       return false if @name.nil?
       return false if @name.to_s.length > 100
       return false if @name.to_s.length < 1
+      return false if @name !~ Regexp.new(/^(?!\s*$).+/)
       true
     end
 
@@ -119,6 +125,11 @@ module BmcApi
 
       if name.to_s.length < 1
         fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if name !~ pattern
+        fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
       end
 
       @name = name

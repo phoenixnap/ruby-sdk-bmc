@@ -102,8 +102,18 @@ module BmcApi
         invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
       end
 
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if @name !~ pattern
+        invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
+      end
+
       if @key.nil?
         invalid_properties.push('invalid value for "key", key cannot be nil.')
+      end
+
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if @key !~ pattern
+        invalid_properties.push("invalid value for \"key\", must conform to the pattern #{pattern}.")
       end
 
       invalid_properties
@@ -116,7 +126,9 @@ module BmcApi
       return false if @name.nil?
       return false if @name.to_s.length > 100
       return false if @name.to_s.length < 1
+      return false if @name !~ Regexp.new(/^(?!\s*$).+/)
       return false if @key.nil?
+      return false if @key !~ Regexp.new(/^(?!\s*$).+/)
       true
     end
 
@@ -135,7 +147,27 @@ module BmcApi
         fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
       end
 
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if name !~ pattern
+        fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
+      end
+
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] key Value to be assigned
+    def key=(key)
+      if key.nil?
+        fail ArgumentError, 'key cannot be nil'
+      end
+
+      pattern = Regexp.new(/^(?!\s*$).+/)
+      if key !~ pattern
+        fail ArgumentError, "invalid value for \"key\", must conform to the pattern #{pattern}."
+      end
+
+      @key = key
     end
 
     # Checks equality by comparing each attribute.
