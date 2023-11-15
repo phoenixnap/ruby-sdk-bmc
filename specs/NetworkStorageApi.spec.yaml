@@ -167,7 +167,7 @@ paths:
             - networkstorage
       responses:
         '204':
-          description: Storage Network is deleted.
+          description: Initiate the deletion process for the specified Storage Network.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -422,6 +422,11 @@ components:
           type: string
           format: date-time
           example: '2021-03-13T20:24:32.491Z'
+        deleteRequestedOn:
+          description: Date and time of the initial request for storage network deletion.
+          type: string
+          format: date-time
+          example: '2022-04-07T08:50:20.359Z'
         volumes:
           description: Volume for a storage network.
           type: array
@@ -562,6 +567,11 @@ components:
           type: string
           format: date-time
           example: '2021-03-13T20:24:32.491Z'
+        deleteRequestedOn:
+          description: Date and time of the initial request for volume deletion.
+          type: string
+          format: date-time
+          example: '2022-04-07T08:50:20.359Z'
         permissions:
           $ref: '#/components/schemas/Permissions'
         tags:
@@ -819,11 +829,12 @@ components:
             - 100.80.0.5
             - 100.80.0.6
     Status:
-      description: Status of the resource. Currently this field should be set to `READY`, `BUSY` or `ERROR`.
+      description: Status of the resource. Currently this field should be set to `READY`, `BUSY`, `DELETING` or `ERROR`.
       type: string
       enum:
         - READY
         - BUSY
+        - DELETING
         - ERROR
       example: READY
     TagAssignment:

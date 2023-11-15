@@ -39,6 +39,9 @@ module NetworkStorageApi
     # Date and time when this storage network was created.
     attr_accessor :created_on
 
+    # Date and time of the initial request for storage network deletion.
+    attr_accessor :delete_requested_on
+
     # Volume for a storage network.
     attr_accessor :volumes
 
@@ -53,6 +56,7 @@ module NetworkStorageApi
         :'network_id' => :'networkId',
         :'ips' => :'ips',
         :'created_on' => :'createdOn',
+        :'delete_requested_on' => :'deleteRequestedOn',
         :'volumes' => :'volumes'
       }
     end
@@ -73,6 +77,7 @@ module NetworkStorageApi
         :'network_id' => :'String',
         :'ips' => :'Array<String>',
         :'created_on' => :'Time',
+        :'delete_requested_on' => :'Time',
         :'volumes' => :'Array<Volume>'
       }
     end
@@ -132,6 +137,10 @@ module NetworkStorageApi
         self.created_on = attributes[:'created_on']
       end
 
+      if attributes.key?(:'delete_requested_on')
+        self.delete_requested_on = attributes[:'delete_requested_on']
+      end
+
       if attributes.key?(:'volumes')
         if (value = attributes[:'volumes']).is_a?(Array)
           self.volumes = value
@@ -165,6 +174,7 @@ module NetworkStorageApi
           network_id == o.network_id &&
           ips == o.ips &&
           created_on == o.created_on &&
+          delete_requested_on == o.delete_requested_on &&
           volumes == o.volumes
     end
 
@@ -177,7 +187,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, status, location, network_id, ips, created_on, volumes].hash
+      [id, name, description, status, location, network_id, ips, created_on, delete_requested_on, volumes].hash
     end
 
     # Builds the object from hash

@@ -12,6 +12,7 @@
 | **network_id** | **String** | Id of network the storage belongs to. | [optional] |
 | **ips** | **Array&lt;String&gt;** | IP of the storage network. | [optional] |
 | **created_on** | **Time** | Date and time when this storage network was created. | [optional] |
+| **delete_requested_on** | **Time** | Date and time of the initial request for storage network deletion. | [optional] |
 | **volumes** | [**Array&lt;Volume&gt;**](Volume.md) | Volume for a storage network. | [optional] |
 
 ## Example
@@ -28,6 +29,7 @@ instance = NetworkStorageApi::StorageNetwork.new(
   network_id: 603f3b2cfcaf050643b89a4b,
   ips: [&quot;100.64.0.1&quot;,&quot;100.64.0.2&quot;],
   created_on: 2021-03-13T20:24:32.491Z,
+  delete_requested_on: 2022-04-07T08:50:20.359Z,
   volumes: null
 )
 ```

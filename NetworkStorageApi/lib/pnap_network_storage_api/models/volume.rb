@@ -44,6 +44,9 @@ module NetworkStorageApi
 
     attr_accessor :created_on
 
+    # Date and time of the initial request for volume deletion.
+    attr_accessor :delete_requested_on
+
     attr_accessor :permissions
 
     # The tags assigned if any.
@@ -62,6 +65,7 @@ module NetworkStorageApi
         :'protocol' => :'protocol',
         :'status' => :'status',
         :'created_on' => :'createdOn',
+        :'delete_requested_on' => :'deleteRequestedOn',
         :'permissions' => :'permissions',
         :'tags' => :'tags'
       }
@@ -85,6 +89,7 @@ module NetworkStorageApi
         :'protocol' => :'String',
         :'status' => :'Status',
         :'created_on' => :'Time',
+        :'delete_requested_on' => :'Time',
         :'permissions' => :'Permissions',
         :'tags' => :'Array<TagAssignment>'
       }
@@ -151,6 +156,10 @@ module NetworkStorageApi
         self.created_on = attributes[:'created_on']
       end
 
+      if attributes.key?(:'delete_requested_on')
+        self.delete_requested_on = attributes[:'delete_requested_on']
+      end
+
       if attributes.key?(:'permissions')
         self.permissions = attributes[:'permissions']
       end
@@ -190,6 +199,7 @@ module NetworkStorageApi
           protocol == o.protocol &&
           status == o.status &&
           created_on == o.created_on &&
+          delete_requested_on == o.delete_requested_on &&
           permissions == o.permissions &&
           tags == o.tags
     end
@@ -203,7 +213,7 @@ module NetworkStorageApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, path, path_suffix, capacity_in_gb, used_capacity_in_gb, protocol, status, created_on, permissions, tags].hash
+      [id, name, description, path, path_suffix, capacity_in_gb, used_capacity_in_gb, protocol, status, created_on, delete_requested_on, permissions, tags].hash
     end
 
     # Builds the object from hash

@@ -17,6 +17,7 @@ module NetworkStorageApi
   class Status
     READY = "READY".freeze
     BUSY = "BUSY".freeze
+    DELETING = "DELETING".freeze
     ERROR = "ERROR".freeze
 
     # Builds the enum from string
