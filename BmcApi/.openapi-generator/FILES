@@ -34,6 +34,7 @@ docs/ServerIpBlock.md
 docs/ServerNetworkUpdate.md
 docs/ServerPatch.md
 docs/ServerPrivateNetwork.md
+docs/ServerProvision.md
 docs/ServerPublicNetwork.md
 docs/ServerReserve.md
 docs/ServerReset.md
@@ -80,6 +81,7 @@ lib/pnap_bmc_api/models/server_ip_block.rb
 lib/pnap_bmc_api/models/server_network_update.rb
 lib/pnap_bmc_api/models/server_patch.rb
 lib/pnap_bmc_api/models/server_private_network.rb
+lib/pnap_bmc_api/models/server_provision.rb
 lib/pnap_bmc_api/models/server_public_network.rb
 lib/pnap_bmc_api/models/server_reserve.rb
 lib/pnap_bmc_api/models/server_reset.rb
@@ -94,4 +96,5 @@ lib/pnap_bmc_api/version.rb
 pnap_bmc_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/server_provision_spec.rb
 spec/spec_helper.rb

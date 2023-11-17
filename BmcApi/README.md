@@ -134,6 +134,7 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_actions_deprovision_post**](docs/ServersApi.md#servers_server_id_actions_deprovision_post) | **POST** /servers/{serverId}/actions/deprovision | Deprovision a server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_power_off_post**](docs/ServersApi.md#servers_server_id_actions_power_off_post) | **POST** /servers/{serverId}/actions/power-off | Power off server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_power_on_post**](docs/ServersApi.md#servers_server_id_actions_power_on_post) | **POST** /servers/{serverId}/actions/power-on | Power on server.
+*BmcApi::ServersApi* | [**servers_server_id_actions_provision_post**](docs/ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reboot_post**](docs/ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reserve_post**](docs/ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reset_post**](docs/ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server.
@@ -181,6 +182,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::ServerNetworkUpdate](docs/ServerNetworkUpdate.md)
  - [BmcApi::ServerPatch](docs/ServerPatch.md)
  - [BmcApi::ServerPrivateNetwork](docs/ServerPrivateNetwork.md)
+ - [BmcApi::ServerProvision](docs/ServerProvision.md)
  - [BmcApi::ServerPublicNetwork](docs/ServerPublicNetwork.md)
  - [BmcApi::ServerReserve](docs/ServerReserve.md)
  - [BmcApi::ServerReset](docs/ServerReset.md)

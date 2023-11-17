@@ -10,6 +10,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_actions_deprovision_post**](ServersApi.md#servers_server_id_actions_deprovision_post) | **POST** /servers/{serverId}/actions/deprovision | Deprovision a server. |
 | [**servers_server_id_actions_power_off_post**](ServersApi.md#servers_server_id_actions_power_off_post) | **POST** /servers/{serverId}/actions/power-off | Power off server. |
 | [**servers_server_id_actions_power_on_post**](ServersApi.md#servers_server_id_actions_power_on_post) | **POST** /servers/{serverId}/actions/power-on | Power on server. |
+| [**servers_server_id_actions_provision_post**](ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server. |
 | [**servers_server_id_actions_reboot_post**](ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server. |
 | [**servers_server_id_actions_reserve_post**](ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server. |
 | [**servers_server_id_actions_reset_post**](ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server. |
@@ -448,6 +449,81 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## servers_server_id_actions_provision_post
+
+> <Server> servers_server_id_actions_provision_post(server_id, server_provision, opts)
+
+Provision server.
+
+Provision reserved server. Server DNS will be configured to access Google's public DNS at 8.8.8.8.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_provision = BmcApi::ServerProvision.new({hostname: 'my-server-1', os: 'ubuntu/bionic'}) # ServerProvision | 
+opts = {
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+}
+
+begin
+  # Provision server.
+  result = api_instance.servers_server_id_actions_provision_post(server_id, server_provision, opts)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_provision_post: #{e}"
+end
+```
+
+#### Using the servers_server_id_actions_provision_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Server>, Integer, Hash)> servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts)
+
+```ruby
+begin
+  # Provision server.
+  data, status_code, headers = api_instance.servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Server>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_provision_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **server_provision** | [**ServerProvision**](ServerProvision.md) |  |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
+
+### Return type
+
+[**Server**](Server.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

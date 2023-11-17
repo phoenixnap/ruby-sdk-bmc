@@ -772,6 +772,81 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /servers/{serverId}/actions/provision:
+    parameters:
+      - $ref: '#/components/parameters/serverIdPathParam'
+    post:
+      tags:
+        - Servers
+      description: Provision reserved server. Server DNS will be configured to access Google's public DNS at 8.8.8.8.
+      summary: Provision server.
+      operationId: serversServerIdActionsProvisionPost
+      security:
+        - OAuth2:
+            - bmc
+      parameters:
+        - $ref: '#/components/parameters/forceQueryParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerProvision'
+            examples:
+              RequiredPropertiesProvidedOnly:
+                value:
+                  hostname: my-server-1
+                  os: ubuntu/bionic
+              UserDefinedNetworking:
+                value:
+                  hostname: my-server-1
+                  description: 'My custom server #1'
+                  os: ubuntu/bionic
+                  installDefaultSshKeys: true
+                  sshKeys:
+                    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
+                  sshKeyIds:
+                    - 5fa54d1e91867c03a0a7b4a4
+                  networkType: PUBLIC_AND_PRIVATE
+                  networkConfiguration:
+                    gatewayAddress: 182.16.0.145
+                    privateNetworkConfiguration:
+                      configurationType: USER_DEFINED
+                      privateNetworks:
+                        - id: 60f81608e2f4665962b214db
+                          ips:
+                            - 10.0.0.11
+                            - 10.0.0.12
+                          dhcp: false
+                    publicNetworkConfiguration:
+                      publicNetworks:
+                        - id: 60473c2509268bc77fd06d29
+                          ips:
+                            - 182.16.0.146
+                            - 182.16.0.147
+                    ipBlocksConfiguration:
+                      configurationType: USER_DEFINED
+                      ipBlocks:
+                        - id: 60473a6115e34466c9f8f083
+      responses:
+        '202':
+          description: Request to provision server is accepted.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Server'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '406':
+          $ref: '#/components/responses/NotAccepted'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /servers/{serverId}/actions/deprovision:
     parameters:
       - $ref: '#/components/parameters/serverIdPathParam'
@@ -1875,6 +1950,68 @@ components:
           example:
             - 10.1.1.1
             - 10.1.1.20 - 10.1.1.25
+    ServerProvision:
+      type: object
+      description: Provision bare metal server.
+      required:
+        - hostname
+        - os
+      properties:
+        hostname:
+          description: Hostname of server.
+          type: string
+          example: my-server-1
+          minLength: 1
+          maxLength: 100
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9().-])+$
+        description:
+          description: Description of server.
+          type: string
+          example: 'Server #1 used for computing.'
+          maxLength: 250
+        os:
+          description: The server’s OS ID used when the server was created. Currently this field should be set to either `ubuntu/bionic`, `ubuntu/focal`, `ubuntu/jammy`, `centos/centos7`, `centos/centos8`, `windows/srv2019std`, `windows/srv2019dc`, `esxi/esxi70`, `esxi/esxi80`, `almalinux/almalinux8`, `rockylinux/rockylinux8`, `debian/bullseye`, `proxmox/bullseye`, `netris/controller`, `netris/softgate_1g`, `netris/softgate_10g` or `netris/softgate_25g`.
+          type: string
+          example: ubuntu/bionic
+        installDefaultSshKeys:
+          description: Whether or not to install SSH keys marked as default in addition to any SSH keys specified in this request.
+          default: true
+          type: boolean
+          example: false
+        sshKeys:
+          description: A list of SSH keys that will be installed on the server.
+          type: array
+          items:
+            type: string
+            example: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
+          example:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDF9LdAFElNCi7JoWh6KUcchrJ2Gac1aqGRPpdZNowObpRtmiRCecAMb7bUgNAaNfcmwiQi7tos9TlnFgprIcfMWb8MSs3ABYHmBgqEEt3RWYf0fAc9CsIpJdMCUG28TPGTlRXCEUVNKgLMdcseAlJoGp1CgbHWIN65fB3he3kAZcfpPn5mapV0tsl2p+ZyuAGRYdn5dJv2RZDHUZBkOeUobwsij+weHCKAFmKQKtCP7ybgVHaQjAPrj8MGnk1jBbjDt5ws+Be+9JNjQJee9zCKbAOsIo3i+GcUIkrw5jxPU/RTGlWBcemPaKHdciSzGcjWboapzIy49qypQhZe1U75 user@my_ip
+        sshKeyIds:
+          description: A list of SSH key IDs that will be installed on the server in addition to any SSH keys specified in this request.
+          type: array
+          items:
+            type: string
+            example: 5fa942e71c16abcfbead275f
+          example:
+            - 5fa942e71c16abcfbead275f
+            - 5fa94303cc6dc49346404fca
+            - 5fa943127bda760ad80c237e
+        networkType:
+          description: The type of network configuration for this server.<br> Currently this field should be set to `PUBLIC_AND_PRIVATE`, `PRIVATE_ONLY`, `PUBLIC_ONLY` or `USER_DEFINED`.<br> Setting the `force` query parameter to `true` allows you to configure network configuration type as `NONE`.
+          type: string
+          default: PUBLIC_AND_PRIVATE
+          example: PUBLIC_AND_PRIVATE
+        osConfiguration:
+          $ref: '#/components/schemas/OsConfiguration'
+        tags:
+          description: Tags to set to the server. To create a new tag or list all the existing tags that you can use, refer to [Tags API](https://developers.phoenixnap.com/docs/tags/1/overview).
+          type: array
+          items:
+            $ref: '#/components/schemas/TagAssignmentRequest'
+        networkConfiguration:
+          $ref: '#/components/schemas/NetworkConfiguration'
+        storageConfiguration:
+          $ref: '#/components/schemas/StorageConfiguration'
     ActionResult:
       type: object
       description: Result of a successful action.

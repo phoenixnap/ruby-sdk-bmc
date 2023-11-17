@@ -419,6 +419,83 @@ module BmcApi
       return data, status_code, headers
     end
 
+    # Provision server.
+    # Provision reserved server. Server DNS will be configured to access Google's public DNS at 8.8.8.8.
+    # @param server_id [String] The server&#39;s ID.
+    # @param server_provision [ServerProvision] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @return [Server]
+    def servers_server_id_actions_provision_post(server_id, server_provision, opts = {})
+      data, _status_code, _headers = servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts)
+      data
+    end
+
+    # Provision server.
+    # Provision reserved server. Server DNS will be configured to access Google&#39;s public DNS at 8.8.8.8.
+    # @param server_id [String] The server&#39;s ID.
+    # @param server_provision [ServerProvision] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :force Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. (default to false)
+    # @return [Array<(Server, Integer, Hash)>] Server data, response status code and response headers
+    def servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_actions_provision_post ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_actions_provision_post"
+      end
+      # verify the required parameter 'server_provision' is set
+      if @api_client.config.client_side_validation && server_provision.nil?
+        fail ArgumentError, "Missing the required parameter 'server_provision' when calling ServersApi.servers_server_id_actions_provision_post"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/actions/provision'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(server_provision)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Server'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_actions_provision_post",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_actions_provision_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Reboot server.
     # Reboot specific server.
     # @param server_id [String] The server&#39;s ID.
