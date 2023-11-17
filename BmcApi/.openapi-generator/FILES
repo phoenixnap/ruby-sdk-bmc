@@ -96,5 +96,4 @@ lib/pnap_bmc_api/version.rb
 pnap_bmc_api.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/server_provision_spec.rb
 spec/spec_helper.rb
