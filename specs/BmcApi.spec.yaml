@@ -257,7 +257,11 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
         '406':
-          $ref: '#/components/responses/NotAccepted'
+          description: No server available of type server type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '409':
           $ref: '#/components/responses/Conflict'
         '500':
@@ -842,7 +846,11 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
         '406':
-          $ref: '#/components/responses/NotAccepted'
+          description: No server available of type server type.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
         '409':
           $ref: '#/components/responses/Conflict'
         '500':
@@ -2354,12 +2362,6 @@ components:
             $ref: '#/components/schemas/Error'
     BadRequest:
       description: The request failed due to wrong data. Please check the provided parameters and try again.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotAccepted:
-      description: No server available of type server.type.
       content:
         application/json:
           schema:
