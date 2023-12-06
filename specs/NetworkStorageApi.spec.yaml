@@ -246,6 +246,8 @@ paths:
           $ref: '#/components/responses/Conflict'
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
   /storage-networks/{storageNetworkId}/volumes/{volumeId}:
     parameters:
       - $ref: '#/components/parameters/storageNetworkIdParam'
@@ -311,6 +313,8 @@ paths:
           $ref: '#/components/responses/Conflict'
         '500':
           $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
     delete:
       tags:
         - Storage Networks
@@ -923,6 +927,12 @@ components:
             $ref: '#/components/schemas/Error'
     Conflict:
       description: The resource is in an incompatible state.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServiceUnavailable:
+      description: The request failed because service is currently unavailable. Please try again later.
       content:
         application/json:
           schema:
