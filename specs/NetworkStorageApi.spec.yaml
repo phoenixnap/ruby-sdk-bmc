@@ -328,7 +328,7 @@ paths:
             - networkstorage
       responses:
         '204':
-          description: Volume is deleted.
+          description: Initiate the deletion process for the specified Volume.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
