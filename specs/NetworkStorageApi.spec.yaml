@@ -97,9 +97,9 @@ paths:
           $ref: '#/components/responses/Conflict'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /storage-networks/{storageNetworkId}:
+  /storage-networks/{storageId}:
     parameters:
-      - $ref: '#/components/parameters/storageNetworkIdParam'
+      - $ref: '#/components/parameters/storageIdParam'
     get:
       tags:
         - Storage Networks
@@ -180,9 +180,9 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
-  /storage-networks/{storageNetworkId}/volumes:
+  /storage-networks/{storageId}/volumes:
     parameters:
-      - $ref: '#/components/parameters/storageNetworkIdParam'
+      - $ref: '#/components/parameters/storageIdParam'
     get:
       parameters:
         - in: query
@@ -250,9 +250,9 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
-  /storage-networks/{storageNetworkId}/volumes/{volumeId}:
+  /storage-networks/{storageId}/volumes/{volumeId}:
     parameters:
-      - $ref: '#/components/parameters/storageNetworkIdParam'
+      - $ref: '#/components/parameters/storageIdParam'
       - $ref: '#/components/parameters/volumeIdParam'
     get:
       tags:
@@ -339,9 +339,9 @@ paths:
           $ref: '#/components/responses/Conflict'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /storage-networks/{storageNetworkId}/volumes/{volumeId}/tags:
+  /storage-networks/{storageId}/volumes/{volumeId}/tags:
     parameters:
-      - $ref: '#/components/parameters/storageNetworkIdParam'
+      - $ref: '#/components/parameters/storageIdParam'
       - $ref: '#/components/parameters/volumeIdParam'
     put:
       tags:
@@ -940,13 +940,13 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   parameters:
-    storageNetworkIdParam:
+    storageIdParam:
       in: path
-      name: storageNetworkId
+      name: storageId
       required: true
       schema:
         type: string
-      description: ID of storage network.
+      description: ID of the storage.
       example: 50dc434c-9bba-427b-bcd6-0bdba45c4dd2
     volumeIdParam:
       in: path
