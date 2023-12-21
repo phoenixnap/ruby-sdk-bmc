@@ -118,7 +118,7 @@ module NetworkStorageApi
         invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
       end
 
-      pattern = Regexp.new(/^(?!\s*$).+/)
+      pattern = Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$/)
       if @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
       end
@@ -157,7 +157,7 @@ module NetworkStorageApi
       return false if @name.nil?
       return false if @name.to_s.length > 100
       return false if @name.to_s.length < 1
-      return false if @name !~ Regexp.new(/^(?!\s*$).+/)
+      return false if @name !~ Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$/)
       return false if !@description.nil? && @description.to_s.length > 250
       return false if !@path_suffix.nil? && @path_suffix.to_s.length > 27
       return false if !@path_suffix.nil? && @path_suffix.to_s.length < 0
@@ -182,7 +182,7 @@ module NetworkStorageApi
         fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
       end
 
-      pattern = Regexp.new(/^(?!\s*$).+/)
+      pattern = Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$/)
       if name !~ pattern
         fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
       end

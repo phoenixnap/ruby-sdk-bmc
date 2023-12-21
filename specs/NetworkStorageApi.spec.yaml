@@ -452,7 +452,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My storage network
-          pattern: ^(?!\s*$).+
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$
         description:
           description: Storage network description.
           type: string
@@ -488,7 +488,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My volume name
-          pattern: ^(?!\s*$).+
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$
         description:
           description: Volume description.
           type: string
@@ -526,6 +526,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My storage network
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$
         description:
           description: Storage network description.
           type: string
@@ -604,7 +605,7 @@ components:
           minLength: 1
           maxLength: 100
           example: My volume name
-          pattern: ^(?!\s*$).+
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$
         description:
           description: Volume description.
           type: string
@@ -644,6 +645,7 @@ components:
           minLength: 1
           maxLength: 100
           example: New Volume name
+          pattern: ^(?=.*[a-zA-Z])([a-zA-Z0-9(). -])+$
         description:
           description: Volume description.
           type: string
