@@ -73,7 +73,7 @@ paths:
     post:
       tags:
         - Servers
-      description: Create (request) new server for account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 .
+      description: Create (request) a new server for the account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 . Note that the product availability API can be used prior to doing the provision request. Refer to https://developers.phoenixnap.com/docs/bmc-billing/1/routes/product-availability/get.
       summary: Create new server.
       operationId: serversPost
       security:
@@ -257,7 +257,7 @@ paths:
         '403':
           $ref: '#/components/responses/Forbidden'
         '406':
-          description: No server available of type server type.
+          description: There are currently no servers available for the selected instance type. Check the availability of instance types at specific locations by using the 'product availability API GET' call. Refer to https://developers.phoenixnap.com/docs/bmc-billing/1/routes/product-availability/get.
           content:
             application/json:
               schema:

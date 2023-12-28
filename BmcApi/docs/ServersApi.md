@@ -176,7 +176,7 @@ end
 
 Create new server.
 
-Create (request) new server for account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 .
+Create (request) a new server for the account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 . Note that the product availability API can be used prior to doing the provision request. Refer to https://developers.phoenixnap.com/docs/bmc-billing/1/routes/product-availability/get.
 
 ### Examples
 
