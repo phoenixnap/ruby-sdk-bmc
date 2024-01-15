@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The unique identifier of the server. |  |
-| **status** | **String** | The status of the server. |  |
+| **status** | **String** | The status of the server. Can have one of the following values: &#x60;creating&#x60; , &#x60;powered-on&#x60; , &#x60;powered-off&#x60; , &#x60;rebooting&#x60; , &#x60;resetting&#x60; , &#x60;deleting&#x60; , &#x60;reserved&#x60; , &#x60;error&#x60; or &#x60;reinstating&#x60;. |  |
 | **hostname** | **String** | Hostname of server. |  |
 | **description** | **String** | Description of server. | [optional] |
 | **os** | **String** | The server’s OS ID used when the server was created. Currently this field should be set to either &#x60;ubuntu/bionic&#x60;, &#x60;ubuntu/focal&#x60;, &#x60;ubuntu/jammy&#x60;, &#x60;centos/centos7&#x60;, &#x60;centos/centos8&#x60;, &#x60;windows/srv2019std&#x60;, &#x60;windows/srv2019dc&#x60;, &#x60;esxi/esxi70&#x60;, &#x60;esxi/esxi80&#x60;, &#x60;almalinux/almalinux8&#x60;, &#x60;rockylinux/rockylinux8&#x60;, &#x60;almalinux/almalinux9&#x60;, &#x60;rockylinux/rockylinux9&#x60;, &#x60;debian/bullseye&#x60;, &#x60;debian/bookworm&#x60;, &#x60;proxmox/bullseye&#x60;, &#x60;netris/controller&#x60;, &#x60;netris/softgate_1g&#x60;, &#x60;netris/softgate_10g&#x60; or &#x60;netris/softgate_25g&#x60;. | [optional] |

@@ -28,7 +28,7 @@ module IpApi
     # The IP Block in CIDR notation.
     attr_accessor :cidr
 
-    # The status of the IP Block.
+    # The status of the IP Block. Can have one of the following values: `creating` , `assigning` , `error assigning` , `assigned` , `unassigning` , `error unassigning` or `unassigned`.
     attr_accessor :status
 
     # ID of the resource assigned to the IP Block.

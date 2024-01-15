@@ -19,7 +19,7 @@ module BmcApi
     # The unique identifier of the server.
     attr_accessor :id
 
-    # The status of the server.
+    # The status of the server. Can have one of the following values: `creating` , `powered-on` , `powered-off` , `rebooting` , `resetting` , `deleting` , `reserved` , `error` or `reinstating`.
     attr_accessor :status
 
     # Hostname of server.

@@ -1674,7 +1674,7 @@ components:
           type: string
           example: 651bf71fbde0c93e102ab180
         status:
-          description: The status of the server.
+          description: 'The status of the server. Can have one of the following values: `creating` , `powered-on` , `powered-off` , `rebooting` , `resetting` , `deleting` , `reserved` , `error` or `reinstating`.'
           type: string
           example: creating
         hostname:

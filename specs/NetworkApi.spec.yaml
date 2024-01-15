@@ -869,7 +869,7 @@ components:
           items:
             $ref: '#/components/schemas/NetworkMembership'
         status:
-          description: 'The status of the private network. Can have one of the following values: `BUSY` or `READY`.'
+          description: 'The status of the private network. Can have one of the following values: `BUSY`, `READY`, `DELETING` or `ERROR`.'
           type: string
           example: READY
         createdOn:

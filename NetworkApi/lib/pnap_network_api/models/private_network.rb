@@ -45,7 +45,7 @@ module NetworkApi
     # A list of resources that are members of this private network.
     attr_accessor :memberships
 
-    # The status of the private network. Can have one of the following values: `BUSY` or `READY`.
+    # The status of the private network. Can have one of the following values: `BUSY`, `READY`, `DELETING` or `ERROR`.
     attr_accessor :status
 
     # Date and time when this private network was created.

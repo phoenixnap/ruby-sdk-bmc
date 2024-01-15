@@ -316,7 +316,7 @@ components:
           type: string
           example: 1.1.1.0/31
         status:
-          description: The status of the IP Block.
+          description: 'The status of the IP Block. Can have one of the following values: `creating` , `assigning` , `error assigning` , `assigned` , `unassigning` , `error unassigning` or `unassigned`.'
           type: string
           example: unassigned
         assignedResourceId:
