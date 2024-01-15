@@ -107,13 +107,48 @@ module RancherApi
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@name.nil? && @name.to_s.length > 100
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 100.')
+      end
+
+      if !@name.nil? && @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      pattern = Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9().-])+$/)
+      if !@name.nil? && @name !~ pattern
+        invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@name.nil? && @name.to_s.length > 100
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@name.nil? && @name !~ Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9().-])+$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if !name.nil? && name.to_s.length > 100
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 100.'
+      end
+
+      if !name.nil? && name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      pattern = Regexp.new(/^(?=.*[a-zA-Z])([a-zA-Z0-9().-])+$/)
+      if !name.nil? && name !~ pattern
+        fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
