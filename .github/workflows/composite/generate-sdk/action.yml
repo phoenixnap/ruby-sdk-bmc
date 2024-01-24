@@ -25,9 +25,6 @@ runs:
     - name: Generate SDK
       shell: bash
       run: openapi-generator-cli generate -i ${{ inputs.spec-link }} -c openapi-generator-config.yaml -o ${{ inputs.module-name }} --additional-properties moduleName=${{ inputs.module-name }} --additional-properties gemName=${{ inputs.gem-name }}
-    - name: Fix Regex
-      shell: bash
-      run: ./fix-regex.sh ${{ inputs.module-name }}
     - name: Download spec files
       shell: bash
       run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
