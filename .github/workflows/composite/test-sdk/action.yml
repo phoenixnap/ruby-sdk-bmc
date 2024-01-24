@@ -21,7 +21,7 @@ runs:
     - name: Install Bundler
       shell: bash
       run: |
-        if ${{ inputs.ruby-version }} == '2.7'
+        if [[ ${{ inputs.ruby-version }} -lt 3 ]]
         then
           gem install bundler -v 2.4.22
         else
