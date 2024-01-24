@@ -34,6 +34,4 @@ lib/pnap_network_api/models/public_network_ip_block.rb
 lib/pnap_network_api/models/public_network_modify.rb
 lib/pnap_network_api/version.rb
 pnap_network_api.gemspec
-spec/api_client_spec.rb
-spec/configuration_spec.rb
 spec/spec_helper.rb

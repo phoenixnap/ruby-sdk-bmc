@@ -74,6 +74,8 @@ require 'pnap_rancher_api'
 RancherApi.configure do |config|
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'
+  # Configure a proc to get access tokens in lieu of the static access_token configuration
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
 api_instance = RancherApi::ClustersApi.new
@@ -128,16 +130,12 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [RancherApi::Cluster](docs/Cluster.md)
- - [RancherApi::ClusterConfiguration](docs/ClusterConfiguration.md)
- - [RancherApi::ClusterWorkloadConfiguration](docs/ClusterWorkloadConfiguration.md)
  - [RancherApi::DeleteResult](docs/DeleteResult.md)
  - [RancherApi::Error](docs/Error.md)
  - [RancherApi::Node](docs/Node.md)
  - [RancherApi::NodePool](docs/NodePool.md)
- - [RancherApi::NodePoolSshConfig](docs/NodePoolSshConfig.md)
  - [RancherApi::RancherClusterCertificates](docs/RancherClusterCertificates.md)
  - [RancherApi::RancherClusterConfig](docs/RancherClusterConfig.md)
- - [RancherApi::RancherClusterConfigCertificates](docs/RancherClusterConfigCertificates.md)
  - [RancherApi::RancherServerMetadata](docs/RancherServerMetadata.md)
  - [RancherApi::SshConfig](docs/SshConfig.md)
  - [RancherApi::WorkloadClusterConfig](docs/WorkloadClusterConfig.md)
@@ -146,6 +144,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### OAuth2
 
 

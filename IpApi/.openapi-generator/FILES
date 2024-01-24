@@ -26,6 +26,4 @@ lib/pnap_ip_api/models/tag_assignment.rb
 lib/pnap_ip_api/models/tag_assignment_request.rb
 lib/pnap_ip_api/version.rb
 pnap_ip_api.gemspec
-spec/api_client_spec.rb
-spec/configuration_spec.rb
 spec/spec_helper.rb

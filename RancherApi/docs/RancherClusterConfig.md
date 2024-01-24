@@ -10,7 +10,7 @@
 | **etcd_snapshot_retention** | **Integer** | This maps to ranchers &#x60;etcd-snapshot-retention&#x60;. Number of snapshots to retain. | [optional][default to 5] |
 | **node_taint** | **String** | This maps to ranchers &#x60;node-taint&#x60;. Registering kubelet with set of taints. By default, server nodes will be schedulable and thus your workloads can get launched on them. If you wish to have a dedicated control plane where no user workloads will run, you can use taints. | [optional] |
 | **cluster_domain** | **String** | This maps to ranchers &#x60;cluster-domain&#x60;. Cluster Domain. | [optional] |
-| **certificates** | [**RancherClusterConfigCertificates**](RancherClusterConfigCertificates.md) |  | [optional] |
+| **certificates** | [**RancherClusterCertificates**](RancherClusterCertificates.md) |  | [optional] |
 
 ## Example
 
