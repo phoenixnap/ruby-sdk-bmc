@@ -18,9 +18,9 @@ runs:
       uses: ./.github/workflows/composite/setup-ruby
       with:
         ruby-version: ${{ inputs.ruby-version }}
-    - name: Install Bundler
-      shell: bash
-      run: gem install bundler
+#    - name: Install Bundler
+#      shell: bash
+#      run: gem install bundler
     - name: Run tests
       shell: bash
       run: |
