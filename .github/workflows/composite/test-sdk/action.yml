@@ -20,7 +20,13 @@ runs:
         ruby-version: ${{ inputs.ruby-version }}
     - name: Install Bundler
       shell: bash
-      run: gem install bundler
+      run: |
+        if ${{ inputs.ruby-version }} == '2.7'
+        then
+          gem install bundler -v 2.4.22
+        else
+          gem install bundler
+        fi
     - name: Run tests
       shell: bash
       run: |
