@@ -18,8 +18,4 @@ lib/pnap_audit_api/models/event.rb
 lib/pnap_audit_api/models/user_info.rb
 lib/pnap_audit_api/version.rb
 pnap_audit_api.gemspec
-spec/api/events_api_spec.rb
-spec/models/error_spec.rb
-spec/models/event_spec.rb
-spec/models/user_info_spec.rb
 spec/spec_helper.rb
