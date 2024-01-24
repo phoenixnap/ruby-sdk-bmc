@@ -62,11 +62,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = NetworkApi::PrivateNetworksApi.new
-    opts = {
-      private_network_create: NetworkApi::PrivateNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    private_network_create = NetworkApi::PrivateNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.private_networks_post(opts)
+    result = api_instance.private_networks_post(private_network_create)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -101,11 +99,9 @@ class TC_NetworkApi < Test::Unit::TestCase
 
     api_instance = NetworkApi::PrivateNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
-    opts = {
-      private_network_modify: NetworkApi::PrivateNetworkModify.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    private_network_modify = NetworkApi::PrivateNetworkModify.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.private_networks_network_id_put(network_id, opts)
+    result = api_instance.private_networks_network_id_put(network_id, private_network_modify)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -205,11 +201,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     
     api_instance = NetworkApi::PublicNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
-    opts = {
-      public_network_ip_block: NetworkApi::PublicNetworkIpBlock.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    public_network_ip_block = NetworkApi::PublicNetworkIpBlock.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.public_networks_network_id_ip_blocks_post(network_id, opts)
+    result = api_instance.public_networks_network_id_ip_blocks_post(network_id, public_network_ip_block)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -223,11 +217,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     
     api_instance = NetworkApi::PublicNetworksApi.new
     network_id = TestUtils.extract_id_from(request)
-    opts = {
-      public_network_modify: NetworkApi::PublicNetworkModify.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    public_network_modify = NetworkApi::PublicNetworkModify.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.public_networks_network_id_patch(network_id, opts)
+    result = api_instance.public_networks_network_id_patch(network_id, public_network_modify)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -243,11 +235,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = NetworkApi::PublicNetworksApi.new
-    opts = {
-      public_network_create: NetworkApi::PublicNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    public_network_create = NetworkApi::PublicNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.public_networks_post(opts)
+    result = api_instance.public_networks_post(public_network_create)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])

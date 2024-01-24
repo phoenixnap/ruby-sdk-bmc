@@ -62,11 +62,9 @@ class TC_IpApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
     
     api_instance = IpApi::IPBlocksApi.new
-    opts = {
-      ip_block_create: IpApi::IpBlockCreate.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    ip_block_create = IpApi::IpBlockCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.ip_blocks_post(opts)
+    result = api_instance.ip_blocks_post(ip_block_create)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -101,11 +99,9 @@ class TC_IpApi < Test::Unit::TestCase
 
     api_instance = IpApi::IPBlocksApi.new
     ip_block_id = TestUtils.extract_id_from(request)
-    opts = {
-      ip_block_patch: IpApi::IpBlockPatch.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    ip_block_patch = IpApi::IpBlockPatch.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, opts)
+    result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, ip_block_patch)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -137,11 +133,9 @@ class TC_IpApi < Test::Unit::TestCase
     
     api_instance = IpApi::IPBlocksApi.new
     ip_block_id = TestUtils.extract_id_from(request)
-    opts = {
-      tag_assignment_request: [IpApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
-    }
+    tag_assignment_request = [IpApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
 
-    result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+    result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, tag_assignment_request)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])

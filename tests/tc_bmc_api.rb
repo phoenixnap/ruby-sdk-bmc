@@ -82,11 +82,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::QuotasApi.new
     quota_id = TestUtils.extract_id_from(request)
-    opts = {
-        quota_edit_limit_request: BmcApi::QuotaEditLimitRequest.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    quota_edit_limit_request = BmcApi::QuotaEditLimitRequest.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.quotas_quota_id_actions_request_edit_post(quota_id, opts)
+    result = api_instance.quotas_quota_id_actions_request_edit_post(quota_id, quota_edit_limit_request)
 
     self.verify_called_once expectation
   end
@@ -136,11 +134,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::SSHKeysApi.new
 
-    opts = {
-      ssh_key_create: BmcApi::SshKeyCreate.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    ssh_key_create = BmcApi::SshKeyCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.ssh_keys_post(opts)
+    result = api_instance.ssh_keys_post(ssh_key_create)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -159,11 +155,9 @@ class TC_BmcApi < Test::Unit::TestCase
     api_instance = BmcApi::SSHKeysApi.new
 
     ssh_key_id = TestUtils.extract_id_from(request)
-    opts = {
-      ssh_key_update: BmcApi::SshKeyUpdate.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    ssh_key_update = BmcApi::SshKeyUpdate.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.ssh_keys_ssh_key_id_put(ssh_key_id, opts)
+    result = api_instance.ssh_keys_ssh_key_id_put(ssh_key_id, ssh_key_update)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
@@ -230,14 +224,14 @@ class TC_BmcApi < Test::Unit::TestCase
     # Setting up expectation
     request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_post')
     expectation = TestUtils.setup_expectation(request, response, 1)
-    
+
     api_instance = BmcApi::ServersApi.new
+    server_create = BmcApi::ServerCreate.build_from_hash(TestUtils.extract_request_body(request))
     opts = {
-      server_create: BmcApi::ServerCreate.build_from_hash(TestUtils.extract_request_body(request)),
       force: TestUtils.generate_query_params(request)[:force]
     }
 
-    result = api_instance.servers_post(opts)
+    result = api_instance.servers_post(server_create, opts)
 
     # Parsing time for comparison
     response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
@@ -269,11 +263,10 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      server_patch: BmcApi::ServerPatch.build_from_hash(TestUtils.extract_request_body(request))
-    }
 
-    result = api_instance.servers_server_id_patch(server_id, opts)
+    server_patch = BmcApi::ServerPatch.build_from_hash(TestUtils.extract_request_body(request))
+
+    result = api_instance.servers_server_id_patch(server_id, server_patch)
 
     # Parsing time for comparison
     response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
@@ -290,11 +283,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      relinquish_ip_block: BmcApi::RelinquishIpBlock.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    relinquish_ip_block = BmcApi::RelinquishIpBlock.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.servers_server_id_actions_deprovision_post(server_id, opts)
+    result = api_instance.servers_server_id_actions_deprovision_post(server_id, relinquish_ip_block)
 
     assert_equal response[:body], result
 
@@ -353,11 +344,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      server_reserve: BmcApi::ServerReserve.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    server_reserve = BmcApi::ServerReserve.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.servers_server_id_actions_reserve_post(server_id, opts)
+    result = api_instance.servers_server_id_actions_reserve_post(server_id, server_reserve)
 
     # Parsing time for comparison
     response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
@@ -374,11 +363,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      server_reset: BmcApi::ServerReset.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    server_reset = BmcApi::ServerReset.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.servers_server_id_actions_reset_post(server_id, opts)
+    result = api_instance.servers_server_id_actions_reset_post(server_id, server_reset)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -407,11 +394,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      server_ip_block: BmcApi::ServerIpBlock.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    server_ip_block = BmcApi::ServerIpBlock.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.servers_server_id_ip_blocks_post(server_id, opts)
+    result = api_instance.servers_server_id_ip_blocks_post(server_id, server_ip_block)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -426,11 +411,9 @@ class TC_BmcApi < Test::Unit::TestCase
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
     ip_block_id = TestUtils.extract_id_from(request, :ipId)
-    opts = {
-      relinquish_ip_block: BmcApi::RelinquishIpBlock.build_from_hash(TestUtils.extract_request_body(request))
-    }
+    relinquish_ip_block = BmcApi::RelinquishIpBlock.build_from_hash(TestUtils.extract_request_body(request))
 
-    result = api_instance.servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, opts)
+    result = api_instance.servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, relinquish_ip_block)
 
     assert_equal response[:body], result
 
@@ -441,15 +424,15 @@ class TC_BmcApi < Test::Unit::TestCase
     # Setting up expectation
     request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_post_private_networks')
     expectation = TestUtils.setup_expectation(request, response, 1)
-    
+
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
+    server_private_network = BmcApi::ServerPrivateNetwork.build_from_hash(TestUtils.extract_request_body(request))
     opts = {
-      server_private_network: BmcApi::ServerPrivateNetwork.build_from_hash(TestUtils.extract_request_body(request)),
       force: TestUtils.generate_query_params(request)[:force]
     }
 
-    result = api_instance.servers_server_id_private_networks_post(server_id, opts)
+    result = api_instance.servers_server_id_private_networks_post(server_id, server_private_network, opts)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -479,11 +462,9 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
-    opts = {
-      tag_assignment_request: [BmcApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
-    }
+    tag_assignment_request = [BmcApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
 
-    result = api_instance.servers_server_id_tags_put(server_id, opts)
+    result = api_instance.servers_server_id_tags_put(server_id, tag_assignment_request)
 
     # Parsing time for comparison
     response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
@@ -500,12 +481,12 @@ class TC_BmcApi < Test::Unit::TestCase
     
     api_instance = BmcApi::ServersApi.new
     server_id = TestUtils.extract_id_from(request)
+    server_public_network = BmcApi::ServerPublicNetwork.build_from_hash(TestUtils.extract_request_body(request))
     opts = {
-      server_public_network: BmcApi::ServerPublicNetwork.build_from_hash(TestUtils.extract_request_body(request)),
       force: TestUtils.generate_query_params(request)[:force]
     }
 
-    result = api_instance.servers_server_id_public_networks_post(server_id, opts)
+    result = api_instance.servers_server_id_public_networks_post(server_id, server_public_network, opts)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -537,12 +518,12 @@ class TC_BmcApi < Test::Unit::TestCase
     server_id = TestUtils.extract_id_from(request)
     network_id = TestUtils.extract_id_from(request, :networkid)
 
+    server_network_update = BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request))
     opts = {
-      server_network_update: BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request)),
       force: TestUtils.generate_query_params(request)[:force]
     }
 
-    result = api_instance.servers_server_id_private_networks_patch(server_id, network_id, opts)
+    result = api_instance.servers_server_id_private_networks_patch(server_id, network_id, server_network_update, opts)
 
     assert_equal response[:body], result.to_hash.compact
 
@@ -558,12 +539,12 @@ class TC_BmcApi < Test::Unit::TestCase
     server_id = TestUtils.extract_id_from(request)
     network_id = TestUtils.extract_id_from(request, :networkid)
 
+    server_network_update = BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request))
     opts = {
-      server_network_update: BmcApi::ServerNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request)),
       force: TestUtils.generate_query_params(request)[:force]
     }
 
-    result = api_instance.servers_server_id_public_networks_patch(server_id, network_id, opts)
+    result = api_instance.servers_server_id_public_networks_patch(server_id, network_id, server_network_update, opts)
 
     assert_equal response[:body], result.to_hash.compact
 
