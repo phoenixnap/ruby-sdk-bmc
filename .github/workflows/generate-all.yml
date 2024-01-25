@@ -78,6 +78,13 @@ jobs:
       spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-location/download_spec
       module-name: LocationApi
       gem-name: pnap_location_api
+  generate-billingapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-billing/download_spec
+      module-name: BillingAPI
+      gem-name: pnap_billing_api
 
   # Push generated code
   push-changes:
