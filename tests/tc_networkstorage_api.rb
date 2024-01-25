@@ -49,8 +49,10 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
         response[:body][0][:volumes][0][:createdOn] = Time.parse(response[:body][0][:volumes][0][:createdOn])
-    
+        response[:body][0][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][0][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -67,8 +69,10 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
-    
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation
@@ -87,7 +91,9 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -108,7 +114,9 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -140,7 +148,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
-    
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -158,7 +167,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -179,7 +189,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -199,7 +210,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
