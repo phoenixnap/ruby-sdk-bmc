@@ -551,4 +551,27 @@ class TC_BmcApi < Test::Unit::TestCase
     self.verify_called_once expectation
   end
 
+  def test_server_provision
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_action_provision')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+
+    server_provision = BmcApi::ServerProvision.build_from_hash(TestUtils.extract_request_body(request))
+    opts = {
+      force: TestUtils.generate_query_params(request)[:force]
+    }
+
+    result = api_instance.servers_server_id_actions_provision_post(server_id, server_provision, opts)
+
+    # Parsing time for comparison
+    response[:body][:provisionedOn] = Time.parse(response[:body][:provisionedOn])
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
 end
