@@ -53,7 +53,8 @@ class TC_AuditApi < Test::Unit::TestCase
     # Parsing time for comparison
     response[:body][0][:timestamp] = Time.parse(response[:body][0][:timestamp])
 
-    assert_equal response[:body], [result[0].to_hash.compact]
+    # assert_equal response[:body], [result[0].to_hash.compact]
+    assert_equal 1, 2
 
     self.verify_called_once expectation
   end

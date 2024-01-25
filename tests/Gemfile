@@ -12,5 +12,5 @@ gem 'pnap_location_api', path: '../LocationApi'
 gem 'oauth2', "1.4.9"
 gem 'test-unit', "3.5.3"
 gem 'json', "2.6.1"
-gem 'test-unit-runner-junitxml', "0.3.0"
+gem 'test-unit-runner-junitxml', "1.0.0"
 gem "typhoeus", "~> 1.4"
