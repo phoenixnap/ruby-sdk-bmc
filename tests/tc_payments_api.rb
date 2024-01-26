@@ -26,7 +26,7 @@ class TC_PaymentsApi < Test::Unit::TestCase
     verify_result = TestUtils.verify_expectation_matched_times(expectation, 1)
 
     # Asserts a successful result.
-    # If not successful, will print the body of verifyResult to debug.
+    # If not successful, will print the body of verify_result to debug.
     assert_equal '202', "#{verify_result.code}", "API should have been hit exactly once. MockServer returned #{verify_result.code}.\n #{verify_result.body}"
   end
 
@@ -69,7 +69,7 @@ class TC_PaymentsApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
 
     api_instance = PaymentsApi::TransactionsApi.new
-    transaction_id = TestUtils.extract_id_from(request, :id)
+    transaction_id = TestUtils.extract_id_from(request)
 
     result = api_instance.transaction_id_get(transaction_id)
 
