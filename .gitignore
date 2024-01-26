@@ -58,3 +58,5 @@ build-iPhoneSimulator/
 
 ## Specific for test results due to workflows
 Test Results/
+
+/tests/.ruby-version
