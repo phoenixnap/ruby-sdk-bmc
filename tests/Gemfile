@@ -8,6 +8,8 @@ gem 'pnap_rancher_api', path: '../RancherApi'
 gem 'pnap_tag_api', path: '../TagApi'
 gem 'pnap_network_storage_api', path: '../NetworkStorageApi'
 gem 'pnap_location_api', path: '../LocationApi'
+gem 'pnap_billing_api', path: '../BillingApi'
+gem 'pnap_payments_api', path: '../PaymentsApi'
 
 gem 'oauth2', "1.4.9"
 gem 'test-unit', "3.5.3"

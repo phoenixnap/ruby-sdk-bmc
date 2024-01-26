@@ -47,6 +47,11 @@ jobs:
     with:
       module-name: LocationApi
       test-file: tc_location_api.rb
+  build-and-test-paymentsapi:
+    uses: ./.github/workflows/_common.yml
+    with:
+      module-name: PaymentsApi
+      test-file: tc_payments_api.rb
 
   publish-test-results:
     name: Publish Test Results
@@ -59,6 +64,7 @@ jobs:
       - build-and-test-tagapi
       - build-and-test-networkstorageapi
       - build-and-test-locationapi
+      - build-and-test-paymentsapi
     runs-on: ubuntu-latest
     if: always()
     steps:

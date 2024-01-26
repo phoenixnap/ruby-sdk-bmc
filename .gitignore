@@ -10,6 +10,7 @@
 /test/version_tmp/
 /tmp/
 .gitlab-ci.yml
+.idea
 
 # Used by dotenv library to load environment variables.
 # .env
