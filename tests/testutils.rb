@@ -10,7 +10,7 @@ class TestUtils
             httpRequest: requestToMock,
             httpResponse: responseToGet,
             times: {
-                remainingTimes: 1,
+                remainingTimes: times,
                 unlimited: false
             }
         }
