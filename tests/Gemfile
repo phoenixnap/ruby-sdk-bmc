@@ -10,6 +10,7 @@ gem 'pnap_network_storage_api', path: '../NetworkStorageApi'
 gem 'pnap_location_api', path: '../LocationApi'
 gem 'pnap_billing_api', path: '../BillingApi'
 gem 'pnap_payments_api', path: '../PaymentsApi'
+gem 'pnap_invoicing_api', path: '../InvoicingApi'
 
 gem 'oauth2', "1.4.9"
 gem 'test-unit', "3.5.3"
