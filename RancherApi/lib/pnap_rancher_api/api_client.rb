@@ -32,6 +32,7 @@ module RancherApi
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
+      @config.params_encoding = :multi
       @user_agent = "PNAP-ruby-sdk-bmc/#{ RancherApi::VERSION }"
       @powered_by = "PNAP-ruby-sdk-bmc/#{ RancherApi::VERSION }"
       @default_headers = {
