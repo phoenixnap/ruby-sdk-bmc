@@ -51,6 +51,7 @@ module BillingApi
     #   the data deserialized from response body (may be a Tempfile or nil), response status code and response headers.
     def call_api(http_method, path, opts = {})
       request = build_request(http_method, path, opts)
+      puts('request', request.url)
       tempfile = download_file(request) if opts[:return_type] == 'File'
       response = request.run
 
@@ -130,6 +131,9 @@ module BillingApi
           @config.logger.debug "HTTP request body param ~BEGIN~\n#{req_body}\n~END~\n"
         end
       end
+
+      puts('url', url)
+      puts('req_opts', req_opts)
 
       Typhoeus::Request.new(url, req_opts)
     end

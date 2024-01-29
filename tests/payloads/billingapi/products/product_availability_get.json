@@ -4,11 +4,11 @@
     "path": "/billing/v1/product-availability",
     "queryStringParameters": [
       {
-        "name": "productCategory[0]",
+        "name": "productCategory",
         "values": [ "SERVER" ]
       },
       {
-        "name": "productCode[0]",
+        "name": "productCode",
         "values": [ "code" ]
       },
       {
@@ -16,11 +16,11 @@
         "values": [ "true" ]
       },
       {
-        "name": "location[0]",
+        "name": "location",
         "values": [ "PHX" ]
       },
       {
-        "name": "solution[0]",
+        "name": "solution",
         "values": [ "SERVER_RANCHER" ]
       },
       {
