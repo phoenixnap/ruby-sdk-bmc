@@ -25,7 +25,6 @@
     "statusCode": 200,
     "body":[
       {
-        "openapi_discriminator_name": "ServerProduct",
         "productCode" : "d1.tiny",
         "productCategory" : "SERVER",
         "plans" : [
