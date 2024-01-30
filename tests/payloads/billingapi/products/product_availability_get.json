@@ -9,7 +9,7 @@
       },
       {
         "name": "productCode",
-        "values": [ "code" ]
+        "values": [ "code", "random" ]
       },
       {
         "name": "showOnlyMinQuantityAvailable",

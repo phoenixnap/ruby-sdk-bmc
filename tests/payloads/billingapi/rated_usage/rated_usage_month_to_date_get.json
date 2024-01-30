@@ -5,9 +5,7 @@
       "queryStringParameters": [
         {
           "name": "productCategory",
-          "values": [
-            "SERVER"
-          ]
+          "values": [ "SERVER" ]
         }
       ]
     },

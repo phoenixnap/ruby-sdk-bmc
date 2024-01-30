@@ -5,21 +5,15 @@
       "queryStringParameters": [
         {
           "name": "fromYearMonth",
-          "values": [
-            "2020-03"
-          ]
+          "values": [ "2020-03" ]
         },
         {
           "name": "toYearMonth",
-          "values": [
-            "2020-04"
-          ]
+          "values": [ "2020-04" ]
         },
         {
           "name": "productCategory",
-          "values": [
-            "SERVER"
-          ]
+          "values": [ "SERVER" ]
         }
       ]
     },

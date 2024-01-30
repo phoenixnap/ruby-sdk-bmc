@@ -1,64 +1,57 @@
 {
-    "request": {
-      "method": "GET",
-      "path": "/billing/v1/products",
-      "queryStringParameters": [
-        {
-          "name": "productCode",
-          "values": [
-            "d1.tiny"
-          ]
-        },
-        {
-          "name": "productCategory",
-          "values": [
-            "server"
-          ]
-        },
-        {
-          "name": "skuCode",
-          "values": [
-            "xxx-xxx-xxx"
-          ]
-        },
-        {
-          "name": "location",
-          "values": [
-            "PHX"
-          ]
-        }
-      ]
-    },
-    "response": {
-      "statusCode": 200,
-      "body": [
-        {
-          "productCode" : "d1.tiny",
-          "productCategory" : "SERVER",
-          "plans" : [
-            {
-              "sku": "xxx-xxx-xxx",
-              "skuDescription": "skuDescription",
-              "location": "PHX",
-              "pricingModel": "HOURLY",
-              "price": 1,
-              "priceUnit": "HOUR",
-              "correlatedProductCode": "d1.tiny",
-              "packageQuantity": 1,
-              "packageUnit": "GB"
-            }
-          ],
-          "metadata" : {
-            "ramInGb" : 10,
-            "cpu" : "intel",
-            "cpuCount" : 5,
-            "coresPerCpu" : 5,
-            "cpuFrequency" : 5,
-            "network" : "network",
-            "storage" : "storage"
+  "request": {
+    "method": "GET",
+    "path": "/billing/v1/products",
+    "queryStringParameters": [
+      {
+        "name": "productCode",
+        "values": [ "d1.tiny" ]
+      },
+      {
+        "name": "productCategory",
+        "values": [ "server" ]
+      },
+      {
+        "name": "skuCode",
+        "values": [ "xxx-xxx-xxx" ]
+      },
+      {
+        "name": "location",
+        "values": [ "PHX" ]
+      }
+    ]
+  },
+  "response": {
+    "statusCode": 200,
+    "body":[
+      {
+        "openapi_discriminator_name": "ServerProduct",
+        "productCode" : "d1.tiny",
+        "productCategory" : "SERVER",
+        "plans" : [
+          {
+            "sku": "xxx-xxx-xxx",
+            "skuDescription": "skuDescription",
+            "location": "PHX",
+            "pricingModel": "HOURLY",
+            "price": 1,
+            "priceUnit": "HOUR",
+            "correlatedProductCode": "d1.tiny",
+            "packageQuantity": 1,
+            "packageUnit": "GB"
           }
+        ],
+        "metadata" : {
+          "ramInGb" : 10,
+          "cpu" : "intel",
+          "cpuCount" : 5,
+          "coresPerCpu" : 5,
+          "cpuFrequency" : 5,
+          "network" : "network",
+          "storage" : "storage"
         }
-      ]
-    }
+      }
+    ]
   }
+}
   

@@ -44,7 +44,12 @@ module BillingApi
       # @param [Mixed] Data to be matched against the list of oneOf items
       # @return [Object] Returns the model or the data itself
       def build(data)
+        puts 'entered build'
+        puts "data type: #{data.class}}"
+        data.merge!(product_category: 'SERVER')
+
         discriminator_value = data[openapi_discriminator_name]
+        puts "discriminator_value: #{discriminator_value}"
         return nil if discriminator_value.nil?
 
         klass = openapi_discriminator_mapping[discriminator_value.to_s.to_sym]
