@@ -26,6 +26,9 @@ module BillingApi
 
       # Discriminator's property name (OpenAPI v3)
       def openapi_discriminator_name
+        # This change in the mustache template is needed in order for the three endpoints that make use of oneOf to serialize the hash into an object properly.
+        # These three endpoints are: GET /billing/v1/products, GET /billing/v1/rated-usage, and GET /billing/v1/rated-usage/month-to-date
+        # Tests covering these endpoints in tc_billing_api test case: test_get_products, test_get_rated_usage, test_get_rated_usage_month_to_date
         :productCategory
       end
 
