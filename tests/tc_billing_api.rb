@@ -38,39 +38,39 @@ class TC_BillingApi < Test::Unit::TestCase
     TestUtils.reset_expectations
   end
 
-  # def test_get_account_billing_configuration_me
-  #   request, response = TestUtils.generate_payloads_from('billingapi/billing_configurations/account_billing_configurations_me_get')
-  #   expectation = TestUtils.setup_expectation(request, response, 1)
-  #
-  #   api_instance = BillingApi::BillingConfigurationsApi.new
-  #
-  #   result = api_instance.account_billing_configuration_me_get
-  #
-  #   assert_equal response[:body], result.to_hash.compact
-  #
-  #   self.verify_called_once expectation
-  # end
-  #
-  # def test_get_product_availability
-  #   request, response = TestUtils.generate_payloads_from('billingapi/products/product_availability_get')
-  #   expectation = TestUtils.setup_expectation(request, response, 1)
-  #
-  #   api_instance = BillingApi::ProductsApi.new
-  #   opts = {
-  #     product_category: ['SERVER'],
-  #     product_code: ['code', 'random'],
-  #     show_only_min_quantity_available: true,
-  #     location: [BillingApi::LocationEnum::PHX],
-  #     solution: ['SERVER_RANCHER'],
-  #     min_quantity: 2
-  #   }
-  #
-  #   result = api_instance.product_availability_get(opts)
-  #
-  #   assert_equal response[:body], [result[0].to_hash.compact]
-  #
-  #   self.verify_called_once expectation
-  # end
+  def test_get_account_billing_configuration_me
+    request, response = TestUtils.generate_payloads_from('billingapi/billing_configurations/account_billing_configurations_me_get')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BillingApi::BillingConfigurationsApi.new
+
+    result = api_instance.account_billing_configuration_me_get
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_get_product_availability
+    request, response = TestUtils.generate_payloads_from('billingapi/products/product_availability_get')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BillingApi::ProductsApi.new
+    opts = {
+      product_category: ['SERVER'],
+      product_code: ['code', 'random'],
+      show_only_min_quantity_available: true,
+      location: [BillingApi::LocationEnum::PHX],
+      solution: ['SERVER_RANCHER'],
+      min_quantity: 2
+    }
+
+    result = api_instance.product_availability_get(opts)
+
+    assert_equal response[:body], [result[0].to_hash.compact]
+
+    self.verify_called_once expectation
+  end
 
   def test_get_products
     request, response = TestUtils.generate_payloads_from('billingapi/products/products_get')
