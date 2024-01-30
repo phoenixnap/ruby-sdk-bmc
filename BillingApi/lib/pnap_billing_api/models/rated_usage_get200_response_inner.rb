@@ -14,48 +14,48 @@ require 'date'
 require 'time'
 
 module BillingApi
-module RatedUsageGet200ResponseInner
-class << self
-# List of class defined in oneOf (OpenAPI v3)
-def openapi_one_of
-[
-:'BandwidthRecord',
-:'OperatingSystemRecord',
-:'PublicSubnetRecord',
-:'ServerRecord',
-:'StorageRecord'
-]
-end
+  module RatedUsageGet200ResponseInner
+    class << self
+      # List of class defined in oneOf (OpenAPI v3)
+      def openapi_one_of
+        [
+          :'BandwidthRecord',
+          :'OperatingSystemRecord',
+          :'PublicSubnetRecord',
+          :'ServerRecord',
+          :'StorageRecord'
+        ]
+      end
 
-# Discriminator's property name (OpenAPI v3)
-def openapi_discriminator_name
-:productCategory
-end
+      # Discriminator's property name (OpenAPI v3)
+      def openapi_discriminator_name
+        :productCategory
+      end
 
-# Discriminator's mapping (OpenAPI v3)
-def openapi_discriminator_mapping
-{
-:'bandwidth' => :'BandwidthRecord',
-:'bmc-server' => :'ServerRecord',
-:'operating-system' => :'OperatingSystemRecord',
-:'public-ip' => :'PublicSubnetRecord',
-:'storage' => :'StorageRecord'
-}
-end
+      # Discriminator's mapping (OpenAPI v3)
+      def openapi_discriminator_mapping
+        {
+          :'bandwidth' => :'BandwidthRecord',
+          :'bmc-server' => :'ServerRecord',
+          :'operating-system' => :'OperatingSystemRecord',
+          :'public-ip' => :'PublicSubnetRecord',
+          :'storage' => :'StorageRecord'
+        }
+      end
 
-# Builds the object
-# @param [Mixed] Data to be matched against the list of oneOf items
-# @return [Object] Returns the model or the data itself
-def build(data)
-discriminator_value = data[openapi_discriminator_name]
-return nil if discriminator_value.nil?
+      # Builds the object
+      # @param [Mixed] Data to be matched against the list of oneOf items
+      # @return [Object] Returns the model or the data itself
+      def build(data)
+        discriminator_value = data[openapi_discriminator_name]
+        return nil if discriminator_value.nil?
 
-klass = openapi_discriminator_mapping[discriminator_value.to_s.to_sym]
-return nil unless klass
+        klass = openapi_discriminator_mapping[discriminator_value.to_s.to_sym]
+        return nil unless klass
 
-BillingApi.const_get(klass).build_from_hash(data)
-end
-end
-end
+        BillingApi.const_get(klass).build_from_hash(data)
+      end
+    end
+  end
 
 end
