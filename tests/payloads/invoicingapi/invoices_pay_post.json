@@ -1,15 +1,16 @@
 {
-    "request": {
-        "method": "POST",
-        "path": "/invoicing/v1/invoices/{id}/actions/pay",
-        "pathParameters": {
-            "id": [ "id" ]
-        }
-    },
-    "response": {
-        "statusCode": 200,
-        "body": {
-
-        }
+  "request": {
+    "method": "POST",
+    "path": "/invoicing/v1/invoices/{id}/actions/pay",
+    "pathParameters": {
+      "id": [
+        "id"
+      ]
     }
+  },
+  "response": {
+    "statusCode": 200,
+    "body": {
+    }
+  }
 }

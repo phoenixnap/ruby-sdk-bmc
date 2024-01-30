@@ -6,8 +6,8 @@
   "response": {
     "statusCode": 200,
     "body": {
-      "thresholdConfiguration" : {
-        "thresholdAmount" : 5
+      "thresholdConfiguration": {
+        "thresholdAmount": 5
       }
     }
   }

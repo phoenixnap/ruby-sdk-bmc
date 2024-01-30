@@ -5,27 +5,40 @@
     "queryStringParameters": [
       {
         "name": "productCategory",
-        "values": [ "SERVER" ]
+        "values": [
+          "SERVER"
+        ]
       },
       {
         "name": "productCode",
-        "values": [ "code", "random" ]
+        "values": [
+          "code",
+          "random"
+        ]
       },
       {
         "name": "showOnlyMinQuantityAvailable",
-        "values": [ "true" ]
+        "values": [
+          "true"
+        ]
       },
       {
         "name": "location",
-        "values": [ "PHX" ]
+        "values": [
+          "PHX"
+        ]
       },
       {
         "name": "solution",
-        "values": [ "SERVER_RANCHER" ]
+        "values": [
+          "SERVER_RANCHER"
+        ]
       },
       {
         "name": "minQuantity",
-        "values": [ "2" ]
+        "values": [
+          "2"
+        ]
       }
     ]
   },
@@ -33,17 +46,20 @@
     "statusCode": 200,
     "body": [
       {
-        "productCode" : "code",
-        "productCategory" : "SERVER",
-        "locationAvailabilityDetails" : [{
-          "location": "PHX",
-          "minQuantityRequested": 3,
-          "minQuantityAvailable": true,
-          "availableQuantity": 5,
-          "solutions": ["SERVER_RANCHER"]
-        }]
+        "productCode": "code",
+        "productCategory": "SERVER",
+        "locationAvailabilityDetails": [
+          {
+            "location": "PHX",
+            "minQuantityRequested": 3,
+            "minQuantityAvailable": true,
+            "availableQuantity": 5,
+            "solutions": [
+              "SERVER_RANCHER"
+            ]
+          }
+        ]
       }
     ]
   }
 }
-  

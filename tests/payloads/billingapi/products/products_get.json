@@ -5,29 +5,37 @@
     "queryStringParameters": [
       {
         "name": "productCode",
-        "values": [ "d1.tiny" ]
+        "values": [
+          "d1.tiny"
+        ]
       },
       {
         "name": "productCategory",
-        "values": [ "server" ]
+        "values": [
+          "server"
+        ]
       },
       {
         "name": "skuCode",
-        "values": [ "xxx-xxx-xxx" ]
+        "values": [
+          "xxx-xxx-xxx"
+        ]
       },
       {
         "name": "location",
-        "values": [ "PHX" ]
+        "values": [
+          "PHX"
+        ]
       }
     ]
   },
   "response": {
     "statusCode": 200,
-    "body":[
+    "body": [
       {
-        "productCode" : "d1.tiny",
-        "productCategory" : "SERVER",
-        "plans" : [
+        "productCode": "d1.tiny",
+        "productCategory": "SERVER",
+        "plans": [
           {
             "sku": "xxx-xxx-xxx",
             "skuDescription": "skuDescription",
@@ -40,14 +48,14 @@
             "packageUnit": "GB"
           }
         ],
-        "metadata" : {
-          "ramInGb" : 10,
-          "cpu" : "intel",
-          "cpuCount" : 5,
-          "coresPerCpu" : 5,
-          "cpuFrequency" : 5,
-          "network" : "network",
-          "storage" : "storage"
+        "metadata": {
+          "ramInGb": 10,
+          "cpu": "intel",
+          "cpuCount": 5,
+          "coresPerCpu": 5,
+          "cpuFrequency": 5,
+          "network": "network",
+          "storage": "storage"
         }
       }
     ]

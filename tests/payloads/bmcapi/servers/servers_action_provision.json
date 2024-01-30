@@ -3,7 +3,9 @@
     "method": "POST",
     "path": "/bmc/v1/servers/{id}/actions/provision",
     "pathParameters": {
-      "id": ["e6afba51-7de8-4080-83ab-0f915570659c"]
+      "id": [
+        "e6afba51-7de8-4080-83ab-0f915570659c"
+      ]
     },
     "queryStringParameters": [
       {
@@ -88,20 +90,26 @@
       "cpuFrequency": 4.5,
       "ram": "64GB RAM",
       "storage": "1x 960GB NVMe",
-      "privateIpAddresses": [ "172.16.0.1" ],
-      "publicIpAddresses": [ "182.16.0.1" ],
+      "privateIpAddresses": [
+        "172.16.0.1"
+      ],
+      "publicIpAddresses": [
+        "182.16.0.1"
+      ],
       "reservationId": "x78sdkjds879sd7cx8",
       "pricingModel": "HOURLY",
       "password": "MyP@ssw0rd_01",
       "networkType": "PUBLIC_AND_PRIVATE",
       "clusterId": "x78sdkjds879sd7cx8",
-      "tags": [{
-        "id": "60ffafcdffb8b074c7968dad",
-        "name": "Environment",
-        "value": "PROD",
-        "isBillingTag": true,
-        "createdBy": "USER"
-      }],
+      "tags": [
+        {
+          "id": "60ffafcdffb8b074c7968dad",
+          "name": "Environment",
+          "value": "PROD",
+          "isBillingTag": true,
+          "createdBy": "USER"
+        }
+      ],
       "provisionedOn": "2021-03-13T20:24:32.491Z",
       "osConfiguration": {
         "netrisController": {
@@ -161,10 +169,12 @@
         },
         "ipBlocksConfiguration": {
           "configurationType": "PURCHASE_NEW",
-          "ipBlocks": [{
-            "id": "60473a6115e34466c9f8f083",
-            "vlanId": 10
-          }]
+          "ipBlocks": [
+            {
+              "id": "60473a6115e34466c9f8f083",
+              "vlanId": 10
+            }
+          ]
         },
         "publicNetworkConfiguration": {
           "publicNetworks": [
