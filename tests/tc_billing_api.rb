@@ -149,6 +149,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][0][:endDateTime] = Time.parse(response[:body][0][:endDateTime])
     response[:body][0][:lastRenewalDateTime] = Time.parse(response[:body][0][:lastRenewalDateTime])
     response[:body][0][:nextRenewalDateTime] = Time.parse(response[:body][0][:nextRenewalDateTime])
+    response[:body][0][:nextBillingDate] = Date.parse(response[:body][0][:nextBillingDate])
     # Parsing float for comparison
     response[:body][0][:price] = response[:body][0][:price].to_f
 
@@ -173,6 +174,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][:endDateTime] = Time.parse(response[:body][:endDateTime])
     response[:body][:lastRenewalDateTime] = Time.parse(response[:body][:lastRenewalDateTime])
     response[:body][:nextRenewalDateTime] = Time.parse(response[:body][:nextRenewalDateTime])
+    response[:body][:nextBillingDate] = Date.parse(response[:body][:nextBillingDate])
     # Parsing float for comparison
     response[:body][:price] = response[:body][:price].to_f
 
@@ -195,6 +197,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][:endDateTime] = Time.parse(response[:body][:endDateTime])
     response[:body][:lastRenewalDateTime] = Time.parse(response[:body][:lastRenewalDateTime])
     response[:body][:nextRenewalDateTime] = Time.parse(response[:body][:nextRenewalDateTime])
+    response[:body][:nextBillingDate] = Date.parse(response[:body][:nextBillingDate])
     # Parsing float for comparison
     response[:body][:price] = response[:body][:price].to_f
 
@@ -220,6 +223,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][:endDateTime] = Time.parse(response[:body][:endDateTime])
     response[:body][:lastRenewalDateTime] = Time.parse(response[:body][:lastRenewalDateTime])
     response[:body][:nextRenewalDateTime] = Time.parse(response[:body][:nextRenewalDateTime])
+    response[:body][:nextBillingDate] = Date.parse(response[:body][:nextBillingDate])
     # Parsing float for comparison
     response[:body][:price] = response[:body][:price].to_f
 
@@ -242,6 +246,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][:endDateTime] = Time.parse(response[:body][:endDateTime])
     response[:body][:lastRenewalDateTime] = Time.parse(response[:body][:lastRenewalDateTime])
     response[:body][:nextRenewalDateTime] = Time.parse(response[:body][:nextRenewalDateTime])
+    response[:body][:nextBillingDate] = Date.parse(response[:body][:nextBillingDate])
     # Parsing float for comparison
     response[:body][:price] = response[:body][:price].to_f
 
@@ -267,6 +272,7 @@ class TC_BillingApi < Test::Unit::TestCase
     response[:body][:endDateTime] = Time.parse(response[:body][:endDateTime])
     response[:body][:lastRenewalDateTime] = Time.parse(response[:body][:lastRenewalDateTime])
     response[:body][:nextRenewalDateTime] = Time.parse(response[:body][:nextRenewalDateTime])
+    response[:body][:nextBillingDate] = Date.parse(response[:body][:nextBillingDate])
     # Parsing float for comparison
     response[:body][:price] = response[:body][:price].to_f
 
