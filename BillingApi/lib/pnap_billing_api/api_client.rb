@@ -54,16 +54,13 @@ module BillingApi
       request = build_request(http_method, path, opts)
       tempfile = download_file(request) if opts[:return_type] == 'File'
       response = request.run
-      puts "response : #{response.response_body}"
 
       if @config.debugging
         @config.logger.debug "HTTP response body ~BEGIN~\n#{response.body}\n~END~\n"
       end
 
       unless response.success?
-        puts 'in unless'
         if response.timed_out?
-          puts 'in timed out'
           fail ApiError.new('Connection timed out')
         elsif response.code == 0
           # Errors from libcurl will be made visible here
@@ -77,21 +74,13 @@ module BillingApi
         end
       end
 
-      puts 'after unless'
-
       if opts[:return_type] == 'File'
-        puts 'entered file'
         data = tempfile
       elsif opts[:return_type]
-        puts 'entered real'
         data = deserialize(response, opts[:return_type])
-        puts "data #{data}"
       else
-        puts 'entered nil'
         data = nil
       end
-
-      puts 'after if opts[:return_type]S'
       return data, response.code, response.headers
     end
 
@@ -234,9 +223,7 @@ module BillingApi
     # @param [Response] response HTTP response
     # @param [String] return_type some examples: "User", "Array<User>", "Hash<String, Integer>"
     def deserialize(response, return_type)
-      puts 'entered deserialize'
       body = response.body
-      puts "body: #{body}"
       return nil if body.nil? || body.empty?
 
       # return response body directly for String return type
@@ -257,7 +244,6 @@ module BillingApi
         end
       end
 
-      puts "data: #{data}"
       convert_to_type data, return_type
     end
 
@@ -266,7 +252,6 @@ module BillingApi
     # @param [String] return_type Return type
     # @return [Mixed] Data in a particular type
     def convert_to_type(data, return_type)
-      puts 'entered convert_to_type'
       return nil if data.nil?
       case return_type
       when 'String'
@@ -284,11 +269,9 @@ module BillingApi
         # parse date time (expecting ISO 8601 format)
         Date.parse data
       when 'Object'
-        puts 'entered Object'
         # generic object (usually a Hash), return directly
         data
       when /\AArray<(.+)>\z/
-        puts 'entered Array'
         # e.g. Array<Pet>
         sub_type = $1
         data.map { |item| convert_to_type(item, sub_type) }
@@ -299,10 +282,8 @@ module BillingApi
           data.each { |k, v| hash[k] = convert_to_type(v, sub_type) }
         end
       else
-        puts 'entered else (oneOf)'
         # models (e.g. Pet) or oneOf
         klass = BillingApi.const_get(return_type)
-        puts "klass: #{klass}"
         klass.respond_to?(:openapi_one_of) ? klass.build(data) : klass.build_from_hash(data)
       end
     end

@@ -165,9 +165,6 @@ module BillingApi
       )
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      puts "data, #{data}"
-      puts "status_code, #{status_code}"
-      puts "headers, #{headers}"
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ProductsApi#products_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
