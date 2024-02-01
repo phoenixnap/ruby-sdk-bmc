@@ -43,16 +43,25 @@ class TC_InvoicingApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
 
     api_instance = InvoicingApi::InvoicesApi.new
-    opts = {
-      number: '13218-1180326',
-      status: 'PAID',
-      sent_on_from: '2020-04-13T00:00:00Z',
-      sent_on_to: '2022-04-13T00:00:00Z',
-      limit: 100,
-      offset: 0,
-      sort_field: 'sentOn',
-      sort_direction: 'DESC'
-    }
+    opts = TestUtils.generate_query_params(request)
+
+    # Our api is expecting all two-word key names to be camelCase, but ruby's generator adheres to normal ruby styling and is expecting them to be sent in snake_case.
+    # The `transactions_get_with_http_info` method will transform the opts we send into proper query params with camelCase styling to adhere to the api expectations,
+    # but the validation is done by explicitly searching for snake_case keys, so the keys need to be replaced here.
+    # The keys are not replaced in the payload because that is being used to setup the expectation in mockserver.
+    opts.delete(:sentOnFrom)
+    opts[:sent_on_from] = '2020-04-13T00:00:00Z'
+    opts.delete(:sentOnTo)
+    opts[:sent_on_to] = '2022-04-13T00:00:00Z'
+    opts.delete(:sortField)
+    opts[:sort_field] = 'sentOn'
+    opts.delete(:sortDirection)
+    opts[:sort_direction] = 'DESC'
+
+    # Mockserver wants the expectation to be setup using strings, but the endpoint method has some integer validation which can only be done on integer types,
+    # so the values are set to integer here
+    opts[:limit] = opts[:limit].to_i
+    opts[:offset] = opts[:offset].to_i
 
     result = api_instance.invoices_get(opts)
 

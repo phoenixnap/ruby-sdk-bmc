@@ -44,14 +44,21 @@ class TC_PaymentsApi < Test::Unit::TestCase
     expectation = TestUtils.setup_expectation(request, response, 1)
 
     api_instance = PaymentsApi::TransactionsApi.new
-    opts = {
-      limit: 100,
-      offset: 0,
-      sort_direction: 'DESC',
-      sort_field: 'date',
-      from: '2021-04-27T16:24:57Z',
-      to: '2021-04-27T16:24:57Z'
-    }
+    opts = TestUtils.generate_query_params(request)
+
+    # Our api is expecting all two-word key names to be camelCase, but ruby's generator adheres to normal ruby styling and is expecting them to be sent in snake_case.
+    # The `transactions_get_with_http_info` method will transform the opts we send into proper query params with camelCase styling to adhere to the api expectations,
+    # but the validation is done by explicitly searching for snake_case keys, so the keys need to be replaced here.
+    # The keys are not replaced in the payload because that is being used to setup the expectation in mockserver.
+    opts.delete(:sortDirection)
+    opts[:sort_direction] = 'DESC'
+    opts.delete(:sortField)
+    opts[:sort_field] = 'date'
+
+    # Mockserver wants the expectation to be setup using strings, but the endpoint method has some integer validation which can only be done on integer types,
+    # so the values are set to integer here
+    opts[:limit] = opts[:limit].to_i
+    opts[:offset] = opts[:offset].to_i
 
     result = api_instance.transactions_get(opts)
 
