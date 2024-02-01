@@ -49,8 +49,10 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
         response[:body][0][:volumes][0][:createdOn] = Time.parse(response[:body][0][:volumes][0][:createdOn])
-    
+        response[:body][0][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][0][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -67,8 +69,10 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
-    
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation
@@ -81,15 +85,15 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         api_instance = NetworkStorageApi::StorageNetworksApi.new
         storagenetwork_create = NetworkStorageApi::StorageNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
     
-        opts = {
-            storage_network_create: storagenetwork_create
-        }
+        storage_network_create = storagenetwork_create
 
-        result = api_instance.storage_networks_post(opts)
+        result = api_instance.storage_networks_post(storage_network_create)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -104,15 +108,15 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
         storagenetwork_update = NetworkStorageApi::StorageNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            storage_network_update: storagenetwork_update
-        }
-    
-        result = api_instance.storage_networks_id_patch(storagenetwork_id, opts)
+        storage_network_update = storagenetwork_update
+
+        result = api_instance.storage_networks_id_patch(storagenetwork_id, storage_network_update)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -144,7 +148,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
-    
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -162,7 +167,8 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -177,15 +183,14 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         volume_id = TestUtils.extract_id_from(request, :volumeId)
         volume_update = NetworkStorageApi::VolumeUpdate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            volume_update: volume_update
-        }
+        volume_update = volume_update
 
-        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storagenetwork_id, volume_id, opts)
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storagenetwork_id, volume_id, volume_update)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -199,15 +204,14 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
         volume_create = NetworkStorageApi::VolumeCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            volume_create: volume_create
-        }
+        volume_create = volume_create
 
-        result = api_instance.storage_networks_storage_network_id_volumes_post(storagenetwork_id, opts)
+        result = api_instance.storage_networks_storage_network_id_volumes_post(storagenetwork_id, volume_create)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        

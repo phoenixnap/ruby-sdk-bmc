@@ -75,6 +75,8 @@ require 'pnap_bmc_api'
 BmcApi.configure do |config|
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'
+  # Configure a proc to get access tokens in lieu of the static access_token configuration
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
 api_instance = BmcApi::QuotasApi.new
@@ -173,7 +175,6 @@ Class | Method | HTTP request | Description
  - [BmcApi::Quota](docs/Quota.md)
  - [BmcApi::QuotaEditLimitRequest](docs/QuotaEditLimitRequest.md)
  - [BmcApi::QuotaEditLimitRequestDetails](docs/QuotaEditLimitRequestDetails.md)
- - [BmcApi::QuotaEditLimitRequestDetailsAllOf](docs/QuotaEditLimitRequestDetailsAllOf.md)
  - [BmcApi::RelinquishIpBlock](docs/RelinquishIpBlock.md)
  - [BmcApi::ResetResult](docs/ResetResult.md)
  - [BmcApi::Server](docs/Server.md)
@@ -198,6 +199,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### OAuth2
 
 

@@ -14,9 +14,9 @@
       "type": "JSON",
       "json": {
         "capacityInGb": 3000,
-        "name" : "volumeName",
-        "description" : "volumeDescription",
-        "pathSuffix" : "/pathSuffix",
+        "name": "volumeName",
+        "description": "volumeDescription",
+        "pathSuffix": "/pathSuffix",
         "permissions": {
           "nfs": {
             "readWrite": [
@@ -41,6 +41,7 @@
       "protocol": "NFS",
       "status": "BUSY",
       "createdOn": "2021-04-27T16:24:57Z",
+      "deleteRequestedOn": "2022-04-07T08:50:20.359Z",
       "permissions": {
         "nfs": {
           "readWrite": [],

@@ -24,6 +24,7 @@
       "protocol": "NFS",
       "status": "READY",
       "createdOn": "2021-04-27T16:24:57Z",
+      "deleteRequestedOn": "2022-04-07T08:50:20.359Z",
       "permissions": {
         "nfs": {
           "readWrite": [],
@@ -33,6 +34,6 @@
           "allSquash": []
         }
       }
-    } 
+    }
   }
 }

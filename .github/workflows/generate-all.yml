@@ -78,6 +78,27 @@ jobs:
       spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-location/download_spec
       module-name: LocationApi
       gem-name: pnap_location_api
+  generate-billingapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-billing/download_spec
+      module-name: BillingApi
+      gem-name: pnap_billing_api
+  generate-paymentsapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/payments/download_spec
+      module-name: PaymentsApi
+      gem-name: pnap_payments_api
+  generate-invoicingapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/invoicing/download_spec
+      module-name: InvoicingApi
+      gem-name: pnap_invoicing_api
 
   # Push generated code
   push-changes:
@@ -92,6 +113,9 @@ jobs:
       - generate-tagapi
       - generate-networkstorageapi
       - generate-locationapi
+      - generate-billingapi
+      - generate-paymentsapi
+      - generate-invoicingapi
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
