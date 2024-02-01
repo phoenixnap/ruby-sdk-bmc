@@ -101,6 +101,7 @@ class TC_InvoicingApi < Test::Unit::TestCase
     # There is currently a bug with openApi generation where endpoints that return File type are executed twice.
     # [invoices_api.rb:103] calls the client with the method `call_api`.
     # In that method, the tempfile is generated from an api call if the return type is File by executing the request in the `download_file` method, but it also directly calls `request.run`
+    # Due to this, the api is called twice, so we have to setup the expectation to be called 2 times in mockserver
 
     request, response = TestUtils.generate_payloads_from('invoicingapi/invoices_generate_pdf_post')
     TestUtils.setup_expectation(request, response, 2)

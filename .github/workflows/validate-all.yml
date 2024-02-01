@@ -57,6 +57,11 @@ jobs:
     with:
       module-name: InvoicingApi
       test-file: tc_invoicing_api.rb
+  build-and-test-billingapi:
+    uses: ./.github/workflows/_common.yml
+    with:
+      module-name: BillingApi
+      test-file: tc_billing_api.rb
 
   publish-test-results:
     name: Publish Test Results
@@ -71,6 +76,7 @@ jobs:
       - build-and-test-locationapi
       - build-and-test-paymentsapi
       - build-and-test-invoicingapi
+      - build-and-test-billingapi
     runs-on: ubuntu-latest
     if: always()
     steps:
