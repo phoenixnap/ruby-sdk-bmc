@@ -1,9 +1,17 @@
 {
   "request": {
     "method": "GET",
-    "path": "/network-storage/v1/storage-networks/{storageNetworkId}/volumes",
+    "path": "/network-storage/v1/storage-networks/{storageId}/volumes",
+    "queryStringParameters": [
+      {
+        "name": "tag",
+        "values": [
+          "env.dev"
+        ]
+      }
+    ],
     "pathParameters": {
-      "storageNetworkId": [
+      "storageId": [
         "50dc434c-9bba-427b-bcd6-0bdba45c4dd2"
       ]
     }
@@ -31,7 +39,16 @@
             "noSquash": [],
             "allSquash": []
           }
-        }
+        },
+        "tags": [
+          {
+            "id": "60ffafcdffb8b074c7968dad",
+            "name": "Environment",
+            "value": "PROD",
+            "isBillingTag": true,
+            "createdBy": "USER"
+          }
+        ]
       }
     ]
   }

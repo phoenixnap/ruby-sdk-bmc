@@ -29,6 +29,43 @@
           "5fa54d1e91867c03a0a7b4a4"
         ],
         "networkType": "PUBLIC_AND_PRIVATE",
+        "osConfiguration": {
+          "netrisController": {
+            "hostOs": "ubuntu/jammy",
+            "netrisWebConsoleUrl": "https://172.217.22.14",
+            "netrisUserPassword": "cNC1jPFXG2h7f"
+          },
+          "netrisSoftgate": {
+            "hostOs": "ubuntu/jammy",
+            "controllerAddress": "120.153.203.227",
+            "controllerVersion": "3.4.0-003",
+            "controllerAuthKey": "w0OP8TjZaHO17DTwxtN5VYh5Bh1ZVH2s3WK1JRTw"
+          },
+          "windows": {
+            "rdpAllowedIps": [
+              "172.217.22.14",
+              "10.111.14.40/29",
+              "10.111.14.66 - 10.111.14.71"
+            ]
+          },
+          "rootPassword": "MyP@ssw0rd_01",
+          "managementUiUrl": "https://172.217.22.14",
+          "managementAccessAllowedIps": [
+            "172.217.22.14",
+            "10.111.14.40/29",
+            "10.111.14.66 - 10.111.14.71"
+          ],
+          "installOsToRam": false,
+          "cloudInit": {
+            "userData": "data"
+          }
+        },
+        "tags": [
+          {
+            "name": "Environment",
+            "value": "PROD"
+          }
+        ],
         "networkConfiguration": {
           "gatewayAddress": "182.16.0.145",
           "privateNetworkConfiguration": {
@@ -194,6 +231,12 @@
               "statusDescription": "statusDescription"
             }
           ]
+        }
+      },
+      "storageConfiguration": {
+        "rootPartition": {
+          "raid": "NO_RAID",
+          "size": -1
         }
       },
       "supersededBy": "64a539b8d9c2c9ba8424ca31",
