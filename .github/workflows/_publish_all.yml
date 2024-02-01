@@ -102,3 +102,36 @@ jobs:
     with:
       dry_run: ${{ inputs.dry_run }}
       gem_to_publish: LocationApi
+
+  publish-payments-api:
+    name: Publish Payments API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: PaymentsApi
+
+  publish-invoicing-api:
+    name: Publish Invoicing API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: InvoicingApi
+
+  publish-billing-api:
+    name: Publish Billing API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: ${{ inputs.dry_run }}
+      gem_to_publish: BillingApi
