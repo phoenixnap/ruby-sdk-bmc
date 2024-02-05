@@ -10,10 +10,10 @@
 | **location** | **String** | Deployment location. Cannot be changed once a cluster is created. Currently this field should be set to &#x60;PHX&#x60;, &#x60;ASH&#x60;, &#x60;SGP&#x60;, &#x60;NLD&#x60;, &#x60;CHI&#x60;, &#x60;SEA&#x60; or &#x60;AUS&#x60;. |  |
 | **initial_cluster_version** | **String** | (Read-only) The Rancher version that was installed on the cluster during the first creation process. | [optional][readonly] |
 | **node_pools** | [**Array&lt;NodePool&gt;**](NodePool.md) | The node pools associated with the cluster. | [optional] |
-| **configuration** | [**ClusterConfiguration**](ClusterConfiguration.md) |  | [optional] |
+| **configuration** | [**RancherClusterConfig**](RancherClusterConfig.md) |  | [optional] |
 | **metadata** | [**RancherServerMetadata**](RancherServerMetadata.md) |  | [optional][readonly] |
-| **workload_configuration** | [**ClusterWorkloadConfiguration**](ClusterWorkloadConfiguration.md) |  | [optional] |
-| **status_description** | **String** | The cluster status | [optional][readonly] |
+| **workload_configuration** | [**WorkloadClusterConfig**](WorkloadClusterConfig.md) |  | [optional] |
+| **status_description** | **String** | (Read-Only) The cluster status | [optional][readonly] |
 
 ## Example
 

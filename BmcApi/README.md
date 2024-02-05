@@ -75,6 +75,8 @@ require 'pnap_bmc_api'
 BmcApi.configure do |config|
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'
+  # Configure a proc to get access tokens in lieu of the static access_token configuration
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
 api_instance = BmcApi::QuotasApi.new
@@ -134,6 +136,7 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_actions_deprovision_post**](docs/ServersApi.md#servers_server_id_actions_deprovision_post) | **POST** /servers/{serverId}/actions/deprovision | Deprovision a server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_power_off_post**](docs/ServersApi.md#servers_server_id_actions_power_off_post) | **POST** /servers/{serverId}/actions/power-off | Power off server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_power_on_post**](docs/ServersApi.md#servers_server_id_actions_power_on_post) | **POST** /servers/{serverId}/actions/power-on | Power on server.
+*BmcApi::ServersApi* | [**servers_server_id_actions_provision_post**](docs/ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reboot_post**](docs/ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reserve_post**](docs/ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reset_post**](docs/ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server.
@@ -172,7 +175,6 @@ Class | Method | HTTP request | Description
  - [BmcApi::Quota](docs/Quota.md)
  - [BmcApi::QuotaEditLimitRequest](docs/QuotaEditLimitRequest.md)
  - [BmcApi::QuotaEditLimitRequestDetails](docs/QuotaEditLimitRequestDetails.md)
- - [BmcApi::QuotaEditLimitRequestDetailsAllOf](docs/QuotaEditLimitRequestDetailsAllOf.md)
  - [BmcApi::RelinquishIpBlock](docs/RelinquishIpBlock.md)
  - [BmcApi::ResetResult](docs/ResetResult.md)
  - [BmcApi::Server](docs/Server.md)
@@ -181,6 +183,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::ServerNetworkUpdate](docs/ServerNetworkUpdate.md)
  - [BmcApi::ServerPatch](docs/ServerPatch.md)
  - [BmcApi::ServerPrivateNetwork](docs/ServerPrivateNetwork.md)
+ - [BmcApi::ServerProvision](docs/ServerProvision.md)
  - [BmcApi::ServerPublicNetwork](docs/ServerPublicNetwork.md)
  - [BmcApi::ServerReserve](docs/ServerReserve.md)
  - [BmcApi::ServerReset](docs/ServerReset.md)
@@ -196,6 +199,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### OAuth2
 
 

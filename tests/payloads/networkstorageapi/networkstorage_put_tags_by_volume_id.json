@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "PUT",
+    "path": "/network-storage/v1/storage-networks/{storageId}/volumes/{volumeId}/tags",
+    "pathParameters": {
+      "storageId": [
+        "50dc434c-9bba-427b-bcd6-0bdba45c4dd2"
+      ],
+      "volumeId": [
+        "50dc434c-9bba-427b-bcd6-0bdba45c4dd2"
+      ]
+    },
+    "body": {
+      "type": "JSON",
+      "json": [
+        {
+          "name": "Environment",
+          "value": "PROD"
+        }
+      ],
+      "matchType": "STRICT"
+    }
+  },
+  "response": {
+    "statusCode": 200,
+    "body": {
+      "id": "fakeVolumeId",
+      "name": "volumeName",
+      "description": "volumeDescription",
+      "path": "/fakeVolumeId/pathSuffix",
+      "pathSuffix": "/pathSuffix",
+      "capacityInGb": 1000,
+      "usedCapacityInGb": 10,
+      "protocol": "NFS",
+      "status": "BUSY",
+      "createdOn": "2021-04-27T16:24:57Z",
+      "deleteRequestedOn": "2022-04-07T08:50:20.359Z",
+      "permissions": {
+        "nfs": {
+          "readWrite": [],
+          "readOnly": [],
+          "rootSquash": [],
+          "noSquash": [],
+          "allSquash": []
+        }
+      },
+      "tags": [
+        {
+          "id": "60ffafcdffb8b074c7968dad",
+          "name": "Environment",
+          "value": "PROD",
+          "isBillingTag": true,
+          "createdBy": "USER"
+        }
+      ]
+    }
+  }
+}

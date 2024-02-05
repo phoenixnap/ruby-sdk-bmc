@@ -223,7 +223,7 @@ end
 
 ## ip_blocks_ip_block_id_patch
 
-> <IpBlock> ip_blocks_ip_block_id_patch(ip_block_id, opts)
+> <IpBlock> ip_blocks_ip_block_id_patch(ip_block_id, ip_block_patch)
 
 Update IP block.
 
@@ -242,13 +242,11 @@ end
 
 api_instance = IpApi::IPBlocksApi.new
 ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
-opts = {
-  ip_block_patch: IpApi::IpBlockPatch.new # IpBlockPatch | 
-}
+ip_block_patch = IpApi::IpBlockPatch.new # IpBlockPatch | 
 
 begin
   # Update IP block.
-  result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, opts)
+  result = api_instance.ip_blocks_ip_block_id_patch(ip_block_id, ip_block_patch)
   p result
 rescue IpApi::ApiError => e
   puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_patch: #{e}"
@@ -259,12 +257,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, opts)
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, ip_block_patch)
 
 ```ruby
 begin
   # Update IP block.
-  data, status_code, headers = api_instance.ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, opts)
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_patch_with_http_info(ip_block_id, ip_block_patch)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IpBlock>
@@ -278,7 +276,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ip_block_id** | **String** | The IP Block identifier. |  |
-| **ip_block_patch** | [**IpBlockPatch**](IpBlockPatch.md) |  | [optional] |
+| **ip_block_patch** | [**IpBlockPatch**](IpBlockPatch.md) |  |  |
 
 ### Return type
 
@@ -296,7 +294,7 @@ end
 
 ## ip_blocks_ip_block_id_tags_put
 
-> <IpBlock> ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+> <IpBlock> ip_blocks_ip_block_id_tags_put(ip_block_id, tag_assignment_request)
 
 Overwrite tags assigned for IP Block.
 
@@ -315,13 +313,11 @@ end
 
 api_instance = IpApi::IPBlocksApi.new
 ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
-opts = {
-  tag_assignment_request: [IpApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
-}
+tag_assignment_request = [IpApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
 
 begin
   # Overwrite tags assigned for IP Block.
-  result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, opts)
+  result = api_instance.ip_blocks_ip_block_id_tags_put(ip_block_id, tag_assignment_request)
   p result
 rescue IpApi::ApiError => e
   puts "Error when calling IPBlocksApi->ip_blocks_ip_block_id_tags_put: #{e}"
@@ -332,12 +328,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, opts)
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, tag_assignment_request)
 
 ```ruby
 begin
   # Overwrite tags assigned for IP Block.
-  data, status_code, headers = api_instance.ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, opts)
+  data, status_code, headers = api_instance.ip_blocks_ip_block_id_tags_put_with_http_info(ip_block_id, tag_assignment_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IpBlock>
@@ -351,7 +347,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **ip_block_id** | **String** | The IP Block identifier. |  |
-| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) |  | [optional] |
+| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) |  |  |
 
 ### Return type
 
@@ -369,7 +365,7 @@ end
 
 ## ip_blocks_post
 
-> <IpBlock> ip_blocks_post(opts)
+> <IpBlock> ip_blocks_post(ip_block_create)
 
 Create an IP Block.
 
@@ -387,13 +383,11 @@ IpApi.configure do |config|
 end
 
 api_instance = IpApi::IPBlocksApi.new
-opts = {
-  ip_block_create: IpApi::IpBlockCreate.new({location: 'PHX', cidr_block_size: '/30'}) # IpBlockCreate | 
-}
+ip_block_create = IpApi::IpBlockCreate.new({location: 'PHX', cidr_block_size: '/30'}) # IpBlockCreate | 
 
 begin
   # Create an IP Block.
-  result = api_instance.ip_blocks_post(opts)
+  result = api_instance.ip_blocks_post(ip_block_create)
   p result
 rescue IpApi::ApiError => e
   puts "Error when calling IPBlocksApi->ip_blocks_post: #{e}"
@@ -404,12 +398,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<IpBlock>, Integer, Hash)> ip_blocks_post_with_http_info(opts)
+> <Array(<IpBlock>, Integer, Hash)> ip_blocks_post_with_http_info(ip_block_create)
 
 ```ruby
 begin
   # Create an IP Block.
-  data, status_code, headers = api_instance.ip_blocks_post_with_http_info(opts)
+  data, status_code, headers = api_instance.ip_blocks_post_with_http_info(ip_block_create)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <IpBlock>
@@ -422,7 +416,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **ip_block_create** | [**IpBlockCreate**](IpBlockCreate.md) |  | [optional] |
+| **ip_block_create** | [**IpBlockCreate**](IpBlockCreate.md) |  |  |
 
 ### Return type
 

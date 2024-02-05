@@ -24,6 +24,4 @@ lib/pnap_tag_api/models/tag_create.rb
 lib/pnap_tag_api/models/tag_update.rb
 lib/pnap_tag_api/version.rb
 pnap_tag_api.gemspec
-spec/api_client_spec.rb
-spec/configuration_spec.rb
 spec/spec_helper.rb

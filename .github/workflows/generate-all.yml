@@ -78,6 +78,27 @@ jobs:
       spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-location/download_spec
       module-name: LocationApi
       gem-name: pnap_location_api
+  generate-billingapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/bmc-billing/download_spec
+      module-name: BillingApi
+      gem-name: pnap_billing_api
+  generate-paymentsapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/payments/download_spec
+      module-name: PaymentsApi
+      gem-name: pnap_payments_api
+  generate-invoicingapi:
+    needs: prerequisite
+    uses: ./.github/workflows/_generate.yml
+    with:
+      spec-link: https://developers.phoenixnap.com/portals/api/sites/phoenixnap-prod-developerportal/liveportal/apis/invoicing/download_spec
+      module-name: InvoicingApi
+      gem-name: pnap_invoicing_api
 
   # Push generated code
   push-changes:
@@ -92,23 +113,54 @@ jobs:
       - generate-tagapi
       - generate-networkstorageapi
       - generate-locationapi
+      - generate-billingapi
+      - generate-paymentsapi
+      - generate-invoicingapi
+    outputs:
+      CHANGES_FOUND: ${{ steps.commit-step.outputs.CHANGES_FOUND }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+      - name: Clean up modules
+        run: |
+          rm -r ./AuditApi \
+           ./BillingApi \
+           ./BmcApi \
+           ./InvoicingApi \
+           ./IpApi \
+           ./LocationApi \
+           ./NetworkApi \
+           ./NetworkStorageApi \
+           ./PaymentsApi \
+           ./RancherApi \
+           ./TagApi
       - name: Download Artifacts
         uses: actions/download-artifact@v3
       - name: Move spec files
         run: |
           find . -type f -name "*.spec.yaml" -not -path "./specs/*" -print0 | xargs -0 mv -ft ./specs/
-      - name: Add and Commit files
+      - id: commit-step
+        name: Add and Commit files
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add -A
 
-          if test "$(git status --porcelain=v1 2>/dev/null | wc -l)" -gt "0" ; then git commit -m "Add changes"; else echo No changes found; fi
+          if test "$(git status --porcelain=v1 2>/dev/null | wc -l)" -gt "0" ;
+          then 
+            git commit -m "Add changes";
+            echo "CHANGES_FOUND=true" >> "$GITHUB_OUTPUT";
+          else 
+            echo No changes found;
+          fi
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+
+  validate-all:
+    if: ${{ needs.push-changes.outputs.CHANGES_FOUND }}
+    needs:
+      - push-changes
+    uses: ./.github/workflows/validate-all.yml

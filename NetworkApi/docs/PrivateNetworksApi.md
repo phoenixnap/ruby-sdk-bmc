@@ -221,7 +221,7 @@ end
 
 ## private_networks_network_id_put
 
-> <PrivateNetwork> private_networks_network_id_put(private_network_id, opts)
+> <PrivateNetwork> private_networks_network_id_put(private_network_id, private_network_modify)
 
 Update a Private Network.
 
@@ -240,13 +240,11 @@ end
 
 api_instance = NetworkApi::PrivateNetworksApi.new
 private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
-opts = {
-  private_network_modify: NetworkApi::PrivateNetworkModify.new({name: 'Sample network', location_default: true}) # PrivateNetworkModify | 
-}
+private_network_modify = NetworkApi::PrivateNetworkModify.new({name: 'Sample network', location_default: true}) # PrivateNetworkModify | 
 
 begin
   # Update a Private Network.
-  result = api_instance.private_networks_network_id_put(private_network_id, opts)
+  result = api_instance.private_networks_network_id_put(private_network_id, private_network_modify)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PrivateNetworksApi->private_networks_network_id_put: #{e}"
@@ -257,12 +255,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PrivateNetwork>, Integer, Hash)> private_networks_network_id_put_with_http_info(private_network_id, opts)
+> <Array(<PrivateNetwork>, Integer, Hash)> private_networks_network_id_put_with_http_info(private_network_id, private_network_modify)
 
 ```ruby
 begin
   # Update a Private Network.
-  data, status_code, headers = api_instance.private_networks_network_id_put_with_http_info(private_network_id, opts)
+  data, status_code, headers = api_instance.private_networks_network_id_put_with_http_info(private_network_id, private_network_modify)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PrivateNetwork>
@@ -276,7 +274,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **private_network_id** | **String** | The private network identifier. |  |
-| **private_network_modify** | [**PrivateNetworkModify**](PrivateNetworkModify.md) |  | [optional] |
+| **private_network_modify** | [**PrivateNetworkModify**](PrivateNetworkModify.md) |  |  |
 
 ### Return type
 
@@ -294,7 +292,7 @@ end
 
 ## private_networks_post
 
-> <PrivateNetwork> private_networks_post(opts)
+> <PrivateNetwork> private_networks_post(private_network_create, opts)
 
 Create a Private Network.
 
@@ -312,14 +310,14 @@ NetworkApi.configure do |config|
 end
 
 api_instance = NetworkApi::PrivateNetworksApi.new
+private_network_create = NetworkApi::PrivateNetworkCreate.new({name: 'Sample Network', location: 'PHX'}) # PrivateNetworkCreate | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  private_network_create: NetworkApi::PrivateNetworkCreate.new({name: 'Sample Network', location: 'PHX'}) # PrivateNetworkCreate | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Create a Private Network.
-  result = api_instance.private_networks_post(opts)
+  result = api_instance.private_networks_post(private_network_create, opts)
   p result
 rescue NetworkApi::ApiError => e
   puts "Error when calling PrivateNetworksApi->private_networks_post: #{e}"
@@ -330,12 +328,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PrivateNetwork>, Integer, Hash)> private_networks_post_with_http_info(opts)
+> <Array(<PrivateNetwork>, Integer, Hash)> private_networks_post_with_http_info(private_network_create, opts)
 
 ```ruby
 begin
   # Create a Private Network.
-  data, status_code, headers = api_instance.private_networks_post_with_http_info(opts)
+  data, status_code, headers = api_instance.private_networks_post_with_http_info(private_network_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <PrivateNetwork>
@@ -348,8 +346,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **private_network_create** | [**PrivateNetworkCreate**](PrivateNetworkCreate.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **private_network_create** | [**PrivateNetworkCreate**](PrivateNetworkCreate.md) |  | [optional] |
 
 ### Return type
 

@@ -49,8 +49,10 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
         response[:body][0][:volumes][0][:createdOn] = Time.parse(response[:body][0][:volumes][0][:createdOn])
-    
+        response[:body][0][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][0][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -61,14 +63,16 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
     
-        result = api_instance.storage_networks_id_get(storagenetwork_id)
+        result = api_instance.storage_networks_id_get(storage_id)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
-    
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation
@@ -81,15 +85,15 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         api_instance = NetworkStorageApi::StorageNetworksApi.new
         storagenetwork_create = NetworkStorageApi::StorageNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
     
-        opts = {
-            storage_network_create: storagenetwork_create
-        }
+        storage_network_create = storagenetwork_create
 
-        result = api_instance.storage_networks_post(opts)
+        result = api_instance.storage_networks_post(storage_network_create)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -101,18 +105,18 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
         storagenetwork_update = NetworkStorageApi::StorageNetworkUpdate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            storage_network_update: storagenetwork_update
-        }
-    
-        result = api_instance.storage_networks_id_patch(storagenetwork_id, opts)
+        storage_network_update = storagenetwork_update
+
+        result = api_instance.storage_networks_id_patch(storage_id, storage_network_update)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
         response[:body][:volumes][0][:createdOn] = Time.parse(response[:body][:volumes][0][:createdOn])
+        response[:body][:volumes][0][:deleteRequestedOn] = Time.parse(response[:body][:volumes][0][:deleteRequestedOn])
     
         assert_equal response[:body], result.to_hash.compact
     
@@ -124,9 +128,9 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
     
-        result = api_instance.storage_networks_id_delete(storagenetwork_id)
+        result = api_instance.storage_networks_id_delete(storage_id)
     
         assert_nil result
     
@@ -138,13 +142,15 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
-    
-        result = api_instance.storage_networks_storage_network_id_volumes_get(storagenetwork_id)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
+        opts = TestUtils.generate_query_params(request)
+
+        result = api_instance.storage_networks_storage_network_id_volumes_get(storage_id, opts)
 
         # Parsing time for comparison
         response[:body][0][:createdOn] = Time.parse(response[:body][0][:createdOn])
-    
+        response[:body][0][:deleteRequestedOn] = Time.parse(response[:body][0][:deleteRequestedOn])
+
         assert_equal response[:body], [result[0].to_hash.compact]
     
         self.verify_called_once expectation
@@ -155,14 +161,15 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
         volume_id = TestUtils.extract_id_from(request, :volumeId)
     
-        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_get(storagenetwork_id, volume_id)
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_get(storage_id, volume_id)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -173,19 +180,18 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
         volume_id = TestUtils.extract_id_from(request, :volumeId)
         volume_update = NetworkStorageApi::VolumeUpdate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            volume_update: volume_update
-        }
+        volume_update = volume_update
 
-        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storagenetwork_id, volume_id, opts)
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_patch(storage_id, volume_id, volume_update)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -196,18 +202,17 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
         expectation = TestUtils.setup_expectation(request, response, 1)
         
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
         volume_create = NetworkStorageApi::VolumeCreate.build_from_hash(TestUtils.extract_request_body(request))
 
-        opts = {
-            volume_create: volume_create
-        }
+        volume_create = volume_create
 
-        result = api_instance.storage_networks_storage_network_id_volumes_post(storagenetwork_id, opts)
+        result = api_instance.storage_networks_storage_network_id_volumes_post(storage_id, volume_create)
 
         # Parsing time for comparison
         response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
-    
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
         assert_equal response[:body], result.to_hash.compact
     
         self.verify_called_once expectation        
@@ -216,15 +221,35 @@ class TC_NetworkStorageApi < Test::Unit::TestCase
     def test_delete_volume_by_storageNetwork_id_and_volume_id
         request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_delete_volume_by_id')
         expectation = TestUtils.setup_expectation(request, response, 1)
-        
+
         api_instance = NetworkStorageApi::StorageNetworksApi.new
-        storagenetwork_id = TestUtils.extract_id_from(request, :storageNetworkId)
+        storage_id = TestUtils.extract_id_from(request, :storageId)
         volume_id = TestUtils.extract_id_from(request, :volumeId)
-    
-        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_delete(storagenetwork_id, volume_id)
-    
+
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_delete(storage_id, volume_id)
+
         assert_nil result
-    
+
+        self.verify_called_once expectation
+    end
+
+    def test_put_volume_tags
+        request, response = TestUtils.generate_payloads_from('networkstorageapi/networkstorage_put_tags_by_volume_id')
+        expectation = TestUtils.setup_expectation(request, response, 1)
+
+        api_instance = NetworkStorageApi::StorageNetworksApi.new
+        storage_id = TestUtils.extract_id_from(request, :storageId)
+        volume_id = TestUtils.extract_id_from(request, :volumeId)
+        tag_assignment_request = [NetworkStorageApi::TagAssignmentRequest.build_from_hash(TestUtils.extract_request_body(request))]
+
+        result = api_instance.storage_networks_storage_network_id_volumes_volume_id_tags_put(storage_id, volume_id, tag_assignment_request)
+
+        # Parsing time for comparison
+        response[:body][:createdOn] = Time.parse(response[:body][:createdOn])
+        response[:body][:deleteRequestedOn] = Time.parse(response[:body][:deleteRequestedOn])
+
+        assert_equal response[:body], result.to_hash.compact
+
         self.verify_called_once expectation
     end
 

@@ -60,11 +60,9 @@ class TC_RancherApi < Test::Unit::TestCase
     
     # Creating new instance
     api_instance = RancherApi::ClustersApi.new
-    opts = {
-      cluster: RancherApi::Cluster.build_from_hash(TestUtils.extract_request_body(request))
-    }
-    
-    result = api_instance.clusters_post(opts)
+    cluster = RancherApi::Cluster.build_from_hash(TestUtils.extract_request_body(request))
+
+    result = api_instance.clusters_post(cluster)
 
     assert_equal response[:body], result.to_hash.compact
 

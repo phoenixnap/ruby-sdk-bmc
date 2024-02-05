@@ -73,6 +73,8 @@ require 'pnap_network_storage_api'
 NetworkStorageApi.configure do |config|
   # Configure OAuth2 access token for authorization: OAuth2
   config.access_token = 'YOUR ACCESS TOKEN'
+  # Configure a proc to get access tokens in lieu of the static access_token configuration
+  config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
 api_instance = NetworkStorageApi::StorageNetworksApi.new
@@ -122,16 +124,16 @@ All URIs are relative to *https://api.phoenixnap.com/network-storage/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *NetworkStorageApi::StorageNetworksApi* | [**storage_networks_get**](docs/StorageNetworksApi.md#storage_networks_get) | **GET** /storage-networks | List all storage networks.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_delete**](docs/StorageNetworksApi.md#storage_networks_id_delete) | **DELETE** /storage-networks/{storageNetworkId} | Delete a storage network and its volume.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_get**](docs/StorageNetworksApi.md#storage_networks_id_get) | **GET** /storage-networks/{storageNetworkId} | Get storage network details.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_patch**](docs/StorageNetworksApi.md#storage_networks_id_patch) | **PATCH** /storage-networks/{storageNetworkId} | Update storage network details.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_delete**](docs/StorageNetworksApi.md#storage_networks_id_delete) | **DELETE** /storage-networks/{storageId} | Delete a storage network and its volume.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_get**](docs/StorageNetworksApi.md#storage_networks_id_get) | **GET** /storage-networks/{storageId} | Get storage network details.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_id_patch**](docs/StorageNetworksApi.md#storage_networks_id_patch) | **PATCH** /storage-networks/{storageId} | Update storage network details.
 *NetworkStorageApi::StorageNetworksApi* | [**storage_networks_post**](docs/StorageNetworksApi.md#storage_networks_post) | **POST** /storage-networks | Create a storage network and volume.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_get**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_get) | **GET** /storage-networks/{storageNetworkId}/volumes | Display one or more volumes belonging to a storage network.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_post**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_post) | **POST** /storage-networks/{storageNetworkId}/volumes | Create a volume belonging to a storage network.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_delete**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_delete) | **DELETE** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Delete a Storage Network's Volume
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_get**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_get) | **GET** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Get a storage network's volume details.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_patch**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_patch) | **PATCH** /storage-networks/{storageNetworkId}/volumes/{volumeId} | Update a storage network's volume details.
-*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_tags_put**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_tags_put) | **PUT** /storage-networks/{storageNetworkId}/volumes/{volumeId}/tags | Overwrites tags assigned for the volume.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_get**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_get) | **GET** /storage-networks/{storageId}/volumes | Display one or more volumes belonging to a storage network.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_post**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_post) | **POST** /storage-networks/{storageId}/volumes | Create a volume belonging to a storage network.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_delete**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_delete) | **DELETE** /storage-networks/{storageId}/volumes/{volumeId} | Delete a Storage Network's Volume
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_get**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_get) | **GET** /storage-networks/{storageId}/volumes/{volumeId} | Get a storage network's volume details.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_patch**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_patch) | **PATCH** /storage-networks/{storageId}/volumes/{volumeId} | Update a storage network's volume details.
+*NetworkStorageApi::StorageNetworksApi* | [**storage_networks_storage_network_id_volumes_volume_id_tags_put**](docs/StorageNetworksApi.md#storage_networks_storage_network_id_volumes_volume_id_tags_put) | **PUT** /storage-networks/{storageId}/volumes/{volumeId}/tags | Overwrites tags assigned for the volume.
 
 
 ## Documentation for Models
@@ -158,6 +160,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
+Authentication schemes defined for the API:
 ### OAuth2
 
 

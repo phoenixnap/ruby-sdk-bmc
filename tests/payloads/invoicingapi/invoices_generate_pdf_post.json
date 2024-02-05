@@ -1,0 +1,14 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/invoicing/v1/invoices/{id}/actions/generate-pdf",
+    "pathParameters": {
+      "id": [
+        "id"
+      ]
+    }
+  },
+  "response": {
+    "statusCode": 200
+  }
+}

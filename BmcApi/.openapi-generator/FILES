@@ -23,7 +23,6 @@ docs/PublicNetworkConfiguration.md
 docs/Quota.md
 docs/QuotaEditLimitRequest.md
 docs/QuotaEditLimitRequestDetails.md
-docs/QuotaEditLimitRequestDetailsAllOf.md
 docs/QuotasApi.md
 docs/RelinquishIpBlock.md
 docs/ResetResult.md
@@ -34,6 +33,7 @@ docs/ServerIpBlock.md
 docs/ServerNetworkUpdate.md
 docs/ServerPatch.md
 docs/ServerPrivateNetwork.md
+docs/ServerProvision.md
 docs/ServerPublicNetwork.md
 docs/ServerReserve.md
 docs/ServerReset.md
@@ -71,7 +71,6 @@ lib/pnap_bmc_api/models/public_network_configuration.rb
 lib/pnap_bmc_api/models/quota.rb
 lib/pnap_bmc_api/models/quota_edit_limit_request.rb
 lib/pnap_bmc_api/models/quota_edit_limit_request_details.rb
-lib/pnap_bmc_api/models/quota_edit_limit_request_details_all_of.rb
 lib/pnap_bmc_api/models/relinquish_ip_block.rb
 lib/pnap_bmc_api/models/reset_result.rb
 lib/pnap_bmc_api/models/server.rb
@@ -80,6 +79,7 @@ lib/pnap_bmc_api/models/server_ip_block.rb
 lib/pnap_bmc_api/models/server_network_update.rb
 lib/pnap_bmc_api/models/server_patch.rb
 lib/pnap_bmc_api/models/server_private_network.rb
+lib/pnap_bmc_api/models/server_provision.rb
 lib/pnap_bmc_api/models/server_public_network.rb
 lib/pnap_bmc_api/models/server_reserve.rb
 lib/pnap_bmc_api/models/server_reset.rb
@@ -92,6 +92,4 @@ lib/pnap_bmc_api/models/tag_assignment.rb
 lib/pnap_bmc_api/models/tag_assignment_request.rb
 lib/pnap_bmc_api/version.rb
 pnap_bmc_api.gemspec
-spec/api_client_spec.rb
-spec/configuration_spec.rb
 spec/spec_helper.rb

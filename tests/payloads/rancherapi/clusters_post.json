@@ -12,7 +12,7 @@
         "initialClusterVersion": "v2.5.9",
         "nodePools": [
           {
-            "name": "Rancher Server Node Pool",
+            "name": "Rancher-Server-Node-Pool",
             "nodeCount": 1,
             "serverType": "s0.d1.small",
             "sshConfig": {
@@ -70,7 +70,7 @@
       "initialClusterVersion": "v2.5.9",
       "nodePools": [
         {
-          "name": "Rancher Server Node Pool",
+          "name": "Rancher-Server-Node-Pool",
           "nodeCount": 1,
           "serverType": "s0.d1.small",
           "sshConfig": {

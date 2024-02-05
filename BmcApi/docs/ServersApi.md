@@ -10,6 +10,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_actions_deprovision_post**](ServersApi.md#servers_server_id_actions_deprovision_post) | **POST** /servers/{serverId}/actions/deprovision | Deprovision a server. |
 | [**servers_server_id_actions_power_off_post**](ServersApi.md#servers_server_id_actions_power_off_post) | **POST** /servers/{serverId}/actions/power-off | Power off server. |
 | [**servers_server_id_actions_power_on_post**](ServersApi.md#servers_server_id_actions_power_on_post) | **POST** /servers/{serverId}/actions/power-on | Power on server. |
+| [**servers_server_id_actions_provision_post**](ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server. |
 | [**servers_server_id_actions_reboot_post**](ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server. |
 | [**servers_server_id_actions_reserve_post**](ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server. |
 | [**servers_server_id_actions_reset_post**](ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server. |
@@ -47,7 +48,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
 
 begin
@@ -171,11 +172,11 @@ end
 
 ## servers_post
 
-> <Server> servers_post(opts)
+> <Server> servers_post(server_create, opts)
 
 Create new server.
 
-Create (request) new server for account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 .
+Create (request) a new server for the account. Server DNS will be configured to access Google's public DNS at 8.8.8.8 . Note that the product availability API can be used prior to doing the provision request. Refer to https://developers.phoenixnap.com/docs/bmc-billing/1/routes/product-availability/get.
 
 ### Examples
 
@@ -189,14 +190,14 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
+server_create = BmcApi::ServerCreate.new({hostname: 'my-server-1', os: 'ubuntu/bionic', type: 's1.c1.small', location: 'PHX'}) # ServerCreate | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  server_create: BmcApi::ServerCreate.new({hostname: 'my-server-1', os: 'ubuntu/bionic', type: 's1.c1.small', location: 'PHX'}) # ServerCreate | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Create new server.
-  result = api_instance.servers_post(opts)
+  result = api_instance.servers_post(server_create, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_post: #{e}"
@@ -207,12 +208,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Server>, Integer, Hash)> servers_post_with_http_info(opts)
+> <Array(<Server>, Integer, Hash)> servers_post_with_http_info(server_create, opts)
 
 ```ruby
 begin
   # Create new server.
-  data, status_code, headers = api_instance.servers_post_with_http_info(opts)
+  data, status_code, headers = api_instance.servers_post_with_http_info(server_create, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Server>
@@ -225,8 +226,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **server_create** | [**ServerCreate**](ServerCreate.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **server_create** | [**ServerCreate**](ServerCreate.md) |  | [optional] |
 
 ### Return type
 
@@ -244,7 +245,7 @@ end
 
 ## servers_server_id_actions_deprovision_post
 
-> String servers_server_id_actions_deprovision_post(server_id, opts)
+> String servers_server_id_actions_deprovision_post(server_id, relinquish_ip_block)
 
 Deprovision a server.
 
@@ -262,14 +263,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  relinquish_ip_block: BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+relinquish_ip_block = BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
 
 begin
   # Deprovision a server.
-  result = api_instance.servers_server_id_actions_deprovision_post(server_id, opts)
+  result = api_instance.servers_server_id_actions_deprovision_post(server_id, relinquish_ip_block)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_actions_deprovision_post: #{e}"
@@ -280,12 +279,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(String, Integer, Hash)> servers_server_id_actions_deprovision_post_with_http_info(server_id, opts)
+> <Array(String, Integer, Hash)> servers_server_id_actions_deprovision_post_with_http_info(server_id, relinquish_ip_block)
 
 ```ruby
 begin
   # Deprovision a server.
-  data, status_code, headers = api_instance.servers_server_id_actions_deprovision_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_actions_deprovision_post_with_http_info(server_id, relinquish_ip_block)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => String
@@ -299,7 +298,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **relinquish_ip_block** | [**RelinquishIpBlock**](RelinquishIpBlock.md) |  | [optional] |
+| **relinquish_ip_block** | [**RelinquishIpBlock**](RelinquishIpBlock.md) |  |  |
 
 ### Return type
 
@@ -335,7 +334,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Power off server.
@@ -404,7 +403,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Power on server.
@@ -453,6 +452,81 @@ end
 - **Accept**: application/json
 
 
+## servers_server_id_actions_provision_post
+
+> <Server> servers_server_id_actions_provision_post(server_id, server_provision, opts)
+
+Provision server.
+
+Provision reserved server. Server DNS will be configured to access Google's public DNS at 8.8.8.8.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_provision = BmcApi::ServerProvision.new({hostname: 'my-server-1', os: 'ubuntu/bionic'}) # ServerProvision | 
+opts = {
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
+}
+
+begin
+  # Provision server.
+  result = api_instance.servers_server_id_actions_provision_post(server_id, server_provision, opts)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_provision_post: #{e}"
+end
+```
+
+#### Using the servers_server_id_actions_provision_post_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Server>, Integer, Hash)> servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts)
+
+```ruby
+begin
+  # Provision server.
+  data, status_code, headers = api_instance.servers_server_id_actions_provision_post_with_http_info(server_id, server_provision, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Server>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_provision_post_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **server_provision** | [**ServerProvision**](ServerProvision.md) |  |  |
+| **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
+
+### Return type
+
+[**Server**](Server.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## servers_server_id_actions_reboot_post
 
 > <ActionResult> servers_server_id_actions_reboot_post(server_id)
@@ -473,7 +547,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Reboot server.
@@ -524,7 +598,7 @@ end
 
 ## servers_server_id_actions_reserve_post
 
-> <Server> servers_server_id_actions_reserve_post(server_id, opts)
+> <Server> servers_server_id_actions_reserve_post(server_id, server_reserve)
 
 Reserve server.
 
@@ -542,14 +616,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  server_reserve: BmcApi::ServerReserve.new({pricing_model: 'ONE_MONTH_RESERVATION'}) # ServerReserve | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_reserve = BmcApi::ServerReserve.new({pricing_model: 'ONE_MONTH_RESERVATION'}) # ServerReserve | 
 
 begin
   # Reserve server.
-  result = api_instance.servers_server_id_actions_reserve_post(server_id, opts)
+  result = api_instance.servers_server_id_actions_reserve_post(server_id, server_reserve)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_actions_reserve_post: #{e}"
@@ -560,12 +632,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Server>, Integer, Hash)> servers_server_id_actions_reserve_post_with_http_info(server_id, opts)
+> <Array(<Server>, Integer, Hash)> servers_server_id_actions_reserve_post_with_http_info(server_id, server_reserve)
 
 ```ruby
 begin
   # Reserve server.
-  data, status_code, headers = api_instance.servers_server_id_actions_reserve_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_actions_reserve_post_with_http_info(server_id, server_reserve)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Server>
@@ -579,7 +651,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **server_reserve** | [**ServerReserve**](ServerReserve.md) |  | [optional] |
+| **server_reserve** | [**ServerReserve**](ServerReserve.md) |  |  |
 
 ### Return type
 
@@ -597,7 +669,7 @@ end
 
 ## servers_server_id_actions_reset_post
 
-> <ResetResult> servers_server_id_actions_reset_post(server_id, opts)
+> <ResetResult> servers_server_id_actions_reset_post(server_id, server_reset)
 
 Reset server.
 
@@ -615,14 +687,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  server_reset: BmcApi::ServerReset.new # ServerReset | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_reset = BmcApi::ServerReset.new # ServerReset | 
 
 begin
   # Reset server.
-  result = api_instance.servers_server_id_actions_reset_post(server_id, opts)
+  result = api_instance.servers_server_id_actions_reset_post(server_id, server_reset)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_actions_reset_post: #{e}"
@@ -633,12 +703,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ResetResult>, Integer, Hash)> servers_server_id_actions_reset_post_with_http_info(server_id, opts)
+> <Array(<ResetResult>, Integer, Hash)> servers_server_id_actions_reset_post_with_http_info(server_id, server_reset)
 
 ```ruby
 begin
   # Reset server.
-  data, status_code, headers = api_instance.servers_server_id_actions_reset_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_actions_reset_post_with_http_info(server_id, server_reset)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ResetResult>
@@ -652,7 +722,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **server_reset** | [**ServerReset**](ServerReset.md) |  | [optional] |
+| **server_reset** | [**ServerReset**](ServerReset.md) |  |  |
 
 ### Return type
 
@@ -688,7 +758,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Shutdown server.
@@ -757,7 +827,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Delete server.
@@ -826,7 +896,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 
 begin
   # Get server.
@@ -877,7 +947,7 @@ end
 
 ## servers_server_id_ip_blocks_ip_block_id_delete
 
-> String servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, opts)
+> String servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, relinquish_ip_block)
 
 Unassign IP Block from Server.
 
@@ -895,15 +965,13 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 ip_block_id = '6047127fed34ecc3ba8402d2' # String | The IP Block identifier.
-opts = {
-  relinquish_ip_block: BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
-}
+relinquish_ip_block = BmcApi::RelinquishIpBlock.new # RelinquishIpBlock | 
 
 begin
   # Unassign IP Block from Server.
-  result = api_instance.servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, opts)
+  result = api_instance.servers_server_id_ip_blocks_ip_block_id_delete(server_id, ip_block_id, relinquish_ip_block)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_ip_blocks_ip_block_id_delete: #{e}"
@@ -914,12 +982,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(String, Integer, Hash)> servers_server_id_ip_blocks_ip_block_id_delete_with_http_info(server_id, ip_block_id, opts)
+> <Array(String, Integer, Hash)> servers_server_id_ip_blocks_ip_block_id_delete_with_http_info(server_id, ip_block_id, relinquish_ip_block)
 
 ```ruby
 begin
   # Unassign IP Block from Server.
-  data, status_code, headers = api_instance.servers_server_id_ip_blocks_ip_block_id_delete_with_http_info(server_id, ip_block_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_ip_blocks_ip_block_id_delete_with_http_info(server_id, ip_block_id, relinquish_ip_block)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => String
@@ -934,7 +1002,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
 | **ip_block_id** | **String** | The IP Block identifier. |  |
-| **relinquish_ip_block** | [**RelinquishIpBlock**](RelinquishIpBlock.md) |  | [optional] |
+| **relinquish_ip_block** | [**RelinquishIpBlock**](RelinquishIpBlock.md) |  |  |
 
 ### Return type
 
@@ -952,7 +1020,7 @@ end
 
 ## servers_server_id_ip_blocks_post
 
-> <ServerIpBlock> servers_server_id_ip_blocks_post(server_id, opts)
+> <ServerIpBlock> servers_server_id_ip_blocks_post(server_id, server_ip_block)
 
 Assign IP Block to Server.
 
@@ -970,14 +1038,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  server_ip_block: BmcApi::ServerIpBlock.new({id: '60473a6115e34466c9f8f083'}) # ServerIpBlock | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_ip_block = BmcApi::ServerIpBlock.new({id: '60473a6115e34466c9f8f083'}) # ServerIpBlock | 
 
 begin
   # Assign IP Block to Server.
-  result = api_instance.servers_server_id_ip_blocks_post(server_id, opts)
+  result = api_instance.servers_server_id_ip_blocks_post(server_id, server_ip_block)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_ip_blocks_post: #{e}"
@@ -988,12 +1054,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ServerIpBlock>, Integer, Hash)> servers_server_id_ip_blocks_post_with_http_info(server_id, opts)
+> <Array(<ServerIpBlock>, Integer, Hash)> servers_server_id_ip_blocks_post_with_http_info(server_id, server_ip_block)
 
 ```ruby
 begin
   # Assign IP Block to Server.
-  data, status_code, headers = api_instance.servers_server_id_ip_blocks_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_ip_blocks_post_with_http_info(server_id, server_ip_block)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ServerIpBlock>
@@ -1007,7 +1073,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **server_ip_block** | [**ServerIpBlock**](ServerIpBlock.md) |  | [optional] |
+| **server_ip_block** | [**ServerIpBlock**](ServerIpBlock.md) |  |  |
 
 ### Return type
 
@@ -1025,7 +1091,7 @@ end
 
 ## servers_server_id_patch
 
-> <Server> servers_server_id_patch(server_id, opts)
+> <Server> servers_server_id_patch(server_id, server_patch)
 
 Patch a Server.
 
@@ -1043,14 +1109,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  server_patch: BmcApi::ServerPatch.new # ServerPatch | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_patch = BmcApi::ServerPatch.new # ServerPatch | 
 
 begin
   # Patch a Server.
-  result = api_instance.servers_server_id_patch(server_id, opts)
+  result = api_instance.servers_server_id_patch(server_id, server_patch)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_patch: #{e}"
@@ -1061,12 +1125,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Server>, Integer, Hash)> servers_server_id_patch_with_http_info(server_id, opts)
+> <Array(<Server>, Integer, Hash)> servers_server_id_patch_with_http_info(server_id, server_patch)
 
 ```ruby
 begin
   # Patch a Server.
-  data, status_code, headers = api_instance.servers_server_id_patch_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_patch_with_http_info(server_id, server_patch)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Server>
@@ -1080,7 +1144,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **server_patch** | [**ServerPatch**](ServerPatch.md) |  | [optional] |
+| **server_patch** | [**ServerPatch**](ServerPatch.md) |  |  |
 
 ### Return type
 
@@ -1098,7 +1162,7 @@ end
 
 ## servers_server_id_private_networks_patch
 
-> <ServerPrivateNetwork> servers_server_id_private_networks_patch(server_id, private_network_id, opts)
+> <ServerPrivateNetwork> servers_server_id_private_networks_patch(server_id, private_network_id, server_network_update, opts)
 
 Updates the server's private network's IP addresses
 
@@ -1116,16 +1180,16 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 private_network_id = '603f3b2cfcaf050643b89a4b' # String | The private network identifier.
+server_network_update = BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  server_network_update: BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Updates the server's private network's IP addresses
-  result = api_instance.servers_server_id_private_networks_patch(server_id, private_network_id, opts)
+  result = api_instance.servers_server_id_private_networks_patch(server_id, private_network_id, server_network_update, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_private_networks_patch: #{e}"
@@ -1136,12 +1200,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ServerPrivateNetwork>, Integer, Hash)> servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts)
+> <Array(<ServerPrivateNetwork>, Integer, Hash)> servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, server_network_update, opts)
 
 ```ruby
 begin
   # Updates the server's private network's IP addresses
-  data, status_code, headers = api_instance.servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_private_networks_patch_with_http_info(server_id, private_network_id, server_network_update, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ServerPrivateNetwork>
@@ -1156,8 +1220,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
 | **private_network_id** | **String** | The private network identifier. |  |
+| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  | [optional] |
 
 ### Return type
 
@@ -1175,7 +1239,7 @@ end
 
 ## servers_server_id_private_networks_post
 
-> <ServerPrivateNetwork> servers_server_id_private_networks_post(server_id, opts)
+> <ServerPrivateNetwork> servers_server_id_private_networks_post(server_id, server_private_network, opts)
 
 Adds the server to a private network.
 
@@ -1193,15 +1257,15 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_private_network = BmcApi::ServerPrivateNetwork.new({id: '603f3b2cfcaf050643b89a4b'}) # ServerPrivateNetwork | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  server_private_network: BmcApi::ServerPrivateNetwork.new({id: '603f3b2cfcaf050643b89a4b'}) # ServerPrivateNetwork | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Adds the server to a private network.
-  result = api_instance.servers_server_id_private_networks_post(server_id, opts)
+  result = api_instance.servers_server_id_private_networks_post(server_id, server_private_network, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_private_networks_post: #{e}"
@@ -1212,12 +1276,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ServerPrivateNetwork>, Integer, Hash)> servers_server_id_private_networks_post_with_http_info(server_id, opts)
+> <Array(<ServerPrivateNetwork>, Integer, Hash)> servers_server_id_private_networks_post_with_http_info(server_id, server_private_network, opts)
 
 ```ruby
 begin
   # Adds the server to a private network.
-  data, status_code, headers = api_instance.servers_server_id_private_networks_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_private_networks_post_with_http_info(server_id, server_private_network, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ServerPrivateNetwork>
@@ -1231,8 +1295,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **server_private_network** | [**ServerPrivateNetwork**](ServerPrivateNetwork.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **server_private_network** | [**ServerPrivateNetwork**](ServerPrivateNetwork.md) |  | [optional] |
 
 ### Return type
 
@@ -1268,7 +1332,7 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
 
 begin
@@ -1321,7 +1385,7 @@ end
 
 ## servers_server_id_public_networks_patch
 
-> <ServerPublicNetwork> servers_server_id_public_networks_patch(server_id, public_network_id, opts)
+> <ServerPublicNetwork> servers_server_id_public_networks_patch(server_id, public_network_id, server_network_update, opts)
 
 Updates the server's public network's IP addresses.
 
@@ -1339,16 +1403,16 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
 public_network_id = '603f3b2cfcaf050643b89a4b' # String | The Public Network identifier.
+server_network_update = BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  server_network_update: BmcApi::ServerNetworkUpdate.new # ServerNetworkUpdate | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Updates the server's public network's IP addresses.
-  result = api_instance.servers_server_id_public_networks_patch(server_id, public_network_id, opts)
+  result = api_instance.servers_server_id_public_networks_patch(server_id, public_network_id, server_network_update, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_public_networks_patch: #{e}"
@@ -1359,12 +1423,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts)
+> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, server_network_update, opts)
 
 ```ruby
 begin
   # Updates the server's public network's IP addresses.
-  data, status_code, headers = api_instance.servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_public_networks_patch_with_http_info(server_id, public_network_id, server_network_update, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ServerPublicNetwork>
@@ -1379,8 +1443,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
 | **public_network_id** | **String** | The Public Network identifier. |  |
+| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **server_network_update** | [**ServerNetworkUpdate**](ServerNetworkUpdate.md) |  | [optional] |
 
 ### Return type
 
@@ -1398,7 +1462,7 @@ end
 
 ## servers_server_id_public_networks_post
 
-> <ServerPublicNetwork> servers_server_id_public_networks_post(server_id, opts)
+> <ServerPublicNetwork> servers_server_id_public_networks_post(server_id, server_public_network, opts)
 
 Adds the server to a Public Network.
 
@@ -1416,15 +1480,15 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+server_public_network = BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
 opts = {
-  force: true, # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
-  server_public_network: BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
+  force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
 
 begin
   # Adds the server to a Public Network.
-  result = api_instance.servers_server_id_public_networks_post(server_id, opts)
+  result = api_instance.servers_server_id_public_networks_post(server_id, server_public_network, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_public_networks_post: #{e}"
@@ -1435,12 +1499,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_post_with_http_info(server_id, opts)
+> <Array(<ServerPublicNetwork>, Integer, Hash)> servers_server_id_public_networks_post_with_http_info(server_id, server_public_network, opts)
 
 ```ruby
 begin
   # Adds the server to a Public Network.
-  data, status_code, headers = api_instance.servers_server_id_public_networks_post_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_public_networks_post_with_http_info(server_id, server_public_network, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ServerPublicNetwork>
@@ -1454,8 +1518,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **server_public_network** | [**ServerPublicNetwork**](ServerPublicNetwork.md) |  |  |
 | **force** | **Boolean** | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups. | [optional][default to false] |
-| **server_public_network** | [**ServerPublicNetwork**](ServerPublicNetwork.md) |  | [optional] |
 
 ### Return type
 
@@ -1473,7 +1537,7 @@ end
 
 ## servers_server_id_tags_put
 
-> <Server> servers_server_id_tags_put(server_id, opts)
+> <Server> servers_server_id_tags_put(server_id, tag_assignment_request)
 
 Overwrite tags assigned for Server.
 
@@ -1491,14 +1555,12 @@ BmcApi.configure do |config|
 end
 
 api_instance = BmcApi::ServersApi.new
-server_id = 'e6afba51-7de8-4080-83ab-0f915570659c' # String | The server's ID.
-opts = {
-  tag_assignment_request: [BmcApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
-}
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+tag_assignment_request = [BmcApi::TagAssignmentRequest.new({name: 'Environment'})] # Array<TagAssignmentRequest> | 
 
 begin
   # Overwrite tags assigned for Server.
-  result = api_instance.servers_server_id_tags_put(server_id, opts)
+  result = api_instance.servers_server_id_tags_put(server_id, tag_assignment_request)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_tags_put: #{e}"
@@ -1509,12 +1571,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Server>, Integer, Hash)> servers_server_id_tags_put_with_http_info(server_id, opts)
+> <Array(<Server>, Integer, Hash)> servers_server_id_tags_put_with_http_info(server_id, tag_assignment_request)
 
 ```ruby
 begin
   # Overwrite tags assigned for Server.
-  data, status_code, headers = api_instance.servers_server_id_tags_put_with_http_info(server_id, opts)
+  data, status_code, headers = api_instance.servers_server_id_tags_put_with_http_info(server_id, tag_assignment_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Server>
@@ -1528,7 +1590,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
-| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) |  | [optional] |
+| **tag_assignment_request** | [**Array&lt;TagAssignmentRequest&gt;**](TagAssignmentRequest.md) |  |  |
 
 ### Return type
 

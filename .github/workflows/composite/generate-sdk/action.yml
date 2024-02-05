@@ -22,12 +22,20 @@ runs:
     - name: Install openapi-generator-cli
       shell: bash
       run: npm install -g @openapitools/openapi-generator-cli
+    - name: Cleanup existing files
+      shell: bash
+      run: |
+        echo "Moving VERSION file out..."
+        mv ./${{ inputs.module-name }}/VERSION ./VERSION
+
+        echo "Cleaning up ${{ inputs.module-name }}..."
+        rm -r ./${{ inputs.module-name }}/*
+
+        echo "Moving VERSION file back in..."
+        mv ./VERSION ./${{ inputs.module-name }}/VERSION
     - name: Generate SDK
       shell: bash
       run: openapi-generator-cli generate -i ${{ inputs.spec-link }} -c openapi-generator-config.yaml -o ${{ inputs.module-name }} --additional-properties moduleName=${{ inputs.module-name }} --additional-properties gemName=${{ inputs.gem-name }}
-    - name: Fix Regex
-      shell: bash
-      run: ./fix-regex.sh ${{ inputs.module-name }}
     - name: Download spec files
       shell: bash
       run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
