@@ -137,6 +137,12 @@
           ]
         }
       },
+      "storageConfiguration": {
+        "rootPartition": {
+          "raid": "NO_RAID",
+          "size": -1
+        }
+      },
       "supersededBy": "64a539b8d9c2c9ba8424ca31",
       "supersedes": "64a539b8d9c2c9ba8424ca31"
     }

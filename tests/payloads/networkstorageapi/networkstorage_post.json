@@ -13,9 +13,16 @@
             "name": "volumeName",
             "description": "volumeDescription",
             "pathSuffix": "/pathSuffix",
-            "capacityInGb": 1000
+            "capacityInGb": 1000,
+            "tags": [
+              {
+                "name": "tagName",
+                "value": "tagValue"
+              }
+            ]
           }
-        ]
+        ],
+        "clientVlan": 2
       },
       "matchType": "STRICT"
     }
@@ -56,7 +63,16 @@
               "noSquash": [],
               "allSquash": []
             }
-          }
+          },
+          "tags": [
+            {
+              "id": "60ffafcdffb8b074c7968dad",
+              "name": "Environment",
+              "value": "PROD",
+              "isBillingTag": true,
+              "createdBy": "USER"
+            }
+          ]
         }
       ]
     }

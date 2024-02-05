@@ -13,7 +13,7 @@
     }
   },
   "response": {
-    "statusCode": 200,
+    "statusCode": 201,
     "body": {
       "id": "fakeId",
       "name": "tagName",

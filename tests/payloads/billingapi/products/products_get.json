@@ -43,6 +43,16 @@
             "pricingModel": "HOURLY",
             "price": 1,
             "priceUnit": "HOUR",
+            "applicableDiscounts": {
+              "discountedPrice": 1,
+              "discountDetails": [
+                {
+                  "code": "123",
+                  "type": "PRODUCT_CATEGORY_PERCENTAGE",
+                  "value": 1
+                }
+              ]
+            },
             "correlatedProductCode": "d1.tiny",
             "packageQuantity": 1,
             "packageUnit": "GB"

@@ -63,8 +63,9 @@ class TC_NetworkApi < Test::Unit::TestCase
     
     api_instance = NetworkApi::PrivateNetworksApi.new
     private_network_create = NetworkApi::PrivateNetworkCreate.build_from_hash(TestUtils.extract_request_body(request))
+    opts = TestUtils.generate_query_params(request)
 
-    result = api_instance.private_networks_post(private_network_create)
+    result = api_instance.private_networks_post(private_network_create, opts)
 
     # Parsing time for comparison
     response[:body][:createdOn] = Time.parse(response[:body][:createdOn])

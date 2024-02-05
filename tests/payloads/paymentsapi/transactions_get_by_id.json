@@ -18,6 +18,7 @@
       "date": "2021-04-27T16:24:57.123Z",
       "metadata": {
         "invoiceId": "id",
+        "invoiceNumber": "123",
         "isAutoCharge": true
       },
       "cardPaymentMethodDetails": {

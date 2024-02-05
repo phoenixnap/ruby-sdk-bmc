@@ -48,7 +48,16 @@
                 "noSquash": [],
                 "allSquash": []
               }
-            }
+            },
+            "tags": [
+              {
+                "id": "60ffafcdffb8b074c7968dad",
+                "name": "Environment",
+                "value": "PROD",
+                "isBillingTag": true,
+                "createdBy": "USER"
+              }
+            ]
           }
         ]
       }
