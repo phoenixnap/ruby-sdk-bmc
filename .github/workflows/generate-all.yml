@@ -116,6 +116,8 @@ jobs:
       - generate-billingapi
       - generate-paymentsapi
       - generate-invoicingapi
+    outputs:
+      CHANGES_FOUND: ${{ steps.commit-step.outputs.CHANGES_FOUND }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
