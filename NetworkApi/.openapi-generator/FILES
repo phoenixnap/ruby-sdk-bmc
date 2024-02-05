@@ -34,4 +34,16 @@ lib/pnap_network_api/models/public_network_ip_block.rb
 lib/pnap_network_api/models/public_network_modify.rb
 lib/pnap_network_api/version.rb
 pnap_network_api.gemspec
+spec/api/private_networks_api_spec.rb
+spec/api/public_networks_api_spec.rb
+spec/models/error_spec.rb
+spec/models/network_membership_spec.rb
+spec/models/private_network_create_spec.rb
+spec/models/private_network_modify_spec.rb
+spec/models/private_network_server_spec.rb
+spec/models/private_network_spec.rb
+spec/models/public_network_create_spec.rb
+spec/models/public_network_ip_block_spec.rb
+spec/models/public_network_modify_spec.rb
+spec/models/public_network_spec.rb
 spec/spec_helper.rb

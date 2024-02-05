@@ -20,4 +20,9 @@ lib/pnap_invoicing_api/models/paginated_invoices.rb
 lib/pnap_invoicing_api/models/paginated_response.rb
 lib/pnap_invoicing_api/version.rb
 pnap_invoicing_api.gemspec
+spec/api/invoices_api_spec.rb
+spec/models/error_spec.rb
+spec/models/invoice_spec.rb
+spec/models/paginated_invoices_spec.rb
+spec/models/paginated_response_spec.rb
 spec/spec_helper.rb
