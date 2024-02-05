@@ -35,7 +35,7 @@ Official Bare Metal Cloud SDK for Ruby. Use it to manage your Bare Metal Cloud r
 
 ## Installing the Ruby SDK
 
-The Bare Metal Cloud SDK for Ruby is split into 7 main gems. The following are all of the gems available:
+The Bare Metal Cloud SDK for Ruby is split into 11 main gems. The following are all of the gems available:
 
 - `pnap_audit_api`
 - `pnap_bmc_api`
@@ -44,6 +44,10 @@ The Bare Metal Cloud SDK for Ruby is split into 7 main gems. The following are a
 - `pnap_network_storage_api`
 - `pnap_rancher_api`
 - `pnap_tag_api`
+- `pnap_location_api`
+- `pnap_billing_api`
+- `pnap_invoicing_api`
+- `pnap_payments_api`
 
 Each gem can be installed with the following command:
 
