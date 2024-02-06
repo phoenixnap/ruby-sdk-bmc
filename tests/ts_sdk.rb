@@ -12,6 +12,7 @@ require_relative 'tc_rancher_api'
 require_relative 'tc_tag_api'
 require_relative 'tc_networkstorage_api'
 require_relative 'tc_location_api'
+require_relative 'tc_misc_test'
 
 class TS_HelloWorld
     def self.suite()
@@ -24,6 +25,7 @@ class TS_HelloWorld
         suite << TC_TagApi.suite
         suite << TC_NetworkStorageApi.suite
         suite << TC_LocationApi.suite
+        suite << TC_MiscTest.suite
 
         return suite
     end
