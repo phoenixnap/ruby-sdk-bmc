@@ -107,8 +107,13 @@ Information on using each SDK can be found using its respective README:
 - [`pnap_bmc_api`](./BmcApi/README.md)
 - [`pnap_ip_api`](./IpApi/README.md)
 - [`pnap_network_api`](./NetworkApi/README.md)
+- [`pnap_network_storage_api`](./NetworkStorageApi/README.md)
 - [`pnap_rancher_api`](./RancherApi/README.md)
 - [`pnap_tag_api`](./TagApi/README.md)
+- [`pnap_location_api`](./LocationApi/README.md)
+- [`pnap_billing_api`](./BillingApi/README.md)
+- [`pnap_invoicing_api`](./InvoicingApi/README.md)
+- [`pnap_payments_api`](./PaymentsApi/README.md)
 
 ## Bare Metal Cloud community
 
