@@ -11,8 +11,8 @@ require 'json'
 require 'time'
 
 # Setup variables for getting a token.
-client_id = '87137155-3b17-49ff-a5c3-7d55c9c7837a'
-client_secret = '560fc0c0-ca2f-48b3-b727-39749a2d09cb'
+client_id = '...'
+client_secret = '...'
 auth_url = 'https://auth-dev.phoenixnap.com/auth/realms/BMC/protocol/openid-connect/token'
 api_url = 'https://api-dev.phoenixnap.com/audit/v1'
 
