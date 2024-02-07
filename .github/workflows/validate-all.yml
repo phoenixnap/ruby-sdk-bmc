@@ -83,6 +83,7 @@ jobs:
       - build-and-test-paymentsapi
       - build-and-test-invoicingapi
       - build-and-test-billingapi
+      - run-generic-tests
     runs-on: ubuntu-latest
     if: always()
     steps:
