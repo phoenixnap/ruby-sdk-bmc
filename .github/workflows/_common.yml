@@ -35,4 +35,4 @@ jobs:
     uses: ./.github/workflows/_test.yml
     with:
       module-name: ${{ inputs.module-name }}
-      test-suite: ${{ inputs.test-file }}
+      test-file: ${{ inputs.test-file }}
