@@ -63,6 +63,12 @@ jobs:
       module-name: BillingApi
       test-file: tc_billing_api.rb
 
+  run-generic-tests:
+    uses: ./.github/workflows/_test.yml
+    with:
+      module-name: "none (generic tests)"
+      test-suite: tc_misc.rb
+
   publish-test-results:
     name: Publish Test Results
     needs:
