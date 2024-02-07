@@ -67,7 +67,7 @@ jobs:
     uses: ./.github/workflows/_test.yml
     with:
       module-name: "none (generic tests)"
-      test-suite: tc_misc.rb
+      test-file: tc_misc.rb
 
   publish-test-results:
     name: Publish Test Results
