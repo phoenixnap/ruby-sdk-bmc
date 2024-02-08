@@ -8,10 +8,127 @@ env:
   GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
 
 jobs:
-  publish:
-    name: Publish SDK
-    uses: ./.github/workflows/_publish_all.yml
-    secrets: 
+  validate-all:
+    name: Validate all modules
+    uses: ./.github/workflows/validate-all.yml
+
+  publish-audit-api:
+    name: Publish Audit API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
       RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
     with:
       dry_run: false
+      gem_to_publish: AuditApi
+
+  publish-bmc-api:
+    name: Publish BMC API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: BmcApi
+
+  publish-ip-api:
+    name: Publish IP API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: IpApi
+
+  publish-network-api:
+    name: Publish Network API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: NetworkApi
+
+  publish-network-storage-api:
+    name: Publish Network Storage API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: NetworkStorageApi
+
+  publish-rancher-solution-api:
+    name: Publish Rancher Solution API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: RancherApi
+
+  publish-tag-api:
+    name: Publish Tag API
+    needs: 
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: TagApi
+
+  publish-location-api:
+    name: Publish Location API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: LocationApi
+
+  publish-payments-api:
+    name: Publish Payments API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: PaymentsApi
+
+  publish-invoicing-api:
+    name: Publish Invoicing API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: InvoicingApi
+
+  publish-billing-api:
+    name: Publish Billing API
+    needs:
+      - validate-all
+    uses: ./.github/workflows/_publish.yml
+    secrets:
+      RUBYGEMS_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
+    with:
+      dry_run: false
+      gem_to_publish: BillingApi
