@@ -32,23 +32,6 @@ describe 'ProductsApi' do
     end
   end
 
-  # unit tests for product_availability_get
-  # List all Product availabilities.
-  # Retrieves the list of product availability details.
-  # @param [Hash] opts the optional parameters
-  # @option opts [Array<String>] :product_category Product category. Currently only SERVER category is supported.
-  # @option opts [Array<String>] :product_code 
-  # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered.
-  # @option opts [Array<LocationEnum>] :location 
-  # @option opts [Array<String>] :solution 
-  # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
-  # @return [Array<ProductAvailability>]
-  describe 'product_availability_get test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for products_get
   # List all Products.
   # Retrieves all Products.

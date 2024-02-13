@@ -52,6 +52,7 @@ require 'pnap_billing_api/models/threshold_configuration_details'
 
 # APIs
 require 'pnap_billing_api/api/billing_configurations_api'
+require 'pnap_billing_api/api/product_availability_api'
 require 'pnap_billing_api/api/products_api'
 require 'pnap_billing_api/api/rated_usage_api'
 require 'pnap_billing_api/api/reservations_api'

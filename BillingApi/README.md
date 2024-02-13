@@ -123,7 +123,7 @@ All URIs are relative to *https://api.phoenixnap.com/billing/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BillingApi::BillingConfigurationsApi* | [**account_billing_configuration_me_get**](docs/BillingConfigurationsApi.md#account_billing_configuration_me_get) | **GET** /account-billing-configurations/me | Retrieves billing configuration associated with the authenticated account.
-*BillingApi::ProductsApi* | [**product_availability_get**](docs/ProductsApi.md#product_availability_get) | **GET** /product-availability | List all Product availabilities.
+*BillingApi::ProductAvailabilityApi* | [**product_availability_get**](docs/ProductAvailabilityApi.md#product_availability_get) | **GET** /product-availability | List all Product availabilities.
 *BillingApi::ProductsApi* | [**products_get**](docs/ProductsApi.md#products_get) | **GET** /products | List all Products.
 *BillingApi::RatedUsageApi* | [**rated_usage_get**](docs/RatedUsageApi.md#rated_usage_get) | **GET** /rated-usage | List the rated usage.
 *BillingApi::RatedUsageApi* | [**rated_usage_month_to_date_get**](docs/RatedUsageApi.md#rated_usage_month_to_date_get) | **GET** /rated-usage/month-to-date | List the rated usage records for the current calendar month.
