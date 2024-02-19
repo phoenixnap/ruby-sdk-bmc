@@ -32,6 +32,7 @@ docs/Reservation.md
 docs/ReservationAutoRenewDisableRequest.md
 docs/ReservationInvoicingModelEnum.md
 docs/ReservationModelEnum.md
+docs/ReservationProductCategoryEnum.md
 docs/ReservationRequest.md
 docs/ReservationsApi.md
 docs/ServerDetails.md
@@ -74,6 +75,7 @@ lib/pnap_billing_api/models/reservation.rb
 lib/pnap_billing_api/models/reservation_auto_renew_disable_request.rb
 lib/pnap_billing_api/models/reservation_invoicing_model_enum.rb
 lib/pnap_billing_api/models/reservation_model_enum.rb
+lib/pnap_billing_api/models/reservation_product_category_enum.rb
 lib/pnap_billing_api/models/reservation_request.rb
 lib/pnap_billing_api/models/server_details.rb
 lib/pnap_billing_api/models/server_product.rb
@@ -112,6 +114,7 @@ spec/models/rated_usage_record_spec.rb
 spec/models/reservation_auto_renew_disable_request_spec.rb
 spec/models/reservation_invoicing_model_enum_spec.rb
 spec/models/reservation_model_enum_spec.rb
+spec/models/reservation_product_category_enum_spec.rb
 spec/models/reservation_request_spec.rb
 spec/models/reservation_spec.rb
 spec/models/server_details_spec.rb

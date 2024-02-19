@@ -129,10 +129,10 @@ Class | Method | HTTP request | Description
 *BillingApi::RatedUsageApi* | [**rated_usage_month_to_date_get**](docs/RatedUsageApi.md#rated_usage_month_to_date_get) | **GET** /rated-usage/month-to-date | List the rated usage records for the current calendar month.
 *BillingApi::ReservationsApi* | [**reservations_get**](docs/ReservationsApi.md#reservations_get) | **GET** /reservations | List all Reservations.
 *BillingApi::ReservationsApi* | [**reservations_post**](docs/ReservationsApi.md#reservations_post) | **POST** /reservations | Create a reservation.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_disable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_disable_post) | **POST** /reservations/{reservationId}/actions/auto-renew/disable | Disable auto-renewal for reservation by id.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_enable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_enable_post) | **POST** /reservations/{reservationId}/actions/auto-renew/enable | Enable auto-renewal for unexpired reservation by reservation id.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_convert_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_convert_post) | **POST** /reservations/{reservationId}/actions/convert | Convert reservation pricing model by reservation ID.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_get**](docs/ReservationsApi.md#reservations_reservation_id_get) | **GET** /reservations/{reservationId} | Get a reservation.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_disable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_disable_post) | **POST** /reservations/{id}/actions/auto-renew/disable | Disable auto-renewal for reservation by id.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_enable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_enable_post) | **POST** /reservations/{id}/actions/auto-renew/enable | Enable auto-renewal for unexpired reservation by reservation id.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_convert_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_convert_post) | **POST** /reservations/{id}/actions/convert | Convert reservation pricing model by reservation ID.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_get**](docs/ReservationsApi.md#reservations_reservation_id_get) | **GET** /reservations/{id} | Get a reservation.
 
 
 ## Documentation for Models
@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::ReservationAutoRenewDisableRequest](docs/ReservationAutoRenewDisableRequest.md)
  - [BillingApi::ReservationInvoicingModelEnum](docs/ReservationInvoicingModelEnum.md)
  - [BillingApi::ReservationModelEnum](docs/ReservationModelEnum.md)
+ - [BillingApi::ReservationProductCategoryEnum](docs/ReservationProductCategoryEnum.md)
  - [BillingApi::ReservationRequest](docs/ReservationRequest.md)
  - [BillingApi::ServerDetails](docs/ServerDetails.md)
  - [BillingApi::ServerProduct](docs/ServerProduct.md)
