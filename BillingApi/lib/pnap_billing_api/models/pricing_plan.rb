@@ -41,7 +41,6 @@ module BillingApi
     # Package size per month.
     attr_accessor :package_quantity
 
-    # Package size unit.
     attr_accessor :package_unit
 
     class EnumAttributeValidator
@@ -99,7 +98,7 @@ module BillingApi
         :'applicable_discounts' => :'ApplicableDiscounts',
         :'correlated_product_code' => :'String',
         :'package_quantity' => :'Float',
-        :'package_unit' => :'String'
+        :'package_unit' => :'PackageUnitEnum'
       }
     end
 
@@ -216,8 +215,6 @@ module BillingApi
       return false unless pricing_model_validator.valid?(@pricing_model)
       return false if @price.nil?
       return false if @price_unit.nil?
-      package_unit_validator = EnumAttributeValidator.new('String', ["GB", "TB"])
-      return false unless package_unit_validator.valid?(@package_unit)
       true
     end
 
@@ -239,16 +236,6 @@ module BillingApi
         fail ArgumentError, "invalid value for \"pricing_model\", must be one of #{validator.allowable_values}."
       end
       @pricing_model = pricing_model
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] package_unit Object to be assigned
-    def package_unit=(package_unit)
-      validator = EnumAttributeValidator.new('String', ["GB", "TB"])
-      unless validator.valid?(package_unit)
-        fail ArgumentError, "invalid value for \"package_unit\", must be one of #{validator.allowable_values}."
-      end
-      @package_unit = package_unit
     end
 
     # Checks equality by comparing each attribute.

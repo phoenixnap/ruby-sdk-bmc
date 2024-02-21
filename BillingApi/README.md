@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::LocationEnum](docs/LocationEnum.md)
  - [BillingApi::OperatingSystemDetails](docs/OperatingSystemDetails.md)
  - [BillingApi::OperatingSystemRecord](docs/OperatingSystemRecord.md)
+ - [BillingApi::PackageUnitEnum](docs/PackageUnitEnum.md)
  - [BillingApi::PriceUnitEnum](docs/PriceUnitEnum.md)
  - [BillingApi::PricingPlan](docs/PricingPlan.md)
  - [BillingApi::Product](docs/Product.md)

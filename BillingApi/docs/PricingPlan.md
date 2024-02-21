@@ -13,7 +13,7 @@
 | **applicable_discounts** | [**ApplicableDiscounts**](ApplicableDiscounts.md) |  | [optional] |
 | **correlated_product_code** | **String** | Product code of the product this product is correlated with | [optional] |
 | **package_quantity** | **Float** | Package size per month. | [optional] |
-| **package_unit** | **String** | Package size unit. | [optional] |
+| **package_unit** | [**PackageUnitEnum**](PackageUnitEnum.md) |  | [optional] |
 
 ## Example
 

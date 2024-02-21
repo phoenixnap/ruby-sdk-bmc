@@ -15,6 +15,7 @@ docs/LocationAvailabilityDetail.md
 docs/LocationEnum.md
 docs/OperatingSystemDetails.md
 docs/OperatingSystemRecord.md
+docs/PackageUnitEnum.md
 docs/PriceUnitEnum.md
 docs/PricingPlan.md
 docs/Product.md
@@ -61,6 +62,7 @@ lib/pnap_billing_api/models/location_availability_detail.rb
 lib/pnap_billing_api/models/location_enum.rb
 lib/pnap_billing_api/models/operating_system_details.rb
 lib/pnap_billing_api/models/operating_system_record.rb
+lib/pnap_billing_api/models/package_unit_enum.rb
 lib/pnap_billing_api/models/price_unit_enum.rb
 lib/pnap_billing_api/models/pricing_plan.rb
 lib/pnap_billing_api/models/product.rb
@@ -101,6 +103,7 @@ spec/models/location_availability_detail_spec.rb
 spec/models/location_enum_spec.rb
 spec/models/operating_system_details_spec.rb
 spec/models/operating_system_record_spec.rb
+spec/models/package_unit_enum_spec.rb
 spec/models/price_unit_enum_spec.rb
 spec/models/pricing_plan_spec.rb
 spec/models/product_availability_spec.rb
