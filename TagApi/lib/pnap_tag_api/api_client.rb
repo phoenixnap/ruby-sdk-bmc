@@ -33,8 +33,8 @@ module TagApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ TagApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ TagApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/TagApi/#{ TagApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/TagApi/#{ TagApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

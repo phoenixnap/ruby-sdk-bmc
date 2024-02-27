@@ -33,8 +33,8 @@ module PaymentsApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ PaymentsApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ PaymentsApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/PaymentsApi/#{ PaymentsApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/PaymentsApi/#{ PaymentsApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,
