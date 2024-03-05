@@ -33,8 +33,8 @@ module LocationApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ LocationApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ LocationApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/LocationApi/#{ LocationApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/LocationApi/#{ LocationApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

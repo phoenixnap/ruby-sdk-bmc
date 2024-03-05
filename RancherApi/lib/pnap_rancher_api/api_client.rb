@@ -33,8 +33,8 @@ module RancherApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ RancherApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ RancherApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/RancherApi/#{ RancherApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/RancherApi/#{ RancherApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,
