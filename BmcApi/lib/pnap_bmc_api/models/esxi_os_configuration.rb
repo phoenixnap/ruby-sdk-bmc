@@ -14,42 +14,14 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # OS specific configuration properties.
-  class OsConfiguration
-    attr_accessor :netris_controller
-
-    attr_accessor :netris_softgate
-
-    attr_accessor :windows
-
-    # (Read-only) Auto-generated password set for user 'root' on an ESXi or Proxmox server.<br>  The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
-    attr_accessor :root_password
-
-    # (Read-only) The URL of the management UI which will only be returned in response to provisioning a server.
-    attr_accessor :management_ui_url
-
-    # List of IPs allowed to access the Management UI. Supported in single IP, CIDR and range format. When undefined, Management UI is disabled. This will only be returned in response to provisioning a server.
-    attr_accessor :management_access_allowed_ips
-
-    # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Follow the <a href='https://phoenixnap.com/kb/bmc-custom-os' target='_blank'>instructions</a> on how to install custom OS on BMC. Only supported for ubuntu/focal and ubuntu/jammy.
-    attr_accessor :install_os_to_ram
-
-    attr_accessor :esxi
-
-    attr_accessor :cloud_init
+  # Esxi OS configuration.
+  class EsxiOsConfiguration
+    attr_accessor :datastore_configuration
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'netris_controller' => :'netrisController',
-        :'netris_softgate' => :'netrisSoftgate',
-        :'windows' => :'windows',
-        :'root_password' => :'rootPassword',
-        :'management_ui_url' => :'managementUiUrl',
-        :'management_access_allowed_ips' => :'managementAccessAllowedIps',
-        :'install_os_to_ram' => :'installOsToRam',
-        :'esxi' => :'esxi',
-        :'cloud_init' => :'cloudInit'
+        :'datastore_configuration' => :'datastoreConfiguration'
       }
     end
 
@@ -61,15 +33,7 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'netris_controller' => :'OsConfigurationNetrisController',
-        :'netris_softgate' => :'OsConfigurationNetrisSoftgate',
-        :'windows' => :'OsConfigurationWindows',
-        :'root_password' => :'String',
-        :'management_ui_url' => :'String',
-        :'management_access_allowed_ips' => :'Array<String>',
-        :'install_os_to_ram' => :'Boolean',
-        :'esxi' => :'EsxiOsConfiguration',
-        :'cloud_init' => :'OsConfigurationCloudInit'
+        :'datastore_configuration' => :'EsxiDatastoreConfiguration'
       }
     end
 
@@ -83,55 +47,19 @@ module BmcApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::OsConfiguration` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::EsxiOsConfiguration` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::OsConfiguration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::EsxiOsConfiguration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'netris_controller')
-        self.netris_controller = attributes[:'netris_controller']
-      end
-
-      if attributes.key?(:'netris_softgate')
-        self.netris_softgate = attributes[:'netris_softgate']
-      end
-
-      if attributes.key?(:'windows')
-        self.windows = attributes[:'windows']
-      end
-
-      if attributes.key?(:'root_password')
-        self.root_password = attributes[:'root_password']
-      end
-
-      if attributes.key?(:'management_ui_url')
-        self.management_ui_url = attributes[:'management_ui_url']
-      end
-
-      if attributes.key?(:'management_access_allowed_ips')
-        if (value = attributes[:'management_access_allowed_ips']).is_a?(Array)
-          self.management_access_allowed_ips = value
-        end
-      end
-
-      if attributes.key?(:'install_os_to_ram')
-        self.install_os_to_ram = attributes[:'install_os_to_ram']
-      else
-        self.install_os_to_ram = false
-      end
-
-      if attributes.key?(:'esxi')
-        self.esxi = attributes[:'esxi']
-      end
-
-      if attributes.key?(:'cloud_init')
-        self.cloud_init = attributes[:'cloud_init']
+      if attributes.key?(:'datastore_configuration')
+        self.datastore_configuration = attributes[:'datastore_configuration']
       end
     end
 
@@ -140,10 +68,6 @@ module BmcApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@management_access_allowed_ips.nil? && @management_access_allowed_ips.length < 1
-        invalid_properties.push('invalid value for "management_access_allowed_ips", number of items must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -151,22 +75,7 @@ module BmcApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@management_access_allowed_ips.nil? && @management_access_allowed_ips.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] management_access_allowed_ips Value to be assigned
-    def management_access_allowed_ips=(management_access_allowed_ips)
-      if management_access_allowed_ips.nil?
-        fail ArgumentError, 'management_access_allowed_ips cannot be nil'
-      end
-
-      if management_access_allowed_ips.length < 1
-        fail ArgumentError, 'invalid value for "management_access_allowed_ips", number of items must be greater than or equal to 1.'
-      end
-
-      @management_access_allowed_ips = management_access_allowed_ips
     end
 
     # Checks equality by comparing each attribute.
@@ -174,15 +83,7 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          netris_controller == o.netris_controller &&
-          netris_softgate == o.netris_softgate &&
-          windows == o.windows &&
-          root_password == o.root_password &&
-          management_ui_url == o.management_ui_url &&
-          management_access_allowed_ips == o.management_access_allowed_ips &&
-          install_os_to_ram == o.install_os_to_ram &&
-          esxi == o.esxi &&
-          cloud_init == o.cloud_init
+          datastore_configuration == o.datastore_configuration
     end
 
     # @see the `==` method
@@ -194,7 +95,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, esxi, cloud_init].hash
+      [datastore_configuration].hash
     end
 
     # Builds the object from hash

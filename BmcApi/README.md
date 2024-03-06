@@ -160,6 +160,8 @@ Class | Method | HTTP request | Description
  - [BmcApi::DeleteResult](docs/DeleteResult.md)
  - [BmcApi::DeleteSshKeyResult](docs/DeleteSshKeyResult.md)
  - [BmcApi::Error](docs/Error.md)
+ - [BmcApi::EsxiDatastoreConfiguration](docs/EsxiDatastoreConfiguration.md)
+ - [BmcApi::EsxiOsConfiguration](docs/EsxiOsConfiguration.md)
  - [BmcApi::IpBlocksConfiguration](docs/IpBlocksConfiguration.md)
  - [BmcApi::NetworkConfiguration](docs/NetworkConfiguration.md)
  - [BmcApi::OsConfiguration](docs/OsConfiguration.md)

@@ -8,6 +8,8 @@ docs/ActionResult.md
 docs/DeleteResult.md
 docs/DeleteSshKeyResult.md
 docs/Error.md
+docs/EsxiDatastoreConfiguration.md
+docs/EsxiOsConfiguration.md
 docs/IpBlocksConfiguration.md
 docs/NetworkConfiguration.md
 docs/OsConfiguration.md
@@ -56,6 +58,8 @@ lib/pnap_bmc_api/models/action_result.rb
 lib/pnap_bmc_api/models/delete_result.rb
 lib/pnap_bmc_api/models/delete_ssh_key_result.rb
 lib/pnap_bmc_api/models/error.rb
+lib/pnap_bmc_api/models/esxi_datastore_configuration.rb
+lib/pnap_bmc_api/models/esxi_os_configuration.rb
 lib/pnap_bmc_api/models/ip_blocks_configuration.rb
 lib/pnap_bmc_api/models/network_configuration.rb
 lib/pnap_bmc_api/models/os_configuration.rb
@@ -99,6 +103,8 @@ spec/models/action_result_spec.rb
 spec/models/delete_result_spec.rb
 spec/models/delete_ssh_key_result_spec.rb
 spec/models/error_spec.rb
+spec/models/esxi_datastore_configuration_spec.rb
+spec/models/esxi_os_configuration_spec.rb
 spec/models/ip_blocks_configuration_spec.rb
 spec/models/network_configuration_spec.rb
 spec/models/os_configuration_cloud_init_spec.rb
