@@ -1,4 +1,4 @@
-name: publish-sdk
+name: publish-all-sdks
 
 on:
   release:
