@@ -34,6 +34,8 @@ module BmcApi
     # If true, OS will be installed to and booted from the server's RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Follow the <a href='https://phoenixnap.com/kb/bmc-custom-os' target='_blank'>instructions</a> on how to install custom OS on BMC. Only supported for ubuntu/focal and ubuntu/jammy.
     attr_accessor :install_os_to_ram
 
+    attr_accessor :esxi
+
     attr_accessor :cloud_init
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -46,6 +48,7 @@ module BmcApi
         :'management_ui_url' => :'managementUiUrl',
         :'management_access_allowed_ips' => :'managementAccessAllowedIps',
         :'install_os_to_ram' => :'installOsToRam',
+        :'esxi' => :'esxi',
         :'cloud_init' => :'cloudInit'
       }
     end
@@ -65,6 +68,7 @@ module BmcApi
         :'management_ui_url' => :'String',
         :'management_access_allowed_ips' => :'Array<String>',
         :'install_os_to_ram' => :'Boolean',
+        :'esxi' => :'EsxiOsConfiguration',
         :'cloud_init' => :'OsConfigurationCloudInit'
       }
     end
@@ -122,6 +126,10 @@ module BmcApi
         self.install_os_to_ram = false
       end
 
+      if attributes.key?(:'esxi')
+        self.esxi = attributes[:'esxi']
+      end
+
       if attributes.key?(:'cloud_init')
         self.cloud_init = attributes[:'cloud_init']
       end
@@ -173,6 +181,7 @@ module BmcApi
           management_ui_url == o.management_ui_url &&
           management_access_allowed_ips == o.management_access_allowed_ips &&
           install_os_to_ram == o.install_os_to_ram &&
+          esxi == o.esxi &&
           cloud_init == o.cloud_init
     end
 
@@ -185,7 +194,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, cloud_init].hash
+      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, esxi, cloud_init].hash
     end
 
     # Builds the object from hash

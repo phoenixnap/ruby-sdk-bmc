@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The reservation identifier. |  |
 | **product_code** | **String** | The code identifying the product. This code has significant across all locations. |  |
-| **product_category** | **String** | The product category. |  |
+| **product_category** | [**ReservationProductCategoryEnum**](ReservationProductCategoryEnum.md) |  |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **reservation_model** | [**ReservationModelEnum**](ReservationModelEnum.md) |  |  |
 | **initial_invoice_model** | [**ReservationInvoicingModelEnum**](ReservationInvoicingModelEnum.md) |  | [optional] |
@@ -29,7 +29,7 @@ require 'pnap_billing_api'
 instance = BillingApi::Reservation.new(
   id: 83604275-bdba-490a-b87a-978e8dffdb14,
   product_code: s1.c1.small,
-  product_category: server,
+  product_category: null,
   location: null,
   reservation_model: null,
   initial_invoice_model: null,

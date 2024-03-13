@@ -33,8 +33,8 @@ module IpApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ IpApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ IpApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/IpApi/#{ IpApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/IpApi/#{ IpApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

@@ -2,6 +2,7 @@ generatorName: ruby
 ignoreFileOverride: ".openapi-generator-ignore"
 templateDir: "template"
 httpUserAgent: "ruby-sdk-bmc/1.0.0-SNAPSHOT"
+disallowAdditionalPropertiesIfNotPresent: false
 additionalProperties:
   gemVersion: "1.0.0-SNAPSHOT"
   gemLicense: "MPL-2.0"

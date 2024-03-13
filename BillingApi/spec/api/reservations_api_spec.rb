@@ -36,7 +36,7 @@ describe 'ReservationsApi' do
   # List all Reservations.
   # Retrieves all reservations associated with the authenticated account. All date &amp; times are in UTC.
   # @param [Hash] opts the optional parameters
-  # @option opts [ProductCategoryEnum] :product_category The product category
+  # @option opts [ReservationProductCategoryEnum] :product_category The product category
   # @return [Array<Reservation>]
   describe 'reservations_get test' do
     it 'should work' do
@@ -59,7 +59,7 @@ describe 'ReservationsApi' do
   # unit tests for reservations_reservation_id_actions_auto_renew_disable_post
   # Disable auto-renewal for reservation by id.
   # Disable auto-renewal for reservation by reservation id.
-  # @param reservation_id The reservation&#39;s ID.
+  # @param id Resource id.
   # @param [Hash] opts the optional parameters
   # @option opts [ReservationAutoRenewDisableRequest] :reservation_auto_renew_disable_request 
   # @return [Reservation]
@@ -72,7 +72,7 @@ describe 'ReservationsApi' do
   # unit tests for reservations_reservation_id_actions_auto_renew_enable_post
   # Enable auto-renewal for unexpired reservation by reservation id.
   # Enable auto-renewal for unexpired reservation by reservation id.
-  # @param reservation_id The reservation&#39;s ID.
+  # @param id Resource id.
   # @param [Hash] opts the optional parameters
   # @return [Reservation]
   describe 'reservations_reservation_id_actions_auto_renew_enable_post test' do
@@ -84,7 +84,7 @@ describe 'ReservationsApi' do
   # unit tests for reservations_reservation_id_actions_convert_post
   # Convert reservation pricing model by reservation ID.
   # Convert reservation pricing model by reservation id.
-  # @param reservation_id The reservation&#39;s ID.
+  # @param id Resource id.
   # @param [Hash] opts the optional parameters
   # @option opts [ReservationRequest] :reservation_request 
   # @return [Reservation]
@@ -97,7 +97,7 @@ describe 'ReservationsApi' do
   # unit tests for reservations_reservation_id_get
   # Get a reservation.
   # Retrieves the reservations with the specified identifier. All date &amp; times are in UTC.
-  # @param reservation_id The reservation&#39;s ID.
+  # @param id Resource id.
   # @param [Hash] opts the optional parameters
   # @return [Reservation]
   describe 'reservations_reservation_id_get test' do

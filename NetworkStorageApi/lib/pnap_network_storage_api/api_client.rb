@@ -33,8 +33,8 @@ module NetworkStorageApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ NetworkStorageApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ NetworkStorageApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/NetworkStorageApi/#{ NetworkStorageApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/NetworkStorageApi/#{ NetworkStorageApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

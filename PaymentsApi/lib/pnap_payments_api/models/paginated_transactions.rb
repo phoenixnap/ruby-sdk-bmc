@@ -15,8 +15,6 @@ require 'time'
 
 module PaymentsApi
   class PaginatedTransactions
-    attr_accessor :results
-
     # Maximum number of items in the page (actual returned length can be less).
     attr_accessor :limit
 
@@ -26,13 +24,15 @@ module PaymentsApi
     # The total number of records available for retrieval.
     attr_accessor :total
 
+    attr_accessor :results
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'results' => :'results',
         :'limit' => :'limit',
         :'offset' => :'offset',
-        :'total' => :'total'
+        :'total' => :'total',
+        :'results' => :'results'
       }
     end
 
@@ -44,10 +44,10 @@ module PaymentsApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'results' => :'Array<Transaction>',
         :'limit' => :'Integer',
         :'offset' => :'Integer',
-        :'total' => :'Integer'
+        :'total' => :'Integer',
+        :'results' => :'Array<Transaction>'
       }
     end
 
@@ -79,14 +79,6 @@ module PaymentsApi
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'results')
-        if (value = attributes[:'results']).is_a?(Array)
-          self.results = value
-        end
-      else
-        self.results = nil
-      end
-
       if attributes.key?(:'limit')
         self.limit = attributes[:'limit']
       else
@@ -104,6 +96,14 @@ module PaymentsApi
       else
         self.total = nil
       end
+
+      if attributes.key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
+        end
+      else
+        self.results = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -111,10 +111,6 @@ module PaymentsApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @results.nil?
-        invalid_properties.push('invalid value for "results", results cannot be nil.')
-      end
-
       if @limit.nil?
         invalid_properties.push('invalid value for "limit", limit cannot be nil.')
       end
@@ -127,6 +123,10 @@ module PaymentsApi
         invalid_properties.push('invalid value for "total", total cannot be nil.')
       end
 
+      if @results.nil?
+        invalid_properties.push('invalid value for "results", results cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -134,10 +134,10 @@ module PaymentsApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @results.nil?
       return false if @limit.nil?
       return false if @offset.nil?
       return false if @total.nil?
+      return false if @results.nil?
       true
     end
 
@@ -146,10 +146,10 @@ module PaymentsApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          results == o.results &&
           limit == o.limit &&
           offset == o.offset &&
-          total == o.total
+          total == o.total &&
+          results == o.results
     end
 
     # @see the `==` method
@@ -161,7 +161,7 @@ module PaymentsApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [results, limit, offset, total].hash
+      [limit, offset, total, results].hash
     end
 
     # Builds the object from hash

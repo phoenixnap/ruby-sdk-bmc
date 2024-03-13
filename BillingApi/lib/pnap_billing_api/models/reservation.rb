@@ -22,7 +22,6 @@ module BillingApi
     # The code identifying the product. This code has significant across all locations.
     attr_accessor :product_code
 
-    # The product category.
     attr_accessor :product_category
 
     attr_accessor :location
@@ -114,7 +113,7 @@ module BillingApi
       {
         :'id' => :'String',
         :'product_code' => :'String',
-        :'product_category' => :'String',
+        :'product_category' => :'ReservationProductCategoryEnum',
         :'location' => :'LocationEnum',
         :'reservation_model' => :'ReservationModelEnum',
         :'initial_invoice_model' => :'ReservationInvoicingModelEnum',
@@ -292,8 +291,6 @@ module BillingApi
       return false if @id.nil?
       return false if @product_code.nil?
       return false if @product_category.nil?
-      product_category_validator = EnumAttributeValidator.new('String', ["server", "bandwidth", "operating-system"])
-      return false unless product_category_validator.valid?(@product_category)
       return false if @location.nil?
       return false if @reservation_model.nil?
       return false if @start_date_time.nil?
@@ -302,16 +299,6 @@ module BillingApi
       return false if @price.nil?
       return false if @price_unit.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_category Object to be assigned
-    def product_category=(product_category)
-      validator = EnumAttributeValidator.new('String', ["server", "bandwidth", "operating-system"])
-      unless validator.valid?(product_category)
-        fail ArgumentError, "invalid value for \"product_category\", must be one of #{validator.allowable_values}."
-      end
-      @product_category = product_category
     end
 
     # Checks equality by comparing each attribute.

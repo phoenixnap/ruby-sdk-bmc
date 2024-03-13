@@ -24,4 +24,11 @@ lib/pnap_payments_api/models/transaction.rb
 lib/pnap_payments_api/models/transaction_metadata.rb
 lib/pnap_payments_api/version.rb
 pnap_payments_api.gemspec
+spec/api/transactions_api_spec.rb
+spec/models/card_payment_method_details_spec.rb
+spec/models/error_spec.rb
+spec/models/paginated_response_spec.rb
+spec/models/paginated_transactions_spec.rb
+spec/models/transaction_metadata_spec.rb
+spec/models/transaction_spec.rb
 spec/spec_helper.rb

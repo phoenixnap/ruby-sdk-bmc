@@ -33,8 +33,8 @@ module BillingApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ BillingApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ BillingApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/BillingApi/#{ BillingApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/BillingApi/#{ BillingApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

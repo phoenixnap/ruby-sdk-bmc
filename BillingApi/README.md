@@ -123,16 +123,16 @@ All URIs are relative to *https://api.phoenixnap.com/billing/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BillingApi::BillingConfigurationsApi* | [**account_billing_configuration_me_get**](docs/BillingConfigurationsApi.md#account_billing_configuration_me_get) | **GET** /account-billing-configurations/me | Retrieves billing configuration associated with the authenticated account.
-*BillingApi::ProductsApi* | [**product_availability_get**](docs/ProductsApi.md#product_availability_get) | **GET** /product-availability | List all Product availabilities.
+*BillingApi::ProductAvailabilityApi* | [**product_availability_get**](docs/ProductAvailabilityApi.md#product_availability_get) | **GET** /product-availability | List all Product availabilities.
 *BillingApi::ProductsApi* | [**products_get**](docs/ProductsApi.md#products_get) | **GET** /products | List all Products.
 *BillingApi::RatedUsageApi* | [**rated_usage_get**](docs/RatedUsageApi.md#rated_usage_get) | **GET** /rated-usage | List the rated usage.
 *BillingApi::RatedUsageApi* | [**rated_usage_month_to_date_get**](docs/RatedUsageApi.md#rated_usage_month_to_date_get) | **GET** /rated-usage/month-to-date | List the rated usage records for the current calendar month.
 *BillingApi::ReservationsApi* | [**reservations_get**](docs/ReservationsApi.md#reservations_get) | **GET** /reservations | List all Reservations.
 *BillingApi::ReservationsApi* | [**reservations_post**](docs/ReservationsApi.md#reservations_post) | **POST** /reservations | Create a reservation.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_disable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_disable_post) | **POST** /reservations/{reservationId}/actions/auto-renew/disable | Disable auto-renewal for reservation by id.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_enable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_enable_post) | **POST** /reservations/{reservationId}/actions/auto-renew/enable | Enable auto-renewal for unexpired reservation by reservation id.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_convert_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_convert_post) | **POST** /reservations/{reservationId}/actions/convert | Convert reservation pricing model by reservation ID.
-*BillingApi::ReservationsApi* | [**reservations_reservation_id_get**](docs/ReservationsApi.md#reservations_reservation_id_get) | **GET** /reservations/{reservationId} | Get a reservation.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_disable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_disable_post) | **POST** /reservations/{id}/actions/auto-renew/disable | Disable auto-renewal for reservation by id.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_auto_renew_enable_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_auto_renew_enable_post) | **POST** /reservations/{id}/actions/auto-renew/enable | Enable auto-renewal for unexpired reservation by reservation id.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_actions_convert_post**](docs/ReservationsApi.md#reservations_reservation_id_actions_convert_post) | **POST** /reservations/{id}/actions/convert | Convert reservation pricing model by reservation ID.
+*BillingApi::ReservationsApi* | [**reservations_reservation_id_get**](docs/ReservationsApi.md#reservations_reservation_id_get) | **GET** /reservations/{id} | Get a reservation.
 
 
 ## Documentation for Models
@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::LocationEnum](docs/LocationEnum.md)
  - [BillingApi::OperatingSystemDetails](docs/OperatingSystemDetails.md)
  - [BillingApi::OperatingSystemRecord](docs/OperatingSystemRecord.md)
+ - [BillingApi::PackageUnitEnum](docs/PackageUnitEnum.md)
  - [BillingApi::PriceUnitEnum](docs/PriceUnitEnum.md)
  - [BillingApi::PricingPlan](docs/PricingPlan.md)
  - [BillingApi::Product](docs/Product.md)
@@ -161,6 +162,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::ReservationAutoRenewDisableRequest](docs/ReservationAutoRenewDisableRequest.md)
  - [BillingApi::ReservationInvoicingModelEnum](docs/ReservationInvoicingModelEnum.md)
  - [BillingApi::ReservationModelEnum](docs/ReservationModelEnum.md)
+ - [BillingApi::ReservationProductCategoryEnum](docs/ReservationProductCategoryEnum.md)
  - [BillingApi::ReservationRequest](docs/ReservationRequest.md)
  - [BillingApi::ServerDetails](docs/ServerDetails.md)
  - [BillingApi::ServerProduct](docs/ServerProduct.md)

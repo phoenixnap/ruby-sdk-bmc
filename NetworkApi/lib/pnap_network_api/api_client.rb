@@ -33,8 +33,8 @@ module NetworkApi
     def initialize(config = Configuration.default)
       @config = config
       @config.params_encoding = :multi
-      @user_agent = "PNAP-ruby-sdk-bmc/#{ NetworkApi::VERSION }"
-      @powered_by = "PNAP-ruby-sdk-bmc/#{ NetworkApi::VERSION }"
+      @user_agent = "PNAP-ruby-sdk-bmc/NetworkApi/#{ NetworkApi::VERSION }"
+      @powered_by = "PNAP-ruby-sdk-bmc/NetworkApi/#{ NetworkApi::VERSION }"
       @default_headers = {
         'Content-Type' => 'application/json',
         'User-Agent' => @user_agent,

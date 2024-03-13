@@ -26,4 +26,12 @@ lib/pnap_ip_api/models/tag_assignment.rb
 lib/pnap_ip_api/models/tag_assignment_request.rb
 lib/pnap_ip_api/version.rb
 pnap_ip_api.gemspec
+spec/api/ip_blocks_api_spec.rb
+spec/models/delete_ip_block_result_spec.rb
+spec/models/error_spec.rb
+spec/models/ip_block_create_spec.rb
+spec/models/ip_block_patch_spec.rb
+spec/models/ip_block_spec.rb
+spec/models/tag_assignment_request_spec.rb
+spec/models/tag_assignment_spec.rb
 spec/spec_helper.rb

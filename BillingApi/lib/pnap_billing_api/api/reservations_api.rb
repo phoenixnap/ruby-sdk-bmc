@@ -22,7 +22,7 @@ module BillingApi
     # List all Reservations.
     # Retrieves all reservations associated with the authenticated account. All date & times are in UTC.
     # @param [Hash] opts the optional parameters
-    # @option opts [ProductCategoryEnum] :product_category The product category
+    # @option opts [ReservationProductCategoryEnum] :product_category The product category
     # @return [Array<Reservation>]
     def reservations_get(opts = {})
       data, _status_code, _headers = reservations_get_with_http_info(opts)
@@ -32,7 +32,7 @@ module BillingApi
     # List all Reservations.
     # Retrieves all reservations associated with the authenticated account. All date &amp; times are in UTC.
     # @param [Hash] opts the optional parameters
-    # @option opts [ProductCategoryEnum] :product_category The product category
+    # @option opts [ReservationProductCategoryEnum] :product_category The product category
     # @return [Array<(Array<Reservation>, Integer, Hash)>] Array<Reservation> data, response status code and response headers
     def reservations_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -145,31 +145,31 @@ module BillingApi
 
     # Disable auto-renewal for reservation by id.
     # Disable auto-renewal for reservation by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @option opts [ReservationAutoRenewDisableRequest] :reservation_auto_renew_disable_request 
     # @return [Reservation]
-    def reservations_reservation_id_actions_auto_renew_disable_post(reservation_id, opts = {})
-      data, _status_code, _headers = reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(reservation_id, opts)
+    def reservations_reservation_id_actions_auto_renew_disable_post(id, opts = {})
+      data, _status_code, _headers = reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, opts)
       data
     end
 
     # Disable auto-renewal for reservation by id.
     # Disable auto-renewal for reservation by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @option opts [ReservationAutoRenewDisableRequest] :reservation_auto_renew_disable_request 
     # @return [Array<(Reservation, Integer, Hash)>] Reservation data, response status code and response headers
-    def reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(reservation_id, opts = {})
+    def reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReservationsApi.reservations_reservation_id_actions_auto_renew_disable_post ...'
       end
-      # verify the required parameter 'reservation_id' is set
-      if @api_client.config.client_side_validation && reservation_id.nil?
-        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ReservationsApi.reservations_reservation_id_actions_auto_renew_disable_post"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ReservationsApi.reservations_reservation_id_actions_auto_renew_disable_post"
       end
       # resource path
-      local_var_path = '/reservations/{reservationId}/actions/auto-renew/disable'.sub('{' + 'reservationId' + '}', CGI.escape(reservation_id.to_s))
+      local_var_path = '/reservations/{id}/actions/auto-renew/disable'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -215,29 +215,29 @@ module BillingApi
 
     # Enable auto-renewal for unexpired reservation by reservation id.
     # Enable auto-renewal for unexpired reservation by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @return [Reservation]
-    def reservations_reservation_id_actions_auto_renew_enable_post(reservation_id, opts = {})
-      data, _status_code, _headers = reservations_reservation_id_actions_auto_renew_enable_post_with_http_info(reservation_id, opts)
+    def reservations_reservation_id_actions_auto_renew_enable_post(id, opts = {})
+      data, _status_code, _headers = reservations_reservation_id_actions_auto_renew_enable_post_with_http_info(id, opts)
       data
     end
 
     # Enable auto-renewal for unexpired reservation by reservation id.
     # Enable auto-renewal for unexpired reservation by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Reservation, Integer, Hash)>] Reservation data, response status code and response headers
-    def reservations_reservation_id_actions_auto_renew_enable_post_with_http_info(reservation_id, opts = {})
+    def reservations_reservation_id_actions_auto_renew_enable_post_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReservationsApi.reservations_reservation_id_actions_auto_renew_enable_post ...'
       end
-      # verify the required parameter 'reservation_id' is set
-      if @api_client.config.client_side_validation && reservation_id.nil?
-        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ReservationsApi.reservations_reservation_id_actions_auto_renew_enable_post"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ReservationsApi.reservations_reservation_id_actions_auto_renew_enable_post"
       end
       # resource path
-      local_var_path = '/reservations/{reservationId}/actions/auto-renew/enable'.sub('{' + 'reservationId' + '}', CGI.escape(reservation_id.to_s))
+      local_var_path = '/reservations/{id}/actions/auto-renew/enable'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -278,31 +278,31 @@ module BillingApi
 
     # Convert reservation pricing model by reservation ID.
     # Convert reservation pricing model by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @option opts [ReservationRequest] :reservation_request 
     # @return [Reservation]
-    def reservations_reservation_id_actions_convert_post(reservation_id, opts = {})
-      data, _status_code, _headers = reservations_reservation_id_actions_convert_post_with_http_info(reservation_id, opts)
+    def reservations_reservation_id_actions_convert_post(id, opts = {})
+      data, _status_code, _headers = reservations_reservation_id_actions_convert_post_with_http_info(id, opts)
       data
     end
 
     # Convert reservation pricing model by reservation ID.
     # Convert reservation pricing model by reservation id.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @option opts [ReservationRequest] :reservation_request 
     # @return [Array<(Reservation, Integer, Hash)>] Reservation data, response status code and response headers
-    def reservations_reservation_id_actions_convert_post_with_http_info(reservation_id, opts = {})
+    def reservations_reservation_id_actions_convert_post_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReservationsApi.reservations_reservation_id_actions_convert_post ...'
       end
-      # verify the required parameter 'reservation_id' is set
-      if @api_client.config.client_side_validation && reservation_id.nil?
-        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ReservationsApi.reservations_reservation_id_actions_convert_post"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ReservationsApi.reservations_reservation_id_actions_convert_post"
       end
       # resource path
-      local_var_path = '/reservations/{reservationId}/actions/convert'.sub('{' + 'reservationId' + '}', CGI.escape(reservation_id.to_s))
+      local_var_path = '/reservations/{id}/actions/convert'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -348,29 +348,29 @@ module BillingApi
 
     # Get a reservation.
     # Retrieves the reservations with the specified identifier. All date & times are in UTC.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @return [Reservation]
-    def reservations_reservation_id_get(reservation_id, opts = {})
-      data, _status_code, _headers = reservations_reservation_id_get_with_http_info(reservation_id, opts)
+    def reservations_reservation_id_get(id, opts = {})
+      data, _status_code, _headers = reservations_reservation_id_get_with_http_info(id, opts)
       data
     end
 
     # Get a reservation.
     # Retrieves the reservations with the specified identifier. All date &amp; times are in UTC.
-    # @param reservation_id [String] The reservation&#39;s ID.
+    # @param id [String] Resource id.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Reservation, Integer, Hash)>] Reservation data, response status code and response headers
-    def reservations_reservation_id_get_with_http_info(reservation_id, opts = {})
+    def reservations_reservation_id_get_with_http_info(id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ReservationsApi.reservations_reservation_id_get ...'
       end
-      # verify the required parameter 'reservation_id' is set
-      if @api_client.config.client_side_validation && reservation_id.nil?
-        fail ArgumentError, "Missing the required parameter 'reservation_id' when calling ReservationsApi.reservations_reservation_id_get"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ReservationsApi.reservations_reservation_id_get"
       end
       # resource path
-      local_var_path = '/reservations/{reservationId}'.sub('{' + 'reservationId' + '}', CGI.escape(reservation_id.to_s))
+      local_var_path = '/reservations/{id}'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

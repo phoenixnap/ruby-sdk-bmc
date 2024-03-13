@@ -55,7 +55,7 @@ class TC_BillingApi < Test::Unit::TestCase
     request, response = TestUtils.generate_payloads_from('billingapi/products/product_availability_get')
     expectation = TestUtils.setup_expectation(request, response, 1)
 
-    api_instance = BillingApi::ProductsApi.new
+    api_instance = BillingApi::ProductAvailabilityApi.new
     opts = {
       product_category: ['SERVER'],
       product_code: ['code', 'random'],
