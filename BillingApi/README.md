@@ -143,6 +143,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::ConfigurationDetails](docs/ConfigurationDetails.md)
  - [BillingApi::DiscountDetails](docs/DiscountDetails.md)
  - [BillingApi::Error](docs/Error.md)
+ - [BillingApi::GpuConfigurationMetadata](docs/GpuConfigurationMetadata.md)
  - [BillingApi::LocationAvailabilityDetail](docs/LocationAvailabilityDetail.md)
  - [BillingApi::LocationEnum](docs/LocationEnum.md)
  - [BillingApi::OperatingSystemDetails](docs/OperatingSystemDetails.md)

@@ -14,43 +14,19 @@ require 'date'
 require 'time'
 
 module BillingApi
-  # Details of the server product.
-  class ServerProductMetadata
-    # RAM in GB.
-    attr_accessor :ram_in_gb
+  # GPU configuration details.
+  class GpuConfigurationMetadata
+    # GPU card count.
+    attr_accessor :count
 
-    # CPU name.
-    attr_accessor :cpu
-
-    # Number of CPUs.
-    attr_accessor :cpu_count
-
-    # The number of physical cores present on each CPU.
-    attr_accessor :cores_per_cpu
-
-    # CPU frequency in GHz.
-    attr_accessor :cpu_frequency
-
-    # Server network.
-    attr_accessor :network
-
-    # Server storage.
-    attr_accessor :storage
-
-    # GPU configurations
-    attr_accessor :gpu_configurations
+    # GPU name.
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'ram_in_gb' => :'ramInGb',
-        :'cpu' => :'cpu',
-        :'cpu_count' => :'cpuCount',
-        :'cores_per_cpu' => :'coresPerCpu',
-        :'cpu_frequency' => :'cpuFrequency',
-        :'network' => :'network',
-        :'storage' => :'storage',
-        :'gpu_configurations' => :'gpuConfigurations'
+        :'count' => :'count',
+        :'name' => :'name'
       }
     end
 
@@ -62,14 +38,8 @@ module BillingApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'ram_in_gb' => :'Float',
-        :'cpu' => :'String',
-        :'cpu_count' => :'Float',
-        :'cores_per_cpu' => :'Float',
-        :'cpu_frequency' => :'Float',
-        :'network' => :'String',
-        :'storage' => :'String',
-        :'gpu_configurations' => :'Array<GpuConfigurationMetadata>'
+        :'count' => :'Float',
+        :'name' => :'String'
       }
     end
 
@@ -83,63 +53,23 @@ module BillingApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::ServerProductMetadata` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::GpuConfigurationMetadata` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::ServerProductMetadata`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::GpuConfigurationMetadata`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'ram_in_gb')
-        self.ram_in_gb = attributes[:'ram_in_gb']
-      else
-        self.ram_in_gb = nil
+      if attributes.key?(:'count')
+        self.count = attributes[:'count']
       end
 
-      if attributes.key?(:'cpu')
-        self.cpu = attributes[:'cpu']
-      else
-        self.cpu = nil
-      end
-
-      if attributes.key?(:'cpu_count')
-        self.cpu_count = attributes[:'cpu_count']
-      else
-        self.cpu_count = nil
-      end
-
-      if attributes.key?(:'cores_per_cpu')
-        self.cores_per_cpu = attributes[:'cores_per_cpu']
-      else
-        self.cores_per_cpu = nil
-      end
-
-      if attributes.key?(:'cpu_frequency')
-        self.cpu_frequency = attributes[:'cpu_frequency']
-      else
-        self.cpu_frequency = nil
-      end
-
-      if attributes.key?(:'network')
-        self.network = attributes[:'network']
-      else
-        self.network = nil
-      end
-
-      if attributes.key?(:'storage')
-        self.storage = attributes[:'storage']
-      else
-        self.storage = nil
-      end
-
-      if attributes.key?(:'gpu_configurations')
-        if (value = attributes[:'gpu_configurations']).is_a?(Array)
-          self.gpu_configurations = value
-        end
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -148,34 +78,6 @@ module BillingApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @ram_in_gb.nil?
-        invalid_properties.push('invalid value for "ram_in_gb", ram_in_gb cannot be nil.')
-      end
-
-      if @cpu.nil?
-        invalid_properties.push('invalid value for "cpu", cpu cannot be nil.')
-      end
-
-      if @cpu_count.nil?
-        invalid_properties.push('invalid value for "cpu_count", cpu_count cannot be nil.')
-      end
-
-      if @cores_per_cpu.nil?
-        invalid_properties.push('invalid value for "cores_per_cpu", cores_per_cpu cannot be nil.')
-      end
-
-      if @cpu_frequency.nil?
-        invalid_properties.push('invalid value for "cpu_frequency", cpu_frequency cannot be nil.')
-      end
-
-      if @network.nil?
-        invalid_properties.push('invalid value for "network", network cannot be nil.')
-      end
-
-      if @storage.nil?
-        invalid_properties.push('invalid value for "storage", storage cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -183,13 +85,6 @@ module BillingApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @ram_in_gb.nil?
-      return false if @cpu.nil?
-      return false if @cpu_count.nil?
-      return false if @cores_per_cpu.nil?
-      return false if @cpu_frequency.nil?
-      return false if @network.nil?
-      return false if @storage.nil?
       true
     end
 
@@ -198,14 +93,8 @@ module BillingApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          ram_in_gb == o.ram_in_gb &&
-          cpu == o.cpu &&
-          cpu_count == o.cpu_count &&
-          cores_per_cpu == o.cores_per_cpu &&
-          cpu_frequency == o.cpu_frequency &&
-          network == o.network &&
-          storage == o.storage &&
-          gpu_configurations == o.gpu_configurations
+          count == o.count &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -217,7 +106,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ram_in_gb, cpu, cpu_count, cores_per_cpu, cpu_frequency, network, storage, gpu_configurations].hash
+      [count, name].hash
     end
 
     # Builds the object from hash

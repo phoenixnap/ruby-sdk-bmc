@@ -11,6 +11,7 @@
 | **cpu_frequency** | **Float** | CPU frequency in GHz. |  |
 | **network** | **String** | Server network. |  |
 | **storage** | **String** | Server storage. |  |
+| **gpu_configurations** | [**Array&lt;GpuConfigurationMetadata&gt;**](GpuConfigurationMetadata.md) | GPU configurations | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = BillingApi::ServerProductMetadata.new(
   cores_per_cpu: 2,
   cpu_frequency: 2.7,
   network: 2x 25Gbps,
-  storage: 2x 2TB NVMe
+  storage: 2x 2TB NVMe,
+  gpu_configurations: null
 )
 ```
 
