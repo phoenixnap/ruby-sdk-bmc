@@ -29,6 +29,7 @@
 | **os_configuration** | [**OsConfiguration**](OsConfiguration.md) |  | [optional] |
 | **network_configuration** | [**NetworkConfiguration**](NetworkConfiguration.md) |  |  |
 | **storage_configuration** | [**StorageConfiguration**](StorageConfiguration.md) |  |  |
+| **gpu_configuration** | [**GpuConfiguration**](GpuConfiguration.md) |  | [optional] |
 | **superseded_by** | **String** | Unique identifier of the server to which the reservation has been transferred. | [optional] |
 | **supersedes** | **String** | Unique identifier of the server from which the reservation has been transferred. | [optional] |
 
@@ -63,6 +64,7 @@ instance = BmcApi::Server.new(
   os_configuration: null,
   network_configuration: null,
   storage_configuration: null,
+  gpu_configuration: null,
   superseded_by: 64a539b8d9c2c9ba8424ca31,
   supersedes: 76915b5c85121d411f26e92f
 )

@@ -88,6 +88,8 @@ module BmcApi
 
     attr_accessor :storage_configuration
 
+    attr_accessor :gpu_configuration
+
     # Unique identifier of the server to which the reservation has been transferred.
     attr_accessor :superseded_by
 
@@ -122,6 +124,7 @@ module BmcApi
         :'os_configuration' => :'osConfiguration',
         :'network_configuration' => :'networkConfiguration',
         :'storage_configuration' => :'storageConfiguration',
+        :'gpu_configuration' => :'gpuConfiguration',
         :'superseded_by' => :'supersededBy',
         :'supersedes' => :'supersedes'
       }
@@ -160,6 +163,7 @@ module BmcApi
         :'os_configuration' => :'OsConfiguration',
         :'network_configuration' => :'NetworkConfiguration',
         :'storage_configuration' => :'StorageConfiguration',
+        :'gpu_configuration' => :'GpuConfiguration',
         :'superseded_by' => :'String',
         :'supersedes' => :'String'
       }
@@ -322,6 +326,10 @@ module BmcApi
         self.storage_configuration = attributes[:'storage_configuration']
       else
         self.storage_configuration = nil
+      end
+
+      if attributes.key?(:'gpu_configuration')
+        self.gpu_configuration = attributes[:'gpu_configuration']
       end
 
       if attributes.key?(:'superseded_by')
@@ -606,6 +614,7 @@ module BmcApi
           os_configuration == o.os_configuration &&
           network_configuration == o.network_configuration &&
           storage_configuration == o.storage_configuration &&
+          gpu_configuration == o.gpu_configuration &&
           superseded_by == o.superseded_by &&
           supersedes == o.supersedes
     end
@@ -619,7 +628,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration, superseded_by, supersedes].hash
+      [id, status, hostname, description, os, type, location, cpu, cpu_count, cores_per_cpu, cpu_frequency, ram, storage, private_ip_addresses, public_ip_addresses, reservation_id, pricing_model, password, network_type, cluster_id, tags, provisioned_on, os_configuration, network_configuration, storage_configuration, gpu_configuration, superseded_by, supersedes].hash
     end
 
     # Builds the object from hash
