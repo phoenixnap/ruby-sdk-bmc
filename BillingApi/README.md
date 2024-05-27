@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::BandwidthRecord](docs/BandwidthRecord.md)
  - [BillingApi::ConfigurationDetails](docs/ConfigurationDetails.md)
  - [BillingApi::DiscountDetails](docs/DiscountDetails.md)
+ - [BillingApi::DiscountTypeEnum](docs/DiscountTypeEnum.md)
  - [BillingApi::Error](docs/Error.md)
  - [BillingApi::GpuConfigurationMetadata](docs/GpuConfigurationMetadata.md)
  - [BillingApi::LocationAvailabilityDetail](docs/LocationAvailabilityDetail.md)

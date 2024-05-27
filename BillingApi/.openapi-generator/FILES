@@ -10,6 +10,7 @@ docs/BandwidthRecord.md
 docs/BillingConfigurationsApi.md
 docs/ConfigurationDetails.md
 docs/DiscountDetails.md
+docs/DiscountTypeEnum.md
 docs/Error.md
 docs/GpuConfigurationMetadata.md
 docs/LocationAvailabilityDetail.md
@@ -58,6 +59,7 @@ lib/pnap_billing_api/models/bandwidth_details.rb
 lib/pnap_billing_api/models/bandwidth_record.rb
 lib/pnap_billing_api/models/configuration_details.rb
 lib/pnap_billing_api/models/discount_details.rb
+lib/pnap_billing_api/models/discount_type_enum.rb
 lib/pnap_billing_api/models/error.rb
 lib/pnap_billing_api/models/gpu_configuration_metadata.rb
 lib/pnap_billing_api/models/location_availability_detail.rb
@@ -100,6 +102,7 @@ spec/models/bandwidth_details_spec.rb
 spec/models/bandwidth_record_spec.rb
 spec/models/configuration_details_spec.rb
 spec/models/discount_details_spec.rb
+spec/models/discount_type_enum_spec.rb
 spec/models/error_spec.rb
 spec/models/gpu_configuration_metadata_spec.rb
 spec/models/location_availability_detail_spec.rb
