@@ -19,7 +19,6 @@ module BillingApi
     # The unique identifier of the rated usage record.
     attr_accessor :id
 
-    # The category of the product associated with this usage record.
     attr_accessor :product_category
 
     # The code identifying the product associated to this usage record.
@@ -127,7 +126,7 @@ module BillingApi
     def self.openapi_types
       {
         :'id' => :'String',
-        :'product_category' => :'String',
+        :'product_category' => :'RatedUsageProductCategoryEnum',
         :'product_code' => :'String',
         :'location' => :'LocationEnum',
         :'year_month' => :'String',
@@ -344,8 +343,6 @@ module BillingApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @product_category.nil?
-      product_category_validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      return false unless product_category_validator.valid?(@product_category)
       return false if @product_code.nil?
       return false if @location.nil?
       return false if @start_date_time.nil?
@@ -359,16 +356,6 @@ module BillingApi
       return false if @usage_session_id.nil?
       return false if @correlation_id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_category Object to be assigned
-    def product_category=(product_category)
-      validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      unless validator.valid?(product_category)
-        fail ArgumentError, "invalid value for \"product_category\", must be one of #{validator.allowable_values}."
-      end
-      @product_category = product_category
     end
 
     # Checks equality by comparing each attribute.

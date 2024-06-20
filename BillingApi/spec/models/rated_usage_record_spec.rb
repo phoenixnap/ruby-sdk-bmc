@@ -36,10 +36,6 @@ describe BillingApi::RatedUsageRecord do
   describe 'test attribute "product_category"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      # validator.allowable_values.each do |value|
-      #   expect { instance.product_category = value }.not_to raise_error
-      # end
     end
   end
 

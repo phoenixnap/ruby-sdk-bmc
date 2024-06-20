@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The unique identifier of the rated usage record. |  |
-| **product_category** | **String** | The category of the product associated with this usage record. |  |
+| **product_category** | [**RatedUsageProductCategoryEnum**](RatedUsageProductCategoryEnum.md) |  |  |
 | **product_code** | **String** | The code identifying the product associated to this usage record. |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **year_month** | **String** | Year and month of the usage record. | [optional] |
@@ -32,7 +32,7 @@ require 'pnap_billing_api'
 
 instance = BillingApi::PublicSubnetRecord.new(
   id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
-  product_category: bmc-server,
+  product_category: null,
   product_code: s1.c1.small,
   location: null,
   year_month: 2020-03,

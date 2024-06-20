@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::PublicSubnetDetails](docs/PublicSubnetDetails.md)
  - [BillingApi::PublicSubnetRecord](docs/PublicSubnetRecord.md)
  - [BillingApi::RatedUsageGet200ResponseInner](docs/RatedUsageGet200ResponseInner.md)
+ - [BillingApi::RatedUsageProductCategoryEnum](docs/RatedUsageProductCategoryEnum.md)
  - [BillingApi::RatedUsageRecord](docs/RatedUsageRecord.md)
  - [BillingApi::Reservation](docs/Reservation.md)
  - [BillingApi::ReservationAutoRenewDisableRequest](docs/ReservationAutoRenewDisableRequest.md)
