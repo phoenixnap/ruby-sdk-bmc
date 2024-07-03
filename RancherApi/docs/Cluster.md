@@ -25,7 +25,7 @@ instance = RancherApi::Cluster.new(
   name: Rancher Management Cluster,
   description: My first Rancher Server Cluster.,
   location: PHX,
-  initial_cluster_version: v2.5.9,
+  initial_cluster_version: v2.6.4,
   node_pools: null,
   configuration: null,
   metadata: null,
