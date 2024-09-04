@@ -14,15 +14,27 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # The assigned IP block to the Public Network.
-  class PublicNetworkIpBlock
-    # The IP Block identifier.
-    attr_accessor :id
+  # Create a BGP Peer Group.
+  class BgpPeerGroupCreate
+    # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
+    attr_accessor :location
+
+    # The BGP Peer Group ASN.
+    attr_accessor :asn
+
+    # The BGP Peer Group password.
+    attr_accessor :password
+
+    # The Advertised routes for the BGP Peer Group. Can have one of the following values: `DEFAULT` and `NONE`.
+    attr_accessor :advertised_routes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'location' => :'location',
+        :'asn' => :'asn',
+        :'password' => :'password',
+        :'advertised_routes' => :'advertisedRoutes'
       }
     end
 
@@ -34,7 +46,10 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String'
+        :'location' => :'String',
+        :'asn' => :'Integer',
+        :'password' => :'String',
+        :'advertised_routes' => :'String'
       }
     end
 
@@ -48,21 +63,37 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkIpBlock` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::BgpPeerGroupCreate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkIpBlock`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::BgpPeerGroupCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'location')
+        self.location = attributes[:'location']
       else
-        self.id = nil
+        self.location = nil
+      end
+
+      if attributes.key?(:'asn')
+        self.asn = attributes[:'asn']
+      else
+        self.asn = 65401
+      end
+
+      if attributes.key?(:'password')
+        self.password = attributes[:'password']
+      end
+
+      if attributes.key?(:'advertised_routes')
+        self.advertised_routes = attributes[:'advertised_routes']
+      else
+        self.advertised_routes = 'NONE'
       end
     end
 
@@ -71,8 +102,29 @@ module NetworkApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @location.nil?
+        invalid_properties.push('invalid value for "location", location cannot be nil.')
+      end
+
+      if @asn.nil?
+        invalid_properties.push('invalid value for "asn", asn cannot be nil.')
+      end
+
+      if !@password.nil? && @password.to_s.length > 32
+        invalid_properties.push('invalid value for "password", the character length must be smaller than or equal to 32.')
+      end
+
+      if !@password.nil? && @password.to_s.length < 8
+        invalid_properties.push('invalid value for "password", the character length must be great than or equal to 8.')
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9!@#$%^&*()\-|\[\]{}=;:<>,.]+$/)
+      if !@password.nil? && @password !~ pattern
+        invalid_properties.push("invalid value for \"password\", must conform to the pattern #{pattern}.")
+      end
+
+      if @advertised_routes.nil?
+        invalid_properties.push('invalid value for "advertised_routes", advertised_routes cannot be nil.')
       end
 
       invalid_properties
@@ -82,8 +134,36 @@ module NetworkApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
+      return false if @location.nil?
+      return false if @asn.nil?
+      return false if !@password.nil? && @password.to_s.length > 32
+      return false if !@password.nil? && @password.to_s.length < 8
+      return false if !@password.nil? && @password !~ Regexp.new(/^[a-zA-Z0-9!@#$%^&*()\-|\[\]{}=;:<>,.]+$/)
+      return false if @advertised_routes.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] password Value to be assigned
+    def password=(password)
+      if password.nil?
+        fail ArgumentError, 'password cannot be nil'
+      end
+
+      if password.to_s.length > 32
+        fail ArgumentError, 'invalid value for "password", the character length must be smaller than or equal to 32.'
+      end
+
+      if password.to_s.length < 8
+        fail ArgumentError, 'invalid value for "password", the character length must be great than or equal to 8.'
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9!@#$%^&*()\-|\[\]{}=;:<>,.]+$/)
+      if password !~ pattern
+        fail ArgumentError, "invalid value for \"password\", must conform to the pattern #{pattern}."
+      end
+
+      @password = password
     end
 
     # Checks equality by comparing each attribute.
@@ -91,7 +171,10 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          location == o.location &&
+          asn == o.asn &&
+          password == o.password &&
+          advertised_routes == o.advertised_routes
     end
 
     # @see the `==` method
@@ -103,7 +186,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [location, asn, password, advertised_routes].hash
     end
 
     # Builds the object from hash

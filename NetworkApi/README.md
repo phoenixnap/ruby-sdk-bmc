@@ -8,8 +8,9 @@ networks to avoid unnecessary egress data charges. Model your networks according
 <br>
 <span class='pnap-api-knowledge-base-link'>
 Helpful knowledge base articles are available for 
-<a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a>
-and <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a>.
+<a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a>, 
+<a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a> and
+<a href='https://phoenixnap.com/kb/border-gateway-protocol-bmc' target='_blank'>border gateway protocol peer groups</a>.
 </span><br>
 <br>
 <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b>
@@ -80,17 +81,17 @@ NetworkApi.configure do |config|
   config.access_token_getter = -> { 'YOUR TOKEN GETTER PROC' } 
 end
 
-api_instance = NetworkApi::PrivateNetworksApi.new
+api_instance = NetworkApi::BGPPeerGroupsApi.new
 opts = {
-  location: 'PHX' # String | If present will filter the result by the given location of the Private Networks.
+  location: 'PHX' # String | If present will filter the result by the given location of the BGP Peer Group.
 }
 
 begin
-  #List Private Networks.
-  result = api_instance.private_networks_get(opts)
+  #List BGP Peer Groups.
+  result = api_instance.bgp_peer_groups_get(opts)
   p result
 rescue NetworkApi::ApiError => e
-  puts "Exception when calling PrivateNetworksApi->private_networks_get: #{e}"
+  puts "Exception when calling BGPPeerGroupsApi->bgp_peer_groups_get: #{e}"
 end
 
 ```
@@ -126,6 +127,11 @@ All URIs are relative to *https://api.phoenixnap.com/networks/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*NetworkApi::BGPPeerGroupsApi* | [**bgp_peer_groups_get**](docs/BGPPeerGroupsApi.md#bgp_peer_groups_get) | **GET** /bgp-peer-groups | List BGP Peer Groups.
+*NetworkApi::BGPPeerGroupsApi* | [**bgp_peer_groups_peer_group_id_delete**](docs/BGPPeerGroupsApi.md#bgp_peer_groups_peer_group_id_delete) | **DELETE** /bgp-peer-groups/{bgpPeerGroupId} | Delete a BGP Peer Group.
+*NetworkApi::BGPPeerGroupsApi* | [**bgp_peer_groups_peer_group_id_get**](docs/BGPPeerGroupsApi.md#bgp_peer_groups_peer_group_id_get) | **GET** /bgp-peer-groups/{bgpPeerGroupId} | Get a BGP Peer Group.
+*NetworkApi::BGPPeerGroupsApi* | [**bgp_peer_groups_peer_group_id_patch**](docs/BGPPeerGroupsApi.md#bgp_peer_groups_peer_group_id_patch) | **PATCH** /bgp-peer-groups/{bgpPeerGroupId} | Modify a BGP Peer Group.
+*NetworkApi::BGPPeerGroupsApi* | [**bgp_peer_groups_post**](docs/BGPPeerGroupsApi.md#bgp_peer_groups_post) | **POST** /bgp-peer-groups | Create a BGP Peer Group.
 *NetworkApi::PrivateNetworksApi* | [**private_networks_get**](docs/PrivateNetworksApi.md#private_networks_get) | **GET** /private-networks | List Private Networks.
 *NetworkApi::PrivateNetworksApi* | [**private_networks_network_id_delete**](docs/PrivateNetworksApi.md#private_networks_network_id_delete) | **DELETE** /private-networks/{privateNetworkId} | Delete a Private Network.
 *NetworkApi::PrivateNetworksApi* | [**private_networks_network_id_get**](docs/PrivateNetworksApi.md#private_networks_network_id_get) | **GET** /private-networks/{privateNetworkId} | Get a Private Network.
@@ -142,6 +148,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [NetworkApi::AsnDetails](docs/AsnDetails.md)
+ - [NetworkApi::BgpIPv4Prefix](docs/BgpIPv4Prefix.md)
+ - [NetworkApi::BgpPeerGroup](docs/BgpPeerGroup.md)
+ - [NetworkApi::BgpPeerGroupCreate](docs/BgpPeerGroupCreate.md)
+ - [NetworkApi::BgpPeerGroupPatch](docs/BgpPeerGroupPatch.md)
  - [NetworkApi::Error](docs/Error.md)
  - [NetworkApi::NetworkMembership](docs/NetworkMembership.md)
  - [NetworkApi::PrivateNetwork](docs/PrivateNetwork.md)

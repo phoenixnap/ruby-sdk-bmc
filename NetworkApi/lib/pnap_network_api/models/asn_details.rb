@@ -14,15 +14,27 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # The assigned IP block to the Public Network.
-  class PublicNetworkIpBlock
-    # The IP Block identifier.
-    attr_accessor :id
+  # BGP Peer Group ASN details.
+  class AsnDetails
+    # The BGP Peer Group ASN.
+    attr_accessor :asn
+
+    # True if the BGP Peer Group ASN is a `bring your own` ASN.
+    attr_accessor :is_bring_your_own
+
+    # The BGP Peer Group ASN verification status. Can have one of the following values: `PENDING_VERIFICATION`, `FAILED_VERIFICATION` and `VERIFIED`.
+    attr_accessor :verification_status
+
+    # The BGP Peer Group ASN verification reason for the respective status.
+    attr_accessor :verification_reason
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'asn' => :'asn',
+        :'is_bring_your_own' => :'isBringYourOwn',
+        :'verification_status' => :'verificationStatus',
+        :'verification_reason' => :'verificationReason'
       }
     end
 
@@ -34,7 +46,10 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String'
+        :'asn' => :'Integer',
+        :'is_bring_your_own' => :'Boolean',
+        :'verification_status' => :'String',
+        :'verification_reason' => :'String'
       }
     end
 
@@ -48,21 +63,37 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkIpBlock` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::AsnDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkIpBlock`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::AsnDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'asn')
+        self.asn = attributes[:'asn']
       else
-        self.id = nil
+        self.asn = nil
+      end
+
+      if attributes.key?(:'is_bring_your_own')
+        self.is_bring_your_own = attributes[:'is_bring_your_own']
+      else
+        self.is_bring_your_own = nil
+      end
+
+      if attributes.key?(:'verification_status')
+        self.verification_status = attributes[:'verification_status']
+      else
+        self.verification_status = nil
+      end
+
+      if attributes.key?(:'verification_reason')
+        self.verification_reason = attributes[:'verification_reason']
       end
     end
 
@@ -71,8 +102,16 @@ module NetworkApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @asn.nil?
+        invalid_properties.push('invalid value for "asn", asn cannot be nil.')
+      end
+
+      if @is_bring_your_own.nil?
+        invalid_properties.push('invalid value for "is_bring_your_own", is_bring_your_own cannot be nil.')
+      end
+
+      if @verification_status.nil?
+        invalid_properties.push('invalid value for "verification_status", verification_status cannot be nil.')
       end
 
       invalid_properties
@@ -82,7 +121,9 @@ module NetworkApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
+      return false if @asn.nil?
+      return false if @is_bring_your_own.nil?
+      return false if @verification_status.nil?
       true
     end
 
@@ -91,7 +132,10 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          asn == o.asn &&
+          is_bring_your_own == o.is_bring_your_own &&
+          verification_status == o.verification_status &&
+          verification_reason == o.verification_reason
     end
 
     # @see the `==` method
@@ -103,7 +147,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [asn, is_bring_your_own, verification_status, verification_reason].hash
     end
 
     # Builds the object from hash

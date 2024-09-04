@@ -14,15 +14,31 @@ require 'date'
 require 'time'
 
 module NetworkApi
-  # The assigned IP block to the Public Network.
-  class PublicNetworkIpBlock
-    # The IP Block identifier.
-    attr_accessor :id
+  # The BGP IPv4 Prefix.
+  class BgpIPv4Prefix
+    # IPv4 allocation ID.
+    attr_accessor :ipv4_allocation_id
+
+    # The IP block in CIDR format.
+    attr_accessor :cidr
+
+    # The BGP IPv4 Prefix status. Can have one of the following values: `PENDING`, `BUSY`, `READY`, `ERROR` and `DELETING`.
+    attr_accessor :status
+
+    # Identifies IP as a `bring your own` IP block.
+    attr_accessor :is_bring_your_own_ip
+
+    # The Boolean value of the BGP IPv4 Prefix is in use.
+    attr_accessor :in_use
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'ipv4_allocation_id' => :'ipv4AllocationId',
+        :'cidr' => :'cidr',
+        :'status' => :'status',
+        :'is_bring_your_own_ip' => :'isBringYourOwnIp',
+        :'in_use' => :'inUse'
       }
     end
 
@@ -34,7 +50,11 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String'
+        :'ipv4_allocation_id' => :'String',
+        :'cidr' => :'String',
+        :'status' => :'String',
+        :'is_bring_your_own_ip' => :'Boolean',
+        :'in_use' => :'Boolean'
       }
     end
 
@@ -48,21 +68,45 @@ module NetworkApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::PublicNetworkIpBlock` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `NetworkApi::BgpIPv4Prefix` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::PublicNetworkIpBlock`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `NetworkApi::BgpIPv4Prefix`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'ipv4_allocation_id')
+        self.ipv4_allocation_id = attributes[:'ipv4_allocation_id']
       else
-        self.id = nil
+        self.ipv4_allocation_id = nil
+      end
+
+      if attributes.key?(:'cidr')
+        self.cidr = attributes[:'cidr']
+      else
+        self.cidr = nil
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      else
+        self.status = nil
+      end
+
+      if attributes.key?(:'is_bring_your_own_ip')
+        self.is_bring_your_own_ip = attributes[:'is_bring_your_own_ip']
+      else
+        self.is_bring_your_own_ip = nil
+      end
+
+      if attributes.key?(:'in_use')
+        self.in_use = attributes[:'in_use']
+      else
+        self.in_use = nil
       end
     end
 
@@ -71,8 +115,29 @@ module NetworkApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @ipv4_allocation_id.nil?
+        invalid_properties.push('invalid value for "ipv4_allocation_id", ipv4_allocation_id cannot be nil.')
+      end
+
+      if @cidr.nil?
+        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
+      end
+
+      pattern = Regexp.new(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(?:[1-9]|[1-2]\d|3[0-2])$/)
+      if @cidr !~ pattern
+        invalid_properties.push("invalid value for \"cidr\", must conform to the pattern #{pattern}.")
+      end
+
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
+      if @is_bring_your_own_ip.nil?
+        invalid_properties.push('invalid value for "is_bring_your_own_ip", is_bring_your_own_ip cannot be nil.')
+      end
+
+      if @in_use.nil?
+        invalid_properties.push('invalid value for "in_use", in_use cannot be nil.')
       end
 
       invalid_properties
@@ -82,8 +147,28 @@ module NetworkApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
+      return false if @ipv4_allocation_id.nil?
+      return false if @cidr.nil?
+      return false if @cidr !~ Regexp.new(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(?:[1-9]|[1-2]\d|3[0-2])$/)
+      return false if @status.nil?
+      return false if @is_bring_your_own_ip.nil?
+      return false if @in_use.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] cidr Value to be assigned
+    def cidr=(cidr)
+      if cidr.nil?
+        fail ArgumentError, 'cidr cannot be nil'
+      end
+
+      pattern = Regexp.new(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(?:[1-9]|[1-2]\d|3[0-2])$/)
+      if cidr !~ pattern
+        fail ArgumentError, "invalid value for \"cidr\", must conform to the pattern #{pattern}."
+      end
+
+      @cidr = cidr
     end
 
     # Checks equality by comparing each attribute.
@@ -91,7 +176,11 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          ipv4_allocation_id == o.ipv4_allocation_id &&
+          cidr == o.cidr &&
+          status == o.status &&
+          is_bring_your_own_ip == o.is_bring_your_own_ip &&
+          in_use == o.in_use
     end
 
     # @see the `==` method
@@ -103,7 +192,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [ipv4_allocation_id, cidr, status, is_bring_your_own_ip, in_use].hash
     end
 
     # Builds the object from hash
