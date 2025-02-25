@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delete_ip_blocks** | **Boolean** | Determines whether the IP blocks assigned to the server should be deleted or not. | [optional][default to false] |
+| **delete_ip_blocks** | **Boolean** | Determines whether the IPv4 and IPv6 blocks assigned to the server should be deleted or not. | [optional][default to false] |
 
 ## Example
 

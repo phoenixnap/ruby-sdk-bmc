@@ -23,6 +23,7 @@
 | **correlation_id** | **String** | Holds usage record id |  |
 | **reservation_id** | **String** | Reservation id associated with this rated usage record. | [optional] |
 | **discount_details** | [**DiscountDetails**](DiscountDetails.md) |  | [optional] |
+| **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
 | **metadata** | [**BandwidthDetails**](BandwidthDetails.md) |  |  |
 
 ## Example
@@ -50,6 +51,7 @@ instance = BillingApi::BandwidthRecord.new(
   correlation_id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
   reservation_id: c32a24a1-5949-4b60-99c0-c8aaa3a92b04,
   discount_details: null,
+  credit_details: null,
   metadata: null
 )
 ```

@@ -31,6 +31,7 @@ require 'pnap_network_api/models/private_network_server'
 require 'pnap_network_api/models/public_network'
 require 'pnap_network_api/models/public_network_create'
 require 'pnap_network_api/models/public_network_ip_block'
+require 'pnap_network_api/models/public_network_ip_block_create'
 require 'pnap_network_api/models/public_network_modify'
 
 # APIs

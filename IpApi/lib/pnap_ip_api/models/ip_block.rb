@@ -28,6 +28,9 @@ module IpApi
     # The IP Block in CIDR notation.
     attr_accessor :cidr
 
+    # The IP Version of the block.
+    attr_accessor :ip_version
+
     # The status of the IP Block. Can have one of the following values: `creating` , `assigning` , `error assigning` , `assigned` , `unassigning` , `error unassigning` or `unassigned`.
     attr_accessor :status
 
@@ -56,6 +59,7 @@ module IpApi
         :'location' => :'location',
         :'cidr_block_size' => :'cidrBlockSize',
         :'cidr' => :'cidr',
+        :'ip_version' => :'ipVersion',
         :'status' => :'status',
         :'assigned_resource_id' => :'assignedResourceId',
         :'assigned_resource_type' => :'assignedResourceType',
@@ -78,6 +82,7 @@ module IpApi
         :'location' => :'String',
         :'cidr_block_size' => :'String',
         :'cidr' => :'String',
+        :'ip_version' => :'String',
         :'status' => :'String',
         :'assigned_resource_id' => :'String',
         :'assigned_resource_type' => :'String',
@@ -111,32 +116,26 @@ module IpApi
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      else
-        self.id = nil
       end
 
       if attributes.key?(:'location')
         self.location = attributes[:'location']
-      else
-        self.location = nil
       end
 
       if attributes.key?(:'cidr_block_size')
         self.cidr_block_size = attributes[:'cidr_block_size']
-      else
-        self.cidr_block_size = nil
       end
 
       if attributes.key?(:'cidr')
         self.cidr = attributes[:'cidr']
-      else
-        self.cidr = nil
+      end
+
+      if attributes.key?(:'ip_version')
+        self.ip_version = attributes[:'ip_version']
       end
 
       if attributes.key?(:'status')
         self.status = attributes[:'status']
-      else
-        self.status = nil
       end
 
       if attributes.key?(:'assigned_resource_id')
@@ -159,14 +158,10 @@ module IpApi
 
       if attributes.key?(:'is_bring_your_own')
         self.is_bring_your_own = attributes[:'is_bring_your_own']
-      else
-        self.is_bring_your_own = nil
       end
 
       if attributes.key?(:'created_on')
         self.created_on = attributes[:'created_on']
-      else
-        self.created_on = nil
       end
     end
 
@@ -175,36 +170,8 @@ module IpApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
-      if @location.nil?
-        invalid_properties.push('invalid value for "location", location cannot be nil.')
-      end
-
-      if @cidr_block_size.nil?
-        invalid_properties.push('invalid value for "cidr_block_size", cidr_block_size cannot be nil.')
-      end
-
-      if @cidr.nil?
-        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
-      end
-
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
-      end
-
       if !@description.nil? && @description.to_s.length > 250
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 250.')
-      end
-
-      if @is_bring_your_own.nil?
-        invalid_properties.push('invalid value for "is_bring_your_own", is_bring_your_own cannot be nil.')
-      end
-
-      if @created_on.nil?
-        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
       end
 
       invalid_properties
@@ -214,14 +181,7 @@ module IpApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @location.nil?
-      return false if @cidr_block_size.nil?
-      return false if @cidr.nil?
-      return false if @status.nil?
       return false if !@description.nil? && @description.to_s.length > 250
-      return false if @is_bring_your_own.nil?
-      return false if @created_on.nil?
       true
     end
 
@@ -248,6 +208,7 @@ module IpApi
           location == o.location &&
           cidr_block_size == o.cidr_block_size &&
           cidr == o.cidr &&
+          ip_version == o.ip_version &&
           status == o.status &&
           assigned_resource_id == o.assigned_resource_id &&
           assigned_resource_type == o.assigned_resource_type &&
@@ -266,7 +227,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, location, cidr_block_size, cidr, status, assigned_resource_id, assigned_resource_type, description, tags, is_bring_your_own, created_on].hash
+      [id, location, cidr_block_size, cidr, ip_version, status, assigned_resource_id, assigned_resource_type, description, tags, is_bring_your_own, created_on].hash
     end
 
     # Builds the object from hash

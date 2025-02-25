@@ -12,7 +12,7 @@
 require 'pnap_billing_api'
 
 instance = BillingApi::ReservationAutoRenewDisableRequest.new(
-  auto_renew_disable_reason: null
+  auto_renew_disable_reason: It is not needed anymore.
 )
 ```
 

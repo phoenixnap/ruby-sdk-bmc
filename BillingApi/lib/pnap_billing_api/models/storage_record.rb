@@ -69,6 +69,8 @@ module BillingApi
 
     attr_accessor :discount_details
 
+    attr_accessor :credit_details
+
     attr_accessor :metadata
 
     class EnumAttributeValidator
@@ -115,6 +117,7 @@ module BillingApi
         :'correlation_id' => :'correlationId',
         :'reservation_id' => :'reservationId',
         :'discount_details' => :'discountDetails',
+        :'credit_details' => :'creditDetails',
         :'metadata' => :'metadata'
       }
     end
@@ -146,6 +149,7 @@ module BillingApi
         :'correlation_id' => :'String',
         :'reservation_id' => :'String',
         :'discount_details' => :'DiscountDetails',
+        :'credit_details' => :'Array<CreditDetails>',
         :'metadata' => :'StorageDetails'
       }
     end
@@ -282,6 +286,12 @@ module BillingApi
         self.discount_details = attributes[:'discount_details']
       end
 
+      if attributes.key?(:'credit_details')
+        if (value = attributes[:'credit_details']).is_a?(Array)
+          self.credit_details = value
+        end
+      end
+
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       else
@@ -403,6 +413,7 @@ module BillingApi
           correlation_id == o.correlation_id &&
           reservation_id == o.reservation_id &&
           discount_details == o.discount_details &&
+          credit_details == o.credit_details &&
           metadata == o.metadata
     end
 
@@ -415,7 +426,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, metadata].hash
+      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, credit_details, metadata].hash
     end
 
     # Builds the object from hash

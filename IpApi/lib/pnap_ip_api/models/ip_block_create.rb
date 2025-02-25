@@ -19,8 +19,11 @@ module IpApi
     # IP Block location ID. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
     attr_accessor :location
 
-    # CIDR IP Block Size. Currently this field should be set to either `/31`, `/30`, `/29` or `/28`. For a larger Block Size contact support.
+    # CIDR IP Block Size. V4 supported sizes: [`/31`, `/30`, `/29` or `/28`]. V6 supported sizes: [`/64`]. For a larger Block Size contact support.
     attr_accessor :cidr_block_size
+
+    # IP Version. This field should be set to `V4` or `V6`
+    attr_accessor :ip_version
 
     # The description of the IP Block.
     attr_accessor :description
@@ -33,6 +36,7 @@ module IpApi
       {
         :'location' => :'location',
         :'cidr_block_size' => :'cidrBlockSize',
+        :'ip_version' => :'ipVersion',
         :'description' => :'description',
         :'tags' => :'tags'
       }
@@ -48,6 +52,7 @@ module IpApi
       {
         :'location' => :'String',
         :'cidr_block_size' => :'String',
+        :'ip_version' => :'String',
         :'description' => :'String',
         :'tags' => :'Array<TagAssignmentRequest>'
       }
@@ -84,6 +89,12 @@ module IpApi
         self.cidr_block_size = attributes[:'cidr_block_size']
       else
         self.cidr_block_size = nil
+      end
+
+      if attributes.key?(:'ip_version')
+        self.ip_version = attributes[:'ip_version']
+      else
+        self.ip_version = 'V4'
       end
 
       if attributes.key?(:'description')
@@ -148,6 +159,7 @@ module IpApi
       self.class == o.class &&
           location == o.location &&
           cidr_block_size == o.cidr_block_size &&
+          ip_version == o.ip_version &&
           description == o.description &&
           tags == o.tags
     end
@@ -161,7 +173,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [location, cidr_block_size, description, tags].hash
+      [location, cidr_block_size, ip_version, description, tags].hash
     end
 
     # Builds the object from hash

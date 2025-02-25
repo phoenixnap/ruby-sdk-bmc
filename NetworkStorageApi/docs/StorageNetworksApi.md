@@ -656,7 +656,7 @@ end
 
 Update a storage network's volume details.
 
-Update a storage network's volume details.
+Update a storage network's volume details. Volume's capacity requested cannot be less than or equal to current volume's capacity.
 
 ### Examples
 

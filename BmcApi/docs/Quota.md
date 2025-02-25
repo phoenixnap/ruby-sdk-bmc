@@ -22,7 +22,7 @@ instance = BmcApi::Quota.new(
   id: bmc.servers.max_count,
   name: Servers,
   description: Maximum number of BMC servers,
-  status: OVER_LIMIT,
+  status: null,
   limit: 2,
   unit: COUNT,
   used: 2,

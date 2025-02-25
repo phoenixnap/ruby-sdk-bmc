@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **result** | **String** | IP Block has been deleted. |  |
-| **ip_block_id** | **String** | The unique identifier of the IP Block. |  |
+| **result** | **String** | IP Block has been deleted. | [optional] |
+| **ip_block_id** | **String** | The unique identifier of the IP Block. | [optional] |
 
 ## Example
 

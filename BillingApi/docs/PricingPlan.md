@@ -23,8 +23,8 @@ require 'pnap_billing_api'
 instance = BillingApi::PricingPlan.new(
   sku: XXX-XXX-XXX,
   sku_description: Hourly Rate for s1.c1.small in Phoenix,
-  location: PHX,
-  pricing_model: HOURLY,
+  location: null,
+  pricing_model: null,
   price: 0.22,
   price_unit: null,
   applicable_discounts: null,

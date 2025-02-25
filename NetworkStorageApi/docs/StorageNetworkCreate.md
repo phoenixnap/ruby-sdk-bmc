@@ -20,7 +20,7 @@ instance = NetworkStorageApi::StorageNetworkCreate.new(
   description: My storage network description,
   location: PHX,
   volumes: null,
-  client_vlan: null
+  client_vlan: 5
 )
 ```
 

@@ -19,7 +19,7 @@ module NetworkApi
     # The unique identifier of the BGP Peer Group.
     attr_accessor :id
 
-    # The BGP Peer Group status. Can have one of the following values: `PENDING`, `BUSY`, `READY`, `ERROR`, `PENDING_DELETION` and `DELETING`.
+    # The BGP Peer Group status. Can have one of the following values: `PENDING`, `ON_HOLD`, `BUSY`, `READY`, `ERROR`, `PENDING_DELETION` and `DELETING`.
     attr_accessor :status
 
     # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.

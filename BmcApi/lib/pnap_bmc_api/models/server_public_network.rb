@@ -19,18 +19,22 @@ module BmcApi
     # The network identifier.
     attr_accessor :id
 
-    # Configurable/configured IPs on the server.<br> At least 1 IP address is required. Valid IP formats are single IPv4 addresses or IPv4 ranges. All IPs must be within the network's range.<br> Setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
+    # Configurable/configured IPs on the server.<br> At least 1 IP address is required. Valid IP format is single IP addresses. All IPs must be within the network's range.<br> Setting the `computeSlaacIp` field to `true` allows you to provide an empty array of IPs.<br> Additionally, setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
     attr_accessor :ips
 
     # (Read-only) The status of the assignment to the network.
     attr_accessor :status_description
+
+    # (Write-only) Requests Stateless Address Autoconfiguration (SLAAC). Applicable for Network which contains IPv6 block(s).
+    attr_accessor :compute_slaac_ip
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'ips' => :'ips',
-        :'status_description' => :'statusDescription'
+        :'status_description' => :'statusDescription',
+        :'compute_slaac_ip' => :'computeSlaacIp'
       }
     end
 
@@ -44,7 +48,8 @@ module BmcApi
       {
         :'id' => :'String',
         :'ips' => :'Array<String>',
-        :'status_description' => :'String'
+        :'status_description' => :'String',
+        :'compute_slaac_ip' => :'Boolean'
       }
     end
 
@@ -84,6 +89,10 @@ module BmcApi
       if attributes.key?(:'status_description')
         self.status_description = attributes[:'status_description']
       end
+
+      if attributes.key?(:'compute_slaac_ip')
+        self.compute_slaac_ip = attributes[:'compute_slaac_ip']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -113,7 +122,8 @@ module BmcApi
       self.class == o.class &&
           id == o.id &&
           ips == o.ips &&
-          status_description == o.status_description
+          status_description == o.status_description &&
+          compute_slaac_ip == o.compute_slaac_ip
     end
 
     # @see the `==` method
@@ -125,7 +135,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips, status_description].hash
+      [id, ips, status_description, compute_slaac_ip].hash
     end
 
     # Builds the object from hash

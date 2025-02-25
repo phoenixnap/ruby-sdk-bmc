@@ -22,11 +22,15 @@ module NetworkApi
     # The description of this public network
     attr_accessor :description
 
+    # Boolean indicating whether Router Advertisement is enabled. Only applicable for Network with IPv6 Blocks.
+    attr_accessor :ra_enabled
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'description' => :'description'
+        :'description' => :'description',
+        :'ra_enabled' => :'raEnabled'
       }
     end
 
@@ -39,7 +43,8 @@ module NetworkApi
     def self.openapi_types
       {
         :'name' => :'String',
-        :'description' => :'String'
+        :'description' => :'String',
+        :'ra_enabled' => :'Boolean'
       }
     end
 
@@ -70,6 +75,10 @@ module NetworkApi
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'ra_enabled')
+        self.ra_enabled = attributes[:'ra_enabled']
       end
     end
 
@@ -152,7 +161,8 @@ module NetworkApi
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          description == o.description
+          description == o.description &&
+          ra_enabled == o.ra_enabled
     end
 
     # @see the `==` method
@@ -164,7 +174,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description].hash
+      [name, description, ra_enabled].hash
     end
 
     # Builds the object from hash

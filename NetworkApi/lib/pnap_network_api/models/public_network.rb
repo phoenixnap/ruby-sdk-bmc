@@ -43,6 +43,9 @@ module NetworkApi
     # A list of IP Blocks that are associated with this public network.
     attr_accessor :ip_blocks
 
+    # Boolean indicating whether Router Advertisement is enabled. Only applicable for Network with IPv6 Blocks.
+    attr_accessor :ra_enabled
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +57,8 @@ module NetworkApi
         :'description' => :'description',
         :'status' => :'status',
         :'created_on' => :'createdOn',
-        :'ip_blocks' => :'ipBlocks'
+        :'ip_blocks' => :'ipBlocks',
+        :'ra_enabled' => :'raEnabled'
       }
     end
 
@@ -74,7 +78,8 @@ module NetworkApi
         :'description' => :'String',
         :'status' => :'String',
         :'created_on' => :'Time',
-        :'ip_blocks' => :'Array<PublicNetworkIpBlock>'
+        :'ip_blocks' => :'Array<PublicNetworkIpBlock>',
+        :'ra_enabled' => :'Boolean'
       }
     end
 
@@ -153,6 +158,10 @@ module NetworkApi
         end
       else
         self.ip_blocks = nil
+      end
+
+      if attributes.key?(:'ra_enabled')
+        self.ra_enabled = attributes[:'ra_enabled']
       end
     end
 
@@ -271,7 +280,8 @@ module NetworkApi
           description == o.description &&
           status == o.status &&
           created_on == o.created_on &&
-          ip_blocks == o.ip_blocks
+          ip_blocks == o.ip_blocks &&
+          ra_enabled == o.ra_enabled
     end
 
     # @see the `==` method
@@ -283,7 +293,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, vlan_id, memberships, name, location, description, status, created_on, ip_blocks].hash
+      [id, vlan_id, memberships, name, location, description, status, created_on, ip_blocks, ra_enabled].hash
     end
 
     # Builds the object from hash

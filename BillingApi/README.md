@@ -141,6 +141,9 @@ Class | Method | HTTP request | Description
  - [BillingApi::BandwidthDetails](docs/BandwidthDetails.md)
  - [BillingApi::BandwidthRecord](docs/BandwidthRecord.md)
  - [BillingApi::ConfigurationDetails](docs/ConfigurationDetails.md)
+ - [BillingApi::CreditDetails](docs/CreditDetails.md)
+ - [BillingApi::CreditDetailsBase](docs/CreditDetailsBase.md)
+ - [BillingApi::CreditTypeEnum](docs/CreditTypeEnum.md)
  - [BillingApi::DiscountDetails](docs/DiscountDetails.md)
  - [BillingApi::DiscountTypeEnum](docs/DiscountTypeEnum.md)
  - [BillingApi::Error](docs/Error.md)
@@ -156,6 +159,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::ProductAvailability](docs/ProductAvailability.md)
  - [BillingApi::ProductCategoryEnum](docs/ProductCategoryEnum.md)
  - [BillingApi::ProductsGet200ResponseInner](docs/ProductsGet200ResponseInner.md)
+ - [BillingApi::PromoCreditDetails](docs/PromoCreditDetails.md)
  - [BillingApi::PublicSubnetDetails](docs/PublicSubnetDetails.md)
  - [BillingApi::PublicSubnetRecord](docs/PublicSubnetRecord.md)
  - [BillingApi::RatedUsageGet200ResponseInner](docs/RatedUsageGet200ResponseInner.md)
@@ -173,6 +177,8 @@ Class | Method | HTTP request | Description
  - [BillingApi::ServerRecord](docs/ServerRecord.md)
  - [BillingApi::StorageDetails](docs/StorageDetails.md)
  - [BillingApi::StorageRecord](docs/StorageRecord.md)
+ - [BillingApi::SystemCreditCauseEnum](docs/SystemCreditCauseEnum.md)
+ - [BillingApi::SystemCreditDetails](docs/SystemCreditDetails.md)
  - [BillingApi::ThresholdConfigurationDetails](docs/ThresholdConfigurationDetails.md)
 
 

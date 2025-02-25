@@ -86,7 +86,7 @@ describe 'PublicNetworksApi' do
   # Adds an IP block to this public network.
   # Adds an IP block to this public network.
   # @param public_network_id The Public Network identifier.
-  # @param public_network_ip_block 
+  # @param public_network_ip_block_create 
   # @param [Hash] opts the optional parameters
   # @return [PublicNetworkIpBlock]
   describe 'public_networks_network_id_ip_blocks_post test' do

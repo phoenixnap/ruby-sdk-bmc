@@ -13,6 +13,7 @@
 | **status** | **String** | The status of the public network. Can have one of the following values: &#x60;BUSY&#x60;, &#x60;READY&#x60;, &#x60;DELETING&#x60; or &#x60;ERROR&#x60;. |  |
 | **created_on** | **Time** | Date and time when this public network was created. |  |
 | **ip_blocks** | [**Array&lt;PublicNetworkIpBlock&gt;**](PublicNetworkIpBlock.md) | A list of IP Blocks that are associated with this public network. |  |
+| **ra_enabled** | **Boolean** | Boolean indicating whether Router Advertisement is enabled. Only applicable for Network with IPv6 Blocks. | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = NetworkApi::PublicNetwork.new(
   description: Further details on the network.,
   status: READY,
   created_on: 2022-04-05T13:50:30.491Z,
-  ip_blocks: null
+  ip_blocks: null,
+  ra_enabled: true
 )
 ```
 
