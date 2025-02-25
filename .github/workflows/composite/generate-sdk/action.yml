@@ -48,7 +48,7 @@ runs:
       shell: bash
       run: wget ${{ inputs.spec-link }} -O ./${{ inputs.module-name }}/${{ inputs.module-name }}.spec.yaml
     - name: Upload Artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.module-name }}
         path: ${{ inputs.module-name }}

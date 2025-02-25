@@ -13,7 +13,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
     - name: Setup Ruby
       uses: ./.github/workflows/composite/setup-ruby
       with:
@@ -26,7 +26,7 @@ runs:
         bundler exec ruby ${{ inputs.test-file }} --runner=junitxml --junitxml-output-file=result.xml
     - name: Upload Test Results
       if: always()
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Test Results
         path: '${{ inputs.test-report-dir }}/*'
