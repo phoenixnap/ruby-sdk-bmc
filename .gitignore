@@ -58,6 +58,6 @@ build-iPhoneSimulator/
 # .rubocop-https?--*
 
 ## Specific for test results due to workflows
-Test Results/
+Test Results*/
 
 /tests/.ruby-version
