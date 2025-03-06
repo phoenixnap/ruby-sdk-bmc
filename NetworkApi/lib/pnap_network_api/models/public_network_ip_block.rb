@@ -1,7 +1,7 @@
 =begin
 #Networks API
 
-#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a> and <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
+#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a>,  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a> and <a href='https://phoenixnap.com/kb/border-gateway-protocol-bmc' target='_blank'>border gateway protocol peer groups</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
 
 The version of the OpenAPI document: 1.0
 Contact: support@phoenixnap.com
@@ -19,10 +19,18 @@ module NetworkApi
     # The IP Block identifier.
     attr_accessor :id
 
+    # The CIDR notation of the IP block.
+    attr_accessor :cidr
+
+    # The number of IPs used in the IP block.
+    attr_accessor :used_ips_count
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'id' => :'id',
+        :'cidr' => :'cidr',
+        :'used_ips_count' => :'usedIpsCount'
       }
     end
 
@@ -34,7 +42,9 @@ module NetworkApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String'
+        :'id' => :'String',
+        :'cidr' => :'String',
+        :'used_ips_count' => :'String'
       }
     end
 
@@ -64,6 +74,18 @@ module NetworkApi
       else
         self.id = nil
       end
+
+      if attributes.key?(:'cidr')
+        self.cidr = attributes[:'cidr']
+      else
+        self.cidr = nil
+      end
+
+      if attributes.key?(:'used_ips_count')
+        self.used_ips_count = attributes[:'used_ips_count']
+      else
+        self.used_ips_count = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -75,6 +97,14 @@ module NetworkApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
+      if @cidr.nil?
+        invalid_properties.push('invalid value for "cidr", cidr cannot be nil.')
+      end
+
+      if @used_ips_count.nil?
+        invalid_properties.push('invalid value for "used_ips_count", used_ips_count cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -83,6 +113,8 @@ module NetworkApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
+      return false if @cidr.nil?
+      return false if @used_ips_count.nil?
       true
     end
 
@@ -91,7 +123,9 @@ module NetworkApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          id == o.id &&
+          cidr == o.cidr &&
+          used_ips_count == o.used_ips_count
     end
 
     # @see the `==` method
@@ -103,7 +137,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [id, cidr, used_ips_count].hash
     end
 
     # Builds the object from hash

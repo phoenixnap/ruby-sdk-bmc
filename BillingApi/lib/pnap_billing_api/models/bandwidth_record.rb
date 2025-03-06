@@ -18,7 +18,6 @@ module BillingApi
     # The unique identifier of the rated usage record.
     attr_accessor :id
 
-    # The category of the product associated with this usage record.
     attr_accessor :product_category
 
     # The code identifying the product associated to this usage record.
@@ -70,6 +69,8 @@ module BillingApi
 
     attr_accessor :discount_details
 
+    attr_accessor :credit_details
+
     attr_accessor :metadata
 
     class EnumAttributeValidator
@@ -116,6 +117,7 @@ module BillingApi
         :'correlation_id' => :'correlationId',
         :'reservation_id' => :'reservationId',
         :'discount_details' => :'discountDetails',
+        :'credit_details' => :'creditDetails',
         :'metadata' => :'metadata'
       }
     end
@@ -129,7 +131,7 @@ module BillingApi
     def self.openapi_types
       {
         :'id' => :'String',
-        :'product_category' => :'String',
+        :'product_category' => :'RatedUsageProductCategoryEnum',
         :'product_code' => :'String',
         :'location' => :'LocationEnum',
         :'year_month' => :'String',
@@ -147,6 +149,7 @@ module BillingApi
         :'correlation_id' => :'String',
         :'reservation_id' => :'String',
         :'discount_details' => :'DiscountDetails',
+        :'credit_details' => :'Array<CreditDetails>',
         :'metadata' => :'BandwidthDetails'
       }
     end
@@ -283,6 +286,12 @@ module BillingApi
         self.discount_details = attributes[:'discount_details']
       end
 
+      if attributes.key?(:'credit_details')
+        if (value = attributes[:'credit_details']).is_a?(Array)
+          self.credit_details = value
+        end
+      end
+
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
       else
@@ -364,8 +373,6 @@ module BillingApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @product_category.nil?
-      product_category_validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      return false unless product_category_validator.valid?(@product_category)
       return false if @product_code.nil?
       return false if @location.nil?
       return false if @start_date_time.nil?
@@ -380,16 +387,6 @@ module BillingApi
       return false if @correlation_id.nil?
       return false if @metadata.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_category Object to be assigned
-    def product_category=(product_category)
-      validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      unless validator.valid?(product_category)
-        fail ArgumentError, "invalid value for \"product_category\", must be one of #{validator.allowable_values}."
-      end
-      @product_category = product_category
     end
 
     # Checks equality by comparing each attribute.
@@ -416,6 +413,7 @@ module BillingApi
           correlation_id == o.correlation_id &&
           reservation_id == o.reservation_id &&
           discount_details == o.discount_details &&
+          credit_details == o.credit_details &&
           metadata == o.metadata
     end
 
@@ -428,7 +426,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, metadata].hash
+      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, credit_details, metadata].hash
     end
 
     # Builds the object from hash

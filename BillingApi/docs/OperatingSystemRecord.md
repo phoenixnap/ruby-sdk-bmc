@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The unique identifier of the rated usage record. |  |
-| **product_category** | **String** | The category of the product associated with this usage record. |  |
+| **product_category** | [**RatedUsageProductCategoryEnum**](RatedUsageProductCategoryEnum.md) |  |  |
 | **product_code** | **String** | The code identifying the product associated to this usage record. |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **year_month** | **String** | Year and month of the usage record. | [optional] |
@@ -23,6 +23,7 @@
 | **correlation_id** | **String** | Holds usage record id |  |
 | **reservation_id** | **String** | Reservation id associated with this rated usage record. | [optional] |
 | **discount_details** | [**DiscountDetails**](DiscountDetails.md) |  | [optional] |
+| **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
 | **metadata** | [**OperatingSystemDetails**](OperatingSystemDetails.md) |  |  |
 
 ## Example
@@ -32,7 +33,7 @@ require 'pnap_billing_api'
 
 instance = BillingApi::OperatingSystemRecord.new(
   id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
-  product_category: bmc-server,
+  product_category: null,
   product_code: s1.c1.small,
   location: null,
   year_month: 2020-03,
@@ -50,6 +51,7 @@ instance = BillingApi::OperatingSystemRecord.new(
   correlation_id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
   reservation_id: c32a24a1-5949-4b60-99c0-c8aaa3a92b04,
   discount_details: null,
+  credit_details: null,
   metadata: null
 )
 ```

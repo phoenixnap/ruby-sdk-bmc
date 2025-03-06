@@ -10,7 +10,7 @@ To run tests you'll need to run an instance of `mockserver` running at port 1080
   docker run --rm -d \
     --name mockserver \
     -p 1080:1080 \
-    mockserver/mockserver:5.13.0 \
+    mockserver/mockserver:5.13.0
   ```
 
 You can then get logs from the mock server by running `docker logs -f mockserver`. The container id can be found using `docker ps`.

@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::Error](docs/Error.md)
  - [BmcApi::EsxiDatastoreConfiguration](docs/EsxiDatastoreConfiguration.md)
  - [BmcApi::EsxiOsConfiguration](docs/EsxiOsConfiguration.md)
+ - [BmcApi::GpuConfiguration](docs/GpuConfiguration.md)
  - [BmcApi::IpBlocksConfiguration](docs/IpBlocksConfiguration.md)
  - [BmcApi::NetworkConfiguration](docs/NetworkConfiguration.md)
  - [BmcApi::OsConfiguration](docs/OsConfiguration.md)

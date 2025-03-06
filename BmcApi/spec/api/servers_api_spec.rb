@@ -211,7 +211,7 @@ describe 'ServersApi' do
 
   # unit tests for servers_server_id_ip_blocks_post
   # Assign IP Block to Server.
-  # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-server-with-public-ip-block#ftoc-heading-2&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
+  # Adds an IP block to this server. &lt;b&gt;No actual configuration is performed on the operating system.&lt;/b&gt; BMC configures exclusively the networking devices in the datacenter infrastructure. Manual network configuration changes in the operating system of this server are required.  A server can have at most one IPv4 block and one IPv6 block assigned simultaneously. Assigning IPv6 to server is only supported post-provision. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/configure-server-with-public-ip-block#ftoc-heading-2&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;.
   # @param server_id The server&#39;s ID.
   # @param server_ip_block 
   # @param [Hash] opts the optional parameters

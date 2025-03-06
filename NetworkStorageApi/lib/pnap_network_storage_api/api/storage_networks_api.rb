@@ -626,7 +626,7 @@ module NetworkStorageApi
     end
 
     # Update a storage network's volume details.
-    # Update a storage network's volume details.
+    # Update a storage network's volume details. Volume's capacity requested cannot be less than or equal to current volume's capacity.
     # @param storage_id [String] ID of the storage.
     # @param volume_id [String] ID of volume.
     # @param volume_update [VolumeUpdate] Storage network volume to be updated.
@@ -638,7 +638,7 @@ module NetworkStorageApi
     end
 
     # Update a storage network&#39;s volume details.
-    # Update a storage network&#39;s volume details.
+    # Update a storage network&#39;s volume details. Volume&#39;s capacity requested cannot be less than or equal to current volume&#39;s capacity.
     # @param storage_id [String] ID of the storage.
     # @param volume_id [String] ID of volume.
     # @param volume_update [VolumeUpdate] Storage network volume to be updated.

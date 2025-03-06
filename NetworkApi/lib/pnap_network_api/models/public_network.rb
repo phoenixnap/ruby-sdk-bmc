@@ -1,7 +1,7 @@
 =begin
 #Networks API
 
-#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a> and <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
+#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a>,  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a> and <a href='https://phoenixnap.com/kb/border-gateway-protocol-bmc' target='_blank'>border gateway protocol peer groups</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
 
 The version of the OpenAPI document: 1.0
 Contact: support@phoenixnap.com
@@ -43,6 +43,9 @@ module NetworkApi
     # A list of IP Blocks that are associated with this public network.
     attr_accessor :ip_blocks
 
+    # Boolean indicating whether Router Advertisement is enabled. Only applicable for Network with IPv6 Blocks.
+    attr_accessor :ra_enabled
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +57,8 @@ module NetworkApi
         :'description' => :'description',
         :'status' => :'status',
         :'created_on' => :'createdOn',
-        :'ip_blocks' => :'ipBlocks'
+        :'ip_blocks' => :'ipBlocks',
+        :'ra_enabled' => :'raEnabled'
       }
     end
 
@@ -74,7 +78,8 @@ module NetworkApi
         :'description' => :'String',
         :'status' => :'String',
         :'created_on' => :'Time',
-        :'ip_blocks' => :'Array<PublicNetworkIpBlock>'
+        :'ip_blocks' => :'Array<PublicNetworkIpBlock>',
+        :'ra_enabled' => :'Boolean'
       }
     end
 
@@ -153,6 +158,10 @@ module NetworkApi
         end
       else
         self.ip_blocks = nil
+      end
+
+      if attributes.key?(:'ra_enabled')
+        self.ra_enabled = attributes[:'ra_enabled']
       end
     end
 
@@ -271,7 +280,8 @@ module NetworkApi
           description == o.description &&
           status == o.status &&
           created_on == o.created_on &&
-          ip_blocks == o.ip_blocks
+          ip_blocks == o.ip_blocks &&
+          ra_enabled == o.ra_enabled
     end
 
     # @see the `==` method
@@ -283,7 +293,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, vlan_id, memberships, name, location, description, status, created_on, ip_blocks].hash
+      [id, vlan_id, memberships, name, location, description, status, created_on, ip_blocks, ra_enabled].hash
     end
 
     # Builds the object from hash

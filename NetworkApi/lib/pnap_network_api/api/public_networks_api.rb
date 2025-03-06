@@ -1,7 +1,7 @@
 =begin
 #Networks API
 
-#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a> and <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
+#Create, list, edit and delete public/private networks with the Network API. Use public networks to place multiple  servers on the same network or VLAN. Assign new servers with IP addresses from the same CIDR range. Use private  networks to avoid unnecessary egress data charges. Model your networks according to your business needs.<br> <br> <span class='pnap-api-knowledge-base-link'> Helpful knowledge base articles are available for  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#multi-private-backend-network-api' target='_blank'>multi-private backend networks</a>,  <a href='https://phoenixnap.com/kb/bmc-server-management-via-api#ftoc-heading-15' target='_blank'>public networks</a> and <a href='https://phoenixnap.com/kb/border-gateway-protocol-bmc' target='_blank'>border gateway protocol peer groups</a>. </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/networks/v1/)</b> 
 
 The version of the OpenAPI document: 1.0
 Contact: support@phoenixnap.com
@@ -280,21 +280,21 @@ module NetworkApi
     # Adds an IP block to this public network.
     # Adds an IP block to this public network.
     # @param public_network_id [String] The Public Network identifier.
-    # @param public_network_ip_block [PublicNetworkIpBlock] 
+    # @param public_network_ip_block_create [PublicNetworkIpBlockCreate] 
     # @param [Hash] opts the optional parameters
     # @return [PublicNetworkIpBlock]
-    def public_networks_network_id_ip_blocks_post(public_network_id, public_network_ip_block, opts = {})
-      data, _status_code, _headers = public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block, opts)
+    def public_networks_network_id_ip_blocks_post(public_network_id, public_network_ip_block_create, opts = {})
+      data, _status_code, _headers = public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block_create, opts)
       data
     end
 
     # Adds an IP block to this public network.
     # Adds an IP block to this public network.
     # @param public_network_id [String] The Public Network identifier.
-    # @param public_network_ip_block [PublicNetworkIpBlock] 
+    # @param public_network_ip_block_create [PublicNetworkIpBlockCreate] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(PublicNetworkIpBlock, Integer, Hash)>] PublicNetworkIpBlock data, response status code and response headers
-    def public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block, opts = {})
+    def public_networks_network_id_ip_blocks_post_with_http_info(public_network_id, public_network_ip_block_create, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicNetworksApi.public_networks_network_id_ip_blocks_post ...'
       end
@@ -302,9 +302,9 @@ module NetworkApi
       if @api_client.config.client_side_validation && public_network_id.nil?
         fail ArgumentError, "Missing the required parameter 'public_network_id' when calling PublicNetworksApi.public_networks_network_id_ip_blocks_post"
       end
-      # verify the required parameter 'public_network_ip_block' is set
-      if @api_client.config.client_side_validation && public_network_ip_block.nil?
-        fail ArgumentError, "Missing the required parameter 'public_network_ip_block' when calling PublicNetworksApi.public_networks_network_id_ip_blocks_post"
+      # verify the required parameter 'public_network_ip_block_create' is set
+      if @api_client.config.client_side_validation && public_network_ip_block_create.nil?
+        fail ArgumentError, "Missing the required parameter 'public_network_ip_block_create' when calling PublicNetworksApi.public_networks_network_id_ip_blocks_post"
       end
       # resource path
       local_var_path = '/public-networks/{publicNetworkId}/ip-blocks'.sub('{' + 'publicNetworkId' + '}', CGI.escape(public_network_id.to_s))
@@ -326,7 +326,7 @@ module NetworkApi
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(public_network_ip_block)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(public_network_ip_block_create)
 
       # return_type
       return_type = opts[:debug_return_type] || 'PublicNetworkIpBlock'

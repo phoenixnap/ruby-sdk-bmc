@@ -248,4 +248,80 @@ class TC_NetworkApi < Test::Unit::TestCase
     self.verify_called_once expectation
   end
 
+  def test_get_bgp_peer_groups
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/bgp_peer_groups_get')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = NetworkApi::BGPPeerGroupsApi.new
+    opts = TestUtils.generate_query_params(request)
+
+    result = api_instance.bgp_peer_groups_get(opts)
+
+    assert_equal response[:body], [result[0].to_hash.compact]
+
+    self.verify_called_once expectation
+  end
+
+  def test_post_bgp_peer_groups
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/bgp_peer_groups_post')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::BGPPeerGroupsApi.new
+    bgp_peer_groups_post = NetworkApi::BgpPeerGroupCreate.build_from_hash(TestUtils.extract_request_body(request))
+
+    result = api_instance.bgp_peer_groups_post(bgp_peer_groups_post)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+  
+  def test_get_bgp_peer_group_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/bgp_peer_groups_get_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::BGPPeerGroupsApi.new
+    bgp_peer_group_id = TestUtils.extract_id_from(request)
+
+    result = api_instance.bgp_peer_groups_peer_group_id_get(bgp_peer_group_id)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_patch_bgp_peer_group_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/bgp_peer_groups_patch_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::BGPPeerGroupsApi.new
+    network_id = TestUtils.extract_id_from(request)
+    public_network_modify = NetworkApi::BgpPeerGroupPatch.build_from_hash(TestUtils.extract_request_body(request))
+
+    result = api_instance.bgp_peer_groups_peer_group_id_patch(network_id, public_network_modify)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
+  def test_delete_bgp_peer_group_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('networkapi/bgp_peer_groups_delete_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+    
+    api_instance = NetworkApi::BGPPeerGroupsApi.new
+    network_id = TestUtils.extract_id_from(request)
+
+    result = api_instance.bgp_peer_groups_peer_group_id_delete(network_id)
+    
+    assert_nil result
+
+    self.verify_called_once expectation
+  end
+
 end

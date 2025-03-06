@@ -19,7 +19,6 @@ module BillingApi
     # The unique identifier of the rated usage record.
     attr_accessor :id
 
-    # The category of the product associated with this usage record.
     attr_accessor :product_category
 
     # The code identifying the product associated to this usage record.
@@ -71,6 +70,8 @@ module BillingApi
 
     attr_accessor :discount_details
 
+    attr_accessor :credit_details
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -114,7 +115,8 @@ module BillingApi
         :'usage_session_id' => :'usageSessionId',
         :'correlation_id' => :'correlationId',
         :'reservation_id' => :'reservationId',
-        :'discount_details' => :'discountDetails'
+        :'discount_details' => :'discountDetails',
+        :'credit_details' => :'creditDetails'
       }
     end
 
@@ -127,7 +129,7 @@ module BillingApi
     def self.openapi_types
       {
         :'id' => :'String',
-        :'product_category' => :'String',
+        :'product_category' => :'RatedUsageProductCategoryEnum',
         :'product_code' => :'String',
         :'location' => :'LocationEnum',
         :'year_month' => :'String',
@@ -144,7 +146,8 @@ module BillingApi
         :'usage_session_id' => :'String',
         :'correlation_id' => :'String',
         :'reservation_id' => :'String',
-        :'discount_details' => :'DiscountDetails'
+        :'discount_details' => :'DiscountDetails',
+        :'credit_details' => :'Array<CreditDetails>'
       }
     end
 
@@ -272,6 +275,12 @@ module BillingApi
       if attributes.key?(:'discount_details')
         self.discount_details = attributes[:'discount_details']
       end
+
+      if attributes.key?(:'credit_details')
+        if (value = attributes[:'credit_details']).is_a?(Array)
+          self.credit_details = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -344,8 +353,6 @@ module BillingApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
       return false if @product_category.nil?
-      product_category_validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      return false unless product_category_validator.valid?(@product_category)
       return false if @product_code.nil?
       return false if @location.nil?
       return false if @start_date_time.nil?
@@ -359,16 +366,6 @@ module BillingApi
       return false if @usage_session_id.nil?
       return false if @correlation_id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_category Object to be assigned
-    def product_category=(product_category)
-      validator = EnumAttributeValidator.new('String', ["bmc-server", "bandwidth", "operating-system", "public-ip", "storage"])
-      unless validator.valid?(product_category)
-        fail ArgumentError, "invalid value for \"product_category\", must be one of #{validator.allowable_values}."
-      end
-      @product_category = product_category
     end
 
     # Checks equality by comparing each attribute.
@@ -394,7 +391,8 @@ module BillingApi
           usage_session_id == o.usage_session_id &&
           correlation_id == o.correlation_id &&
           reservation_id == o.reservation_id &&
-          discount_details == o.discount_details
+          discount_details == o.discount_details &&
+          credit_details == o.credit_details
     end
 
     # @see the `==` method
@@ -406,7 +404,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details].hash
+      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, credit_details].hash
     end
 
     # Builds the object from hash

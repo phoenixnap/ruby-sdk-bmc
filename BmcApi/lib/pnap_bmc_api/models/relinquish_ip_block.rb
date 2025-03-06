@@ -14,9 +14,9 @@ require 'date'
 require 'time'
 
 module BmcApi
-  # Object used to determine whether to relinquish ownership of the IP block upon server deletion.
+  # Object used to determine whether to relinquish ownership of the IP blocks upon unassignment from server or server deletion.
   class RelinquishIpBlock
-    # Determines whether the IP blocks assigned to the server should be deleted or not.
+    # Determines whether the IPv4 and IPv6 blocks assigned to the server should be deleted or not.
     attr_accessor :delete_ip_blocks
 
     # Attribute mapping from ruby-style variable name to JSON key.

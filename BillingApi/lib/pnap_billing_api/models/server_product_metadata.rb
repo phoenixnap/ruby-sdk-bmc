@@ -37,6 +37,9 @@ module BillingApi
     # Server storage.
     attr_accessor :storage
 
+    # GPU configurations
+    attr_accessor :gpu_configurations
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -46,7 +49,8 @@ module BillingApi
         :'cores_per_cpu' => :'coresPerCpu',
         :'cpu_frequency' => :'cpuFrequency',
         :'network' => :'network',
-        :'storage' => :'storage'
+        :'storage' => :'storage',
+        :'gpu_configurations' => :'gpuConfigurations'
       }
     end
 
@@ -64,7 +68,8 @@ module BillingApi
         :'cores_per_cpu' => :'Float',
         :'cpu_frequency' => :'Float',
         :'network' => :'String',
-        :'storage' => :'String'
+        :'storage' => :'String',
+        :'gpu_configurations' => :'Array<GpuConfigurationMetadata>'
       }
     end
 
@@ -130,6 +135,12 @@ module BillingApi
       else
         self.storage = nil
       end
+
+      if attributes.key?(:'gpu_configurations')
+        if (value = attributes[:'gpu_configurations']).is_a?(Array)
+          self.gpu_configurations = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -193,7 +204,8 @@ module BillingApi
           cores_per_cpu == o.cores_per_cpu &&
           cpu_frequency == o.cpu_frequency &&
           network == o.network &&
-          storage == o.storage
+          storage == o.storage &&
+          gpu_configurations == o.gpu_configurations
     end
 
     # @see the `==` method
@@ -205,7 +217,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [ram_in_gb, cpu, cpu_count, cores_per_cpu, cpu_frequency, network, storage].hash
+      [ram_in_gb, cpu, cpu_count, cores_per_cpu, cpu_frequency, network, storage, gpu_configurations].hash
     end
 
     # Builds the object from hash

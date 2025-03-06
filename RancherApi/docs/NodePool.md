@@ -17,7 +17,7 @@ require 'pnap_rancher_api'
 
 instance = RancherApi::NodePool.new(
   name: rancher-server-node-pool,
-  node_count: null,
+  node_count: 1,
   server_type: s0.d1.small,
   ssh_config: null,
   nodes: null

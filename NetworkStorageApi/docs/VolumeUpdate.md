@@ -19,7 +19,7 @@ instance = NetworkStorageApi::VolumeUpdate.new(
   name: New Volume name,
   description: New Volume description,
   capacity_in_gb: 2000,
-  path_suffix: null,
+  path_suffix: /my/volume/path,
   permissions: null
 )
 ```

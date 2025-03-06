@@ -66,14 +66,10 @@ module IpApi
 
       if attributes.key?(:'result')
         self.result = attributes[:'result']
-      else
-        self.result = nil
       end
 
       if attributes.key?(:'ip_block_id')
         self.ip_block_id = attributes[:'ip_block_id']
-      else
-        self.ip_block_id = nil
       end
     end
 
@@ -82,14 +78,6 @@ module IpApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @result.nil?
-        invalid_properties.push('invalid value for "result", result cannot be nil.')
-      end
-
-      if @ip_block_id.nil?
-        invalid_properties.push('invalid value for "ip_block_id", ip_block_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -97,8 +85,6 @@ module IpApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @result.nil?
-      return false if @ip_block_id.nil?
       true
     end
 

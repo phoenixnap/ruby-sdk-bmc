@@ -4,17 +4,18 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** | IP Block identifier. |  |
-| **location** | **String** | IP Block location ID. Currently this field should be set to &#x60;PHX&#x60;, &#x60;ASH&#x60;, &#x60;SGP&#x60;, &#x60;NLD&#x60;, &#x60;CHI&#x60;, &#x60;SEA&#x60; or &#x60;AUS&#x60;. |  |
-| **cidr_block_size** | **String** | CIDR IP Block Size. Currently this field should be set to either &#x60;/31&#x60;, &#x60;/30&#x60;, &#x60;/29&#x60;, &#x60;/28&#x60;, &#x60;/27&#x60;, &#x60;/26&#x60;, &#x60;/25&#x60;, &#x60;/24&#x60;, &#x60;/23&#x60; or &#x60;/22&#x60;. |  |
-| **cidr** | **String** | The IP Block in CIDR notation. |  |
-| **status** | **String** | The status of the IP Block. Can have one of the following values: &#x60;creating&#x60; , &#x60;assigning&#x60; , &#x60;error assigning&#x60; , &#x60;assigned&#x60; , &#x60;unassigning&#x60; , &#x60;error unassigning&#x60; or &#x60;unassigned&#x60;. |  |
+| **id** | **String** | IP Block identifier. | [optional] |
+| **location** | **String** | IP Block location ID. Currently this field should be set to &#x60;PHX&#x60;, &#x60;ASH&#x60;, &#x60;SGP&#x60;, &#x60;NLD&#x60;, &#x60;CHI&#x60;, &#x60;SEA&#x60; or &#x60;AUS&#x60;. | [optional] |
+| **cidr_block_size** | **String** | CIDR IP Block Size. Currently this field should be set to either &#x60;/31&#x60;, &#x60;/30&#x60;, &#x60;/29&#x60;, &#x60;/28&#x60;, &#x60;/27&#x60;, &#x60;/26&#x60;, &#x60;/25&#x60;, &#x60;/24&#x60;, &#x60;/23&#x60; or &#x60;/22&#x60;. | [optional] |
+| **cidr** | **String** | The IP Block in CIDR notation. | [optional] |
+| **ip_version** | **String** | The IP Version of the block. | [optional] |
+| **status** | **String** | The status of the IP Block. Can have one of the following values: &#x60;creating&#x60; , &#x60;assigning&#x60; , &#x60;error assigning&#x60; , &#x60;assigned&#x60; , &#x60;unassigning&#x60; , &#x60;error unassigning&#x60; or &#x60;unassigned&#x60;. | [optional] |
 | **assigned_resource_id** | **String** | ID of the resource assigned to the IP Block. | [optional] |
 | **assigned_resource_type** | **String** | Type of the resource assigned to the IP Block. | [optional] |
 | **description** | **String** | The description of the IP Block. | [optional] |
 | **tags** | [**Array&lt;TagAssignment&gt;**](TagAssignment.md) | The tags assigned if any. | [optional] |
-| **is_bring_your_own** | **Boolean** | True if the IP block is a &#x60;bring your own&#x60; block. |  |
-| **created_on** | **Time** | Date and time when the IP block was created. |  |
+| **is_bring_your_own** | **Boolean** | True if the IP block is a &#x60;bring your own&#x60; block. | [optional] |
+| **created_on** | **Time** | Date and time when the IP block was created. | [optional] |
 
 ## Example
 
@@ -26,6 +27,7 @@ instance = IpApi::IpBlock.new(
   location: PHX,
   cidr_block_size: /30,
   cidr: 1.1.1.0/31,
+  ip_version: V4,
   status: unassigned,
   assigned_resource_id: 6047127fed34ecc3ba8402d2,
   assigned_resource_type: server,

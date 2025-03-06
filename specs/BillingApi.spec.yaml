@@ -79,6 +79,9 @@ paths:
               schema:
                 type: array
                 items:
+                  properties:
+                    productCategory:
+                      $ref: '#/components/schemas/RatedUsageProductCategoryEnum'
                   oneOf:
                     - $ref: '#/components/schemas/ServerRecord'
                     - $ref: '#/components/schemas/BandwidthRecord'
@@ -125,6 +128,9 @@ paths:
               schema:
                 type: array
                 items:
+                  properties:
+                    productCategory:
+                      $ref: '#/components/schemas/RatedUsageProductCategoryEnum'
                   oneOf:
                     - $ref: '#/components/schemas/ServerRecord'
                     - $ref: '#/components/schemas/BandwidthRecord'
@@ -519,6 +525,15 @@ components:
         - OPERATING_SYSTEM
         - PUBLIC_IP
         - STORAGE
+    RatedUsageProductCategoryEnum:
+      description: The category of the product associated with this usage record.
+      type: string
+      enum:
+        - bmc-server
+        - bandwidth
+        - operating-system
+        - public-ip
+        - storage
     LocationEnum:
       description: The location code.
       type: string
@@ -530,6 +545,13 @@ components:
         - CHI
         - SEA
         - AUS
+    DiscountTypeEnum:
+      description: The discount type.
+      type: string
+      enum:
+        - PRODUCT_CODE_PERCENTAGE
+        - PRODUCT_CATEGORY_PERCENTAGE
+        - GLOBAL_PERCENTAGE
     DiscountDetails:
       type: object
       description: Represents the details of a discount applied to a product or charge.
@@ -539,12 +561,7 @@ components:
           type: string
           example: new-year-2022-monthly
         type:
-          type: string
-          description: The type of discount applied.
-          enum:
-            - PRODUCT_CATEGORY_PERCENTAGE
-            - GLOBAL_PERCENTAGE
-          example: PRODUCT_CATEGORY_PERCENTAGE
+          $ref: '#/components/schemas/DiscountTypeEnum'
         value:
           description: |
             The value or amount of the discount. The interpretation of this value depends on the 'type' of discount.
@@ -554,6 +571,59 @@ components:
         - code
         - type
         - value
+    CreditTypeEnum:
+      description: The credit type model.
+      type: string
+      enum:
+        - PROMO
+        - SYSTEM
+      example: PROMO
+    CreditDetailsBase:
+      type: object
+      description: Base credit details value object.
+      properties:
+        appliedAmount:
+          description: Amount applied.
+          type: number
+          example: '50'
+        type:
+          $ref: '#/components/schemas/CreditTypeEnum'
+      required:
+        - appliedAmount
+        - type
+    PromoCreditDetails:
+      allOf:
+        - $ref: '#/components/schemas/CreditDetailsBase'
+        - type: object
+          description: Promo credit details.
+          properties:
+            couponId:
+              description: Coupon id which is the source of the promo credit.
+              type: string
+              example: 574845ca-53e6-4e6e-ae16-3ecd2a7d8508
+            couponCode:
+              description: Coupon code which is the source of the promo credit.
+              type: string
+              example: promo234
+          required:
+            - couponId
+            - couponCode
+    SystemCreditCauseEnum:
+      description: The cause/reason of system credit being applied.
+      type: string
+      enum:
+        - RESERVATION_UPGRADE
+      example: RESERVATION_UPGRADE
+    SystemCreditDetails:
+      allOf:
+        - $ref: '#/components/schemas/CreditDetailsBase'
+        - type: object
+          description: System credit details.
+          properties:
+            cause:
+              $ref: '#/components/schemas/SystemCreditCauseEnum'
+          required:
+            - cause
     RatedUsageRecord:
       type: object
       description: Rated usage record.
@@ -563,15 +633,7 @@ components:
           type: string
           example: ec4a9d49-1cef-49e9-b85e-b560f88bcd26
         productCategory:
-          description: The category of the product associated with this usage record.
-          type: string
-          enum:
-            - bmc-server
-            - bandwidth
-            - operating-system
-            - public-ip
-            - storage
-          example: bmc-server
+          $ref: '#/components/schemas/RatedUsageProductCategoryEnum'
         productCode:
           description: The code identifying the product associated to this usage record.
           type: string
@@ -640,6 +702,13 @@ components:
           example: c32a24a1-5949-4b60-99c0-c8aaa3a92b04
         discountDetails:
           $ref: '#/components/schemas/DiscountDetails'
+        creditDetails:
+          type: array
+          items:
+            title: CreditDetails
+            oneOf:
+              - $ref: '#/components/schemas/PromoCreditDetails'
+              - $ref: '#/components/schemas/SystemCreditDetails'
       required:
         - id
         - productCategory
@@ -842,7 +911,6 @@ components:
         - UNIT
         - FLAT
         - TB_PER_HOUR
-      example: MONTH
     ApplicableDiscounts:
       type: object
       description: Represents the applicable discount details for a product, including the discounted price and discount information.
@@ -886,7 +954,6 @@ components:
             - SEA
             - AUS
             - GLOBAL
-          example: PHX
         pricingModel:
           description: The pricing model.
           type: string
@@ -899,7 +966,6 @@ components:
             - THIRTY_SIX_MONTHS_RESERVATION
             - MONTHLY_PACKAGE
             - FREE_TIER
-          example: HOURLY
         price:
           description: The price per unit.
           type: number
@@ -944,6 +1010,18 @@ components:
       required:
         - productCode
         - productCategory
+    GpuConfigurationMetadata:
+      type: object
+      description: GPU configuration details.
+      properties:
+        count:
+          description: GPU card count.
+          type: number
+          example: 2
+        name:
+          description: GPU name.
+          type: string
+          example: Intel MAX 11000
     ServerProductMetadata:
       type: object
       description: Details of the server product.
@@ -976,6 +1054,11 @@ components:
           description: Server storage.
           type: string
           example: 2x 2TB NVMe
+        gpuConfigurations:
+          description: GPU configurations
+          type: array
+          items:
+            $ref: '#/components/schemas/GpuConfigurationMetadata'
       required:
         - ramInGb
         - cpuCount
@@ -1000,7 +1083,6 @@ components:
       enum:
         - server
         - bandwidth
-      example: server
     ReservationModelEnum:
       description: The reservation model.
       type: string
@@ -1106,6 +1188,7 @@ components:
       properties:
         autoRenewDisableReason:
           type: string
+          example: It is not needed anymore.
     ThresholdConfigurationDetails:
       type: object
       description: Threshold billing configuration.
