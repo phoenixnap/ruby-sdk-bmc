@@ -1,0 +1,56 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/networks/v1/bgp-peer-groups",
+    "queryStringParameters": [
+      {
+        "name": "location",
+        "values": [
+          "PHX"
+        ]
+      }
+    ]
+  },
+  "response": {
+    "statusCode": 200,
+    "body": [
+      {
+        "id": "604724a5a807f2d3be8660c7",
+        "status": "PENDING",
+        "location": "PHX",
+        "ipv4Prefixes": [
+          {
+            "ipv4AllocationId": "604724a5a807f2d3da9660c7",
+            "cidr": "10.0.0.0/24",
+            "status": "PENDING",
+            "isBringYourOwnIp": true,
+            "inUse": false
+          }
+        ],
+        "targetAsnDetails": {
+          "asn": 9131072,
+          "isBringYourOwn": true,
+          "verificationStatus": "VERIFIED",
+          "verificationReason": "reason"
+        },
+        "activeAsnDetails": {
+          "asn": 1310728,
+          "isBringYourOwn": true,
+          "verificationStatus": "VERIFIED",
+          "verificationReason": "reason"
+        },
+        "password": "password",
+        "advertisedRoutes": "DEFAULT",
+        "rpkiRoaOriginAsn": 7131072,
+        "eBgpMultiHop": 8,
+        "peeringLoopbacksV4": [
+          "test"
+        ],
+        "keepAliveTimerSeconds": 3600,
+        "holdTimerSeconds": 7200,
+        "createdOn": "2022-04-07T13:20:30.491Z",
+        "lastUpdatedOn": "2022-04-07T12:20:30.491Z"
+      }
+    ]
+  }
+}

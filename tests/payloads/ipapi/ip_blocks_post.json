@@ -8,6 +8,7 @@
         "cidrBlockSize": "/28",
         "location": "PHX",
         "description": "IP Block #1 used for publicly accessing server #1.",
+        "ipVersion": "V4",
         "tags": [
           {
             "name": "tagName",

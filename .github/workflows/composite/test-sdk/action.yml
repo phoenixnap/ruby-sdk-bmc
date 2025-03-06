@@ -28,5 +28,5 @@ runs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: Test Results
+        name: Test Results - ${{ inputs.test-file }} - ${{ inputs.ruby-version }}
         path: '${{ inputs.test-report-dir }}/*'
