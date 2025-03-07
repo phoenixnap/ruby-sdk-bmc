@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [BillingApi::ApplicableDiscountDetails](docs/ApplicableDiscountDetails.md)
  - [BillingApi::ApplicableDiscounts](docs/ApplicableDiscounts.md)
  - [BillingApi::BandwidthDetails](docs/BandwidthDetails.md)
  - [BillingApi::BandwidthRecord](docs/BandwidthRecord.md)

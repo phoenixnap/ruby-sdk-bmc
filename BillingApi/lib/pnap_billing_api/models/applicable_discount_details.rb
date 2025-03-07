@@ -14,18 +14,47 @@ require 'date'
 require 'time'
 
 module BillingApi
-  # Represents the applicable discount details for a product, including the discounted price and discount information.
-  class ApplicableDiscounts
-    # The price of the product after applying a discount.
-    attr_accessor :discounted_price
+  class ApplicableDiscountDetails
+    # A unique code associated with the discount.
+    attr_accessor :code
 
-    attr_accessor :discount_details
+    attr_accessor :type
+
+    # The value or amount of the discount. The interpretation of this value depends on the 'type' of discount. 
+    attr_accessor :value
+
+    # Coupon code which is the source of the discount.
+    attr_accessor :coupon_code
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'discounted_price' => :'discountedPrice',
-        :'discount_details' => :'discountDetails'
+        :'code' => :'code',
+        :'type' => :'type',
+        :'value' => :'value',
+        :'coupon_code' => :'couponCode'
       }
     end
 
@@ -37,8 +66,10 @@ module BillingApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'discounted_price' => :'Float',
-        :'discount_details' => :'Array<ApplicableDiscountDetails>'
+        :'code' => :'String',
+        :'type' => :'DiscountTypeEnum',
+        :'value' => :'Float',
+        :'coupon_code' => :'String'
       }
     end
 
@@ -48,29 +79,48 @@ module BillingApi
       ])
     end
 
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'DiscountDetails'
+      ]
+    end
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::ApplicableDiscounts` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::ApplicableDiscountDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::ApplicableDiscounts`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::ApplicableDiscountDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'discounted_price')
-        self.discounted_price = attributes[:'discounted_price']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
+      else
+        self.code = nil
       end
 
-      if attributes.key?(:'discount_details')
-        if (value = attributes[:'discount_details']).is_a?(Array)
-          self.discount_details = value
-        end
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
+      end
+
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
+      else
+        self.value = nil
+      end
+
+      if attributes.key?(:'coupon_code')
+        self.coupon_code = attributes[:'coupon_code']
       end
     end
 
@@ -79,6 +129,18 @@ module BillingApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
+      end
+
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
+      end
+
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -86,6 +148,9 @@ module BillingApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @code.nil?
+      return false if @type.nil?
+      return false if @value.nil?
       true
     end
 
@@ -94,8 +159,10 @@ module BillingApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          discounted_price == o.discounted_price &&
-          discount_details == o.discount_details
+          code == o.code &&
+          type == o.type &&
+          value == o.value &&
+          coupon_code == o.coupon_code
     end
 
     # @see the `==` method
@@ -107,7 +174,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [discounted_price, discount_details].hash
+      [code, type, value, coupon_code].hash
     end
 
     # Builds the object from hash

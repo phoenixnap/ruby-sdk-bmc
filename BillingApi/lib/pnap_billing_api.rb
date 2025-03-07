@@ -17,6 +17,7 @@ require 'pnap_billing_api/version'
 require 'pnap_billing_api/configuration'
 
 # Models
+require 'pnap_billing_api/models/applicable_discount_details'
 require 'pnap_billing_api/models/applicable_discounts'
 require 'pnap_billing_api/models/bandwidth_details'
 require 'pnap_billing_api/models/bandwidth_record'
