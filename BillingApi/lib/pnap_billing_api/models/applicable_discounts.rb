@@ -38,7 +38,7 @@ module BillingApi
     def self.openapi_types
       {
         :'discounted_price' => :'Float',
-        :'discount_details' => :'Array<DiscountDetails>'
+        :'discount_details' => :'Array<ApplicableDiscountDetails>'
       }
     end
 

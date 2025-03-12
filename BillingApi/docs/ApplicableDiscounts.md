@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **discounted_price** | **Float** | The price of the product after applying a discount. | [optional] |
-| **discount_details** | [**Array&lt;DiscountDetails&gt;**](DiscountDetails.md) |  | [optional] |
+| **discount_details** | [**Array&lt;ApplicableDiscountDetails&gt;**](ApplicableDiscountDetails.md) |  | [optional] |
 
 ## Example
 

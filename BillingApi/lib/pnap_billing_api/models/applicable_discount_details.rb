@@ -1,7 +1,7 @@
 =begin
-#Bare Metal Cloud API
+#Billing API
 
-#Create, power off, power on, reset, reboot, or shut down your server with the Bare Metal Cloud API.  Deprovision servers, get or edit SSH key details, assign public IPs, assign servers to networks and a lot more.  Manage your infrastructure more efficiently using just a few simple API calls.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/how-to-deploy-bare-metal-cloud-server' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/bmc/v1/)</b> 
+#Automate your infrastructure billing with the Bare Metal Cloud Billing API. Reserve your server instances to ensure guaranteed resource availability for 12, 24, and 36 months. Retrieve your server’s rated usage for a given period and enable or disable auto-renewals.<br> <br> <span class='pnap-api-knowledge-base-link'> Knowledge base articles to help you can be found <a href='https://phoenixnap.com/kb/phoenixnap-bare-metal-cloud-billing-models' target='_blank'>here</a> </span><br> <br> <b>All URLs are relative to (https://api.phoenixnap.com/billing/v1/)</b> 
 
 The version of the OpenAPI document: 0.1
 Contact: support@phoenixnap.com
@@ -13,20 +13,48 @@ OpenAPI Generator version: 7.2.0
 require 'date'
 require 'time'
 
-module BmcApi
-  # A request to change the limit on a quota.
-  class QuotaEditLimitRequest
-    # The new limit that is requested. Minimum allowed limit values: - 0 (Server, IPs) - 1000 (Network Storage)
-    attr_accessor :limit
+module BillingApi
+  class ApplicableDiscountDetails
+    # A unique code associated with the discount.
+    attr_accessor :code
 
-    # The reason for changing the limit.
-    attr_accessor :reason
+    attr_accessor :type
+
+    # The value or amount of the discount. The interpretation of this value depends on the 'type' of discount. 
+    attr_accessor :value
+
+    # Coupon code which is the source of the discount.
+    attr_accessor :coupon_code
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'limit' => :'limit',
-        :'reason' => :'reason'
+        :'code' => :'code',
+        :'type' => :'type',
+        :'value' => :'value',
+        :'coupon_code' => :'couponCode'
       }
     end
 
@@ -38,8 +66,10 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'limit' => :'Integer',
-        :'reason' => :'String'
+        :'code' => :'String',
+        :'type' => :'DiscountTypeEnum',
+        :'value' => :'Float',
+        :'coupon_code' => :'String'
       }
     end
 
@@ -49,31 +79,48 @@ module BmcApi
       ])
     end
 
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'DiscountDetails'
+      ]
+    end
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::QuotaEditLimitRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::ApplicableDiscountDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::QuotaEditLimitRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::ApplicableDiscountDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'limit')
-        self.limit = attributes[:'limit']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       else
-        self.limit = nil
+        self.code = nil
       end
 
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
       else
-        self.reason = nil
+        self.type = nil
+      end
+
+      if attributes.key?(:'value')
+        self.value = attributes[:'value']
+      else
+        self.value = nil
+      end
+
+      if attributes.key?(:'coupon_code')
+        self.coupon_code = attributes[:'coupon_code']
       end
     end
 
@@ -82,21 +129,16 @@ module BmcApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @limit.nil?
-        invalid_properties.push('invalid value for "limit", limit cannot be nil.')
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
       end
 
-      if @limit < 0
-        invalid_properties.push('invalid value for "limit", must be greater than or equal to 0.')
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
-      if @reason.nil?
-        invalid_properties.push('invalid value for "reason", reason cannot be nil.')
-      end
-
-      pattern = Regexp.new(/^(?m)(?!\s*$).+/)
-      if @reason !~ pattern
-        invalid_properties.push("invalid value for \"reason\", must conform to the pattern #{pattern}.")
+      if @value.nil?
+        invalid_properties.push('invalid value for "value", value cannot be nil.')
       end
 
       invalid_properties
@@ -106,40 +148,10 @@ module BmcApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @limit.nil?
-      return false if @limit < 0
-      return false if @reason.nil?
-      return false if @reason !~ Regexp.new(/^(?m)(?!\s*$).+/)
+      return false if @code.nil?
+      return false if @type.nil?
+      return false if @value.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] limit Value to be assigned
-    def limit=(limit)
-      if limit.nil?
-        fail ArgumentError, 'limit cannot be nil'
-      end
-
-      if limit < 0
-        fail ArgumentError, 'invalid value for "limit", must be greater than or equal to 0.'
-      end
-
-      @limit = limit
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reason Value to be assigned
-    def reason=(reason)
-      if reason.nil?
-        fail ArgumentError, 'reason cannot be nil'
-      end
-
-      pattern = Regexp.new(/^(?m)(?!\s*$).+/)
-      if reason !~ pattern
-        fail ArgumentError, "invalid value for \"reason\", must conform to the pattern #{pattern}."
-      end
-
-      @reason = reason
     end
 
     # Checks equality by comparing each attribute.
@@ -147,8 +159,10 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          limit == o.limit &&
-          reason == o.reason
+          code == o.code &&
+          type == o.type &&
+          value == o.value &&
+          coupon_code == o.coupon_code
     end
 
     # @see the `==` method
@@ -160,7 +174,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [limit, reason].hash
+      [code, type, value, coupon_code].hash
     end
 
     # Builds the object from hash
@@ -224,7 +238,7 @@ module BmcApi
         end
       else # model
         # models (e.g. Pet) or oneOf
-        klass = BmcApi.const_get(type)
+        klass = BillingApi.const_get(type)
         klass.respond_to?(:openapi_any_of) || klass.respond_to?(:openapi_one_of) ? klass.build(value) : klass.build_from_hash(value)
       end
     end
