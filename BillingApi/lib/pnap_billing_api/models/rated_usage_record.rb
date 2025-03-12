@@ -146,7 +146,7 @@ module BillingApi
         :'usage_session_id' => :'String',
         :'correlation_id' => :'String',
         :'reservation_id' => :'String',
-        :'discount_details' => :'DiscountDetails',
+        :'discount_details' => :'ApplicableDiscountDetails',
         :'credit_details' => :'Array<CreditDetails>'
       }
     end
