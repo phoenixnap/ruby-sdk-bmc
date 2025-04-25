@@ -1,67 +1,67 @@
 PATH
   remote: ../AuditApi
   specs:
-    pnap_audit_api (2.0.2)
+    pnap_audit_api (2.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../BillingApi
   specs:
-    pnap_billing_api (2.1.0)
+    pnap_billing_api (2.1.2.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../BmcApi
   specs:
-    pnap_bmc_api (2.2.0)
+    pnap_bmc_api (2.2.2.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../InvoicingApi
   specs:
-    pnap_invoicing_api (1.0.2)
+    pnap_invoicing_api (1.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../IpApi
   specs:
-    pnap_ip_api (2.1.0)
+    pnap_ip_api (2.1.2.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../LocationApi
   specs:
-    pnap_location_api (2.0.2)
+    pnap_location_api (2.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../NetworkApi
   specs:
-    pnap_network_api (2.1.0)
+    pnap_network_api (2.1.2.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../NetworkStorageApi
   specs:
-    pnap_network_storage_api (2.0.2)
+    pnap_network_storage_api (2.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../PaymentsApi
   specs:
-    pnap_payments_api (1.0.2)
+    pnap_payments_api (1.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../RancherApi
   specs:
-    pnap_rancher_api (2.0.2)
+    pnap_rancher_api (2.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 PATH
   remote: ../TagApi
   specs:
-    pnap_tag_api (2.0.2)
+    pnap_tag_api (2.0.4.pre.SNAPSHOT)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
