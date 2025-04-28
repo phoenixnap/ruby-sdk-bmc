@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version: [ '2.7', '3.4' ]
+        ruby-version: [ '3.2', '3.3', '3.4' ]
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/workflows/composite/test-sdk
