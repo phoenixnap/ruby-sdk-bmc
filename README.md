@@ -21,6 +21,7 @@ Official Bare Metal Cloud SDK for Ruby. Use it to manage your Bare Metal Cloud r
 
 - [Bare Metal Cloud](https://bmc.phoenixnap.com) account
 - Ruby
+  - The list of Ruby versions currently supported by the ruby-sdk can be found <a href="https://github.com/phoenixnap/ruby-sdk-bmc/blob/develop/.github/workflows/_test.yml#L25">here</a>
 
 ## Creating a Bare Metal Cloud account
 
