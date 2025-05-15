@@ -39,6 +39,7 @@
           "createdBy": "SYSTEM"
         }
       ],
+      "isSystemManaged": false,
       "isBringYourOwn": false,
       "createdOn": "2021-04-27T16:24:57Z"
     }

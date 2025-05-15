@@ -19,7 +19,7 @@ module NetworkApi
     # The resource identifier.
     attr_accessor :resource_id
 
-    # The resource's type.
+    # The resource's type. Can have one of the following values: `server`, `storage` or `virtual`.
     attr_accessor :resource_type
 
     # List of IPs associated to the resource.

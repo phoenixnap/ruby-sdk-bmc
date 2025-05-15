@@ -69,7 +69,7 @@ describe 'ClustersApi' do
 
   # unit tests for clusters_post
   # Create a Rancher Server Deployment.
-  # Create a Rancher Server Deployment as described in &lt;a href&#x3D;&#39;https://rancher.com/docs/rancher/v2.5/en/overview/architecture/#rancher-server-architecture&#39; target&#x3D;&#39;_blank&#39;&gt;Rancher Docs Architecture&lt;/a&gt;. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. &lt;b&gt;This is not a Downstream User Cluster&lt;/b&gt;. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-rancher-workload-cluster#ftoc-heading-5&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;. 
+  # Create a Rancher Server Deployment as described in &lt;a href&#x3D;&#39;https://ranchermanager.docs.rancher.com/v2.6/reference-guides/rancher-manager-architecture#rancher-server-architecture&#39; target&#x3D;&#39;_blank&#39;&gt;Rancher Docs Architecture&lt;/a&gt;. Rancher Server allows the creation, import and management of multiple Downstream User Kubernetes Clusters. &lt;b&gt;This is not a Downstream User Cluster&lt;/b&gt;. Knowledge base article to help you can be found &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-rancher-workload-cluster#ftoc-heading-5&#39; target&#x3D;&#39;_blank&#39;&gt;here&lt;/a&gt;. 
   # @param cluster 
   # @param [Hash] opts the optional parameters
   # @return [Cluster]

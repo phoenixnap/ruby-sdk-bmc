@@ -31,8 +31,11 @@ module IpApi
     # The IP Version of the block.
     attr_accessor :ip_version
 
-    # The status of the IP Block. Can have one of the following values: `creating` , `assigning` , `error assigning` , `assigned` , `unassigning` , `error unassigning` or `unassigned`.
+    # The status of the IP Block. Can have one of the following values: `creating`, `subnetted`, `assigning` , `error assigning` , `assigned` , `unassigning` , `error unassigning` or `unassigned`.
     attr_accessor :status
+
+    # IP Block parent identifier. If present, this block is subnetted from the parent IP Block.
+    attr_accessor :parent_ip_block_allocation_id
 
     # ID of the resource assigned to the IP Block.
     attr_accessor :assigned_resource_id
@@ -45,6 +48,9 @@ module IpApi
 
     # The tags assigned if any.
     attr_accessor :tags
+
+    # True if the IP block is a `system managed` block.
+    attr_accessor :is_system_managed
 
     # True if the IP block is a `bring your own` block.
     attr_accessor :is_bring_your_own
@@ -61,10 +67,12 @@ module IpApi
         :'cidr' => :'cidr',
         :'ip_version' => :'ipVersion',
         :'status' => :'status',
+        :'parent_ip_block_allocation_id' => :'parentIpBlockAllocationId',
         :'assigned_resource_id' => :'assignedResourceId',
         :'assigned_resource_type' => :'assignedResourceType',
         :'description' => :'description',
         :'tags' => :'tags',
+        :'is_system_managed' => :'isSystemManaged',
         :'is_bring_your_own' => :'isBringYourOwn',
         :'created_on' => :'createdOn'
       }
@@ -84,10 +92,12 @@ module IpApi
         :'cidr' => :'String',
         :'ip_version' => :'String',
         :'status' => :'String',
+        :'parent_ip_block_allocation_id' => :'String',
         :'assigned_resource_id' => :'String',
         :'assigned_resource_type' => :'String',
         :'description' => :'String',
         :'tags' => :'Array<TagAssignment>',
+        :'is_system_managed' => :'Boolean',
         :'is_bring_your_own' => :'Boolean',
         :'created_on' => :'Time'
       }
@@ -138,6 +148,10 @@ module IpApi
         self.status = attributes[:'status']
       end
 
+      if attributes.key?(:'parent_ip_block_allocation_id')
+        self.parent_ip_block_allocation_id = attributes[:'parent_ip_block_allocation_id']
+      end
+
       if attributes.key?(:'assigned_resource_id')
         self.assigned_resource_id = attributes[:'assigned_resource_id']
       end
@@ -154,6 +168,10 @@ module IpApi
         if (value = attributes[:'tags']).is_a?(Array)
           self.tags = value
         end
+      end
+
+      if attributes.key?(:'is_system_managed')
+        self.is_system_managed = attributes[:'is_system_managed']
       end
 
       if attributes.key?(:'is_bring_your_own')
@@ -210,10 +228,12 @@ module IpApi
           cidr == o.cidr &&
           ip_version == o.ip_version &&
           status == o.status &&
+          parent_ip_block_allocation_id == o.parent_ip_block_allocation_id &&
           assigned_resource_id == o.assigned_resource_id &&
           assigned_resource_type == o.assigned_resource_type &&
           description == o.description &&
           tags == o.tags &&
+          is_system_managed == o.is_system_managed &&
           is_bring_your_own == o.is_bring_your_own &&
           created_on == o.created_on
     end
@@ -227,7 +247,7 @@ module IpApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, location, cidr_block_size, cidr, ip_version, status, assigned_resource_id, assigned_resource_type, description, tags, is_bring_your_own, created_on].hash
+      [id, location, cidr_block_size, cidr, ip_version, status, parent_ip_block_allocation_id, assigned_resource_id, assigned_resource_type, description, tags, is_system_managed, is_bring_your_own, created_on].hash
     end
 
     # Builds the object from hash

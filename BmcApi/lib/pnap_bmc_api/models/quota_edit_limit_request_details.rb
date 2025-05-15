@@ -94,7 +94,7 @@ module BmcApi
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
+    1    # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
