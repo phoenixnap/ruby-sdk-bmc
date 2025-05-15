@@ -111,6 +111,10 @@ module BmcApi
         invalid_properties.push('invalid value for "reason", reason cannot be nil.')
       end
 
+      # This pattern is being manually modified.
+      # (?m) was originally (?s) -- it functions the same, except Ruby doesn't understand (?s)
+      # Information here:
+      #   - https://www.rexegg.com/regex-ruby.php
       pattern = Regexp.new(/^(?m)(?!\s*$).+/)
       if @reason !~ pattern
         invalid_properties.push("invalid value for \"reason\", must conform to the pattern #{pattern}.")
