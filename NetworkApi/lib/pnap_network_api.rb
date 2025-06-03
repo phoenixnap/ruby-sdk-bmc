@@ -19,6 +19,7 @@ require 'pnap_network_api/configuration'
 # Models
 require 'pnap_network_api/models/asn_details'
 require 'pnap_network_api/models/bgp_ipv4_prefix'
+require 'pnap_network_api/models/bgp_ip_prefix'
 require 'pnap_network_api/models/bgp_peer_group'
 require 'pnap_network_api/models/bgp_peer_group_create'
 require 'pnap_network_api/models/bgp_peer_group_patch'

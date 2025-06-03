@@ -51,6 +51,12 @@ describe NetworkApi::BgpPeerGroup do
     end
   end
 
+  describe 'test attribute "ip_prefixes"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "target_asn_details"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -88,6 +94,12 @@ describe NetworkApi::BgpPeerGroup do
   end
 
   describe 'test attribute "peering_loopbacks_v4"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "peering_loopbacks_v6"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

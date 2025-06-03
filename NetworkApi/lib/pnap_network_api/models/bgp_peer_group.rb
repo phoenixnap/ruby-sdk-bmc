@@ -25,8 +25,11 @@ module NetworkApi
     # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
     attr_accessor :location
 
-    # The List of the BGP Peer Group IPv4 prefixes.
+    # The List of the BGP Peer Group IPv4 prefixes. Deprecated in favour of generic ipPrefixes.
     attr_accessor :ipv4_prefixes
+
+    # The List of the BGP Peer Group IP prefixes.
+    attr_accessor :ip_prefixes
 
     attr_accessor :target_asn_details
 
@@ -47,6 +50,9 @@ module NetworkApi
     # The IPv4 Peering Loopback addresses of the BGP Peer Group. Valid IP formats are IPv4 addresses.
     attr_accessor :peering_loopbacks_v4
 
+    # The IPv6 Peering Loopback addresses of the BGP Peer Group. Valid IP formats are IPv6 addresses.
+    attr_accessor :peering_loopbacks_v6
+
     # The Keep Alive Timer in seconds of the BGP Peer Group.
     attr_accessor :keep_alive_timer_seconds
 
@@ -66,6 +72,7 @@ module NetworkApi
         :'status' => :'status',
         :'location' => :'location',
         :'ipv4_prefixes' => :'ipv4Prefixes',
+        :'ip_prefixes' => :'ipPrefixes',
         :'target_asn_details' => :'targetAsnDetails',
         :'active_asn_details' => :'activeAsnDetails',
         :'password' => :'password',
@@ -73,6 +80,7 @@ module NetworkApi
         :'rpki_roa_origin_asn' => :'rpkiRoaOriginAsn',
         :'e_bgp_multi_hop' => :'eBgpMultiHop',
         :'peering_loopbacks_v4' => :'peeringLoopbacksV4',
+        :'peering_loopbacks_v6' => :'peeringLoopbacksV6',
         :'keep_alive_timer_seconds' => :'keepAliveTimerSeconds',
         :'hold_timer_seconds' => :'holdTimerSeconds',
         :'created_on' => :'createdOn',
@@ -92,6 +100,7 @@ module NetworkApi
         :'status' => :'String',
         :'location' => :'String',
         :'ipv4_prefixes' => :'Array<BgpIPv4Prefix>',
+        :'ip_prefixes' => :'Array<BgpIpPrefix>',
         :'target_asn_details' => :'AsnDetails',
         :'active_asn_details' => :'AsnDetails',
         :'password' => :'String',
@@ -99,6 +108,7 @@ module NetworkApi
         :'rpki_roa_origin_asn' => :'Integer',
         :'e_bgp_multi_hop' => :'Integer',
         :'peering_loopbacks_v4' => :'Array<String>',
+        :'peering_loopbacks_v6' => :'Array<String>',
         :'keep_alive_timer_seconds' => :'Integer',
         :'hold_timer_seconds' => :'Integer',
         :'created_on' => :'String',
@@ -153,6 +163,14 @@ module NetworkApi
         self.ipv4_prefixes = nil
       end
 
+      if attributes.key?(:'ip_prefixes')
+        if (value = attributes[:'ip_prefixes']).is_a?(Array)
+          self.ip_prefixes = value
+        end
+      else
+        self.ip_prefixes = nil
+      end
+
       if attributes.key?(:'target_asn_details')
         self.target_asn_details = attributes[:'target_asn_details']
       else
@@ -193,6 +211,14 @@ module NetworkApi
         end
       else
         self.peering_loopbacks_v4 = nil
+      end
+
+      if attributes.key?(:'peering_loopbacks_v6')
+        if (value = attributes[:'peering_loopbacks_v6']).is_a?(Array)
+          self.peering_loopbacks_v6 = value
+        end
+      else
+        self.peering_loopbacks_v6 = nil
       end
 
       if attributes.key?(:'keep_alive_timer_seconds')
@@ -237,6 +263,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "ipv4_prefixes", ipv4_prefixes cannot be nil.')
       end
 
+      if @ip_prefixes.nil?
+        invalid_properties.push('invalid value for "ip_prefixes", ip_prefixes cannot be nil.')
+      end
+
       if @target_asn_details.nil?
         invalid_properties.push('invalid value for "target_asn_details", target_asn_details cannot be nil.')
       end
@@ -274,6 +304,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "peering_loopbacks_v4", peering_loopbacks_v4 cannot be nil.')
       end
 
+      if @peering_loopbacks_v6.nil?
+        invalid_properties.push('invalid value for "peering_loopbacks_v6", peering_loopbacks_v6 cannot be nil.')
+      end
+
       if @keep_alive_timer_seconds.nil?
         invalid_properties.push('invalid value for "keep_alive_timer_seconds", keep_alive_timer_seconds cannot be nil.')
       end
@@ -293,6 +327,7 @@ module NetworkApi
       return false if @status.nil?
       return false if @location.nil?
       return false if @ipv4_prefixes.nil?
+      return false if @ip_prefixes.nil?
       return false if @target_asn_details.nil?
       return false if @password.nil?
       return false if @password.to_s.length > 32
@@ -302,6 +337,7 @@ module NetworkApi
       return false if @rpki_roa_origin_asn.nil?
       return false if @e_bgp_multi_hop.nil?
       return false if @peering_loopbacks_v4.nil?
+      return false if @peering_loopbacks_v6.nil?
       return false if @keep_alive_timer_seconds.nil?
       return false if @hold_timer_seconds.nil?
       true
@@ -339,6 +375,7 @@ module NetworkApi
           status == o.status &&
           location == o.location &&
           ipv4_prefixes == o.ipv4_prefixes &&
+          ip_prefixes == o.ip_prefixes &&
           target_asn_details == o.target_asn_details &&
           active_asn_details == o.active_asn_details &&
           password == o.password &&
@@ -346,6 +383,7 @@ module NetworkApi
           rpki_roa_origin_asn == o.rpki_roa_origin_asn &&
           e_bgp_multi_hop == o.e_bgp_multi_hop &&
           peering_loopbacks_v4 == o.peering_loopbacks_v4 &&
+          peering_loopbacks_v6 == o.peering_loopbacks_v6 &&
           keep_alive_timer_seconds == o.keep_alive_timer_seconds &&
           hold_timer_seconds == o.hold_timer_seconds &&
           created_on == o.created_on &&
@@ -361,7 +399,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, status, location, ipv4_prefixes, target_asn_details, active_asn_details, password, advertised_routes, rpki_roa_origin_asn, e_bgp_multi_hop, peering_loopbacks_v4, keep_alive_timer_seconds, hold_timer_seconds, created_on, last_updated_on].hash
+      [id, status, location, ipv4_prefixes, ip_prefixes, target_asn_details, active_asn_details, password, advertised_routes, rpki_roa_origin_asn, e_bgp_multi_hop, peering_loopbacks_v4, peering_loopbacks_v6, keep_alive_timer_seconds, hold_timer_seconds, created_on, last_updated_on].hash
     end
 
     # Builds the object from hash
