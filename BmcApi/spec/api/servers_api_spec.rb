@@ -171,6 +171,19 @@ describe 'ServersApi' do
     end
   end
 
+  # unit tests for servers_server_id_actions_transfer_reservation
+  # Transfer server reservation.
+  # Transfer server reservation. An active (READY) reservation can be transferred from a server in ERROR or RESERVED status to another HOURLY provisioned server of the same location and type.
+  # @param server_id The server&#39;s ID.
+  # @param reservation_transfer_details 
+  # @param [Hash] opts the optional parameters
+  # @return [Server]
+  describe 'servers_server_id_actions_transfer_reservation test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for servers_server_id_delete
   # Delete server.
   # Deprovision specific server. Any IP blocks assigned to this server will also be relinquished and deleted. Deprecated: see /servers/{serverId}/actions/deprovision

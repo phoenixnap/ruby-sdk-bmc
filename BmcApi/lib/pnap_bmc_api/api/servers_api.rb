@@ -770,6 +770,80 @@ module BmcApi
       return data, status_code, headers
     end
 
+    # Transfer server reservation.
+    # Transfer server reservation. An active (READY) reservation can be transferred from a server in ERROR or RESERVED status to another HOURLY provisioned server of the same location and type.
+    # @param server_id [String] The server&#39;s ID.
+    # @param reservation_transfer_details [ReservationTransferDetails] 
+    # @param [Hash] opts the optional parameters
+    # @return [Server]
+    def servers_server_id_actions_transfer_reservation(server_id, reservation_transfer_details, opts = {})
+      data, _status_code, _headers = servers_server_id_actions_transfer_reservation_with_http_info(server_id, reservation_transfer_details, opts)
+      data
+    end
+
+    # Transfer server reservation.
+    # Transfer server reservation. An active (READY) reservation can be transferred from a server in ERROR or RESERVED status to another HOURLY provisioned server of the same location and type.
+    # @param server_id [String] The server&#39;s ID.
+    # @param reservation_transfer_details [ReservationTransferDetails] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Server, Integer, Hash)>] Server data, response status code and response headers
+    def servers_server_id_actions_transfer_reservation_with_http_info(server_id, reservation_transfer_details, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ServersApi.servers_server_id_actions_transfer_reservation ...'
+      end
+      # verify the required parameter 'server_id' is set
+      if @api_client.config.client_side_validation && server_id.nil?
+        fail ArgumentError, "Missing the required parameter 'server_id' when calling ServersApi.servers_server_id_actions_transfer_reservation"
+      end
+      # verify the required parameter 'reservation_transfer_details' is set
+      if @api_client.config.client_side_validation && reservation_transfer_details.nil?
+        fail ArgumentError, "Missing the required parameter 'reservation_transfer_details' when calling ServersApi.servers_server_id_actions_transfer_reservation"
+      end
+      # resource path
+      local_var_path = '/servers/{serverId}/actions/transfer-reservation'.sub('{' + 'serverId' + '}', CGI.escape(server_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(reservation_transfer_details)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Server'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['OAuth2']
+
+      new_options = opts.merge(
+        :operation => :"ServersApi.servers_server_id_actions_transfer_reservation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ServersApi#servers_server_id_actions_transfer_reservation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete server.
     # Deprovision specific server. Any IP blocks assigned to this server will also be relinquished and deleted. Deprecated: see /servers/{serverId}/actions/deprovision
     # @param server_id [String] The server&#39;s ID.

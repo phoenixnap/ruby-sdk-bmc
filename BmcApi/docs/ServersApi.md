@@ -15,6 +15,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_actions_reserve_post**](ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server. |
 | [**servers_server_id_actions_reset_post**](ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server. |
 | [**servers_server_id_actions_shutdown_post**](ServersApi.md#servers_server_id_actions_shutdown_post) | **POST** /servers/{serverId}/actions/shutdown | Shutdown server. |
+| [**servers_server_id_actions_transfer_reservation**](ServersApi.md#servers_server_id_actions_transfer_reservation) | **POST** /servers/{serverId}/actions/transfer-reservation | Transfer server reservation. |
 | [**servers_server_id_delete**](ServersApi.md#servers_server_id_delete) | **DELETE** /servers/{serverId} | Delete server. |
 | [**servers_server_id_get**](ServersApi.md#servers_server_id_get) | **GET** /servers/{serverId} | Get server. |
 | [**servers_server_id_ip_blocks_ip_block_id_delete**](ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server. |
@@ -804,6 +805,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## servers_server_id_actions_transfer_reservation
+
+> <Server> servers_server_id_actions_transfer_reservation(server_id, reservation_transfer_details)
+
+Transfer server reservation.
+
+Transfer server reservation. An active (READY) reservation can be transferred from a server in ERROR or RESERVED status to another HOURLY provisioned server of the same location and type.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+reservation_transfer_details = BmcApi::ReservationTransferDetails.new({target_server_id: '54a21648dasda4s9843a17'}) # ReservationTransferDetails | 
+
+begin
+  # Transfer server reservation.
+  result = api_instance.servers_server_id_actions_transfer_reservation(server_id, reservation_transfer_details)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_transfer_reservation: #{e}"
+end
+```
+
+#### Using the servers_server_id_actions_transfer_reservation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Server>, Integer, Hash)> servers_server_id_actions_transfer_reservation_with_http_info(server_id, reservation_transfer_details)
+
+```ruby
+begin
+  # Transfer server reservation.
+  data, status_code, headers = api_instance.servers_server_id_actions_transfer_reservation_with_http_info(server_id, reservation_transfer_details)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Server>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_actions_transfer_reservation_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **reservation_transfer_details** | [**ReservationTransferDetails**](ReservationTransferDetails.md) |  |  |
+
+### Return type
+
+[**Server**](Server.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
