@@ -163,6 +163,8 @@ Class | Method | HTTP request | Description
  - [BillingApi::PromoCreditDetails](docs/PromoCreditDetails.md)
  - [BillingApi::PublicSubnetDetails](docs/PublicSubnetDetails.md)
  - [BillingApi::PublicSubnetRecord](docs/PublicSubnetRecord.md)
+ - [BillingApi::Quantity](docs/Quantity.md)
+ - [BillingApi::QuantityUnitEnum](docs/QuantityUnitEnum.md)
  - [BillingApi::RatedUsageGet200ResponseInner](docs/RatedUsageGet200ResponseInner.md)
  - [BillingApi::RatedUsageProductCategoryEnum](docs/RatedUsageProductCategoryEnum.md)
  - [BillingApi::RatedUsageRecord](docs/RatedUsageRecord.md)

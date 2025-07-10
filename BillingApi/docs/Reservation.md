@@ -10,6 +10,7 @@
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **reservation_model** | [**ReservationModelEnum**](ReservationModelEnum.md) |  |  |
 | **initial_invoice_model** | [**ReservationInvoicingModelEnum**](ReservationInvoicingModelEnum.md) |  | [optional] |
+| **quantity** | [**Quantity**](Quantity.md) |  |  |
 | **start_date_time** | **Time** | The point in time (in UTC) when the reservation starts. |  |
 | **end_date_time** | **Time** | The point in time (in UTC) when the reservation end. | [optional] |
 | **last_renewal_date_time** | **Time** | The point in time (in UTC) when the reservation was renewed last. | [optional] |
@@ -33,6 +34,7 @@ instance = BillingApi::Reservation.new(
   location: null,
   reservation_model: null,
   initial_invoice_model: null,
+  quantity: null,
   start_date_time: 2020-03-19T16:39Z,
   end_date_time: 2020-04-19T16:39Z,
   last_renewal_date_time: 2020-03-19T16:39Z,
