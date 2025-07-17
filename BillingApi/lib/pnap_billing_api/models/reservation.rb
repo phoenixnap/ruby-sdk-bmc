@@ -28,6 +28,8 @@ module BillingApi
 
     attr_accessor :reservation_model
 
+    attr_accessor :reservation_state
+
     attr_accessor :initial_invoice_model
 
     attr_accessor :quantity
@@ -91,6 +93,7 @@ module BillingApi
         :'product_category' => :'productCategory',
         :'location' => :'location',
         :'reservation_model' => :'reservationModel',
+        :'reservation_state' => :'reservationState',
         :'initial_invoice_model' => :'initialInvoiceModel',
         :'quantity' => :'quantity',
         :'start_date_time' => :'startDateTime',
@@ -119,6 +122,7 @@ module BillingApi
         :'product_category' => :'ReservationProductCategoryEnum',
         :'location' => :'LocationEnum',
         :'reservation_model' => :'ReservationModelEnum',
+        :'reservation_state' => :'ReservationStateEnum',
         :'initial_invoice_model' => :'ReservationInvoicingModelEnum',
         :'quantity' => :'Quantity',
         :'start_date_time' => :'Time',
@@ -183,6 +187,12 @@ module BillingApi
         self.reservation_model = attributes[:'reservation_model']
       else
         self.reservation_model = nil
+      end
+
+      if attributes.key?(:'reservation_state')
+        self.reservation_state = attributes[:'reservation_state']
+      else
+        self.reservation_state = nil
       end
 
       if attributes.key?(:'initial_invoice_model')
@@ -271,6 +281,10 @@ module BillingApi
         invalid_properties.push('invalid value for "reservation_model", reservation_model cannot be nil.')
       end
 
+      if @reservation_state.nil?
+        invalid_properties.push('invalid value for "reservation_state", reservation_state cannot be nil.')
+      end
+
       if @quantity.nil?
         invalid_properties.push('invalid value for "quantity", quantity cannot be nil.')
       end
@@ -307,6 +321,7 @@ module BillingApi
       return false if @product_category.nil?
       return false if @location.nil?
       return false if @reservation_model.nil?
+      return false if @reservation_state.nil?
       return false if @quantity.nil?
       return false if @start_date_time.nil?
       return false if @auto_renew.nil?
@@ -326,6 +341,7 @@ module BillingApi
           product_category == o.product_category &&
           location == o.location &&
           reservation_model == o.reservation_model &&
+          reservation_state == o.reservation_state &&
           initial_invoice_model == o.initial_invoice_model &&
           quantity == o.quantity &&
           start_date_time == o.start_date_time &&
@@ -349,7 +365,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_code, product_category, location, reservation_model, initial_invoice_model, quantity, start_date_time, end_date_time, last_renewal_date_time, next_renewal_date_time, auto_renew, sku, price, price_unit, assigned_resource_id, next_billing_date].hash
+      [id, product_code, product_category, location, reservation_model, reservation_state, initial_invoice_model, quantity, start_date_time, end_date_time, last_renewal_date_time, next_renewal_date_time, auto_renew, sku, price, price_unit, assigned_resource_id, next_billing_date].hash
     end
 
     # Builds the object from hash

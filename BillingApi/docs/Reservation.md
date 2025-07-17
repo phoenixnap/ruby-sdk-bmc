@@ -9,6 +9,7 @@
 | **product_category** | [**ReservationProductCategoryEnum**](ReservationProductCategoryEnum.md) |  |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **reservation_model** | [**ReservationModelEnum**](ReservationModelEnum.md) |  |  |
+| **reservation_state** | [**ReservationStateEnum**](ReservationStateEnum.md) |  |  |
 | **initial_invoice_model** | [**ReservationInvoicingModelEnum**](ReservationInvoicingModelEnum.md) |  | [optional] |
 | **quantity** | [**Quantity**](Quantity.md) |  |  |
 | **start_date_time** | **Time** | The point in time (in UTC) when the reservation starts. |  |
@@ -33,6 +34,7 @@ instance = BillingApi::Reservation.new(
   product_category: null,
   location: null,
   reservation_model: null,
+  reservation_state: null,
   initial_invoice_model: null,
   quantity: null,
   start_date_time: 2020-03-19T16:39Z,

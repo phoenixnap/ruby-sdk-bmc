@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::ReservationModelEnum](docs/ReservationModelEnum.md)
  - [BillingApi::ReservationProductCategoryEnum](docs/ReservationProductCategoryEnum.md)
  - [BillingApi::ReservationRequest](docs/ReservationRequest.md)
+ - [BillingApi::ReservationStateEnum](docs/ReservationStateEnum.md)
  - [BillingApi::ServerDetails](docs/ServerDetails.md)
  - [BillingApi::ServerProduct](docs/ServerProduct.md)
  - [BillingApi::ServerProductMetadata](docs/ServerProductMetadata.md)
