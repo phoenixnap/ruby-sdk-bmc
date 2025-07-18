@@ -16,7 +16,7 @@ require 'time'
 module BmcApi
   # Public network details of bare metal server.
   class PublicNetworkConfiguration
-    # The list of public networks this server is member of. When this field is part of request body, it'll be used to specify the public networks to assign to this server upon provisioning.
+    # The list of public networks this server belongs to. If this field is part of a request body, it will be used for specifying the public networks to assign to this server on provision. Only IPv4 addresses can be specified.
     attr_accessor :public_networks
 
     # Attribute mapping from ruby-style variable name to JSON key.

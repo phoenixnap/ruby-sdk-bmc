@@ -22,7 +22,7 @@ module BmcApi
     # (Write-only) Determines the approach for configuring private network(s) for the server being provisioned. Currently this field should be set to `USE_OR_CREATE_DEFAULT`, `USER_DEFINED` or `NONE`.
     attr_accessor :configuration_type
 
-    # The list of private networks this server is member of. When this field is part of request body, it'll be used to specify the private networks to assign to this server upon provisioning. Used alongside the `USER_DEFINED` configurationType.
+    # The list of private networks this server belongs to. If this field is part of a request body, it will be used for specifying the private networks to assign to this server upon provisioning. Used alongside the USER_DEFINED configurationType.
     attr_accessor :private_networks
 
     # Attribute mapping from ruby-style variable name to JSON key.
