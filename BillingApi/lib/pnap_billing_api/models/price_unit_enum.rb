@@ -21,9 +21,10 @@ module BillingApi
     UNIT = "UNIT".freeze
     FLAT = "FLAT".freeze
     TB_PER_HOUR = "TB_PER_HOUR".freeze
+    TB_PER_MONTH = "TB_PER_MONTH".freeze
 
     def self.all_vars
-      @all_vars ||= [HOUR, MONTH, GB, UNIT, FLAT, TB_PER_HOUR].freeze
+      @all_vars ||= [HOUR, MONTH, GB, UNIT, FLAT, TB_PER_HOUR, TB_PER_MONTH].freeze
     end
 
     # Builds the enum from string
