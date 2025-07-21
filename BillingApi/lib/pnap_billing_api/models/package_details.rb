@@ -14,36 +14,11 @@ require 'date'
 require 'time'
 
 module BillingApi
-  # Pricing plan details.
-  class PricingPlan
-    # The SKU identifying this pricing plan.
-    attr_accessor :sku
-
-    # Description of this pricing plan.
-    attr_accessor :sku_description
-
-    # The code identifying the location.
-    attr_accessor :location
-
-    # The pricing model.
-    attr_accessor :pricing_model
-
-    # The price per unit.
-    attr_accessor :price
-
-    attr_accessor :price_unit
-
-    attr_accessor :applicable_discounts
-
-    # Product code of the product this product is correlated with
-    attr_accessor :correlated_product_code
-
-    # Package size per month.
+  # Represents details object which contains package quantity and its unit.
+  class PackageDetails
     attr_accessor :package_quantity
 
     attr_accessor :package_unit
-
-    attr_accessor :package_details
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -70,17 +45,8 @@ module BillingApi
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'sku' => :'sku',
-        :'sku_description' => :'skuDescription',
-        :'location' => :'location',
-        :'pricing_model' => :'pricingModel',
-        :'price' => :'price',
-        :'price_unit' => :'priceUnit',
-        :'applicable_discounts' => :'applicableDiscounts',
-        :'correlated_product_code' => :'correlatedProductCode',
         :'package_quantity' => :'packageQuantity',
-        :'package_unit' => :'packageUnit',
-        :'package_details' => :'packageDetails'
+        :'package_unit' => :'packageUnit'
       }
     end
 
@@ -92,17 +58,8 @@ module BillingApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'sku' => :'String',
-        :'sku_description' => :'String',
-        :'location' => :'String',
-        :'pricing_model' => :'String',
-        :'price' => :'Float',
-        :'price_unit' => :'PriceUnitEnum',
-        :'applicable_discounts' => :'ApplicableDiscounts',
-        :'correlated_product_code' => :'String',
-        :'package_quantity' => :'Float',
-        :'package_unit' => :'PackageUnitEnum',
-        :'package_details' => :'PackageDetails'
+        :'package_quantity' => :'PackageQuantity',
+        :'package_unit' => :'PackageUnitEnum'
       }
     end
 
@@ -116,58 +73,16 @@ module BillingApi
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::PricingPlan` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BillingApi::PackageDetails` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::PricingPlan`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BillingApi::PackageDetails`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'sku')
-        self.sku = attributes[:'sku']
-      else
-        self.sku = nil
-      end
-
-      if attributes.key?(:'sku_description')
-        self.sku_description = attributes[:'sku_description']
-      end
-
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
-      else
-        self.location = nil
-      end
-
-      if attributes.key?(:'pricing_model')
-        self.pricing_model = attributes[:'pricing_model']
-      else
-        self.pricing_model = nil
-      end
-
-      if attributes.key?(:'price')
-        self.price = attributes[:'price']
-      else
-        self.price = nil
-      end
-
-      if attributes.key?(:'price_unit')
-        self.price_unit = attributes[:'price_unit']
-      else
-        self.price_unit = nil
-      end
-
-      if attributes.key?(:'applicable_discounts')
-        self.applicable_discounts = attributes[:'applicable_discounts']
-      end
-
-      if attributes.key?(:'correlated_product_code')
-        self.correlated_product_code = attributes[:'correlated_product_code']
-      end
 
       if attributes.key?(:'package_quantity')
         self.package_quantity = attributes[:'package_quantity']
@@ -176,10 +91,6 @@ module BillingApi
       if attributes.key?(:'package_unit')
         self.package_unit = attributes[:'package_unit']
       end
-
-      if attributes.key?(:'package_details')
-        self.package_details = attributes[:'package_details']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -187,26 +98,6 @@ module BillingApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @sku.nil?
-        invalid_properties.push('invalid value for "sku", sku cannot be nil.')
-      end
-
-      if @location.nil?
-        invalid_properties.push('invalid value for "location", location cannot be nil.')
-      end
-
-      if @pricing_model.nil?
-        invalid_properties.push('invalid value for "pricing_model", pricing_model cannot be nil.')
-      end
-
-      if @price.nil?
-        invalid_properties.push('invalid value for "price", price cannot be nil.')
-      end
-
-      if @price_unit.nil?
-        invalid_properties.push('invalid value for "price_unit", price_unit cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -214,36 +105,7 @@ module BillingApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @sku.nil?
-      return false if @location.nil?
-      location_validator = EnumAttributeValidator.new('String', ["PHX", "ASH", "NLD", "SGP", "CHI", "SEA", "AUS", "GLOBAL"])
-      return false unless location_validator.valid?(@location)
-      return false if @pricing_model.nil?
-      pricing_model_validator = EnumAttributeValidator.new('String', ["HOURLY", "METERED", "ONE_MONTH_RESERVATION", "TWELVE_MONTHS_RESERVATION", "TWENTY_FOUR_MONTHS_RESERVATION", "THIRTY_SIX_MONTHS_RESERVATION", "MONTHLY_PACKAGE", "FREE_TIER"])
-      return false unless pricing_model_validator.valid?(@pricing_model)
-      return false if @price.nil?
-      return false if @price_unit.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] location Object to be assigned
-    def location=(location)
-      validator = EnumAttributeValidator.new('String', ["PHX", "ASH", "NLD", "SGP", "CHI", "SEA", "AUS", "GLOBAL"])
-      unless validator.valid?(location)
-        fail ArgumentError, "invalid value for \"location\", must be one of #{validator.allowable_values}."
-      end
-      @location = location
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] pricing_model Object to be assigned
-    def pricing_model=(pricing_model)
-      validator = EnumAttributeValidator.new('String', ["HOURLY", "METERED", "ONE_MONTH_RESERVATION", "TWELVE_MONTHS_RESERVATION", "TWENTY_FOUR_MONTHS_RESERVATION", "THIRTY_SIX_MONTHS_RESERVATION", "MONTHLY_PACKAGE", "FREE_TIER"])
-      unless validator.valid?(pricing_model)
-        fail ArgumentError, "invalid value for \"pricing_model\", must be one of #{validator.allowable_values}."
-      end
-      @pricing_model = pricing_model
     end
 
     # Checks equality by comparing each attribute.
@@ -251,17 +113,8 @@ module BillingApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          sku == o.sku &&
-          sku_description == o.sku_description &&
-          location == o.location &&
-          pricing_model == o.pricing_model &&
-          price == o.price &&
-          price_unit == o.price_unit &&
-          applicable_discounts == o.applicable_discounts &&
-          correlated_product_code == o.correlated_product_code &&
           package_quantity == o.package_quantity &&
-          package_unit == o.package_unit &&
-          package_details == o.package_details
+          package_unit == o.package_unit
     end
 
     # @see the `==` method
@@ -273,7 +126,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sku, sku_description, location, pricing_model, price, price_unit, applicable_discounts, correlated_product_code, package_quantity, package_unit, package_details].hash
+      [package_quantity, package_unit].hash
     end
 
     # Builds the object from hash
