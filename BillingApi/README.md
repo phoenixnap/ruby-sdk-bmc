@@ -186,6 +186,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::SystemCreditCauseEnum](docs/SystemCreditCauseEnum.md)
  - [BillingApi::SystemCreditDetails](docs/SystemCreditDetails.md)
  - [BillingApi::ThresholdConfigurationDetails](docs/ThresholdConfigurationDetails.md)
+ - [BillingApi::Utilization](docs/Utilization.md)
 
 
 ## Documentation for Authorization

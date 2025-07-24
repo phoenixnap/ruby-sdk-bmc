@@ -17,9 +17,10 @@ module BillingApi
   class ReservationProductCategoryEnum
     SERVER = "server".freeze
     BANDWIDTH = "bandwidth".freeze
+    STORAGE = "storage".freeze
 
     def self.all_vars
-      @all_vars ||= [SERVER, BANDWIDTH].freeze
+      @all_vars ||= [SERVER, BANDWIDTH, STORAGE].freeze
     end
 
     # Builds the enum from string

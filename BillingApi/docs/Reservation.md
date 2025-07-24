@@ -22,6 +22,7 @@
 | **price_unit** | [**PriceUnitEnum**](PriceUnitEnum.md) |  |  |
 | **assigned_resource_id** | **String** | The resource ID currently being assigned to Reservation. | [optional] |
 | **next_billing_date** | **Date** | Next billing date for Reservation. | [optional] |
+| **utilization** | [**Utilization**](Utilization.md) |  | [optional] |
 
 ## Example
 
@@ -46,7 +47,8 @@ instance = BillingApi::Reservation.new(
   price: 175,
   price_unit: null,
   assigned_resource_id: 83604275-bdba-490a-b87a-978e8dffdb14,
-  next_billing_date: Sun Apr 19 00:00:00 UTC 2020
+  next_billing_date: Sun Apr 19 00:00:00 UTC 2020,
+  utilization: null
 )
 ```
 

@@ -66,6 +66,7 @@ require 'pnap_billing_api/models/storage_record'
 require 'pnap_billing_api/models/system_credit_cause_enum'
 require 'pnap_billing_api/models/system_credit_details'
 require 'pnap_billing_api/models/threshold_configuration_details'
+require 'pnap_billing_api/models/utilization'
 
 # APIs
 require 'pnap_billing_api/api/billing_configurations_api'
