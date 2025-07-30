@@ -19,10 +19,13 @@ module BillingApi
     # The sku code of product pricing plan.
     attr_accessor :sku
 
+    attr_accessor :quantity
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'sku' => :'sku'
+        :'sku' => :'sku',
+        :'quantity' => :'quantity'
       }
     end
 
@@ -34,7 +37,8 @@ module BillingApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'sku' => :'String'
+        :'sku' => :'String',
+        :'quantity' => :'Quantity'
       }
     end
 
@@ -64,6 +68,10 @@ module BillingApi
       else
         self.sku = nil
       end
+
+      if attributes.key?(:'quantity')
+        self.quantity = attributes[:'quantity']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -91,7 +99,8 @@ module BillingApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          sku == o.sku
+          sku == o.sku &&
+          quantity == o.quantity
     end
 
     # @see the `==` method
@@ -103,7 +112,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sku].hash
+      [sku, quantity].hash
     end
 
     # Builds the object from hash
