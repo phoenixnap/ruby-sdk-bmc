@@ -19,10 +19,14 @@ module BmcApi
     # List of IPs allowed for RDP access to Windows OS. Supported in single IP, CIDR and range format. When undefined, RDP is disabled. To allow RDP access from any IP use 0.0.0.0/0. This will only be returned in response to provisioning a server.
     attr_accessor :rdp_allowed_ips
 
+    # Use a Bring Your Own (BYO) Windows license.  If true, the server is provisioned in trial mode, and you must activate your own license.  If false (default), the server includes a managed Windows license billed by the platform. 
+    attr_accessor :bring_your_own_license
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'rdp_allowed_ips' => :'rdpAllowedIps'
+        :'rdp_allowed_ips' => :'rdpAllowedIps',
+        :'bring_your_own_license' => :'bringYourOwnLicense'
       }
     end
 
@@ -34,7 +38,8 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'rdp_allowed_ips' => :'Array<String>'
+        :'rdp_allowed_ips' => :'Array<String>',
+        :'bring_your_own_license' => :'Boolean'
       }
     end
 
@@ -63,6 +68,12 @@ module BmcApi
         if (value = attributes[:'rdp_allowed_ips']).is_a?(Array)
           self.rdp_allowed_ips = value
         end
+      end
+
+      if attributes.key?(:'bring_your_own_license')
+        self.bring_your_own_license = attributes[:'bring_your_own_license']
+      else
+        self.bring_your_own_license = false
       end
     end
 
@@ -105,7 +116,8 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          rdp_allowed_ips == o.rdp_allowed_ips
+          rdp_allowed_ips == o.rdp_allowed_ips &&
+          bring_your_own_license == o.bring_your_own_license
     end
 
     # @see the `==` method
@@ -117,7 +129,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [rdp_allowed_ips].hash
+      [rdp_allowed_ips, bring_your_own_license].hash
     end
 
     # Builds the object from hash
