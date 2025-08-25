@@ -258,14 +258,10 @@ module BillingApi
 
       if attributes.key?(:'usage_session_id')
         self.usage_session_id = attributes[:'usage_session_id']
-      else
-        self.usage_session_id = nil
       end
 
       if attributes.key?(:'correlation_id')
         self.correlation_id = attributes[:'correlation_id']
-      else
-        self.correlation_id = nil
       end
 
       if attributes.key?(:'reservation_id')
@@ -336,14 +332,6 @@ module BillingApi
         invalid_properties.push('invalid value for "active", active cannot be nil.')
       end
 
-      if @usage_session_id.nil?
-        invalid_properties.push('invalid value for "usage_session_id", usage_session_id cannot be nil.')
-      end
-
-      if @correlation_id.nil?
-        invalid_properties.push('invalid value for "correlation_id", correlation_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -363,8 +351,6 @@ module BillingApi
       return false if @unit_price_description.nil?
       return false if @quantity.nil?
       return false if @active.nil?
-      return false if @usage_session_id.nil?
-      return false if @correlation_id.nil?
       true
     end
 

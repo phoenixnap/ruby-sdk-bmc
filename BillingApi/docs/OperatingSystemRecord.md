@@ -19,8 +19,8 @@
 | **unit_price_description** | **String** | User friendly description of the unit price. |  |
 | **quantity** | **Float** | The number of units being charged. |  |
 | **active** | **Boolean** | A flag indicating whether the rated usage record is still active. |  |
-| **usage_session_id** | **String** | The usage session ID is used to correlate rated usage records across periods of time. For example, a server used for over a month will generate multiple rated usage records. The entire usage session cost can be computed by aggregating the records having the same usage session ID. It is usual to have one rated usage record per month or invoice. |  |
-| **correlation_id** | **String** | Holds usage record id |  |
+| **usage_session_id** | **String** | The usage session ID is used to correlate rated usage records across periods of time. For example, a server used for over a month will generate multiple rated usage records. The entire usage session cost can be computed by aggregating the records having the same usage session ID. It is usual to have one rated usage record per month or invoice. | [optional] |
+| **correlation_id** | **String** | Holds usage record id | [optional] |
 | **reservation_id** | **String** | Reservation id associated with this rated usage record. | [optional] |
 | **discount_details** | [**ApplicableDiscountDetails**](ApplicableDiscountDetails.md) |  | [optional] |
 | **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
