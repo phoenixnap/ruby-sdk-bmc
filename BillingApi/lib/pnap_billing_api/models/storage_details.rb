@@ -86,26 +86,18 @@ module BillingApi
 
       if attributes.key?(:'network_storage_id')
         self.network_storage_id = attributes[:'network_storage_id']
-      else
-        self.network_storage_id = nil
       end
 
       if attributes.key?(:'network_storage_name')
         self.network_storage_name = attributes[:'network_storage_name']
-      else
-        self.network_storage_name = nil
       end
 
       if attributes.key?(:'volume_id')
         self.volume_id = attributes[:'volume_id']
-      else
-        self.volume_id = nil
       end
 
       if attributes.key?(:'volume_name')
         self.volume_name = attributes[:'volume_name']
-      else
-        self.volume_name = nil
       end
 
       if attributes.key?(:'capacity_in_gb')
@@ -116,8 +108,6 @@ module BillingApi
 
       if attributes.key?(:'created_on')
         self.created_on = attributes[:'created_on']
-      else
-        self.created_on = nil
       end
     end
 
@@ -126,28 +116,8 @@ module BillingApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @network_storage_id.nil?
-        invalid_properties.push('invalid value for "network_storage_id", network_storage_id cannot be nil.')
-      end
-
-      if @network_storage_name.nil?
-        invalid_properties.push('invalid value for "network_storage_name", network_storage_name cannot be nil.')
-      end
-
-      if @volume_id.nil?
-        invalid_properties.push('invalid value for "volume_id", volume_id cannot be nil.')
-      end
-
-      if @volume_name.nil?
-        invalid_properties.push('invalid value for "volume_name", volume_name cannot be nil.')
-      end
-
       if @capacity_in_gb.nil?
         invalid_properties.push('invalid value for "capacity_in_gb", capacity_in_gb cannot be nil.')
-      end
-
-      if @created_on.nil?
-        invalid_properties.push('invalid value for "created_on", created_on cannot be nil.')
       end
 
       invalid_properties
@@ -157,12 +127,7 @@ module BillingApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @network_storage_id.nil?
-      return false if @network_storage_name.nil?
-      return false if @volume_id.nil?
-      return false if @volume_name.nil?
       return false if @capacity_in_gb.nil?
-      return false if @created_on.nil?
       true
     end
 

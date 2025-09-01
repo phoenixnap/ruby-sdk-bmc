@@ -290,6 +290,8 @@ module BillingApi
 
       if attributes.key?(:'metadata')
         self.metadata = attributes[:'metadata']
+      else
+        self.metadata = nil
       end
     end
 
@@ -346,6 +348,10 @@ module BillingApi
         invalid_properties.push('invalid value for "active", active cannot be nil.')
       end
 
+      if @metadata.nil?
+        invalid_properties.push('invalid value for "metadata", metadata cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -365,6 +371,7 @@ module BillingApi
       return false if @unit_price_description.nil?
       return false if @quantity.nil?
       return false if @active.nil?
+      return false if @metadata.nil?
       true
     end
 

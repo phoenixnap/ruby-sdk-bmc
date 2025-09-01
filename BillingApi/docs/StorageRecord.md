@@ -24,7 +24,7 @@
 | **reservation_id** | **String** | Reservation id associated with this rated usage record. | [optional] |
 | **discount_details** | [**ApplicableDiscountDetails**](ApplicableDiscountDetails.md) |  | [optional] |
 | **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
-| **metadata** | [**StorageDetails**](StorageDetails.md) |  | [optional] |
+| **metadata** | [**StorageDetails**](StorageDetails.md) |  |  |
 
 ## Example
 
