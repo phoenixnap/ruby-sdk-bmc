@@ -16,12 +16,14 @@ require 'time'
 module BillingApi
   class ReservationStateEnum
     REQUESTED = "REQUESTED".freeze
-    NOT_APPROVED = "NOT_APPROVED".freeze
+    DECLINED = "DECLINED".freeze
+    IN_REVIEW = "IN_REVIEW".freeze
+    SETTING_UP = "SETTING_UP".freeze
     ACTIVE = "ACTIVE".freeze
     EXPIRED = "EXPIRED".freeze
 
     def self.all_vars
-      @all_vars ||= [REQUESTED, NOT_APPROVED, ACTIVE, EXPIRED].freeze
+      @all_vars ||= [REQUESTED, DECLINED, IN_REVIEW, SETTING_UP, ACTIVE, EXPIRED].freeze
     end
 
     # Builds the enum from string
