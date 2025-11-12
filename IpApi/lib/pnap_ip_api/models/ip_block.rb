@@ -19,7 +19,7 @@ module IpApi
     # IP Block identifier.
     attr_accessor :id
 
-    # IP Block location ID. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
+    # IP Block location ID. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI` or `SEA`.
     attr_accessor :location
 
     # CIDR IP Block Size. Currently this field should be set to either `/31`, `/30`, `/29`, `/28`, `/27`, `/26`, `/25`, `/24`, `/23` or `/22`.

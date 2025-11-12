@@ -25,7 +25,7 @@ module RancherApi
     # Cluster description.
     attr_accessor :description
 
-    # Deployment location. Cannot be changed once a cluster is created. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` or `AUS`.
+    # Deployment location. Cannot be changed once a cluster is created. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI` or `SEA`.
     attr_accessor :location
 
     # (Read-only) The Rancher version that was installed on the cluster during the first creation process.

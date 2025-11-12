@@ -22,7 +22,7 @@ module NetworkApi
     # The BGP Peer Group status. Can have one of the following values: `PENDING`, `ON_HOLD`, `BUSY`, `READY`, `ERROR`, `PENDING_DELETION` and `DELETING`.
     attr_accessor :status
 
-    # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
+    # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI` and `SEA`.
     attr_accessor :location
 
     # The List of the BGP Peer Group IPv4 prefixes. Deprecated in favour of generic ipPrefixes.

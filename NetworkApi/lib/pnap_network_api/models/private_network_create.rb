@@ -22,7 +22,7 @@ module NetworkApi
     # The description of this private network.
     attr_accessor :description
 
-    # The location of this private network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
+    # The location of this private network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI` and `SEA`.
     attr_accessor :location
 
     # Identifies network as the default private network for the specified location.

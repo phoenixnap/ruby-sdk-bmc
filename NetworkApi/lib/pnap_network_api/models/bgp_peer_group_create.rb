@@ -16,7 +16,7 @@ require 'time'
 module NetworkApi
   # Create a BGP Peer Group.
   class BgpPeerGroupCreate
-    # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI`, `SEA` and `AUS`.
+    # The BGP Peer Group location. Can have one of the following values: `PHX`, `ASH`, `SGP`, `NLD`, `CHI` and `SEA`.
     attr_accessor :location
 
     # The BGP Peer Group ASN.
