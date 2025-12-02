@@ -12,7 +12,7 @@
 require 'pnap_bmc_api'
 
 instance = BmcApi::OsConfigurationCloudInit.new(
-  user_data: [B@114a5e0
+  user_data: [B@2d7637e6
 )
 ```
 

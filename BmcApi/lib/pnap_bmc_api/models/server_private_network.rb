@@ -28,13 +28,17 @@ module BmcApi
     # (Read-only) The status of the network.
     attr_accessor :status_description
 
+    # (Read-only) The VLAN on which this network has been configured within the network switch.
+    attr_accessor :vlan_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'ips' => :'ips',
         :'dhcp' => :'dhcp',
-        :'status_description' => :'statusDescription'
+        :'status_description' => :'statusDescription',
+        :'vlan_id' => :'vlanId'
       }
     end
 
@@ -49,7 +53,8 @@ module BmcApi
         :'id' => :'String',
         :'ips' => :'Array<String>',
         :'dhcp' => :'Boolean',
-        :'status_description' => :'String'
+        :'status_description' => :'String',
+        :'vlan_id' => :'Integer'
       }
     end
 
@@ -94,6 +99,10 @@ module BmcApi
 
       if attributes.key?(:'status_description')
         self.status_description = attributes[:'status_description']
+      end
+
+      if attributes.key?(:'vlan_id')
+        self.vlan_id = attributes[:'vlan_id']
       end
     end
 
@@ -144,7 +153,8 @@ module BmcApi
           id == o.id &&
           ips == o.ips &&
           dhcp == o.dhcp &&
-          status_description == o.status_description
+          status_description == o.status_description &&
+          vlan_id == o.vlan_id
     end
 
     # @see the `==` method
@@ -156,7 +166,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips, dhcp, status_description].hash
+      [id, ips, dhcp, status_description, vlan_id].hash
     end
 
     # Builds the object from hash

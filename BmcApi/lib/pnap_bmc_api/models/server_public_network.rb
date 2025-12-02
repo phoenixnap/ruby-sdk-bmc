@@ -28,13 +28,17 @@ module BmcApi
     # (Write-only) Requests Stateless Address Autoconfiguration (SLAAC). Applicable for Network which contains IPv6 block(s).
     attr_accessor :compute_slaac_ip
 
+    # (Read-only) The VLAN on which this network has been configured within the network switch.
+    attr_accessor :vlan_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'ips' => :'ips',
         :'status_description' => :'statusDescription',
-        :'compute_slaac_ip' => :'computeSlaacIp'
+        :'compute_slaac_ip' => :'computeSlaacIp',
+        :'vlan_id' => :'vlanId'
       }
     end
 
@@ -49,7 +53,8 @@ module BmcApi
         :'id' => :'String',
         :'ips' => :'Array<String>',
         :'status_description' => :'String',
-        :'compute_slaac_ip' => :'Boolean'
+        :'compute_slaac_ip' => :'Boolean',
+        :'vlan_id' => :'Integer'
       }
     end
 
@@ -93,6 +98,10 @@ module BmcApi
       if attributes.key?(:'compute_slaac_ip')
         self.compute_slaac_ip = attributes[:'compute_slaac_ip']
       end
+
+      if attributes.key?(:'vlan_id')
+        self.vlan_id = attributes[:'vlan_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -123,7 +132,8 @@ module BmcApi
           id == o.id &&
           ips == o.ips &&
           status_description == o.status_description &&
-          compute_slaac_ip == o.compute_slaac_ip
+          compute_slaac_ip == o.compute_slaac_ip &&
+          vlan_id == o.vlan_id
     end
 
     # @see the `==` method
@@ -135,7 +145,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, ips, status_description, compute_slaac_ip].hash
+      [id, ips, status_description, compute_slaac_ip, vlan_id].hash
     end
 
     # Builds the object from hash
