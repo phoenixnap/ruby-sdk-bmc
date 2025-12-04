@@ -22,6 +22,7 @@
 | **usage_session_id** | **String** | The usage session ID is used to correlate rated usage records across periods of time. For example, a server used for over a month will generate multiple rated usage records. The entire usage session cost can be computed by aggregating the records having the same usage session ID. It is usual to have one rated usage record per month or invoice. | [optional] |
 | **correlation_id** | **String** | Holds usage record id | [optional] |
 | **reservation_id** | **String** | Reservation id associated with this rated usage record. | [optional] |
+| **reservation_details** | [**ReservationDetails**](ReservationDetails.md) |  | [optional] |
 | **discount_details** | [**ApplicableDiscountDetails**](ApplicableDiscountDetails.md) |  | [optional] |
 | **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
 | **metadata** | [**BandwidthDetails**](BandwidthDetails.md) |  |  |
@@ -50,6 +51,7 @@ instance = BillingApi::BandwidthRecord.new(
   usage_session_id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
   correlation_id: ec4a9d49-1cef-49e9-b85e-b560f88bcd26,
   reservation_id: c32a24a1-5949-4b60-99c0-c8aaa3a92b04,
+  reservation_details: null,
   discount_details: null,
   credit_details: null,
   metadata: null

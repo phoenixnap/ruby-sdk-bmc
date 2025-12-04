@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::RatedUsageRecord](docs/RatedUsageRecord.md)
  - [BillingApi::Reservation](docs/Reservation.md)
  - [BillingApi::ReservationAutoRenewDisableRequest](docs/ReservationAutoRenewDisableRequest.md)
+ - [BillingApi::ReservationDetails](docs/ReservationDetails.md)
  - [BillingApi::ReservationInvoicingModelEnum](docs/ReservationInvoicingModelEnum.md)
  - [BillingApi::ReservationModelEnum](docs/ReservationModelEnum.md)
  - [BillingApi::ReservationProductCategoryEnum](docs/ReservationProductCategoryEnum.md)

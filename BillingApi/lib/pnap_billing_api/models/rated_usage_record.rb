@@ -68,6 +68,8 @@ module BillingApi
     # Reservation id associated with this rated usage record.
     attr_accessor :reservation_id
 
+    attr_accessor :reservation_details
+
     attr_accessor :discount_details
 
     attr_accessor :credit_details
@@ -115,6 +117,7 @@ module BillingApi
         :'usage_session_id' => :'usageSessionId',
         :'correlation_id' => :'correlationId',
         :'reservation_id' => :'reservationId',
+        :'reservation_details' => :'reservationDetails',
         :'discount_details' => :'discountDetails',
         :'credit_details' => :'creditDetails'
       }
@@ -146,6 +149,7 @@ module BillingApi
         :'usage_session_id' => :'String',
         :'correlation_id' => :'String',
         :'reservation_id' => :'String',
+        :'reservation_details' => :'ReservationDetails',
         :'discount_details' => :'ApplicableDiscountDetails',
         :'credit_details' => :'Array<CreditDetails>'
       }
@@ -268,6 +272,10 @@ module BillingApi
         self.reservation_id = attributes[:'reservation_id']
       end
 
+      if attributes.key?(:'reservation_details')
+        self.reservation_details = attributes[:'reservation_details']
+      end
+
       if attributes.key?(:'discount_details')
         self.discount_details = attributes[:'discount_details']
       end
@@ -377,6 +385,7 @@ module BillingApi
           usage_session_id == o.usage_session_id &&
           correlation_id == o.correlation_id &&
           reservation_id == o.reservation_id &&
+          reservation_details == o.reservation_details &&
           discount_details == o.discount_details &&
           credit_details == o.credit_details
     end
@@ -390,7 +399,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, discount_details, credit_details].hash
+      [id, product_category, product_code, location, year_month, start_date_time, end_date_time, cost, cost_before_discount, cost_description, price_model, unit_price, unit_price_description, quantity, active, usage_session_id, correlation_id, reservation_id, reservation_details, discount_details, credit_details].hash
     end
 
     # Builds the object from hash
