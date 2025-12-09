@@ -36,7 +36,7 @@ describe 'LocationsApi' do
   # Get All Locations
   # Retrieve the locations info.
   # @param [Hash] opts the optional parameters
-  # @option opts [LocationEnum] :location Location of interest
+  # @option opts [ProductLocationEnum] :location Location of interest
   # @option opts [ProductCategoryEnum] :product_category Product category of interest
   # @return [Array<Location>]
   describe 'get_locations test' do

@@ -23,7 +23,7 @@ require 'pnap_location_api'
 
 api_instance = LocationApi::LocationsApi.new
 opts = {
-  location: LocationApi::LocationEnum::PHX, # LocationEnum | Location of interest
+  location: LocationApi::ProductLocationEnum::PHX, # ProductLocationEnum | Location of interest
   product_category: LocationApi::ProductCategoryEnum::SERVER # ProductCategoryEnum | Product category of interest
 }
 
@@ -58,7 +58,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **location** | [**LocationEnum**](.md) | Location of interest | [optional] |
+| **location** | [**ProductLocationEnum**](.md) | Location of interest | [optional] |
 | **product_category** | [**ProductCategoryEnum**](.md) | Product category of interest | [optional] |
 
 ### Return type

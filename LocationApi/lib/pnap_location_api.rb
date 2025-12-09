@@ -19,9 +19,9 @@ require 'pnap_location_api/configuration'
 # Models
 require 'pnap_location_api/models/error'
 require 'pnap_location_api/models/location'
-require 'pnap_location_api/models/location_enum'
 require 'pnap_location_api/models/product_category'
 require 'pnap_location_api/models/product_category_enum'
+require 'pnap_location_api/models/product_location_enum'
 
 # APIs
 require 'pnap_location_api/api/locations_api'

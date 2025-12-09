@@ -1,4 +1,4 @@
-# LocationApi::LocationEnum
+# BillingApi::ProductLocationEnum
 
 ## Properties
 
@@ -8,8 +8,8 @@
 ## Example
 
 ```ruby
-require 'pnap_location_api'
+require 'pnap_billing_api'
 
-instance = LocationApi::LocationEnum.new()
+instance = BillingApi::ProductLocationEnum.new()
 ```
 

@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
  - [BillingApi::Product](docs/Product.md)
  - [BillingApi::ProductAvailability](docs/ProductAvailability.md)
  - [BillingApi::ProductCategoryEnum](docs/ProductCategoryEnum.md)
+ - [BillingApi::ProductLocationEnum](docs/ProductLocationEnum.md)
  - [BillingApi::ProductsGet200ResponseInner](docs/ProductsGet200ResponseInner.md)
  - [BillingApi::PromoCreditDetails](docs/PromoCreditDetails.md)
  - [BillingApi::PublicSubnetDetails](docs/PublicSubnetDetails.md)

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **location** | [**LocationEnum**](LocationEnum.md) |  |  |
+| **location** | [**ProductLocationEnum**](ProductLocationEnum.md) |  |  |
 | **location_description** | **String** |  | [optional] |
 | **product_categories** | [**Array&lt;ProductCategory&gt;**](ProductCategory.md) |  | [optional] |
 

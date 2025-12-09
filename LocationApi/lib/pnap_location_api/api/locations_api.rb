@@ -22,7 +22,7 @@ module LocationApi
     # Get All Locations
     # Retrieve the locations info.
     # @param [Hash] opts the optional parameters
-    # @option opts [LocationEnum] :location Location of interest
+    # @option opts [ProductLocationEnum] :location Location of interest
     # @option opts [ProductCategoryEnum] :product_category Product category of interest
     # @return [Array<Location>]
     def get_locations(opts = {})
@@ -33,7 +33,7 @@ module LocationApi
     # Get All Locations
     # Retrieve the locations info.
     # @param [Hash] opts the optional parameters
-    # @option opts [LocationEnum] :location Location of interest
+    # @option opts [ProductLocationEnum] :location Location of interest
     # @option opts [ProductCategoryEnum] :product_category Product category of interest
     # @return [Array<(Array<Location>, Integer, Hash)>] Array<Location> data, response status code and response headers
     def get_locations_with_http_info(opts = {})

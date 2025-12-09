@@ -71,7 +71,7 @@ module BillingApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'location' => :'LocationEnum',
+        :'location' => :'ProductLocationEnum',
         :'min_quantity_requested' => :'Float',
         :'min_quantity_available' => :'Boolean',
         :'available_quantity' => :'Float',

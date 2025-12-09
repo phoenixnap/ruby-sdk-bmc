@@ -25,7 +25,7 @@ module BillingApi
     # @option opts [Array<String>] :product_category Product category. Currently only SERVER category is supported.
     # @option opts [Array<String>] :product_code 
     # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered. (default to true)
-    # @option opts [Array<LocationEnum>] :location 
+    # @option opts [Array<ProductLocationEnum>] :location 
     # @option opts [Array<String>] :solution 
     # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
     # @return [Array<ProductAvailability>]
@@ -40,7 +40,7 @@ module BillingApi
     # @option opts [Array<String>] :product_category Product category. Currently only SERVER category is supported.
     # @option opts [Array<String>] :product_code 
     # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered. (default to true)
-    # @option opts [Array<LocationEnum>] :location 
+    # @option opts [Array<ProductLocationEnum>] :location 
     # @option opts [Array<String>] :solution 
     # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
     # @return [Array<(Array<ProductAvailability>, Integer, Hash)>] Array<ProductAvailability> data, response status code and response headers

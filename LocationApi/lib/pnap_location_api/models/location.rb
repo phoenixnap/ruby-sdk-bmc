@@ -61,7 +61,7 @@ module LocationApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'location' => :'LocationEnum',
+        :'location' => :'ProductLocationEnum',
         :'location_description' => :'String',
         :'product_categories' => :'Array<ProductCategory>'
       }
