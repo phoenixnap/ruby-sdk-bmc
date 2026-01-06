@@ -1280,6 +1280,7 @@ components:
           $ref: '#/components/schemas/Quantity'
       required:
         - sku
+        - quantity
     ReservationAutoRenewDisableRequest:
       description: Disabling auto-renewal for reservation request.
       type: object

@@ -71,6 +71,8 @@ module BillingApi
 
       if attributes.key?(:'quantity')
         self.quantity = attributes[:'quantity']
+      else
+        self.quantity = nil
       end
     end
 
@@ -83,6 +85,10 @@ module BillingApi
         invalid_properties.push('invalid value for "sku", sku cannot be nil.')
       end
 
+      if @quantity.nil?
+        invalid_properties.push('invalid value for "quantity", quantity cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -91,6 +97,7 @@ module BillingApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @sku.nil?
+      return false if @quantity.nil?
       true
     end
 

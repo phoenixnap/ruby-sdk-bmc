@@ -104,7 +104,7 @@ end
 
 api_instance = BillingApi::ReservationsApi.new
 opts = {
-  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX'}) # ReservationRequest | 
+  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
 }
 
 begin
@@ -318,7 +318,7 @@ end
 api_instance = BillingApi::ReservationsApi.new
 id = 'd90bbea9-5725-47ce-879e-d3905bafac2a' # String | Resource id.
 opts = {
-  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX'}) # ReservationRequest | 
+  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
 }
 
 begin

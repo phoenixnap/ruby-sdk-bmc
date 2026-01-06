@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **sku** | **String** | The sku code of product pricing plan. |  |
-| **quantity** | [**Quantity**](Quantity.md) |  | [optional] |
+| **quantity** | [**Quantity**](Quantity.md) |  |  |
 
 ## Example
 
