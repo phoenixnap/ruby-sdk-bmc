@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | The reservation identifier. |  |
-| **product_code** | **String** | The code identifying the product. This code has significant across all locations. |  |
+| **product_code** | **String** | The code identifying the product. The same code is used for this product across all locations. |  |
 | **product_category** | [**ReservationProductCategoryEnum**](ReservationProductCategoryEnum.md) |  |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **reservation_model** | [**ReservationModelEnum**](ReservationModelEnum.md) |  |  |

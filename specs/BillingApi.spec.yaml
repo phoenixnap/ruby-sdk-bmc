@@ -1195,7 +1195,7 @@ components:
           type: string
           example: 83604275-bdba-490a-b87a-978e8dffdb14
         productCode:
-          description: The code identifying the product. This code has significant across all locations.
+          description: The code identifying the product. The same code is used for this product across all locations.
           type: string
           example: s1.c1.small
         productCategory:

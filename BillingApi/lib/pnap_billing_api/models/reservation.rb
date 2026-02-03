@@ -19,7 +19,7 @@ module BillingApi
     # The reservation identifier.
     attr_accessor :id
 
-    # The code identifying the product. This code has significant across all locations.
+    # The code identifying the product. The same code is used for this product across all locations.
     attr_accessor :product_code
 
     attr_accessor :product_category
