@@ -1156,7 +1156,23 @@ components:
         - TWELVE_MONTHS_RESERVATION
         - TWENTY_FOUR_MONTHS_RESERVATION
         - THIRTY_SIX_MONTHS_RESERVATION
+        - CUSTOM_TERM
         - FREE_TIER
+      example: ONE_MONTH_RESERVATION
+    ReservationTerm:
+      type: object
+      description: The Reservation term.
+      properties:
+        lengthInMonths:
+          description: Term's length, expressed in months.
+          type: integer
+          format: int32
+          example: 12
+        reservationModel:
+          $ref: '#/components/schemas/ReservationModelEnum'
+      required:
+        - lengthInMonths
+        - reservationModel
     ReservationStateEnum:
       description: Reservation state.
       type: string
@@ -1203,7 +1219,11 @@ components:
         location:
           $ref: '#/components/schemas/LocationEnum'
         reservationModel:
-          $ref: '#/components/schemas/ReservationModelEnum'
+          allOf:
+            - $ref: '#/components/schemas/ReservationModelEnum'
+          deprecated: true
+        term:
+          $ref: '#/components/schemas/ReservationTerm'
         reservationState:
           $ref: '#/components/schemas/ReservationStateEnum'
         initialInvoiceModel:

@@ -9,6 +9,7 @@
 | **product_category** | [**ReservationProductCategoryEnum**](ReservationProductCategoryEnum.md) |  |  |
 | **location** | [**LocationEnum**](LocationEnum.md) |  |  |
 | **reservation_model** | [**ReservationModelEnum**](ReservationModelEnum.md) |  |  |
+| **term** | [**ReservationTerm**](ReservationTerm.md) |  | [optional] |
 | **reservation_state** | [**ReservationStateEnum**](ReservationStateEnum.md) |  |  |
 | **initial_invoice_model** | [**ReservationInvoicingModelEnum**](ReservationInvoicingModelEnum.md) |  | [optional] |
 | **quantity** | [**Quantity**](Quantity.md) |  |  |
@@ -35,6 +36,7 @@ instance = BillingApi::Reservation.new(
   product_category: null,
   location: null,
   reservation_model: null,
+  term: null,
   reservation_state: null,
   initial_invoice_model: null,
   quantity: null,

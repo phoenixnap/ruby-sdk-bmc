@@ -28,6 +28,8 @@ module BillingApi
 
     attr_accessor :reservation_model
 
+    attr_accessor :term
+
     attr_accessor :reservation_state
 
     attr_accessor :initial_invoice_model
@@ -95,6 +97,7 @@ module BillingApi
         :'product_category' => :'productCategory',
         :'location' => :'location',
         :'reservation_model' => :'reservationModel',
+        :'term' => :'term',
         :'reservation_state' => :'reservationState',
         :'initial_invoice_model' => :'initialInvoiceModel',
         :'quantity' => :'quantity',
@@ -125,6 +128,7 @@ module BillingApi
         :'product_category' => :'ReservationProductCategoryEnum',
         :'location' => :'LocationEnum',
         :'reservation_model' => :'ReservationModelEnum',
+        :'term' => :'ReservationTerm',
         :'reservation_state' => :'ReservationStateEnum',
         :'initial_invoice_model' => :'ReservationInvoicingModelEnum',
         :'quantity' => :'Quantity',
@@ -191,6 +195,10 @@ module BillingApi
         self.reservation_model = attributes[:'reservation_model']
       else
         self.reservation_model = nil
+      end
+
+      if attributes.key?(:'term')
+        self.term = attributes[:'term']
       end
 
       if attributes.key?(:'reservation_state')
@@ -349,6 +357,7 @@ module BillingApi
           product_category == o.product_category &&
           location == o.location &&
           reservation_model == o.reservation_model &&
+          term == o.term &&
           reservation_state == o.reservation_state &&
           initial_invoice_model == o.initial_invoice_model &&
           quantity == o.quantity &&
@@ -374,7 +383,7 @@ module BillingApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, product_code, product_category, location, reservation_model, reservation_state, initial_invoice_model, quantity, start_date_time, end_date_time, last_renewal_date_time, next_renewal_date_time, auto_renew, sku, price, price_unit, assigned_resource_id, next_billing_date, utilization].hash
+      [id, product_code, product_category, location, reservation_model, term, reservation_state, initial_invoice_model, quantity, start_date_time, end_date_time, last_renewal_date_time, next_renewal_date_time, auto_renew, sku, price, price_unit, assigned_resource_id, next_billing_date, utilization].hash
     end
 
     # Builds the object from hash
