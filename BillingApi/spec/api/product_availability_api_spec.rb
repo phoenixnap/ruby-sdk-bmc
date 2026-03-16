@@ -41,7 +41,7 @@ describe 'ProductAvailabilityApi' do
   # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered.
   # @option opts [Array<ProductLocationEnum>] :location 
   # @option opts [Array<String>] :solution 
-  # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
+  # @option opts [Float] :min_quantity Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10.
   # @return [Array<ProductAvailability>]
   describe 'product_availability_get test' do
     it 'should work' do

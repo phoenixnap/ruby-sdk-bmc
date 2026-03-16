@@ -27,7 +27,7 @@ module BillingApi
     # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered. (default to true)
     # @option opts [Array<ProductLocationEnum>] :location 
     # @option opts [Array<String>] :solution 
-    # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
+    # @option opts [Float] :min_quantity Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10.
     # @return [Array<ProductAvailability>]
     def product_availability_get(opts = {})
       data, _status_code, _headers = product_availability_get_with_http_info(opts)
@@ -42,7 +42,7 @@ module BillingApi
     # @option opts [Boolean] :show_only_min_quantity_available Show only locations where product with requested quantity is available or all locations where product is offered. (default to true)
     # @option opts [Array<ProductLocationEnum>] :location 
     # @option opts [Array<String>] :solution 
-    # @option opts [Float] :min_quantity Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
+    # @option opts [Float] :min_quantity Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10.
     # @return [Array<(Array<ProductAvailability>, Integer, Hash)>] Array<ProductAvailability> data, response status code and response headers
     def product_availability_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -56,6 +56,14 @@ module BillingApi
       if @api_client.config.client_side_validation && opts[:'solution'] && !opts[:'solution'].all? { |item| allowable_values.include?(item) }
         fail ArgumentError, "invalid value for \"solution\", must include one of #{allowable_values}"
       end
+      if @api_client.config.client_side_validation && !opts[:'min_quantity'].nil? && opts[:'min_quantity'] > 10
+        fail ArgumentError, 'invalid value for "opts[:"min_quantity"]" when calling ProductAvailabilityApi.product_availability_get, must be smaller than or equal to 10.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'min_quantity'].nil? && opts[:'min_quantity'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"min_quantity"]" when calling ProductAvailabilityApi.product_availability_get, must be greater than or equal to 1.'
+      end
+
       # resource path
       local_var_path = '/product-availability'
 

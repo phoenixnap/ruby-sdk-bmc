@@ -490,7 +490,9 @@ paths:
           required: false
           schema:
             type: number
-          description: Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
+            minimum: 1
+            maximum: 10
+          description: Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10.
           example: 2
       responses:
         '200':
