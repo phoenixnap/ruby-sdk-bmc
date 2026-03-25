@@ -60,5 +60,4 @@ module BillingApi
       end
     end
   end
-
 end
