@@ -35,7 +35,7 @@ instance = IpApi::IpBlock.new(
   assigned_resource_id: 6047127fed34ecc3ba8402d2,
   assigned_resource_type: server,
   description: IP Block #1 used for publicly accessing server #1.,
-  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}],
+  tags: [{&quot;id&quot;:&quot;60ffafcdffb8b074c7968dad&quot;,&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;,&quot;isBillingTag&quot;:false},{&quot;id&quot;:&quot;60ffafcdffb8b074c7968dae&quot;,&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;,&quot;isBillingTag&quot;:true}],
   is_system_managed: false,
   is_bring_your_own: false,
   created_on: 2021-03-13T20:24:32.491Z
