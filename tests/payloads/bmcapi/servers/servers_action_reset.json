@@ -21,7 +21,8 @@
           "windows": {
             "rdpAllowedIps": [
               "172.217.22.14"
-            ]
+            ],
+            "bringYourOwnLicense": false
           },
           "esxi": {
             "rootPassword": "MyP@ssw0rd_01",
@@ -51,7 +52,8 @@
         "windows": {
           "rdpAllowedIps": [
             "172.217.22.14"
-          ]
+          ],
+          "bringYourOwnLicense": false
         },
         "esxi": {
           "rootPassword": "MyP@ssw0rd_01",

@@ -28,3 +28,12 @@ Tests can be run per-module by running its respective `tc_` script, or all at on
 ```sh
 bundler exec ruby ./ts_sdk.rb
 ```
+
+### NixOS
+When using **NixOS** the above *will not work*, as it will not find the `libcurl.so.4` library.
+
+First, get `bundix` - then run `nix-setup.sh`. One thing to note is that this script will *temporarily* modify the `Gemfile` to use **absolute paths** instead of relative ones.
+It will then open a *nix shell* for you, at which point you can just do `bundler exec ruby ./ts_sdk.rb` to run all tests. Once you're done, run `exit` and the shell will close,
+with the old `Gemfile` being restored.
+
+If it *doesn't* get restored, just replace the `Gemfile` with `Gemfile.old`. Otherwise, the absolute paths can be manually changed into relative ones.
