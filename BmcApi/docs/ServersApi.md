@@ -1553,7 +1553,7 @@ end
 
 api_instance = BmcApi::ServersApi.new
 server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
-server_public_network = BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29'}) # ServerPublicNetwork | 
+server_public_network = BmcApi::ServerPublicNetwork.new({id: '60473c2509268bc77fd06d29', ips: ["182.16.0.146", "10.1.1.20 - 10.1.1.25", "2001: db8: : f", "2001: db8: : b - 2001: db8: : d"]}) # ServerPublicNetwork | 
 opts = {
   force: true # Boolean | Query parameter controlling advanced features availability. Currently applicable for networking. It is advised to use with caution since it might lead to unhealthy setups.
 }
