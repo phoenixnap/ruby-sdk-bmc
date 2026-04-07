@@ -27,6 +27,14 @@
             "inUse": false
           }
         ],
+        "ipPrefixes": [
+          {
+            "ipAllocationId": "6047127fed34ecc3ba8402d2",
+            "cidr": "10.111.14.40/29",
+            "status": "READY",
+            "ipVersion": "v6"
+          }
+        ],
         "targetAsnDetails": {
           "asn": 9131072,
           "isBringYourOwn": true,
@@ -45,6 +53,10 @@
         "eBgpMultiHop": 8,
         "peeringLoopbacksV4": [
           "test"
+        ],
+        "peeringLoopbacksV6": [
+          "1000::",
+          "1000::"
         ],
         "keepAliveTimerSeconds": 3600,
         "holdTimerSeconds": 7200,

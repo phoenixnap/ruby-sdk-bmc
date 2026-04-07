@@ -25,10 +25,14 @@
       "description": "My first public network #1",
       "ipBlocks": [
         {
-          "id": "60473a6115e34466c9f8f083"
+          "id": "60473a6115e34466c9f8f083",
+          "cidr": "10.0.0.0/24",
+          "usedIpsCount": "99"
         },
         {
-          "id": "616e6ec6d66b406a45ab8797"
+          "id": "616e6ec6d66b406a45ab8797",
+          "cidr": "10.0.0.0/24",
+          "usedIpsCount": "99"
         }
       ],
       "status": "BUSY",

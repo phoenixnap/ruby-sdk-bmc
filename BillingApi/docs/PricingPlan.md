@@ -14,6 +14,7 @@
 | **correlated_product_code** | **String** | Product code of the product this product is correlated with | [optional] |
 | **package_quantity** | **Float** | Package size per month. | [optional] |
 | **package_unit** | [**PackageUnitEnum**](PackageUnitEnum.md) |  | [optional] |
+| **package_details** | [**PackageDetails**](PackageDetails.md) |  | [optional] |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = BillingApi::PricingPlan.new(
   applicable_discounts: null,
   correlated_product_code: s1.c1.small,
   package_quantity: 50,
-  package_unit: null
+  package_unit: null,
+  package_details: null
 )
 ```
 

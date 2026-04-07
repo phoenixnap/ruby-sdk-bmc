@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 
  - [NetworkApi::AsnDetails](docs/AsnDetails.md)
  - [NetworkApi::BgpIPv4Prefix](docs/BgpIPv4Prefix.md)
+ - [NetworkApi::BgpIpPrefix](docs/BgpIpPrefix.md)
  - [NetworkApi::BgpPeerGroup](docs/BgpPeerGroup.md)
  - [NetworkApi::BgpPeerGroupCreate](docs/BgpPeerGroupCreate.md)
  - [NetworkApi::BgpPeerGroupPatch](docs/BgpPeerGroupPatch.md)

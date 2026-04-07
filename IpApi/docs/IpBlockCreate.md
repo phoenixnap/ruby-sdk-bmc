@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **location** | **String** | IP Block location ID. Currently this field should be set to &#x60;PHX&#x60;, &#x60;ASH&#x60;, &#x60;SGP&#x60;, &#x60;NLD&#x60;, &#x60;CHI&#x60;, &#x60;SEA&#x60; or &#x60;AUS&#x60;. |  |
+| **location** | **String** | IP Block location ID. Currently this field should be set to &#x60;PHX&#x60;, &#x60;ASH&#x60;, &#x60;SGP&#x60;, &#x60;NLD&#x60;, &#x60;CHI&#x60; or &#x60;SEA&#x60;. |  |
 | **cidr_block_size** | **String** | CIDR IP Block Size. V4 supported sizes: [&#x60;/31&#x60;, &#x60;/30&#x60;, &#x60;/29&#x60; or &#x60;/28&#x60;]. V6 supported sizes: [&#x60;/64&#x60;]. For a larger Block Size contact support. |  |
 | **ip_version** | **String** | IP Version. This field should be set to &#x60;V4&#x60; or &#x60;V6&#x60; | [optional][default to &#39;V4&#39;] |
 | **description** | **String** | The description of the IP Block. | [optional] |

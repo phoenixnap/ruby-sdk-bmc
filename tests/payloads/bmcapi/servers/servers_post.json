@@ -51,7 +51,8 @@
               "172.217.22.14",
               "10.111.14.40/29",
               "10.111.14.66 - 10.111.14.71"
-            ]
+            ],
+            "bringYourOwnLicense": false
           },
           "rootPassword": "MyP@ssw0rd_01",
           "managementUiUrl": "https://172.217.22.14",
@@ -188,7 +189,8 @@
             "172.217.22.14",
             "10.111.14.40/29",
             "10.111.14.66 - 10.111.14.71"
-          ]
+          ],
+          "bringYourOwnLicense": false
         },
         "rootPassword": "MyP@ssw0rd_01",
         "managementUiUrl": "https://172.217.22.14",
@@ -259,6 +261,12 @@
               "statusDescription": "statusDescription"
             }
           ]
+        }
+      },
+      "storageConfiguration": {
+        "rootPartition": {
+          "raid": "NO_RAID",
+          "size": -1
         }
       },
       "supersededBy": "64a539b8d9c2c9ba8424ca31",

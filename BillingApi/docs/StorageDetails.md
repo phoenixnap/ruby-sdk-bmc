@@ -4,12 +4,12 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **network_storage_id** | **String** | Network storage ID. |  |
-| **network_storage_name** | **String** | Network storage name. |  |
-| **volume_id** | **String** | Volume ID. |  |
-| **volume_name** | **String** | Volume name. |  |
+| **network_storage_id** | **String** | Network storage ID. | [optional] |
+| **network_storage_name** | **String** | Network storage name. | [optional] |
+| **volume_id** | **String** | Volume ID. | [optional] |
+| **volume_name** | **String** | Volume name. | [optional] |
 | **capacity_in_gb** | **Integer** | Capacity in GB. |  |
-| **created_on** | **Time** | Timestamp when the record was created. |  |
+| **created_on** | **Time** | Timestamp when the record was created. | [optional] |
 
 ## Example
 

@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_actions_reserve_post**](docs/ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reset_post**](docs/ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_shutdown_post**](docs/ServersApi.md#servers_server_id_actions_shutdown_post) | **POST** /servers/{serverId}/actions/shutdown | Shutdown server.
+*BmcApi::ServersApi* | [**servers_server_id_actions_transfer_reservation**](docs/ServersApi.md#servers_server_id_actions_transfer_reservation) | **POST** /servers/{serverId}/actions/transfer-reservation | Transfer server reservation.
 *BmcApi::ServersApi* | [**servers_server_id_delete**](docs/ServersApi.md#servers_server_id_delete) | **DELETE** /servers/{serverId} | Delete server.
 *BmcApi::ServersApi* | [**servers_server_id_get**](docs/ServersApi.md#servers_server_id_get) | **GET** /servers/{serverId} | Get server.
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_ip_block_id_delete**](docs/ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server.
@@ -179,6 +180,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::QuotaEditLimitRequest](docs/QuotaEditLimitRequest.md)
  - [BmcApi::QuotaEditLimitRequestDetails](docs/QuotaEditLimitRequestDetails.md)
  - [BmcApi::RelinquishIpBlock](docs/RelinquishIpBlock.md)
+ - [BmcApi::ReservationTransferDetails](docs/ReservationTransferDetails.md)
  - [BmcApi::ResetResult](docs/ResetResult.md)
  - [BmcApi::Server](docs/Server.md)
  - [BmcApi::ServerCreate](docs/ServerCreate.md)

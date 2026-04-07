@@ -31,9 +31,9 @@ opts = {
   product_category: ['SERVER'], # Array<String> | Product category. Currently only SERVER category is supported.
   product_code: ['inner_example'], # Array<String> | 
   show_only_min_quantity_available: true, # Boolean | Show only locations where product with requested quantity is available or all locations where product is offered.
-  location: [BillingApi::LocationEnum::PHX], # Array<LocationEnum> | 
+  location: [BillingApi::ProductLocationEnum::PHX], # Array<ProductLocationEnum> | 
   solution: ['SERVER_RANCHER'], # Array<String> | 
-  min_quantity: 2 # Float | Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively.
+  min_quantity: 2 # Float | Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10.
 }
 
 begin
@@ -70,9 +70,9 @@ end
 | **product_category** | [**Array&lt;String&gt;**](String.md) | Product category. Currently only SERVER category is supported. | [optional] |
 | **product_code** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **show_only_min_quantity_available** | **Boolean** | Show only locations where product with requested quantity is available or all locations where product is offered. | [optional][default to true] |
-| **location** | [**Array&lt;LocationEnum&gt;**](LocationEnum.md) |  | [optional] |
+| **location** | [**Array&lt;ProductLocationEnum&gt;**](ProductLocationEnum.md) |  | [optional] |
 | **solution** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **min_quantity** | **Float** | Minimal quantity of product needed. Minimum, maximum and default values might differ for different products. For servers, they are 1, 10 and 1 respectively. | [optional] |
+| **min_quantity** | **Float** | Minimum quantity of the product that can be requested. For servers the allowed quantity range is 1 to 10. | [optional] |
 
 ### Return type
 

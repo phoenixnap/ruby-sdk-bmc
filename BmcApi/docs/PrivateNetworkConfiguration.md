@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **gateway_address** | **String** | Deprecated in favour of a common gateway address across all networks available under NetworkConfiguration.&lt;br&gt; The address of the gateway assigned / to assign to the server.&lt;br&gt; When used as part of request body, IP address has to be part of private network assigned to this server.&lt;br&gt; Gateway address also has to be assigned on an already deployed resource unless the &#x60;force&#x60; query parameter is true. | [optional] |
 | **configuration_type** | **String** | (Write-only) Determines the approach for configuring private network(s) for the server being provisioned. Currently this field should be set to &#x60;USE_OR_CREATE_DEFAULT&#x60;, &#x60;USER_DEFINED&#x60; or &#x60;NONE&#x60;. | [optional][default to &#39;USE_OR_CREATE_DEFAULT&#39;] |
-| **private_networks** | [**Array&lt;ServerPrivateNetwork&gt;**](ServerPrivateNetwork.md) | The list of private networks this server is member of. When this field is part of request body, it&#39;ll be used to specify the private networks to assign to this server upon provisioning. Used alongside the &#x60;USER_DEFINED&#x60; configurationType. | [optional] |
+| **private_networks** | [**Array&lt;ServerPrivateNetwork&gt;**](ServerPrivateNetwork.md) | The list of private networks this server belongs to. If this field is part of a request body, it will be used for specifying the private networks to assign to this server upon provisioning. Used alongside the USER_DEFINED configurationType. | [optional] |
 
 ## Example
 

@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **location** | [**LocationEnum**](LocationEnum.md) |  |  |
+| **location** | [**ProductLocationEnum**](ProductLocationEnum.md) |  |  |
 | **min_quantity_requested** | **Float** | Requested quantity. |  |
 | **min_quantity_available** | **Boolean** | Is product available in specific location for requested quantity |  |
 | **available_quantity** | **Float** | Total available quantity of product in specific location. Max value is 10. |  |
