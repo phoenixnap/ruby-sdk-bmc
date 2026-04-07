@@ -100,7 +100,7 @@ module BmcApi
       end
     end
 
-    # Show invalid properties with the reasons. Usually used together with valid?
+    1    # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
@@ -117,7 +117,11 @@ module BmcApi
         invalid_properties.push('invalid value for "reason", reason cannot be nil.')
       end
 
-      pattern = Regexp.new(/^(?s)(?!\s*$).+/)
+      # This pattern is being manually modified.
+      # (?m) was originally (?s) -- it functions the same, except Ruby doesn't understand (?s)
+      # Information here:
+      #   - https://www.rexegg.com/regex-ruby.php
+      pattern = Regexp.new(/^(?m)(?!\s*$).+/)
       if @reason !~ pattern
         invalid_properties.push("invalid value for \"reason\", must conform to the pattern #{pattern}.")
       end
