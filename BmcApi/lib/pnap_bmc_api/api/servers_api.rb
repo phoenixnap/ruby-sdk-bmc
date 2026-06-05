@@ -92,6 +92,7 @@ module BmcApi
     # List all servers owned by account.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
+    # @option opts [Array<String>] :location Filters servers by server location
     # @return [Array<Server>]
     def servers_get(opts = {})
       data, _status_code, _headers = servers_get_with_http_info(opts)
@@ -102,6 +103,7 @@ module BmcApi
     # List all servers owned by account.
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
+    # @option opts [Array<String>] :location Filters servers by server location
     # @return [Array<(Array<Server>, Integer, Hash)>] Array<Server> data, response status code and response headers
     def servers_get_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -113,6 +115,7 @@ module BmcApi
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'tag'] = @api_client.build_collection_param(opts[:'tag'], :multi) if !opts[:'tag'].nil?
+      query_params[:'location'] = @api_client.build_collection_param(opts[:'location'], :multi) if !opts[:'location'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

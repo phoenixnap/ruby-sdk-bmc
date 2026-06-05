@@ -121,7 +121,8 @@ end
 
 api_instance = BmcApi::ServersApi.new
 opts = {
-  tag: ['inner_example'] # Array<String> | A list of query parameters related to tags in the form of tagName.tagValue
+  tag: ['inner_example'], # Array<String> | A list of query parameters related to tags in the form of tagName.tagValue
+  location: ['inner_example'] # Array<String> | Filters servers by server location
 }
 
 begin
@@ -156,6 +157,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tag** | [**Array&lt;String&gt;**](String.md) | A list of query parameters related to tags in the form of tagName.tagValue | [optional] |
+| **location** | [**Array&lt;String&gt;**](String.md) | Filters servers by server location | [optional] |
 
 ### Return type
 

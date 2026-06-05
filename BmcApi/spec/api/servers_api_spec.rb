@@ -50,6 +50,7 @@ describe 'ServersApi' do
   # List all servers owned by account.
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
+  # @option opts [Array<String>] :location Filters servers by server location
   # @return [Array<Server>]
   describe 'servers_get test' do
     it 'should work' do
