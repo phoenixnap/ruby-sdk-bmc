@@ -38,6 +38,8 @@ module BmcApi
 
     attr_accessor :cloud_init
 
+    attr_accessor :i_pxe
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -49,7 +51,8 @@ module BmcApi
         :'management_access_allowed_ips' => :'managementAccessAllowedIps',
         :'install_os_to_ram' => :'installOsToRam',
         :'esxi' => :'esxi',
-        :'cloud_init' => :'cloudInit'
+        :'cloud_init' => :'cloudInit',
+        :'i_pxe' => :'iPXE'
       }
     end
 
@@ -74,7 +77,8 @@ module BmcApi
         :'management_access_allowed_ips' => :'Array<String>',
         :'install_os_to_ram' => :'Boolean',
         :'esxi' => :'EsxiOsConfiguration',
-        :'cloud_init' => :'OsConfigurationCloudInit'
+        :'cloud_init' => :'OsConfigurationCloudInit',
+        :'i_pxe' => :'OsConfigurationIPXE'
       }
     end
 
@@ -139,6 +143,10 @@ module BmcApi
       if attributes.key?(:'cloud_init')
         self.cloud_init = attributes[:'cloud_init']
       end
+
+      if attributes.key?(:'i_pxe')
+        self.i_pxe = attributes[:'i_pxe']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -188,7 +196,8 @@ module BmcApi
           management_access_allowed_ips == o.management_access_allowed_ips &&
           install_os_to_ram == o.install_os_to_ram &&
           esxi == o.esxi &&
-          cloud_init == o.cloud_init
+          cloud_init == o.cloud_init &&
+          i_pxe == o.i_pxe
     end
 
     # @see the `==` method
@@ -200,7 +209,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, esxi, cloud_init].hash
+      [netris_controller, netris_softgate, windows, root_password, management_ui_url, management_access_allowed_ips, install_os_to_ram, esxi, cloud_init, i_pxe].hash
     end
 
     # Builds the object from hash

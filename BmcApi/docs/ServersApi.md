@@ -20,6 +20,7 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_get**](ServersApi.md#servers_server_id_get) | **GET** /servers/{serverId} | Get server. |
 | [**servers_server_id_ip_blocks_ip_block_id_delete**](ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server. |
 | [**servers_server_id_ip_blocks_post**](ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server. |
+| [**servers_server_id_os_configuration_ipxe_put**](ServersApi.md#servers_server_id_os_configuration_ipxe_put) | **PUT** /servers/{serverId}/os-configuration/ipxe | Updates the iPXE OS configuration. |
 | [**servers_server_id_patch**](ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server. |
 | [**servers_server_id_private_networks_patch**](ServersApi.md#servers_server_id_private_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/private-network-configuration/private-networks/{privateNetworkId} | Updates the server&#39;s private network&#39;s IP addresses |
 | [**servers_server_id_private_networks_post**](ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network. |
@@ -532,7 +533,7 @@ end
 
 ## servers_server_id_actions_reboot_post
 
-> <ActionResult> servers_server_id_actions_reboot_post(server_id)
+> <ActionResult> servers_server_id_actions_reboot_post(server_id, opts)
 
 Reboot server.
 
@@ -551,10 +552,13 @@ end
 
 api_instance = BmcApi::ServersApi.new
 server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+opts = {
+  reboot_request: BmcApi::RebootRequest.new # RebootRequest | Configuration option to specify the reboot type: STANDARD or IPXE (default: STANDARD).
+}
 
 begin
   # Reboot server.
-  result = api_instance.servers_server_id_actions_reboot_post(server_id)
+  result = api_instance.servers_server_id_actions_reboot_post(server_id, opts)
   p result
 rescue BmcApi::ApiError => e
   puts "Error when calling ServersApi->servers_server_id_actions_reboot_post: #{e}"
@@ -565,12 +569,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ActionResult>, Integer, Hash)> servers_server_id_actions_reboot_post_with_http_info(server_id)
+> <Array(<ActionResult>, Integer, Hash)> servers_server_id_actions_reboot_post_with_http_info(server_id, opts)
 
 ```ruby
 begin
   # Reboot server.
-  data, status_code, headers = api_instance.servers_server_id_actions_reboot_post_with_http_info(server_id)
+  data, status_code, headers = api_instance.servers_server_id_actions_reboot_post_with_http_info(server_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <ActionResult>
@@ -584,6 +588,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **server_id** | **String** | The server&#39;s ID. |  |
+| **reboot_request** | [**RebootRequest**](RebootRequest.md) | Configuration option to specify the reboot type: STANDARD or IPXE (default: STANDARD). | [optional] |
 
 ### Return type
 
@@ -595,7 +600,7 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -1152,6 +1157,77 @@ end
 ### Return type
 
 [**ServerIpBlock**](ServerIpBlock.md)
+
+### Authorization
+
+[OAuth2](../README.md#OAuth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## servers_server_id_os_configuration_ipxe_put
+
+> <OsConfigurationIPXE> servers_server_id_os_configuration_ipxe_put(server_id, os_configuration_ipxe)
+
+Updates the iPXE OS configuration.
+
+Updates the iPXE OS configuration by updating the URL and the native VLAN configuration.
+
+### Examples
+
+```ruby
+require 'time'
+require 'pnap_bmc_api'
+# setup authorization
+BmcApi.configure do |config|
+  # Configure OAuth2 access token for authorization: OAuth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = BmcApi::ServersApi.new
+server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
+os_configuration_ipxe = BmcApi::OsConfigurationIPXE.new({url: 'https://example.com/boot.ipxe'}) # OsConfigurationIPXE | 
+
+begin
+  # Updates the iPXE OS configuration.
+  result = api_instance.servers_server_id_os_configuration_ipxe_put(server_id, os_configuration_ipxe)
+  p result
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_os_configuration_ipxe_put: #{e}"
+end
+```
+
+#### Using the servers_server_id_os_configuration_ipxe_put_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OsConfigurationIPXE>, Integer, Hash)> servers_server_id_os_configuration_ipxe_put_with_http_info(server_id, os_configuration_ipxe)
+
+```ruby
+begin
+  # Updates the iPXE OS configuration.
+  data, status_code, headers = api_instance.servers_server_id_os_configuration_ipxe_put_with_http_info(server_id, os_configuration_ipxe)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OsConfigurationIPXE>
+rescue BmcApi::ApiError => e
+  puts "Error when calling ServersApi->servers_server_id_os_configuration_ipxe_put_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **server_id** | **String** | The server&#39;s ID. |  |
+| **os_configuration_ipxe** | [**OsConfigurationIPXE**](OsConfigurationIPXE.md) |  |  |
+
+### Return type
+
+[**OsConfigurationIPXE**](OsConfigurationIPXE.md)
 
 ### Authorization
 

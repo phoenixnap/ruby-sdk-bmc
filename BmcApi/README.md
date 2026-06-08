@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_get**](docs/ServersApi.md#servers_server_id_get) | **GET** /servers/{serverId} | Get server.
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_ip_block_id_delete**](docs/ServersApi.md#servers_server_id_ip_blocks_ip_block_id_delete) | **DELETE** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks/{ipBlockId} | Unassign IP Block from Server.
 *BmcApi::ServersApi* | [**servers_server_id_ip_blocks_post**](docs/ServersApi.md#servers_server_id_ip_blocks_post) | **POST** /servers/{serverId}/network-configuration/ip-block-configurations/ip-blocks | Assign IP Block to Server.
+*BmcApi::ServersApi* | [**servers_server_id_os_configuration_ipxe_put**](docs/ServersApi.md#servers_server_id_os_configuration_ipxe_put) | **PUT** /servers/{serverId}/os-configuration/ipxe | Updates the iPXE OS configuration.
 *BmcApi::ServersApi* | [**servers_server_id_patch**](docs/ServersApi.md#servers_server_id_patch) | **PATCH** /servers/{serverId} | Patch a Server.
 *BmcApi::ServersApi* | [**servers_server_id_private_networks_patch**](docs/ServersApi.md#servers_server_id_private_networks_patch) | **PATCH** /servers/{serverId}/network-configuration/private-network-configuration/private-networks/{privateNetworkId} | Updates the server's private network's IP addresses
 *BmcApi::ServersApi* | [**servers_server_id_private_networks_post**](docs/ServersApi.md#servers_server_id_private_networks_post) | **POST** /servers/{serverId}/network-configuration/private-network-configuration/private-networks | Adds the server to a private network.
@@ -168,6 +169,8 @@ Class | Method | HTTP request | Description
  - [BmcApi::NetworkConfiguration](docs/NetworkConfiguration.md)
  - [BmcApi::OsConfiguration](docs/OsConfiguration.md)
  - [BmcApi::OsConfigurationCloudInit](docs/OsConfigurationCloudInit.md)
+ - [BmcApi::OsConfigurationIPXE](docs/OsConfigurationIPXE.md)
+ - [BmcApi::OsConfigurationIPXENativeVlanConfiguration](docs/OsConfigurationIPXENativeVlanConfiguration.md)
  - [BmcApi::OsConfigurationMap](docs/OsConfigurationMap.md)
  - [BmcApi::OsConfigurationMapEsxi](docs/OsConfigurationMapEsxi.md)
  - [BmcApi::OsConfigurationMapProxmox](docs/OsConfigurationMapProxmox.md)
@@ -179,6 +182,7 @@ Class | Method | HTTP request | Description
  - [BmcApi::Quota](docs/Quota.md)
  - [BmcApi::QuotaEditLimitRequest](docs/QuotaEditLimitRequest.md)
  - [BmcApi::QuotaEditLimitRequestDetails](docs/QuotaEditLimitRequestDetails.md)
+ - [BmcApi::RebootRequest](docs/RebootRequest.md)
  - [BmcApi::RelinquishIpBlock](docs/RelinquishIpBlock.md)
  - [BmcApi::ReservationTransferDetails](docs/ReservationTransferDetails.md)
  - [BmcApi::ResetResult](docs/ResetResult.md)
