@@ -5,9 +5,11 @@
     "queryStringParameters": [
       {
         "name": "tag",
-        "values": [
-          "env.dev"
-        ]
+        "values": ["env.dev"]
+      },
+      {
+        "name": "location",
+        "values": ["PHX"]
       }
     ]
   },
