@@ -455,6 +455,22 @@ class TC_BmcApi < Test::Unit::TestCase
     self.verify_called_once expectation
   end
 
+  def test_server_put_ipxe_os_configuration_by_id
+    # Setting up expectation
+    request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_put_os_configuration_ipxe_by_id')
+    expectation = TestUtils.setup_expectation(request, response, 1)
+
+    api_instance = BmcApi::ServersApi.new
+    server_id = TestUtils.extract_id_from(request)
+    os_configuration_ipxe = BmcApi::OsConfigurationIPXE.build_from_hash(TestUtils.extract_request_body(request))
+
+    result = api_instance.servers_server_id_os_configuration_ipxe_put(server_id, os_configuration_ipxe)
+
+    assert_equal response[:body], result.to_hash.compact
+
+    self.verify_called_once expectation
+  end
+
   def test_server_put_tags_by_id
     # Setting up expectation
     request, response = TestUtils.generate_payloads_from('bmcapi/servers/servers_put_tags_by_id')
