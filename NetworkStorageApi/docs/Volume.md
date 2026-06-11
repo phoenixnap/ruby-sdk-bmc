@@ -36,7 +36,7 @@ instance = NetworkStorageApi::Volume.new(
   created_on: 2021-03-13T20:24:32.491Z,
   delete_requested_on: 2022-04-07T08:50:20.359Z,
   permissions: null,
-  tags: [{&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;},{&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;}]
+  tags: [{&quot;id&quot;:&quot;60ffafcdffb8b074c7968dad&quot;,&quot;name&quot;:&quot;stage&quot;,&quot;value&quot;:&quot;beta&quot;,&quot;isBillingTag&quot;:false},{&quot;id&quot;:&quot;60ffafcdffb8b074c7968dae&quot;,&quot;name&quot;:&quot;group&quot;,&quot;value&quot;:&quot;discounted&quot;,&quot;isBillingTag&quot;:true}]
 )
 ```
 

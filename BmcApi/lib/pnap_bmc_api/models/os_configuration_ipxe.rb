@@ -14,22 +14,18 @@ require 'date'
 require 'time'
 
 module BmcApi
-  class QuotaEditLimitRequestDetails < ApiModelBase
-    # The new limit that is requested. Minimum allowed limit values: - 0 (Server, IPs) - 1000 (Network Storage)
-    attr_accessor :limit
+  # iPXE configuration details. Configures the server to boot using the iPXE network boot firmware with a custom boot script. Only applicable when osName is 'ipxe' and must not be provided for any other OS.
+  class OsConfigurationIPXE < ApiModelBase
+    # The URL of the iPXE boot script used to start the server.
+    attr_accessor :url
 
-    # The reason for changing the limit.
-    attr_accessor :reason
-
-    # The point in time the request was submitted.
-    attr_accessor :requested_on
+    attr_accessor :native_vlan_configuration
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'limit' => :'limit',
-        :'reason' => :'reason',
-        :'requested_on' => :'requestedOn'
+        :'url' => :'url',
+        :'native_vlan_configuration' => :'nativeVlanConfiguration'
       }
     end
 
@@ -46,9 +42,8 @@ module BmcApi
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'limit' => :'Integer',
-        :'reason' => :'String',
-        :'requested_on' => :'Time'
+        :'url' => :'String',
+        :'native_vlan_configuration' => :'OsConfigurationIPXENativeVlanConfiguration'
       }
     end
 
@@ -58,45 +53,30 @@ module BmcApi
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'QuotaEditLimitRequest'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::QuotaEditLimitRequestDetails` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `BmcApi::OsConfigurationIPXE` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::QuotaEditLimitRequestDetails`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `BmcApi::OsConfigurationIPXE`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'limit')
-        self.limit = attributes[:'limit']
+      if attributes.key?(:'url')
+        self.url = attributes[:'url']
       else
-        self.limit = nil
+        self.url = nil
       end
 
-      if attributes.key?(:'reason')
-        self.reason = attributes[:'reason']
-      else
-        self.reason = nil
-      end
-
-      if attributes.key?(:'requested_on')
-        self.requested_on = attributes[:'requested_on']
-      else
-        self.requested_on = nil
+      if attributes.key?(:'native_vlan_configuration')
+        self.native_vlan_configuration = attributes[:'native_vlan_configuration']
       end
     end
 
@@ -105,25 +85,13 @@ module BmcApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @limit.nil?
-        invalid_properties.push('invalid value for "limit", limit cannot be nil.')
+      if @url.nil?
+        invalid_properties.push('invalid value for "url", url cannot be nil.')
       end
 
-      if @limit < 0
-        invalid_properties.push('invalid value for "limit", must be greater than or equal to 0.')
-      end
-
-      if @reason.nil?
-        invalid_properties.push('invalid value for "reason", reason cannot be nil.')
-      end
-
-      pattern = Regexp.new(/^[\s\S]*\S[\s\S]*$/)
-      if @reason !~ pattern
-        invalid_properties.push("invalid value for \"reason\", must conform to the pattern #{pattern}.")
-      end
-
-      if @requested_on.nil?
-        invalid_properties.push('invalid value for "requested_on", requested_on cannot be nil.')
+      pattern = Regexp.new(/^https?:\/\/.+$/)
+      if @url !~ pattern
+        invalid_properties.push("invalid value for \"url\", must conform to the pattern #{pattern}.")
       end
 
       invalid_properties
@@ -133,51 +101,24 @@ module BmcApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @limit.nil?
-      return false if @limit < 0
-      return false if @reason.nil?
-      return false if @reason !~ Regexp.new(/^[\s\S]*\S[\s\S]*$/)
-      return false if @requested_on.nil?
+      return false if @url.nil?
+      return false if @url !~ Regexp.new(/^https?:\/\/.+$/)
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] limit Value to be assigned
-    def limit=(limit)
-      if limit.nil?
-        fail ArgumentError, 'limit cannot be nil'
+    # @param [Object] url Value to be assigned
+    def url=(url)
+      if url.nil?
+        fail ArgumentError, 'url cannot be nil'
       end
 
-      if limit < 0
-        fail ArgumentError, 'invalid value for "limit", must be greater than or equal to 0.'
+      pattern = Regexp.new(/^https?:\/\/.+$/)
+      if url !~ pattern
+        fail ArgumentError, "invalid value for \"url\", must conform to the pattern #{pattern}."
       end
 
-      @limit = limit
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reason Value to be assigned
-    def reason=(reason)
-      if reason.nil?
-        fail ArgumentError, 'reason cannot be nil'
-      end
-
-      pattern = Regexp.new(/^[\s\S]*\S[\s\S]*$/)
-      if reason !~ pattern
-        fail ArgumentError, "invalid value for \"reason\", must conform to the pattern #{pattern}."
-      end
-
-      @reason = reason
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] requested_on Value to be assigned
-    def requested_on=(requested_on)
-      if requested_on.nil?
-        fail ArgumentError, 'requested_on cannot be nil'
-      end
-
-      @requested_on = requested_on
+      @url = url
     end
 
     # Checks equality by comparing each attribute.
@@ -185,9 +126,8 @@ module BmcApi
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          limit == o.limit &&
-          reason == o.reason &&
-          requested_on == o.requested_on
+          url == o.url &&
+          native_vlan_configuration == o.native_vlan_configuration
     end
 
     # @see the `==` method
@@ -199,7 +139,7 @@ module BmcApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [limit, reason, requested_on].hash
+      [url, native_vlan_configuration].hash
     end
 
     # Builds the object from hash

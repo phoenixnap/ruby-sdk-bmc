@@ -50,6 +50,7 @@ describe 'ServersApi' do
   # List all servers owned by account.
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :tag A list of query parameters related to tags in the form of tagName.tagValue
+  # @option opts [Array<String>] :location Filters servers by server location
   # @return [Array<Server>]
   describe 'servers_get test' do
     it 'should work' do
@@ -126,6 +127,7 @@ describe 'ServersApi' do
   # Reboot specific server.
   # @param server_id The server&#39;s ID.
   # @param [Hash] opts the optional parameters
+  # @option opts [RebootRequest] :reboot_request Configuration option to specify the reboot type: STANDARD or IPXE (default: STANDARD).
   # @return [ActionResult]
   describe 'servers_server_id_actions_reboot_post test' do
     it 'should work' do
@@ -230,6 +232,19 @@ describe 'ServersApi' do
   # @param [Hash] opts the optional parameters
   # @return [ServerIpBlock]
   describe 'servers_server_id_ip_blocks_post test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for servers_server_id_os_configuration_ipxe_put
+  # Updates the iPXE OS configuration.
+  # Updates the iPXE OS configuration by updating the URL and the native VLAN configuration.
+  # @param server_id The server&#39;s ID.
+  # @param os_configuration_ipxe 
+  # @param [Hash] opts the optional parameters
+  # @return [OsConfigurationIPXE]
+  describe 'servers_server_id_os_configuration_ipxe_put test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -19,7 +19,7 @@ module BmcApi
     # The network identifier.
     attr_accessor :id
 
-    # Configurable/configured IPs on the server.<br> At least 1 IP address is required. Valid IP formats include single IP addresses or IP ranges (IPv4 or IPv6). All IPs must be within the network's range.<br> Setting the `computeSlaacIp` field to `true` allows you to provide an empty array of IPs.<br> Additionally, setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
+    # Configurable/configured IPs on the server.<br> At least 1 IP address is required. Valid IP formats include single IP addresses or IP ranges (IPv4 or IPv6). All IPs must be within the network's range.<br> Setting the `computeSlaacIp` field to `true` allows you to provide an empty array of IPs.<br> Referencing network as OS native network allows you to provide an empty array of IPs.<br> Additionally, setting the `force` query parameter to `true` allows you to:<ul> <li> Assign no specific IP addresses by designating an empty array of IPs. Note that at least one IP is required for the gateway address to be selected from this network. <li> Assign one or more IP addresses which are already configured on other resource(s) in network.</ul>
     attr_accessor :ips
 
     # (Read-only) The status of the assignment to the network.
@@ -95,6 +95,8 @@ module BmcApi
         if (value = attributes[:'ips']).is_a?(Array)
           self.ips = value
         end
+      else
+        self.ips = nil
       end
 
       if attributes.key?(:'status_description')
@@ -119,6 +121,10 @@ module BmcApi
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
+      if @ips.nil?
+        invalid_properties.push('invalid value for "ips", ips cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -127,6 +133,7 @@ module BmcApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @id.nil?
+      return false if @ips.nil?
       true
     end
 
@@ -138,6 +145,16 @@ module BmcApi
       end
 
       @id = id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] ips Value to be assigned
+    def ips=(ips)
+      if ips.nil?
+        fail ArgumentError, 'ips cannot be nil'
+      end
+
+      @ips = ips
     end
 
     # Checks equality by comparing each attribute.

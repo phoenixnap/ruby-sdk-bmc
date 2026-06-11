@@ -13,6 +13,7 @@
 | **install_os_to_ram** | **Boolean** | If true, OS will be installed to and booted from the server&#39;s RAM. On restart RAM OS will be lost and the server will not be reachable unless a custom bootable OS has been deployed. Follow the &lt;a href&#x3D;&#39;https://phoenixnap.com/kb/bmc-custom-os&#39; target&#x3D;&#39;_blank&#39;&gt;instructions&lt;/a&gt; on how to install custom OS on BMC. Only supported for ubuntu/focal and ubuntu/jammy. | [optional][default to false] |
 | **esxi** | [**EsxiOsConfiguration**](EsxiOsConfiguration.md) |  | [optional] |
 | **cloud_init** | [**OsConfigurationCloudInit**](OsConfigurationCloudInit.md) |  | [optional] |
+| **i_pxe** | [**OsConfigurationIPXE**](OsConfigurationIPXE.md) |  | [optional] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = BmcApi::OsConfiguration.new(
   management_access_allowed_ips: [&quot;172.217.22.14&quot;,&quot;10.111.14.40/29&quot;,&quot;10.111.14.66 - 10.111.14.71&quot;],
   install_os_to_ram: true,
   esxi: null,
-  cloud_init: null
+  cloud_init: null,
+  i_pxe: null
 )
 ```
 
