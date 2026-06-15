@@ -6,87 +6,47 @@ Follow this process when preparing and publishing a new release.
 
 ### 1. Validate the current state
 
-Optionally run the following workflows manually:
-
-* `generate-all`
-* `validate-all`
-
-Before continuing, confirm that the latest `validate-all` workflow completed successfully.
+Optionally run `generate-all` and `validate-all` manually, then confirm the latest `validate-all` run completed successfully before continuing.
 
 If `validate-all` failed:
 
 * Review the failed jobs.
-* Identify whether the failures are caused by compilation issues or SDK breaking changes.
+* Determine whether failures stem from compilation issues or SDK breaking changes.
 * Record any modules affected by SDK breaking changes.
 
 ### 2. Prepare the release PRs
 
-Run the `prepare-release-prs` workflow.
+Run the `prepare-release-prs` workflow. Version handling is fully automated — no manual version changes are expected.
 
-When starting the workflow:
-
-* Provide any SDK breaking-change modules as a comma-separated input.
-* Modules listed as SDK breaking changes will receive a major version bump.
-* Any module not listed will be automatically bumped as either `minor` or `patch`, depending on the changes detected in the `spec` files.
-* Any new module will automatically start at version `1.0.0`.
-
-Version handling is managed by the workflow. No manual version changes are expected.
+* Provide SDK breaking-change modules as a comma-separated input; these receive a **major** bump.
+* Unlisted modules are bumped **minor** or **patch** based on detected `spec` changes.
+* New modules start at `1.0.0`.
 
 ### 3. Review and update the draft release PR
 
-Open the generated draft release PR.
+Open the generated draft release PR. Its human-readable notes describe the detected spec changes — use them to identify which endpoints need review.
 
-The PR includes human-readable notes describing the detected spec changes. Use these notes to identify which endpoints require review.
-
-Using your preferred IDE:
+In your IDE:
 
 * Update the tests package with matching payloads and endpoints from the new spec changelog where applicable.
 * Add or update tests manually as needed.
 
 ### 4. Merge the release PR
 
-Merge the `release/vX` branch PR into `master`.
-
-After the merge, an automatic workflow will create a back-merge PR from `release/vX` to `develop`.
-
-Review and merge the back-merge PR as well.
-
-Version handling remains automated throughout this step. No manual version changes are expected.
+Merge the `release/vX` branch PR into `master`. A workflow then opens an automatic back-merge PR from `release/vX` to `develop` — review and merge that as well. Version handling remains automated throughout.
 
 ### 5. Run the publish dry run
 
-Run the `publish-all-sdks-dry-run` workflow.
-
-Confirm that the workflow completes successfully before publishing the release.
+Run the `publish-all-sdks-dry-run` workflow and confirm it completes successfully before publishing the release.
 
 ### 6. Create the GitHub release
 
-Create a release from `master`.
-
-As part of the release process, create a tag using the same version as the original `release/vX` branch.
-
-For example, if the release branch is:
-
-```text
-release/v2.4.0
-```
-
-then the GitHub release and tag should also use:
-
-```text
-v2.4.0
-```
+Create a release from `master`, tagging it with the same version as the original `release/vX` branch. For example, `release/v2.4.0` → release and tag `v2.4.0`.
 
 ### 7. Publish the SDKs
 
-Creating the GitHub release automatically starts the `publish-all-sdks` workflow.
-
-This workflow publishes all SDKs and finalizes the release.
+Creating the GitHub release automatically triggers the `publish-all-sdks` workflow, which publishes all SDKs and finalizes the release.
 
 ### 8. Confirm release
 
-Confirm that the Ruby SDK release:
-
-https://rubygems.org/gems/
-
-The release is complete once the expected versions are available.
+Confirm the Ruby SDK release is available on [rubygems.org](https://rubygems.org/gems/). The release is complete once the expected versions appear.
