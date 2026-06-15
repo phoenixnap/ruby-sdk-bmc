@@ -29,7 +29,6 @@ Open the generated draft release PR. Its human-readable notes describe the detec
 In your IDE:
 
 * Update the tests package with matching payloads and endpoints from the new spec changelog where applicable.
-* Add or update tests manually as needed.
 
 ### 4. Merge the release PR
 
