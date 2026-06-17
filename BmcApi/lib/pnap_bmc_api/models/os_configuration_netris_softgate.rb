@@ -111,6 +111,15 @@ module BmcApi
         invalid_properties.push("invalid value for \"controller_address\", must conform to the pattern #{pattern}.")
       end
 
+      if !@controller_version.nil? && @controller_version.to_s.length > 20
+        invalid_properties.push('invalid value for "controller_version", the character length must be smaller than or equal to 20.')
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9.-]+$/)
+      if !@controller_version.nil? && @controller_version !~ pattern
+        invalid_properties.push("invalid value for \"controller_version\", must conform to the pattern #{pattern}.")
+      end
+
       pattern = Regexp.new(/^\S+$/)
       if !@controller_auth_key.nil? && @controller_auth_key !~ pattern
         invalid_properties.push("invalid value for \"controller_auth_key\", must conform to the pattern #{pattern}.")
@@ -125,6 +134,8 @@ module BmcApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@controller_address.nil? && @controller_address.to_s.length > 253
       return false if !@controller_address.nil? && @controller_address !~ Regexp.new(/^(?!-)[\w\-]{1,63}(?<!-)(\.(?!-)[\w\-]{1,63}(?<!-))*$/)
+      return false if !@controller_version.nil? && @controller_version.to_s.length > 20
+      return false if !@controller_version.nil? && @controller_version !~ Regexp.new(/^[a-zA-Z0-9.-]+$/)
       return false if !@controller_auth_key.nil? && @controller_auth_key !~ Regexp.new(/^\S+$/)
       true
     end
@@ -146,6 +157,25 @@ module BmcApi
       end
 
       @controller_address = controller_address
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] controller_version Value to be assigned
+    def controller_version=(controller_version)
+      if controller_version.nil?
+        fail ArgumentError, 'controller_version cannot be nil'
+      end
+
+      if controller_version.to_s.length > 20
+        fail ArgumentError, 'invalid value for "controller_version", the character length must be smaller than or equal to 20.'
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9.-]+$/)
+      if controller_version !~ pattern
+        fail ArgumentError, "invalid value for \"controller_version\", must conform to the pattern #{pattern}."
+      end
+
+      @controller_version = controller_version
     end
 
     # Custom attribute writer method with validation
