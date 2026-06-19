@@ -22,7 +22,7 @@ module BmcApi
 
     attr_accessor :windows
 
-    # (Read-only) Auto-generated password set for user 'root' on an ESXi or Proxmox server.<br>  The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
+    # (Read-only) Auto-generated password set for user 'root' on an ESXi or Proxmox server.<br> The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
     attr_accessor :root_password
 
     # (Read-only) The URL of the management UI which will only be returned in response to provisioning a server.

@@ -22,7 +22,7 @@ module BmcApi
     # (Read-only) The URL for the Netris Controller web console. It will only be returned in response to provisioning a server.
     attr_accessor :netris_web_console_url
 
-    # (Read-only) Auto-generated password set for user 'netris' in the web console.<br>  The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
+    # (Read-only) Auto-generated password set for user 'netris' in the web console.<br> The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
     attr_accessor :netris_user_password
 
     # Attribute mapping from ruby-style variable name to JSON key.
