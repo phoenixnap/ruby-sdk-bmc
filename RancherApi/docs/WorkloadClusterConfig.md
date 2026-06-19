@@ -15,7 +15,7 @@
 require 'pnap_rancher_api'
 
 instance = RancherApi::WorkloadClusterConfig.new(
-  name: Workload CLuster,
+  name: workload-cluster,
   server_count: 3,
   server_type: s0.d1.small,
   location: PHX

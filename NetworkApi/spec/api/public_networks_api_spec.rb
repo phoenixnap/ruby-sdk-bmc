@@ -70,7 +70,7 @@ describe 'PublicNetworksApi' do
 
   # unit tests for public_networks_network_id_ip_blocks_ip_block_id_delete
   # Removes the IP Block from the Public Network.
-  # Removes the IP Block from the Public Network.&lt;br&gt; Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.&lt;br&gt; Defining &#x60;force&#x60; query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
+  # Removes the IP Block from the Public Network.&lt;br&gt; Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.&lt;br&gt; Defining &#x60;force&#x60; query parameter allows resource assigned IP block to be removed anyway. As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
   # @param public_network_id The Public Network identifier.
   # @param ip_block_id The IP Block identifier.
   # @param [Hash] opts the optional parameters

@@ -206,7 +206,7 @@ module NetworkApi
     end
 
     # Removes the IP Block from the Public Network.
-    # Removes the IP Block from the Public Network.<br> Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.<br> Defining `force` query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
+    # Removes the IP Block from the Public Network.<br> Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.<br> Defining `force` query parameter allows resource assigned IP block to be removed anyway. As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
     # @param public_network_id [String] The Public Network identifier.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters
@@ -218,7 +218,7 @@ module NetworkApi
     end
 
     # Removes the IP Block from the Public Network.
-    # Removes the IP Block from the Public Network.&lt;br&gt; Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.&lt;br&gt; Defining &#x60;force&#x60; query parameter allows resource assigned IP block to be removed anyway.  As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
+    # Removes the IP Block from the Public Network.&lt;br&gt; Please ensure that no resource members within this network have any IPs assigned from the IP Block being removed.&lt;br&gt; Defining &#x60;force&#x60; query parameter allows resource assigned IP block to be removed anyway. As a result, traffic addressed to any IP within the block will not be routed to this network anymore.
     # @param public_network_id [String] The Public Network identifier.
     # @param ip_block_id [String] The IP Block identifier.
     # @param [Hash] opts the optional parameters

@@ -108,6 +108,19 @@ module RancherApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@name.nil? && @name.to_s.length > 63
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 63.')
+      end
+
+      if !@name.nil? && @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
+      end
+
+      pattern = Regexp.new(/^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/)
+      if !@name.nil? && @name !~ pattern
+        invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
+      end
+
       if @server_type.nil?
         invalid_properties.push('invalid value for "server_type", server_type cannot be nil.')
       end
@@ -123,9 +136,35 @@ module RancherApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@name.nil? && @name.to_s.length > 63
+      return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@name.nil? && @name !~ Regexp.new(/^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/)
       return false if @server_type.nil?
       return false if @location.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
+      end
+
+      if name.to_s.length > 63
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 63.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
+      end
+
+      pattern = Regexp.new(/^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/)
+      if name !~ pattern
+        fail ArgumentError, "invalid value for \"name\", must conform to the pattern #{pattern}."
+      end
+
+      @name = name
     end
 
     # Custom attribute writer method with validation

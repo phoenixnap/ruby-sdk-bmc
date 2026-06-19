@@ -22,7 +22,7 @@ module RancherApi
     # This maps to ranchers `tls-san`. Add additional hostname or IP as a Subject Alternative Name in the TLS cert.
     attr_accessor :tls_san
 
-    # This maps to ranchers `etcd-snapshot-schedule-cron`. Snapshot interval time in cron spec. eg. every 5 hours ‘0 */5 * * *’. Default: at 12 am/pm
+    # This maps to ranchers `etcd-snapshot-schedule-cron`. Snapshot interval time in cron spec. eg. every 5 hours '0 */5 * * *'. Default: at 12 am/pm
     attr_accessor :etcd_snapshot_schedule_cron
 
     # This maps to ranchers `etcd-snapshot-retention`. Number of snapshots to retain.
@@ -132,6 +132,47 @@ module RancherApi
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      pattern = Regexp.new(/^K10[0-9a-fA-F]+::.+$/)
+      if !@token.nil? && @token !~ pattern
+        invalid_properties.push("invalid value for \"token\", must conform to the pattern #{pattern}.")
+      end
+
+      if !@tls_san.nil? && @tls_san.to_s.length > 253
+        invalid_properties.push('invalid value for "tls_san", the character length must be smaller than or equal to 253.')
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?$/)
+      if !@tls_san.nil? && @tls_san !~ pattern
+        invalid_properties.push("invalid value for \"tls_san\", must conform to the pattern #{pattern}.")
+      end
+
+      if !@etcd_snapshot_schedule_cron.nil? && @etcd_snapshot_schedule_cron.to_s.length > 100
+        invalid_properties.push('invalid value for "etcd_snapshot_schedule_cron", the character length must be smaller than or equal to 100.')
+      end
+
+      pattern = Regexp.new(/^(@(annually|yearly|monthly|weekly|daily|hourly|reboot)|([0-9*\/,-]+ ){4}[0-9*\/,-]+)$/)
+      if !@etcd_snapshot_schedule_cron.nil? && @etcd_snapshot_schedule_cron !~ pattern
+        invalid_properties.push("invalid value for \"etcd_snapshot_schedule_cron\", must conform to the pattern #{pattern}.")
+      end
+
+      if !@node_taint.nil? && @node_taint.to_s.length > 253
+        invalid_properties.push('invalid value for "node_taint", the character length must be smaller than or equal to 253.')
+      end
+
+      pattern = Regexp.new(/^([a-z0-9]([a-z0-9.-]*[a-z0-9])?\/)?[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?(=[a-zA-Z0-9._-]+)?:(NoSchedule|PreferNoSchedule|NoExecute)$/)
+      if !@node_taint.nil? && @node_taint !~ pattern
+        invalid_properties.push("invalid value for \"node_taint\", must conform to the pattern #{pattern}.")
+      end
+
+      if !@cluster_domain.nil? && @cluster_domain.to_s.length > 253
+        invalid_properties.push('invalid value for "cluster_domain", the character length must be smaller than or equal to 253.')
+      end
+
+      pattern = Regexp.new(/^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?[.])+[a-zA-Z]{2,}$/)
+      if !@cluster_domain.nil? && @cluster_domain !~ pattern
+        invalid_properties.push("invalid value for \"cluster_domain\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
@@ -139,7 +180,107 @@ module RancherApi
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@token.nil? && @token !~ Regexp.new(/^K10[0-9a-fA-F]+::.+$/)
+      return false if !@tls_san.nil? && @tls_san.to_s.length > 253
+      return false if !@tls_san.nil? && @tls_san !~ Regexp.new(/^[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?$/)
+      return false if !@etcd_snapshot_schedule_cron.nil? && @etcd_snapshot_schedule_cron.to_s.length > 100
+      return false if !@etcd_snapshot_schedule_cron.nil? && @etcd_snapshot_schedule_cron !~ Regexp.new(/^(@(annually|yearly|monthly|weekly|daily|hourly|reboot)|([0-9*\/,-]+ ){4}[0-9*\/,-]+)$/)
+      return false if !@node_taint.nil? && @node_taint.to_s.length > 253
+      return false if !@node_taint.nil? && @node_taint !~ Regexp.new(/^([a-z0-9]([a-z0-9.-]*[a-z0-9])?\/)?[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?(=[a-zA-Z0-9._-]+)?:(NoSchedule|PreferNoSchedule|NoExecute)$/)
+      return false if !@cluster_domain.nil? && @cluster_domain.to_s.length > 253
+      return false if !@cluster_domain.nil? && @cluster_domain !~ Regexp.new(/^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?[.])+[a-zA-Z]{2,}$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] token Value to be assigned
+    def token=(token)
+      if token.nil?
+        fail ArgumentError, 'token cannot be nil'
+      end
+
+      pattern = Regexp.new(/^K10[0-9a-fA-F]+::.+$/)
+      if token !~ pattern
+        fail ArgumentError, "invalid value for \"token\", must conform to the pattern #{pattern}."
+      end
+
+      @token = token
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tls_san Value to be assigned
+    def tls_san=(tls_san)
+      if tls_san.nil?
+        fail ArgumentError, 'tls_san cannot be nil'
+      end
+
+      if tls_san.to_s.length > 253
+        fail ArgumentError, 'invalid value for "tls_san", the character length must be smaller than or equal to 253.'
+      end
+
+      pattern = Regexp.new(/^[a-zA-Z0-9]([a-zA-Z0-9.-]*[a-zA-Z0-9])?$/)
+      if tls_san !~ pattern
+        fail ArgumentError, "invalid value for \"tls_san\", must conform to the pattern #{pattern}."
+      end
+
+      @tls_san = tls_san
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] etcd_snapshot_schedule_cron Value to be assigned
+    def etcd_snapshot_schedule_cron=(etcd_snapshot_schedule_cron)
+      if etcd_snapshot_schedule_cron.nil?
+        fail ArgumentError, 'etcd_snapshot_schedule_cron cannot be nil'
+      end
+
+      if etcd_snapshot_schedule_cron.to_s.length > 100
+        fail ArgumentError, 'invalid value for "etcd_snapshot_schedule_cron", the character length must be smaller than or equal to 100.'
+      end
+
+      pattern = Regexp.new(/^(@(annually|yearly|monthly|weekly|daily|hourly|reboot)|([0-9*\/,-]+ ){4}[0-9*\/,-]+)$/)
+      if etcd_snapshot_schedule_cron !~ pattern
+        fail ArgumentError, "invalid value for \"etcd_snapshot_schedule_cron\", must conform to the pattern #{pattern}."
+      end
+
+      @etcd_snapshot_schedule_cron = etcd_snapshot_schedule_cron
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] node_taint Value to be assigned
+    def node_taint=(node_taint)
+      if node_taint.nil?
+        fail ArgumentError, 'node_taint cannot be nil'
+      end
+
+      if node_taint.to_s.length > 253
+        fail ArgumentError, 'invalid value for "node_taint", the character length must be smaller than or equal to 253.'
+      end
+
+      pattern = Regexp.new(/^([a-z0-9]([a-z0-9.-]*[a-z0-9])?\/)?[a-zA-Z0-9]([a-zA-Z0-9._-]*[a-zA-Z0-9])?(=[a-zA-Z0-9._-]+)?:(NoSchedule|PreferNoSchedule|NoExecute)$/)
+      if node_taint !~ pattern
+        fail ArgumentError, "invalid value for \"node_taint\", must conform to the pattern #{pattern}."
+      end
+
+      @node_taint = node_taint
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] cluster_domain Value to be assigned
+    def cluster_domain=(cluster_domain)
+      if cluster_domain.nil?
+        fail ArgumentError, 'cluster_domain cannot be nil'
+      end
+
+      if cluster_domain.to_s.length > 253
+        fail ArgumentError, 'invalid value for "cluster_domain", the character length must be smaller than or equal to 253.'
+      end
+
+      pattern = Regexp.new(/^([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?[.])+[a-zA-Z]{2,}$/)
+      if cluster_domain !~ pattern
+        fail ArgumentError, "invalid value for \"cluster_domain\", must conform to the pattern #{pattern}."
+      end
+
+      @cluster_domain = cluster_domain
     end
 
     # Checks equality by comparing each attribute.
