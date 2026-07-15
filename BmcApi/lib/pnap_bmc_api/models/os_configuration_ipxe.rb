@@ -89,9 +89,8 @@ module BmcApi
         invalid_properties.push('invalid value for "url", url cannot be nil.')
       end
 
-      pattern = Regexp.new(/^https?:\/\/.+$/)
-      if @url !~ pattern
-        invalid_properties.push("invalid value for \"url\", must conform to the pattern #{pattern}.")
+      if @url.to_s.length > 1000
+        invalid_properties.push('invalid value for "url", the character length must be smaller than or equal to 1000.')
       end
 
       invalid_properties
@@ -102,7 +101,7 @@ module BmcApi
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @url.nil?
-      return false if @url !~ Regexp.new(/^https?:\/\/.+$/)
+      return false if @url.to_s.length > 1000
       true
     end
 
@@ -113,9 +112,8 @@ module BmcApi
         fail ArgumentError, 'url cannot be nil'
       end
 
-      pattern = Regexp.new(/^https?:\/\/.+$/)
-      if url !~ pattern
-        fail ArgumentError, "invalid value for \"url\", must conform to the pattern #{pattern}."
+      if url.to_s.length > 1000
+        fail ArgumentError, 'invalid value for "url", the character length must be smaller than or equal to 1000.'
       end
 
       @url = url
