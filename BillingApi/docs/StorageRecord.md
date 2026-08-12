@@ -26,6 +26,7 @@
 | **discount_details** | [**ApplicableDiscountDetails**](ApplicableDiscountDetails.md) |  | [optional] |
 | **credit_details** | [**Array&lt;CreditDetails&gt;**](CreditDetails.md) |  | [optional] |
 | **metadata** | [**StorageDetails**](StorageDetails.md) |  |  |
+| **utilization** | [**Utilization**](Utilization.md) |  | [optional] |
 
 ## Example
 
@@ -54,7 +55,8 @@ instance = BillingApi::StorageRecord.new(
   reservation_details: null,
   discount_details: null,
   credit_details: null,
-  metadata: null
+  metadata: null,
+  utilization: null
 )
 ```
 
