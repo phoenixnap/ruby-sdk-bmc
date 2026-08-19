@@ -15,7 +15,7 @@ require 'pnap_audit_api'
 
 instance = AuditApi::Event.new(
   name: API.CreateServer,
-  timestamp: null,
+  timestamp: 2020-03-19T16:39:00.123Z,
   user_info: null
 )
 ```
