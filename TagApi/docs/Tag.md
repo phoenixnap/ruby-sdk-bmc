@@ -20,7 +20,7 @@ require 'pnap_tag_api'
 instance = TagApi::Tag.new(
   id: 60ffafcdffb8b074c7968dad,
   name: Environment,
-  values: [DEV, PROD],
+  values: [&quot;DEV&quot;,&quot;PROD&quot;],
   description: This tag is used for all resources that need to be assigned to an environment.,
   is_billing_tag: true,
   resource_assignments: null,
