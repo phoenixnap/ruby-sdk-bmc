@@ -139,7 +139,6 @@ Class | Method | HTTP request | Description
 *BmcApi::ServersApi* | [**servers_server_id_actions_provision_post**](docs/ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reboot_post**](docs/ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_reserve_post**](docs/ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server.
-*BmcApi::ServersApi* | [**servers_server_id_actions_reset_post**](docs/ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_shutdown_post**](docs/ServersApi.md#servers_server_id_actions_shutdown_post) | **POST** /servers/{serverId}/actions/shutdown | Shutdown server.
 *BmcApi::ServersApi* | [**servers_server_id_actions_transfer_reservation**](docs/ServersApi.md#servers_server_id_actions_transfer_reservation) | **POST** /servers/{serverId}/actions/transfer-reservation | Transfer server reservation.
 *BmcApi::ServersApi* | [**servers_server_id_delete**](docs/ServersApi.md#servers_server_id_delete) | **DELETE** /servers/{serverId} | Delete server.
@@ -171,9 +170,6 @@ Class | Method | HTTP request | Description
  - [BmcApi::OsConfigurationCloudInit](docs/OsConfigurationCloudInit.md)
  - [BmcApi::OsConfigurationIPXE](docs/OsConfigurationIPXE.md)
  - [BmcApi::OsConfigurationIPXENativeVlanConfiguration](docs/OsConfigurationIPXENativeVlanConfiguration.md)
- - [BmcApi::OsConfigurationMap](docs/OsConfigurationMap.md)
- - [BmcApi::OsConfigurationMapEsxi](docs/OsConfigurationMapEsxi.md)
- - [BmcApi::OsConfigurationMapProxmox](docs/OsConfigurationMapProxmox.md)
  - [BmcApi::OsConfigurationNetrisController](docs/OsConfigurationNetrisController.md)
  - [BmcApi::OsConfigurationNetrisSoftgate](docs/OsConfigurationNetrisSoftgate.md)
  - [BmcApi::OsConfigurationWindows](docs/OsConfigurationWindows.md)
@@ -185,7 +181,6 @@ Class | Method | HTTP request | Description
  - [BmcApi::RebootRequest](docs/RebootRequest.md)
  - [BmcApi::RelinquishIpBlock](docs/RelinquishIpBlock.md)
  - [BmcApi::ReservationTransferDetails](docs/ReservationTransferDetails.md)
- - [BmcApi::ResetResult](docs/ResetResult.md)
  - [BmcApi::Server](docs/Server.md)
  - [BmcApi::ServerCreate](docs/ServerCreate.md)
  - [BmcApi::ServerIpBlock](docs/ServerIpBlock.md)
@@ -195,7 +190,6 @@ Class | Method | HTTP request | Description
  - [BmcApi::ServerProvision](docs/ServerProvision.md)
  - [BmcApi::ServerPublicNetwork](docs/ServerPublicNetwork.md)
  - [BmcApi::ServerReserve](docs/ServerReserve.md)
- - [BmcApi::ServerReset](docs/ServerReset.md)
  - [BmcApi::SshKey](docs/SshKey.md)
  - [BmcApi::SshKeyCreate](docs/SshKeyCreate.md)
  - [BmcApi::SshKeyUpdate](docs/SshKeyUpdate.md)

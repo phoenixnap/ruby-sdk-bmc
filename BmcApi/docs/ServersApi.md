@@ -13,7 +13,6 @@ All URIs are relative to *https://api.phoenixnap.com/bmc/v1*
 | [**servers_server_id_actions_provision_post**](ServersApi.md#servers_server_id_actions_provision_post) | **POST** /servers/{serverId}/actions/provision | Provision server. |
 | [**servers_server_id_actions_reboot_post**](ServersApi.md#servers_server_id_actions_reboot_post) | **POST** /servers/{serverId}/actions/reboot | Reboot server. |
 | [**servers_server_id_actions_reserve_post**](ServersApi.md#servers_server_id_actions_reserve_post) | **POST** /servers/{serverId}/actions/reserve | Reserve server. |
-| [**servers_server_id_actions_reset_post**](ServersApi.md#servers_server_id_actions_reset_post) | **POST** /servers/{serverId}/actions/reset | Reset server. |
 | [**servers_server_id_actions_shutdown_post**](ServersApi.md#servers_server_id_actions_shutdown_post) | **POST** /servers/{serverId}/actions/shutdown | Shutdown server. |
 | [**servers_server_id_actions_transfer_reservation**](ServersApi.md#servers_server_id_actions_transfer_reservation) | **POST** /servers/{serverId}/actions/transfer-reservation | Transfer server reservation. |
 | [**servers_server_id_delete**](ServersApi.md#servers_server_id_delete) | **DELETE** /servers/{serverId} | Delete server. |
@@ -664,77 +663,6 @@ end
 ### Return type
 
 [**Server**](Server.md)
-
-### Authorization
-
-[OAuth2](../README.md#OAuth2)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## servers_server_id_actions_reset_post
-
-> <ResetResult> servers_server_id_actions_reset_post(server_id, server_reset)
-
-Reset server.
-
-Deprecated: Reset specific server. Reset only supports network configurations of type 'private network' or 'IP blocks'. As an alternative, the suggested action is to deprovision the server and provision a new one with the same configuration.
-
-### Examples
-
-```ruby
-require 'time'
-require 'pnap_bmc_api'
-# setup authorization
-BmcApi.configure do |config|
-  # Configure OAuth2 access token for authorization: OAuth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = BmcApi::ServersApi.new
-server_id = '60473a6115e34466c9f8f083' # String | The server's ID.
-server_reset = BmcApi::ServerReset.new # ServerReset | 
-
-begin
-  # Reset server.
-  result = api_instance.servers_server_id_actions_reset_post(server_id, server_reset)
-  p result
-rescue BmcApi::ApiError => e
-  puts "Error when calling ServersApi->servers_server_id_actions_reset_post: #{e}"
-end
-```
-
-#### Using the servers_server_id_actions_reset_post_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<ResetResult>, Integer, Hash)> servers_server_id_actions_reset_post_with_http_info(server_id, server_reset)
-
-```ruby
-begin
-  # Reset server.
-  data, status_code, headers = api_instance.servers_server_id_actions_reset_post_with_http_info(server_id, server_reset)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <ResetResult>
-rescue BmcApi::ApiError => e
-  puts "Error when calling ServersApi->servers_server_id_actions_reset_post_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **server_id** | **String** | The server&#39;s ID. |  |
-| **server_reset** | [**ServerReset**](ServerReset.md) |  |  |
-
-### Return type
-
-[**ResetResult**](ResetResult.md)
 
 ### Authorization
 

@@ -148,19 +148,6 @@ describe 'ServersApi' do
     end
   end
 
-  # unit tests for servers_server_id_actions_reset_post
-  # Reset server.
-  # Deprecated: Reset specific server. Reset only supports network configurations of type &#39;private network&#39; or &#39;IP blocks&#39;. As an alternative, the suggested action is to deprovision the server and provision a new one with the same configuration.
-  # @param server_id The server&#39;s ID.
-  # @param server_reset 
-  # @param [Hash] opts the optional parameters
-  # @return [ResetResult]
-  describe 'servers_server_id_actions_reset_post test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for servers_server_id_actions_shutdown_post
   # Shutdown server.
   # Shut down specific server.
