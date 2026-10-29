@@ -42,7 +42,7 @@ describe BillingApi::PricingPlan do
   describe 'test attribute "location"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["PHX", "ASH", "NLD", "SGP", "CHI", "SEA", "GLOBAL"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["PHX", "PHX4", "PHX5", "ASH", "NLD", "NLD2", "SGP", "CHI", "SEA", "GLOBAL"])
       # validator.allowable_values.each do |value|
       #   expect { instance.location = value }.not_to raise_error
       # end

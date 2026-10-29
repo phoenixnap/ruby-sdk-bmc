@@ -16,14 +16,17 @@ require 'time'
 module BillingApi
   class ProductLocationEnum
     PHX = "PHX".freeze
+    PHX4 = "PHX4".freeze
+    PHX5 = "PHX5".freeze
     ASH = "ASH".freeze
     NLD = "NLD".freeze
+    NLD2 = "NLD2".freeze
     SGP = "SGP".freeze
     CHI = "CHI".freeze
     SEA = "SEA".freeze
 
     def self.all_vars
-      @all_vars ||= [PHX, ASH, NLD, SGP, CHI, SEA].freeze
+      @all_vars ||= [PHX, PHX4, PHX5, ASH, NLD, NLD2, SGP, CHI, SEA].freeze
     end
 
     # Builds the enum from string

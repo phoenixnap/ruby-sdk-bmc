@@ -222,7 +222,7 @@ module BillingApi
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @sku.nil?
       return false if @location.nil?
-      location_validator = EnumAttributeValidator.new('String', ["PHX", "ASH", "NLD", "SGP", "CHI", "SEA", "GLOBAL"])
+      location_validator = EnumAttributeValidator.new('String', ["PHX", "PHX4", "PHX5", "ASH", "NLD", "NLD2", "SGP", "CHI", "SEA", "GLOBAL"])
       return false unless location_validator.valid?(@location)
       return false if @pricing_model.nil?
       pricing_model_validator = EnumAttributeValidator.new('String', ["HOURLY", "METERED", "ONE_MONTH_RESERVATION", "TWELVE_MONTHS_RESERVATION", "TWENTY_FOUR_MONTHS_RESERVATION", "THIRTY_SIX_MONTHS_RESERVATION", "MONTHLY_PACKAGE", "FREE_TIER"])
@@ -245,7 +245,7 @@ module BillingApi
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] location Object to be assigned
     def location=(location)
-      validator = EnumAttributeValidator.new('String', ["PHX", "ASH", "NLD", "SGP", "CHI", "SEA", "GLOBAL"])
+      validator = EnumAttributeValidator.new('String', ["PHX", "PHX4", "PHX5", "ASH", "NLD", "NLD2", "SGP", "CHI", "SEA", "GLOBAL"])
       unless validator.valid?(location)
         fail ArgumentError, "invalid value for \"location\", must be one of #{validator.allowable_values}."
       end
