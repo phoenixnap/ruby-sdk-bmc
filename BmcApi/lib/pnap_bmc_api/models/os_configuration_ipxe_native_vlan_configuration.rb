@@ -22,7 +22,7 @@ module BmcApi
     # The static IP V4 address assigned to the server within the native VLAN. This address is set as the DHCP reservation and used for the iPXE boot process.  Value must be an available/unused IP V4 address within the native network usable IP range. If omitted, the first available IP in the native network will be automatically assigned. Therefore, at least one IP must be available within the native network. 
     attr_accessor :static_dhcp_address_v4
 
-    # (Read-only) The status of the native VLAN configuration.
+    # The status of the native VLAN configuration.
     attr_accessor :status
 
     class EnumAttributeValidator

@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module RancherApi
-  # (Write-only) Define the custom SSL certificates to be used instead of defaults.
+  # Define the custom SSL certificates to be used instead of defaults.
   class RancherClusterCertificates < ApiModelBase
     # The SSL CA certificate to be used for rancher admin.
     attr_accessor :ca_certificate

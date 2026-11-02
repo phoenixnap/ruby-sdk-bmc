@@ -27,7 +27,7 @@ module RancherApi
 
     attr_accessor :ssh_config
 
-    # (Read-only) The nodes associated with this node pool.
+    # The nodes associated with this node pool.
     attr_accessor :nodes
 
     # Attribute mapping from ruby-style variable name to JSON key.

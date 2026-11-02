@@ -16,13 +16,13 @@ require 'time'
 module BmcApi
   # Netris Controller configuration properties. Knowledge base article to help you can be found <a href='https://phoenixnap.com/kb/netris-bare-metal-cloud#deploy-netris-controller' target='_blank'>here</a>.
   class OsConfigurationNetrisController < ApiModelBase
-    # (Read-only) Host OS on which the Netris Controller is installed.
+    # Host OS on which the Netris Controller is installed.
     attr_accessor :host_os
 
-    # (Read-only) The URL for the Netris Controller web console. It will only be returned in response to provisioning a server.
+    # The URL for the Netris Controller web console. It will only be returned in response to provisioning a server.
     attr_accessor :netris_web_console_url
 
-    # (Read-only) Auto-generated password set for user 'netris' in the web console.<br> The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
+    # Auto-generated password set for user 'netris' in the web console.<br> The password is not stored and therefore will only be returned in response to provisioning a server. Copy and save it for future reference.
     attr_accessor :netris_user_password
 
     # Attribute mapping from ruby-style variable name to JSON key.

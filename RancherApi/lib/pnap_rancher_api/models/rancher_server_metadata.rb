@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module RancherApi
-  # (Read Only) Connection parameters to use to connect to the Rancher Server Administrative GUI.
+  # Connection parameters to use to connect to the Rancher Server Administrative GUI.
   class RancherServerMetadata < ApiModelBase
     # The Rancher Server URL.
     attr_accessor :url

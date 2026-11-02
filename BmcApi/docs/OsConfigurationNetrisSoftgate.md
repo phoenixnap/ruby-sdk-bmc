@@ -4,10 +4,10 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **host_os** | **String** | (Read-only) Host OS on which the Netris Softgate is installed. | [optional][readonly] |
-| **controller_address** | **String** | (Write-only) IP address or hostname through which to reach the Netris Controller. | [optional] |
-| **controller_version** | **String** | (Write-only) The version of the Netris Controller to connect to. | [optional] |
-| **controller_auth_key** | **String** | (Write-only) The authentication key of the Netris Controller to connect to. Required for the softgate agent to be able to interact with the Netris Controller. | [optional] |
+| **host_os** | **String** | Host OS on which the Netris Softgate is installed. | [optional][readonly] |
+| **controller_address** | **String** | IP address or hostname through which to reach the Netris Controller. | [optional] |
+| **controller_version** | **String** | The version of the Netris Controller to connect to. | [optional] |
+| **controller_auth_key** | **String** | The authentication key of the Netris Controller to connect to. Required for the softgate agent to be able to interact with the Netris Controller. | [optional] |
 
 ## Example
 

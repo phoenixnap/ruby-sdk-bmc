@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module RancherApi
-  # (Write-only) Rancher configuration parameters.
+  # Rancher configuration parameters.
   class RancherClusterConfig < ApiModelBase
     # Shared secret used to join a server or agent to a cluster.
     attr_accessor :token

@@ -16,16 +16,16 @@ require 'time'
 module BmcApi
   # Netris Softgate configuration properties. Follow <a href='https://phoenixnap.com/kb/netris-bare-metal-cloud#deploy-netris-softgate' target='_blank'>instructions</a> for retrieving the required details.
   class OsConfigurationNetrisSoftgate < ApiModelBase
-    # (Read-only) Host OS on which the Netris Softgate is installed.
+    # Host OS on which the Netris Softgate is installed.
     attr_accessor :host_os
 
-    # (Write-only) IP address or hostname through which to reach the Netris Controller.
+    # IP address or hostname through which to reach the Netris Controller.
     attr_accessor :controller_address
 
-    # (Write-only) The version of the Netris Controller to connect to.
+    # The version of the Netris Controller to connect to.
     attr_accessor :controller_version
 
-    # (Write-only) The authentication key of the Netris Controller to connect to. Required for the softgate agent to be able to interact with the Netris Controller.
+    # The authentication key of the Netris Controller to connect to. Required for the softgate agent to be able to interact with the Netris Controller.
     attr_accessor :controller_auth_key
 
     # Attribute mapping from ruby-style variable name to JSON key.

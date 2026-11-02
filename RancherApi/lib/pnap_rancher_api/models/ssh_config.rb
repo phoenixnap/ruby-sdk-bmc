@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module RancherApi
-  # (Write-only) Configuration defining which public SSH keys are pre-installed as authorized on the server.
+  # Configuration defining which public SSH keys are pre-installed as authorized on the server.
   class SshConfig < ApiModelBase
     # Define whether public keys marked as default should be installed on this node. These are public keys that were already recorded on this system. Use <a href='https://developers.phoenixnap.com/docs/bmc/1/routes/ssh-keys/get' target='_blank'>GET /ssh-keys</a> to retrieve a list of possible values.
     attr_accessor :install_default_keys
