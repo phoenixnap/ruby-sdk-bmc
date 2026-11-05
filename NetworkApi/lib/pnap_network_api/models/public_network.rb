@@ -28,7 +28,7 @@ module NetworkApi
     # The friendly name of this public network.
     attr_accessor :name
 
-    # The location of this public network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI` and `SEA`.
+    # The location of this public network. Supported values are `PHX`, `PHX4`, `PHX5`, `ASH`, `SGP`, `NLD`, `NLD2`, `CHI` or `SEA`.
     attr_accessor :location
 
     # The description of this public network.

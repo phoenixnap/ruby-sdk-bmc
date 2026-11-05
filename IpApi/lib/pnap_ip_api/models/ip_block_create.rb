@@ -16,7 +16,7 @@ require 'time'
 module IpApi
   # IP Block Request.
   class IpBlockCreate < ApiModelBase
-    # IP Block location ID. Currently this field should be set to `PHX`, `ASH`, `SGP`, `NLD`, `CHI` or `SEA`.
+    # IP Block location ID. Currently this field should be set to `PHX`, `PHX4`, `PHX5`, `ASH`, `SGP`, `NLD`, `NLD2`, `CHI` or `SEA`.
     attr_accessor :location
 
     # CIDR IP Block Size. V4 supported sizes: [`/31`, `/30`, `/29` or `/28`]. V6 supported sizes: [`/64`]. For a larger Block Size contact support.

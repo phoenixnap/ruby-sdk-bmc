@@ -22,7 +22,7 @@ module NetworkApi
     # The description of this public network.
     attr_accessor :description
 
-    # The location of this public network. Supported values are `PHX`, `ASH`, `SGP`, `NLD`, `CHI` and `SEA`.
+    # The location of this public network. Supported values are `PHX`, `PHX4`, `PHX5`, `ASH`, `SGP`, `NLD`, `NLD2`, `CHI` or `SEA`.
     attr_accessor :location
 
     # The VLAN that will be assigned to this network.
