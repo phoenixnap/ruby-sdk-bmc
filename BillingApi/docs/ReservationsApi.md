@@ -85,7 +85,7 @@ end
 
 ## reservations_post
 
-> <Reservation> reservations_post(opts)
+> <Reservation> reservations_post(reservation_request)
 
 Create a reservation.
 
@@ -103,13 +103,11 @@ BillingApi.configure do |config|
 end
 
 api_instance = BillingApi::ReservationsApi.new
-opts = {
-  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
-}
+reservation_request = BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
 
 begin
   # Create a reservation.
-  result = api_instance.reservations_post(opts)
+  result = api_instance.reservations_post(reservation_request)
   p result
 rescue BillingApi::ApiError => e
   puts "Error when calling ReservationsApi->reservations_post: #{e}"
@@ -120,12 +118,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Reservation>, Integer, Hash)> reservations_post_with_http_info(opts)
+> <Array(<Reservation>, Integer, Hash)> reservations_post_with_http_info(reservation_request)
 
 ```ruby
 begin
   # Create a reservation.
-  data, status_code, headers = api_instance.reservations_post_with_http_info(opts)
+  data, status_code, headers = api_instance.reservations_post_with_http_info(reservation_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Reservation>
@@ -138,7 +136,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **reservation_request** | [**ReservationRequest**](ReservationRequest.md) |  | [optional] |
+| **reservation_request** | [**ReservationRequest**](ReservationRequest.md) |  |  |
 
 ### Return type
 
@@ -156,7 +154,7 @@ end
 
 ## reservations_reservation_id_actions_auto_renew_disable_post
 
-> <Reservation> reservations_reservation_id_actions_auto_renew_disable_post(id, opts)
+> <Reservation> reservations_reservation_id_actions_auto_renew_disable_post(id, reservation_auto_renew_disable_request)
 
 Disable auto-renewal for reservation by id.
 
@@ -175,13 +173,11 @@ end
 
 api_instance = BillingApi::ReservationsApi.new
 id = 'd90bbea9-5725-47ce-879e-d3905bafac2a' # String | Resource id.
-opts = {
-  reservation_auto_renew_disable_request: BillingApi::ReservationAutoRenewDisableRequest.new # ReservationAutoRenewDisableRequest | 
-}
+reservation_auto_renew_disable_request = BillingApi::ReservationAutoRenewDisableRequest.new # ReservationAutoRenewDisableRequest | 
 
 begin
   # Disable auto-renewal for reservation by id.
-  result = api_instance.reservations_reservation_id_actions_auto_renew_disable_post(id, opts)
+  result = api_instance.reservations_reservation_id_actions_auto_renew_disable_post(id, reservation_auto_renew_disable_request)
   p result
 rescue BillingApi::ApiError => e
   puts "Error when calling ReservationsApi->reservations_reservation_id_actions_auto_renew_disable_post: #{e}"
@@ -192,12 +188,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Reservation>, Integer, Hash)> reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, opts)
+> <Array(<Reservation>, Integer, Hash)> reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, reservation_auto_renew_disable_request)
 
 ```ruby
 begin
   # Disable auto-renewal for reservation by id.
-  data, status_code, headers = api_instance.reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, opts)
+  data, status_code, headers = api_instance.reservations_reservation_id_actions_auto_renew_disable_post_with_http_info(id, reservation_auto_renew_disable_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Reservation>
@@ -211,7 +207,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | Resource id. |  |
-| **reservation_auto_renew_disable_request** | [**ReservationAutoRenewDisableRequest**](ReservationAutoRenewDisableRequest.md) |  | [optional] |
+| **reservation_auto_renew_disable_request** | [**ReservationAutoRenewDisableRequest**](ReservationAutoRenewDisableRequest.md) |  |  |
 
 ### Return type
 
@@ -298,7 +294,7 @@ end
 
 ## reservations_reservation_id_actions_convert_post
 
-> <Reservation> reservations_reservation_id_actions_convert_post(id, opts)
+> <Reservation> reservations_reservation_id_actions_convert_post(id, reservation_request)
 
 Convert reservation pricing model by reservation ID.
 
@@ -317,13 +313,11 @@ end
 
 api_instance = BillingApi::ReservationsApi.new
 id = 'd90bbea9-5725-47ce-879e-d3905bafac2a' # String | Resource id.
-opts = {
-  reservation_request: BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
-}
+reservation_request = BillingApi::ReservationRequest.new({sku: 'XXX-XXX-XXX', quantity: BillingApi::Quantity.new({quantity: 30, unit: BillingApi::QuantityUnitEnum::TB})}) # ReservationRequest | 
 
 begin
   # Convert reservation pricing model by reservation ID.
-  result = api_instance.reservations_reservation_id_actions_convert_post(id, opts)
+  result = api_instance.reservations_reservation_id_actions_convert_post(id, reservation_request)
   p result
 rescue BillingApi::ApiError => e
   puts "Error when calling ReservationsApi->reservations_reservation_id_actions_convert_post: #{e}"
@@ -334,12 +328,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Reservation>, Integer, Hash)> reservations_reservation_id_actions_convert_post_with_http_info(id, opts)
+> <Array(<Reservation>, Integer, Hash)> reservations_reservation_id_actions_convert_post_with_http_info(id, reservation_request)
 
 ```ruby
 begin
   # Convert reservation pricing model by reservation ID.
-  data, status_code, headers = api_instance.reservations_reservation_id_actions_convert_post_with_http_info(id, opts)
+  data, status_code, headers = api_instance.reservations_reservation_id_actions_convert_post_with_http_info(id, reservation_request)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Reservation>
@@ -353,7 +347,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | Resource id. |  |
-| **reservation_request** | [**ReservationRequest**](ReservationRequest.md) |  | [optional] |
+| **reservation_request** | [**ReservationRequest**](ReservationRequest.md) |  |  |
 
 ### Return type
 

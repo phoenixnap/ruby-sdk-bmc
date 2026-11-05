@@ -47,8 +47,8 @@ describe 'ReservationsApi' do
   # unit tests for reservations_post
   # Create a reservation.
   # Creates new package reservation for authenticated account.
+  # @param reservation_request 
   # @param [Hash] opts the optional parameters
-  # @option opts [ReservationRequest] :reservation_request 
   # @return [Reservation]
   describe 'reservations_post test' do
     it 'should work' do
@@ -60,8 +60,8 @@ describe 'ReservationsApi' do
   # Disable auto-renewal for reservation by id.
   # Disable auto-renewal for reservation by reservation id.
   # @param id Resource id.
+  # @param reservation_auto_renew_disable_request 
   # @param [Hash] opts the optional parameters
-  # @option opts [ReservationAutoRenewDisableRequest] :reservation_auto_renew_disable_request 
   # @return [Reservation]
   describe 'reservations_reservation_id_actions_auto_renew_disable_post test' do
     it 'should work' do
@@ -85,8 +85,8 @@ describe 'ReservationsApi' do
   # Convert reservation pricing model by reservation ID.
   # Convert reservation pricing model by reservation id.
   # @param id Resource id.
+  # @param reservation_request 
   # @param [Hash] opts the optional parameters
-  # @option opts [ReservationRequest] :reservation_request 
   # @return [Reservation]
   describe 'reservations_reservation_id_actions_convert_post test' do
     it 'should work' do
