@@ -45,6 +45,9 @@ module NetworkApi
     # A list of resources that are members of this private network.
     attr_accessor :memberships
 
+    # Reserved IP addresses within this network.
+    attr_accessor :reserved_ips
+
     # The status of the private network. Can have one of the following values: `BUSY`, `READY`, `DELETING` or `ERROR`.
     attr_accessor :status
 
@@ -64,6 +67,7 @@ module NetworkApi
         :'cidr' => :'cidr',
         :'servers' => :'servers',
         :'memberships' => :'memberships',
+        :'reserved_ips' => :'reservedIps',
         :'status' => :'status',
         :'created_on' => :'createdOn'
       }
@@ -92,6 +96,7 @@ module NetworkApi
         :'cidr' => :'String',
         :'servers' => :'Array<PrivateNetworkServer>',
         :'memberships' => :'Array<NetworkMembership>',
+        :'reserved_ips' => :'Array<ReservedIp>',
         :'status' => :'String',
         :'created_on' => :'Time'
       }
@@ -179,6 +184,14 @@ module NetworkApi
         self.memberships = nil
       end
 
+      if attributes.key?(:'reserved_ips')
+        if (value = attributes[:'reserved_ips']).is_a?(Array)
+          self.reserved_ips = value
+        end
+      else
+        self.reserved_ips = nil
+      end
+
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       else
@@ -241,6 +254,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "memberships", memberships cannot be nil.')
       end
 
+      if @reserved_ips.nil?
+        invalid_properties.push('invalid value for "reserved_ips", reserved_ips cannot be nil.')
+      end
+
       if @status.nil?
         invalid_properties.push('invalid value for "status", status cannot be nil.')
       end
@@ -267,6 +284,7 @@ module NetworkApi
       return false if @location_default.nil?
       return false if @servers.nil?
       return false if @memberships.nil?
+      return false if @reserved_ips.nil?
       return false if @status.nil?
       return false if @created_on.nil?
       true
@@ -375,6 +393,16 @@ module NetworkApi
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] reserved_ips Value to be assigned
+    def reserved_ips=(reserved_ips)
+      if reserved_ips.nil?
+        fail ArgumentError, 'reserved_ips cannot be nil'
+      end
+
+      @reserved_ips = reserved_ips
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] status Value to be assigned
     def status=(status)
       if status.nil?
@@ -409,6 +437,7 @@ module NetworkApi
           cidr == o.cidr &&
           servers == o.servers &&
           memberships == o.memberships &&
+          reserved_ips == o.reserved_ips &&
           status == o.status &&
           created_on == o.created_on
     end
@@ -422,7 +451,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, vlan_id, type, location, location_default, cidr, servers, memberships, status, created_on].hash
+      [id, name, description, vlan_id, type, location, location_default, cidr, servers, memberships, reserved_ips, status, created_on].hash
     end
 
     # Builds the object from hash

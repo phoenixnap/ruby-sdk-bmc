@@ -35,6 +35,7 @@ require 'pnap_network_api/models/public_network_create'
 require 'pnap_network_api/models/public_network_ip_block'
 require 'pnap_network_api/models/public_network_ip_block_create'
 require 'pnap_network_api/models/public_network_modify'
+require 'pnap_network_api/models/reserved_ip'
 
 # APIs
 require 'pnap_network_api/api/bgp_peer_groups_api'

@@ -165,6 +165,7 @@ Class | Method | HTTP request | Description
  - [NetworkApi::PublicNetworkIpBlock](docs/PublicNetworkIpBlock.md)
  - [NetworkApi::PublicNetworkIpBlockCreate](docs/PublicNetworkIpBlockCreate.md)
  - [NetworkApi::PublicNetworkModify](docs/PublicNetworkModify.md)
+ - [NetworkApi::ReservedIp](docs/ReservedIp.md)
 
 
 ## Documentation for Authorization

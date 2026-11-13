@@ -25,12 +25,16 @@ module NetworkApi
     # The number of IPs used in the IP block.
     attr_accessor :used_ips_count
 
+    # Reserved IP addresses within this network IP block.
+    attr_accessor :reserved_ips
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'cidr' => :'cidr',
-        :'used_ips_count' => :'usedIpsCount'
+        :'used_ips_count' => :'usedIpsCount',
+        :'reserved_ips' => :'reservedIps'
       }
     end
 
@@ -49,7 +53,8 @@ module NetworkApi
       {
         :'id' => :'String',
         :'cidr' => :'String',
-        :'used_ips_count' => :'String'
+        :'used_ips_count' => :'String',
+        :'reserved_ips' => :'Array<ReservedIp>'
       }
     end
 
@@ -92,6 +97,14 @@ module NetworkApi
       else
         self.used_ips_count = nil
       end
+
+      if attributes.key?(:'reserved_ips')
+        if (value = attributes[:'reserved_ips']).is_a?(Array)
+          self.reserved_ips = value
+        end
+      else
+        self.reserved_ips = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -111,6 +124,10 @@ module NetworkApi
         invalid_properties.push('invalid value for "used_ips_count", used_ips_count cannot be nil.')
       end
 
+      if @reserved_ips.nil?
+        invalid_properties.push('invalid value for "reserved_ips", reserved_ips cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -121,6 +138,7 @@ module NetworkApi
       return false if @id.nil?
       return false if @cidr.nil?
       return false if @used_ips_count.nil?
+      return false if @reserved_ips.nil?
       true
     end
 
@@ -154,6 +172,16 @@ module NetworkApi
       @used_ips_count = used_ips_count
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] reserved_ips Value to be assigned
+    def reserved_ips=(reserved_ips)
+      if reserved_ips.nil?
+        fail ArgumentError, 'reserved_ips cannot be nil'
+      end
+
+      @reserved_ips = reserved_ips
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -161,7 +189,8 @@ module NetworkApi
       self.class == o.class &&
           id == o.id &&
           cidr == o.cidr &&
-          used_ips_count == o.used_ips_count
+          used_ips_count == o.used_ips_count &&
+          reserved_ips == o.reserved_ips
     end
 
     # @see the `==` method
@@ -173,7 +202,7 @@ module NetworkApi
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, cidr, used_ips_count].hash
+      [id, cidr, used_ips_count, reserved_ips].hash
     end
 
     # Builds the object from hash
