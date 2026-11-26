@@ -159,7 +159,7 @@ module RancherApi
     def initialize
       @scheme = 'https'
       @host = 'api.phoenixnap.com'
-      @base_path = '/solutions/rancher/v1beta'
+      @base_path = '/solutions/rancher/v1'
       @server_index = nil
       @server_operation_index = {}
       @server_variables = {}
@@ -258,7 +258,7 @@ module RancherApi
     def server_settings
       [
         {
-          url: "https://api.phoenixnap.com/solutions/rancher/v1beta",
+          url: "https://api.phoenixnap.com/solutions/rancher/v1",
           description: "No description provided",
         }
       ]

@@ -1,6 +1,6 @@
 # RancherApi::ClustersApi
 
-All URIs are relative to *https://api.phoenixnap.com/solutions/rancher/v1beta*
+All URIs are relative to *https://api.phoenixnap.com/solutions/rancher/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |

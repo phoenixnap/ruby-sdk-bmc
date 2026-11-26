@@ -117,7 +117,7 @@ end
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.phoenixnap.com/solutions/rancher/v1beta*
+All URIs are relative to *https://api.phoenixnap.com/solutions/rancher/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

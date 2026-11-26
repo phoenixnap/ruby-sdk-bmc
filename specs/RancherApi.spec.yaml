@@ -21,7 +21,7 @@ info:
     email: support@phoenixnap.com
     url: https://phoenixnap.com/
 servers:
-  - url: https://api.phoenixnap.com/solutions/rancher/v1beta
+  - url: https://api.phoenixnap.com/solutions/rancher/v1
 security:
   - OAuth2:
       - bmc
