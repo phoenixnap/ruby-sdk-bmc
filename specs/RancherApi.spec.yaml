@@ -10,7 +10,7 @@ info:
     <a href='https://phoenixnap.com/kb/rancher-bmc-integration-kubernetes' target='_blank'>here</a>
     </span><br>
     <br>
-    <b>All URLs are relative to (https://api.phoenixnap.com/solutions/rancher/v1beta)</b>
+    <b>All URLs are relative to (https://api.phoenixnap.com/solutions/rancher/v1)</b>
   termsOfService: https://phoenixnap.com/infrastructure-solutions/legal-it/privacy-shield-compliant-privacy-policy
   version: '0.1'
   license:

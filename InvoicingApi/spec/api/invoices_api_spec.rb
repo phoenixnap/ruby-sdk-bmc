@@ -42,7 +42,7 @@ describe 'InvoicesApi' do
   # @option opts [Time] :sent_on_to Maximum value to filter invoices by sent on date.
   # @option opts [Integer] :limit The limit of the number of results returned. The number of records returned may be smaller than the limit.
   # @option opts [Integer] :offset The number of items to skip in the results.
-  # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by number.
+  # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by sentOn.
   # @option opts [String] :sort_direction Sort Given Field depending on the desired direction. Default sorting is descending.
   # @return [PaginatedInvoices]
   describe 'invoices_get test' do

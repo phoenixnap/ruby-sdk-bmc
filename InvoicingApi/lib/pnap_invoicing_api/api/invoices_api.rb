@@ -28,7 +28,7 @@ module InvoicingApi
     # @option opts [Time] :sent_on_to Maximum value to filter invoices by sent on date.
     # @option opts [Integer] :limit The limit of the number of results returned. The number of records returned may be smaller than the limit. (default to 100)
     # @option opts [Integer] :offset The number of items to skip in the results. (default to 0)
-    # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by number. (default to 'sentOn')
+    # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by sentOn. (default to 'sentOn')
     # @option opts [String] :sort_direction Sort Given Field depending on the desired direction. Default sorting is descending. (default to 'DESC')
     # @return [PaginatedInvoices]
     def invoices_get(opts = {})
@@ -45,7 +45,7 @@ module InvoicingApi
     # @option opts [Time] :sent_on_to Maximum value to filter invoices by sent on date.
     # @option opts [Integer] :limit The limit of the number of results returned. The number of records returned may be smaller than the limit. (default to 100)
     # @option opts [Integer] :offset The number of items to skip in the results. (default to 0)
-    # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by number. (default to 'sentOn')
+    # @option opts [String] :sort_field If a sortField is requested, pagination will be done after sorting. Default sorting is by sentOn. (default to 'sentOn')
     # @option opts [String] :sort_direction Sort Given Field depending on the desired direction. Default sorting is descending. (default to 'DESC')
     # @return [Array<(PaginatedInvoices, Integer, Hash)>] PaginatedInvoices data, response status code and response headers
     def invoices_get_with_http_info(opts = {})

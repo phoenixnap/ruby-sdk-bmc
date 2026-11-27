@@ -78,7 +78,7 @@ opts = {
   sent_on_to: Time.parse('2022-04-13T00:00:00.000Z'), # Time | Maximum value to filter invoices by sent on date.
   limit: 25, # Integer | The limit of the number of results returned. The number of records returned may be smaller than the limit.
   offset: 5, # Integer | The number of items to skip in the results.
-  sort_field: 'number', # String | If a sortField is requested, pagination will be done after sorting. Default sorting is by number.
+  sort_field: 'number', # String | If a sortField is requested, pagination will be done after sorting. Default sorting is by sentOn.
   sort_direction: 'ASC' # String | Sort Given Field depending on the desired direction. Default sorting is descending.
 }
 

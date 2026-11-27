@@ -30,7 +30,7 @@ module InvoicingApi
     # The invoice outstanding amount.
     attr_accessor :outstanding_amount
 
-    # The status of the invoice. Currently, this field should be set to `PAID`, `OVERDUE`, `PROCESSING_PAYMENT`, or `UNPAID`.
+    # The status of the invoice. Currently, this field should be set to `PAID`, `OVERDUE`, `PAYMENT_PROCESSING`, or `UNPAID`.
     attr_accessor :status
 
     # Date and time when the invoice was sent.

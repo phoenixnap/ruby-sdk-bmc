@@ -9,7 +9,7 @@
 | **currency** | **String** | The currency of the invoice. Currently, this field should be set to &#x60;EUR&#x60; or &#x60;USD&#x60;. |  |
 | **amount** | **Float** | The invoice amount. |  |
 | **outstanding_amount** | **Float** | The invoice outstanding amount. |  |
-| **status** | **String** | The status of the invoice. Currently, this field should be set to &#x60;PAID&#x60;, &#x60;OVERDUE&#x60;, &#x60;PROCESSING_PAYMENT&#x60;, or &#x60;UNPAID&#x60;. |  |
+| **status** | **String** | The status of the invoice. Currently, this field should be set to &#x60;PAID&#x60;, &#x60;OVERDUE&#x60;, &#x60;PAYMENT_PROCESSING&#x60;, or &#x60;UNPAID&#x60;. |  |
 | **sent_on** | **Time** | Date and time when the invoice was sent. |  |
 | **due_date** | **Time** | Date and time when the invoice payment is due. |  |
 

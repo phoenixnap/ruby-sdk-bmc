@@ -217,7 +217,7 @@ components:
           type: number
           example: 100.99
         status:
-          description: The status of the invoice. Currently, this field should be set to `PAID`, `OVERDUE`, `PROCESSING_PAYMENT`, or `UNPAID`.
+          description: The status of the invoice. Currently, this field should be set to `PAID`, `OVERDUE`, `PAYMENT_PROCESSING`, or `UNPAID`.
           type: string
           example: UNPAID
         sentOn:
@@ -343,7 +343,7 @@ components:
           - outstandingAmount
         default: sentOn
       required: false
-      description: If a sortField is requested, pagination will be done after sorting. Default sorting is by number.
+      description: If a sortField is requested, pagination will be done after sorting. Default sorting is by sentOn.
     pagingSortDirectionParameter:
       in: query
       name: sortDirection
